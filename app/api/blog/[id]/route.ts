@@ -50,8 +50,9 @@ export async function PUT(
     return NextResponse.json(post);
   } catch (error) {
     console.error('API blog [id] PUT error:', error);
+    const message = error instanceof Error ? error.message : 'Failed to update blog post';
     return NextResponse.json(
-      { error: 'Failed to update blog post' },
+      { error: message },
       { status: 500 }
     );
   }

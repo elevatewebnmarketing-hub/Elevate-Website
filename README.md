@@ -62,3 +62,6 @@ Access at [http://localhost:3000/admin](http://localhost:3000/admin). Use your a
 3. **Optional**
    - `RESEND_API_KEY`, `RESEND_FROM_EMAIL` – contact form
    - `EXCHANGE_RATE_FALLBACK` – NGN/USD for pricing
+
+4. **Keep Supabase awake (free tier)**  
+   Supabase projects pause after ~7 days of inactivity. Use [UptimeRobot](https://uptimerobot.com) to ping your site every 5 minutes. See [docs/UPTIMEROBOT.md](docs/UPTIMEROBOT.md) for step-by-step setup.

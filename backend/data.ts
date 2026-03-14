@@ -189,8 +189,13 @@ export async function saveBlogPost(post: BlogPost): Promise<void> {
   if (supabase) {
     const row = toBlogRow(post);
     const { error } = await supabase.from('blog_posts').upsert(row, { onConflict: 'id' });
-    if (error) throw new Error(`Failed to save blog post: ${error.message}`);
+    if (error) throw new Error(error.message);
     return;
+  }
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error(
+      'Database not configured. Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in Vercel environment variables.'
+    );
   }
   const posts = await getBlogPosts();
   const index = posts.findIndex((p) => p.id === post.id);

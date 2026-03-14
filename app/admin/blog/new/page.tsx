@@ -13,6 +13,7 @@ export default function AdminBlogNewPage() {
     slug: '',
     excerpt: '',
     content: '',
+    image: null as string | null,
     author: 'Elevate Team',
     publishedAt: new Date().toISOString().slice(0, 10),
   });
@@ -38,6 +39,7 @@ export default function AdminBlogNewPage() {
         credentials: 'include',
         body: JSON.stringify({
           ...form,
+          image: form.image || null,
           publishedAt: form.publishedAt ? form.publishedAt + 'T00:00:00.000Z' : new Date().toISOString(),
         }),
       });
@@ -85,6 +87,23 @@ export default function AdminBlogNewPage() {
             onChange={(e) => setForm((f) => ({ ...f, slug: e.target.value }))}
             className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-accent focus:border-accent outline-none"
           />
+        </div>
+
+        <div>
+          <label className="block font-medium text-primary mb-2">Featured image (URL)</label>
+          <input
+            type="url"
+            value={form.image ?? ''}
+            onChange={(e) => setForm((f) => ({ ...f, image: e.target.value || null }))}
+            placeholder="https://images.unsplash.com/photo-... or any image URL"
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+          />
+          {form.image && (
+            <div className="mt-2 relative w-full max-w-xs aspect-video rounded-lg overflow-hidden bg-gray-100">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={form.image} alt="" className="object-cover w-full h-full" onError={(e) => (e.currentTarget.style.display = 'none')} />
+            </div>
+          )}
         </div>
 
         <div>
