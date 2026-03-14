@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
 import { Breadcrumbs } from '@/admin/Breadcrumbs';
 import { Skeleton } from '@/admin/Skeleton';
