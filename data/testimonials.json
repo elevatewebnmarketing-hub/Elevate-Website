@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah Mitchell",
+    "business": "Luxe Salon & Spa",
+    "review": "Elevate transformed our online presence. Our booking rate increased by 40% within the first month. Their team understood our vision and delivered beyond expectations."
+  },
+  {
+    "id": "2",
+    "name": "James Chen",
+    "business": "Green Valley Restaurant",
+    "review": "Professional, responsive, and results-driven. Our new website has helped us capture more takeout orders and reservations. Highly recommend Elevate for any business."
+  },
+  {
+    "id": "3",
+    "name": "Maria Rodriguez",
+    "business": "TechFlow Consulting",
+    "review": "Working with Elevate was a game-changer. They helped us generate qualified leads and positioned our brand as an industry leader. Exceptional work."
+  }
+]

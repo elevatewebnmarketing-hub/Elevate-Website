@@ -1,0 +1,15 @@
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"window.Calendly check","data":{"hasCalendly":true},"hypothesisId":"H1","timestamp":1773158922558}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"taking popup branch","data":{},"hypothesisId":"H2","timestamp":1773158922558}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"openCalendly called","data":{},"hypothesisId":"H4","timestamp":1773158922557}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"initPopupWidget called no throw","data":{},"hypothesisId":"H3","timestamp":1773158922564}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"openCalendly called","data":{},"hypothesisId":"H4","timestamp":1773158926470}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"window.Calendly check","data":{"hasCalendly":true},"hypothesisId":"H1","timestamp":1773158926471}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"taking popup branch","data":{},"hypothesisId":"H2","timestamp":1773158926471}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"initPopupWidget called no throw","data":{},"hypothesisId":"H3","timestamp":1773158926476}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"taking popup branch","data":{},"hypothesisId":"H2","timestamp":1773158933736}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"window.Calendly check","data":{"hasCalendly":true},"hypothesisId":"H1","timestamp":1773158933736}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"openCalendly called","data":{},"hypothesisId":"H4","timestamp":1773158933735}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"initPopupWidget called no throw","data":{},"hypothesisId":"H3","timestamp":1773158933741}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"window.Calendly check","data":{"hasCalendly":true},"hypothesisId":"H1","timestamp":1773159085118}
+{"sessionId":"817a93","location":"lib/calendly.ts:openCalendly","message":"openCalendly called","data":{},"hypothesisId":"H4","timestamp":1773159085118}
+{"sessionId":"817a93","location":"lib/calendly.ts:openPopup","message":"initPopupWidget called","data":{},"hypothesisId":"H3","runId":"post-fix","timestamp":1773159085124}
