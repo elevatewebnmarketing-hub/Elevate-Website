@@ -25,7 +25,7 @@ export default function AdminTestimonialsPage() {
   const [saving, setSaving] = useState(false);
 
   function loadItems() {
-    fetch('/api/testimonials')
+    fetch('/api/testimonials', { credentials: 'include' })
       .then((res) => res.json())
       .then(setItems)
       .catch(console.error)
@@ -51,6 +51,7 @@ export default function AdminTestimonialsPage() {
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify(body),
       });
 
@@ -69,7 +70,7 @@ export default function AdminTestimonialsPage() {
   async function handleDelete(id: string) {
     if (!confirm('Delete this testimonial?')) return;
     try {
-      const res = await fetch(`/api/testimonials/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/testimonials/${id}`, { method: 'DELETE', credentials: 'include' });
       if (res.ok) loadItems();
       else alert('Failed to delete');
     } catch {

@@ -23,7 +23,7 @@ export default function AdminBlogPage() {
   const [deleting, setDeleting] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/blog')
+    fetch('/api/blog', { credentials: 'include' })
       .then((res) => res.json())
       .then(setPosts)
       .catch(console.error)
@@ -34,7 +34,7 @@ export default function AdminBlogPage() {
     if (!confirm('Delete this post?')) return;
     setDeleting(id);
     try {
-      const res = await fetch(`/api/blog/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/blog/${id}`, { method: 'DELETE', credentials: 'include' });
       if (res.ok) {
         setPosts((p) => p.filter((post) => post.id !== id));
       } else {

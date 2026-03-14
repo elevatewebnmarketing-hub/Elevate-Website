@@ -15,9 +15,9 @@ export default function AdminDashboardPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch('/api/blog').then((r) => r.json()).then((arr) => arr.length).catch(() => 0),
-      fetch('/api/testimonials').then((r) => r.json()).then((arr) => arr.length).catch(() => 0),
-      fetch('/api/portfolio').then((r) => r.json()).then((arr) => arr.length).catch(() => 0),
+      fetch('/api/blog', { credentials: 'include' }).then((r) => r.json()).then((arr) => arr.length).catch(() => 0),
+      fetch('/api/testimonials', { credentials: 'include' }).then((r) => r.json()).then((arr) => arr.length).catch(() => 0),
+      fetch('/api/portfolio', { credentials: 'include' }).then((r) => r.json()).then((arr) => arr.length).catch(() => 0),
     ]).then(([blog, testimonials, portfolio]) => {
       setStats({ blog, testimonials, portfolio });
     });

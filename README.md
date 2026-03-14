@@ -19,13 +19,13 @@ npm install
 
 2. Ensure the logo is in `public/logo.png`. If not, copy your logo file to that location.
 
-3. (Optional) Create `.env.local` and set your admin password:
+3. (Optional) Create `.env.local` and set your admin password for local dev:
 
 ```
 ADMIN_PASSWORD=your-secure-password
 ```
 
-Default admin password is `elevate2024` if not set.
+Default admin password is `elevate2024` if not set (local only).
 
 ### Development
 
@@ -35,28 +35,30 @@ Run the development server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000). Locally, data is read from `data/*.json` files.
 
 ### Admin Dashboard
 
-Access the admin dashboard at [http://localhost:3000/admin](http://localhost:3000/admin). Use your admin password to sign in. From the dashboard you can:
+Access at [http://localhost:3000/admin](http://localhost:3000/admin). Use your admin password to sign in.
 
-- **Blog** – Create, edit, and delete blog posts (markdown supported)
-- **Testimonials** – Manage client reviews
+- **Blog** – Create, edit, and delete blog posts
+- **Testimonials** – Manage client reviews  
 - **Portfolio** – Add and edit portfolio projects
 
-### Production
+### Production / Vercel Deployment
 
-Build for production:
+1. **Required env vars**
+   - `ADMIN_PASSWORD` – strong password (required in production)
+   - `SESSION_SECRET` – random string (32+ chars, required in production)
+   - `NEXT_PUBLIC_SUPABASE_URL` – your Supabase project URL
+   - `SUPABASE_SERVICE_ROLE_KEY` – Supabase service role key (Settings → API)
 
-```bash
-npm run build
-```
+2. **Supabase setup**
+   - Create a project at [supabase.com/dashboard](https://supabase.com/dashboard)
+   - In SQL Editor: run `supabase/schema.sql`
+   - Add `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` to Vercel env vars
+   - Run `npm run db:seed` locally (with Supabase env vars in `.env.local`) to migrate existing data from `data/*.json` into Supabase
 
-Start the production server:
-
-```bash
-npm start
-```
-
-Set `ADMIN_PASSWORD` in your production environment for secure admin access.
+3. **Optional**
+   - `RESEND_API_KEY`, `RESEND_FROM_EMAIL` – contact form
+   - `EXCHANGE_RATE_FALLBACK` – NGN/USD for pricing

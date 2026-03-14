@@ -27,7 +27,7 @@ export default function AdminBlogEditPage() {
   const [form, setForm] = useState<BlogPost | null>(null);
 
   useEffect(() => {
-    fetch(`/api/blog/${id}`)
+    fetch(`/api/blog/${id}`, { credentials: 'include' })
       .then((res) => {
         if (!res.ok) throw new Error('Not found');
         return res.json();
@@ -46,12 +46,21 @@ export default function AdminBlogEditPage() {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
+        credentials: 'include',
       });
-      if (!res.ok) throw new Error('Failed to save');
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        if (res.status === 401) {
+          alert('Session expired. Please log in again.');
+          router.push('/admin/login');
+          return;
+        }
+        throw new Error(data.error || 'Failed to save');
+      }
       router.push('/admin/blog');
       router.refresh();
-    } catch {
-      alert('Failed to save post');
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Failed to save post');
     } finally {
       setLoading(false);
     }

@@ -1,9 +1,11 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'elevate2024';
+const DEFAULT_PASSWORD = 'elevate2024';
+const DEFAULT_SECRET = 'elevate-admin-secret';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || DEFAULT_PASSWORD;
 const SESSION_COOKIE = 'admin_session';
-const SESSION_SECRET = process.env.SESSION_SECRET || 'elevate-admin-secret';
+const SESSION_SECRET = process.env.SESSION_SECRET || DEFAULT_SECRET;
 
 function createToken(): string {
   return Buffer.from(
@@ -14,6 +16,16 @@ function createToken(): string {
 
 export async function POST(request: Request) {
   try {
+    if (process.env.NODE_ENV === 'production') {
+      if (!process.env.ADMIN_PASSWORD || process.env.ADMIN_PASSWORD === DEFAULT_PASSWORD) {
+        console.error('Security: ADMIN_PASSWORD must be set to a strong value in production');
+        return NextResponse.json({ error: 'Admin login is not configured' }, { status: 503 });
+      }
+      if (!process.env.SESSION_SECRET || process.env.SESSION_SECRET === DEFAULT_SECRET) {
+        console.error('Security: SESSION_SECRET must be set in production');
+        return NextResponse.json({ error: 'Admin login is not configured' }, { status: 503 });
+      }
+    }
     const body = await request.json();
     const { password } = body;
 

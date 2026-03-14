@@ -1,0 +1,47 @@
+-- Elevate Web & Marketing - Supabase schema
+-- Run this in Supabase Dashboard: SQL Editor → New query → paste and run
+
+-- Blog posts
+CREATE TABLE IF NOT EXISTS blog_posts (
+  id TEXT PRIMARY KEY,
+  slug TEXT UNIQUE NOT NULL,
+  title TEXT NOT NULL,
+  excerpt TEXT NOT NULL DEFAULT '',
+  content TEXT NOT NULL DEFAULT '',
+  published_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  author TEXT NOT NULL DEFAULT '',
+  image TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_blog_posts_published_at ON blog_posts(published_at DESC);
+CREATE INDEX IF NOT EXISTS idx_blog_posts_slug ON blog_posts(slug);
+
+-- Testimonials
+CREATE TABLE IF NOT EXISTS testimonials (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  business TEXT NOT NULL,
+  review TEXT NOT NULL
+);
+
+-- Portfolio items
+CREATE TABLE IF NOT EXISTS portfolio_items (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  industry TEXT NOT NULL,
+  description TEXT NOT NULL,
+  image TEXT,
+  url TEXT,
+  featured BOOLEAN NOT NULL DEFAULT FALSE,
+  service TEXT,
+  problem TEXT,
+  solution TEXT,
+  screenshots JSONB DEFAULT '[]',
+  technologies JSONB DEFAULT '[]',
+  result TEXT,
+  owner_name TEXT,
+  owner_job TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_portfolio_items_featured ON portfolio_items(featured) WHERE featured = TRUE;
+CREATE INDEX IF NOT EXISTS idx_portfolio_items_service ON portfolio_items(service);

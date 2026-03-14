@@ -35,6 +35,7 @@ export default function AdminBlogNewPage() {
       const res = await fetch('/api/blog', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           ...form,
           publishedAt: form.publishedAt ? form.publishedAt + 'T00:00:00.000Z' : new Date().toISOString(),

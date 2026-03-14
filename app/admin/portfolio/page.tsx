@@ -50,7 +50,7 @@ export default function AdminPortfolioPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   function loadItems() {
-    fetch('/api/portfolio')
+    fetch('/api/portfolio', { credentials: 'include' })
       .then((res) => res.json())
       .then(setItems)
       .catch(console.error)
@@ -109,7 +109,7 @@ export default function AdminPortfolioPage() {
   async function handleDelete(id: string) {
     if (!confirm('Delete this project?')) return;
     try {
-      const res = await fetch(`/api/portfolio/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/portfolio/${id}`, { method: 'DELETE', credentials: 'include' });
       if (res.ok) loadItems();
       else alert('Failed to delete');
     } catch {
@@ -137,6 +137,7 @@ export default function AdminPortfolioPage() {
       const res = await fetch('/api/upload/portfolio', {
         method: 'POST',
         body: formData,
+        credentials: 'include',
       });
       if (!res.ok) throw new Error('Upload failed');
       const { url } = await res.json();
