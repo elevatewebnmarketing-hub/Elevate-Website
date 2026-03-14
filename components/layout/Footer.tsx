@@ -13,8 +13,9 @@ function WhatsAppIcon({ size = 22 }: { size?: number }) {
   );
 }
 
-const socialIcons: Record<string, React.ComponentType<{ size?: number }>> = {
-  Instagram,
+type SocialIconProps = { size?: number };
+const socialIcons: Record<string, React.ComponentType<SocialIconProps>> = {
+  Instagram: Instagram as React.ComponentType<SocialIconProps>,
   WhatsApp: WhatsAppIcon,
 };
 

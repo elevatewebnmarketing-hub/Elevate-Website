@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/sections/Hero';
@@ -24,7 +25,9 @@ export default async function Home() {
         <TechStackMarquee />
         <Trust />
         <Services />
-        <Portfolio />
+        <Suspense fallback={<div className="min-h-[400px]" />}>
+          <Portfolio />
+        </Suspense>
         <LogoStrip />
         <Process />
         <Testimonials />

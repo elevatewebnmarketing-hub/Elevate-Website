@@ -86,6 +86,9 @@ export async function POST(request: Request) {
   const service = typeof body.service === 'string' ? body.service : undefined;
   const timeline = typeof body.timeline === 'string' ? body.timeline : undefined;
   const budget = typeof body.budget === 'string' ? body.budget : undefined;
+  const source = typeof body.source === 'string' ? body.source : undefined;
+  const projectType = typeof body.projectType === 'string' ? body.projectType : undefined;
+  const industry = typeof body.industry === 'string' ? body.industry : undefined;
 
   try {
     const [toBusiness, toUser] = await Promise.all([
