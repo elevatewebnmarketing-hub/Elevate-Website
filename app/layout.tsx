@@ -23,6 +23,7 @@ const SITE_URL = 'https://elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: 'Elevate Web & Marketing',
   title: {
     default: 'Elevate Web & Marketing | Websites That Convert',
     template: '%s | Elevate Web & Marketing',
@@ -48,21 +49,25 @@ export const metadata: Metadata = {
     title: 'Elevate Web & Marketing | Websites That Convert',
     description:
       'Nigeria-based. High-performance websites and marketing systems that help businesses grow—working with brands across the world.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Elevate Web & Marketing' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Elevate Web & Marketing' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Elevate Web & Marketing | Websites That Convert',
     description:
       'Nigeria-based. High-performance websites and marketing systems that help businesses grow.',
-    images: ['/og-image.png'],
+    images: ['/twitter-image'],
   },
   icons: {
-    icon: '/favicon.png',
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    shortcut: ['/icon.svg'],
+    apple: [{ url: '/icon.svg' }],
   },
+  manifest: '/manifest.webmanifest',
   alternates: {
     canonical: '/',
   },
+  category: 'business',
   robots: {
     index: true,
     follow: true,
