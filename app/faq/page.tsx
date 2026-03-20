@@ -9,7 +9,7 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 const faqs = [
   {
     q: 'How much does it cost to build a website in Nigeria?',
-    a: 'Our website packages start from $149 (Starter) for single-page sites, $349 (Business) for multi-page sites, and $699 (E‑commerce) for online stores. Prices are in USD; we show approximate Naira equivalents based on the prevailing exchange rate. Custom and enterprise projects are quoted separately.',
+    a: 'Our website packages start at 250,000(199$) (Starter), 450,000(349$) (Business), 600,000(459$) (E‑commerce), and 1,000,000(749$) (Complete Growth Suite). Custom and enterprise projects are quoted separately.',
   },
   {
     q: 'How long does it take to build a website?',
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Do you accept payment in Naira?',
-    a: 'Yes. We can invoice in Naira at the prevailing rate at the time of payment. Payment terms are discussed during the project kickoff.',
+    a: 'Yes. We can invoice in Naira using the fixed package prices shown on the website. Payment terms are discussed during the project kickoff.',
   },
   {
     q: 'Do I need to provide content and images?',

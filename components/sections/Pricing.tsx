@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
@@ -11,8 +10,6 @@ import { openCalendly } from '@/lib/calendly';
 type PackageItem = {
   name: string;
   price: string;
-  usdAmount?: number;
-  isMonthly?: boolean;
   description: string;
   features: string[];
   highlighted: boolean;
@@ -21,8 +18,7 @@ type PackageItem = {
 const packages: PackageItem[] = [
   {
     name: 'Starter Website',
-    price: 'From $149',
-    usdAmount: 149,
+    price: '250,000(199$)',
     description:
       'Best for simple one-page sites, launch pages, or link-in-bio experiences that clearly explain who you are and what you offer.',
     features: [
@@ -36,8 +32,7 @@ const packages: PackageItem[] = [
   },
   {
     name: 'Business Website',
-    price: 'From $349',
-    usdAmount: 349,
+    price: '450,000(349$)',
     description:
       'Everything in Starter, plus room to grow—ideal for small businesses, portfolios, and content sites that need multiple pages.',
     features: [
@@ -53,8 +48,7 @@ const packages: PackageItem[] = [
   },
   {
     name: 'E‑commerce Website',
-    price: 'From $699',
-    usdAmount: 699,
+    price: '600,000(459$)',
     description:
       'Everything in Business, plus a full product catalog, cart, and checkout—built for brands that want to sell online.',
     features: [
@@ -70,7 +64,7 @@ const packages: PackageItem[] = [
   },
   {
     name: 'Complete Growth Suite',
-    price: 'From $1,200',
+    price: '1,000,000(749$)',
     description:
       'Website build + launch + your first months of Google Growth in one package—built for businesses ready to invest in a full digital foundation.',
     features: [
@@ -100,8 +94,6 @@ const packages: PackageItem[] = [
   {
     name: 'Google Growth Package',
     price: 'From $200/mo',
-    usdAmount: 200,
-    isMonthly: true,
     description:
       'Monthly Google Ads, Business Profile, and analytics management for growth‑focused businesses.',
     features: [
@@ -119,45 +111,23 @@ type WebsiteTypeGroup = {
   name: string;
   examples: string;
   from: string;
-  usdAmount: number;
   bestFor: string;
 };
 
 const websiteTypeGroups: WebsiteTypeGroup[] = [
-  { name: 'Campaign & Micro-sites', examples: 'Landing pages, link-in-bio, simple personal or event pages', from: '$149', usdAmount: 149, bestFor: 'Starter Website' },
-  { name: 'Business & Corporate', examples: 'Business/corporate, non-profit/charity, personal brand sites', from: '$349', usdAmount: 349, bestFor: 'Business Website' },
-  { name: 'Portfolio & Creative', examples: 'Designers, photographers, agencies, creative studios', from: '$349', usdAmount: 349, bestFor: 'Business Website' },
-  { name: 'Content & Education', examples: 'Blogs, news & media, educational or resource sites', from: '$349', usdAmount: 349, bestFor: 'Business Website' },
-  { name: 'E‑commerce & Sales', examples: 'Online stores, e‑commerce landing pages, product funnels', from: '$699', usdAmount: 699, bestFor: 'E‑commerce Website' },
-  { name: 'Community & Membership', examples: 'Membership sites, directories, forums/communities', from: '$899', usdAmount: 899, bestFor: 'Custom & Enterprise' },
+  { name: 'Campaign & Micro-sites', examples: 'Landing pages, link-in-bio, simple personal or event pages', from: '250,000(199$)', bestFor: 'Starter Website' },
+  { name: 'Business & Corporate', examples: 'Business/corporate, non-profit/charity, personal brand sites', from: '450,000(349$)', bestFor: 'Business Website' },
+  { name: 'Portfolio & Creative', examples: 'Designers, photographers, agencies, creative studios', from: '450,000(349$)', bestFor: 'Business Website' },
+  { name: 'Content & Education', examples: 'Blogs, news & media, educational or resource sites', from: '450,000(349$)', bestFor: 'Business Website' },
+  { name: 'E‑commerce & Sales', examples: 'Online stores, e‑commerce landing pages, product funnels', from: '600,000(459$)', bestFor: 'E‑commerce Website' },
+  { name: 'Community & Membership', examples: 'Membership sites, directories, forums/communities', from: '1,000,000(749$)', bestFor: 'Custom & Enterprise' },
 ];
 
 interface PricingProps {
   isStandalone?: boolean;
 }
 
-function formatNgn(usd: number, rate: number, isMonthly?: boolean): string {
-  // Round UP so clients always see a conservative minimum in NGN
-  const ngn = Math.ceil(usd * rate);
-  const formatted = ngn.toLocaleString('en-NG', { maximumFractionDigits: 0 });
-  return isMonthly ? `~₦${formatted}/mo` : `~₦${formatted}`;
-}
-
-function formatUsd(usd: number, isMonthly?: boolean): string {
-  const formatted = usd.toLocaleString('en-US', { maximumFractionDigits: 0 });
-  return isMonthly ? `$${formatted}/mo` : `$${formatted}`;
-}
-
 export default function Pricing({ isStandalone = false }: PricingProps) {
-  const FALLBACK_RATE = Number(process.env.NEXT_PUBLIC_EXCHANGE_RATE_FALLBACK) || 1600;
-  const [rate, setRate] = useState<number>(FALLBACK_RATE);
-  useEffect(() => {
-    fetch('/api/exchange-rate')
-      .then((r) => r.json())
-      .then((d) => setRate(typeof d.rate === 'number' && d.rate > 0 ? d.rate : FALLBACK_RATE))
-      .catch(() => setRate(FALLBACK_RATE));
-  }, []);
-
   const wrapperClass = isStandalone ? 'py-24 bg-background dark:bg-slate-900' : 'py-24 bg-white dark:bg-slate-900';
   const Wrapper = isStandalone ? 'div' : SectionWrapper;
   const wrapperProps = isStandalone ? { className: wrapperClass } : { id: 'pricing', className: wrapperClass };
@@ -178,9 +148,9 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto sm:mx-0">
               Clear, flat pricing for websites—from a single page to full e‑commerce. We also offer ongoing Google Ads, Business Profile, and Analytics support.
             </p>
-            {isStandalone && rate && (
+            {isStandalone && (
               <p className="text-text/60 dark:text-gray-400 text-sm mt-2 mx-auto sm:mx-0">
-                NGN amounts based on prevailing exchange rate; USD is the reference currency.
+                Prices are fixed in NGN with the USD equivalent shown in parentheses.
               </p>
             )}
           </div>
@@ -225,32 +195,13 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                 {pkg.name}
               </h3>
               <div className="mb-4">
-                {pkg.usdAmount != null ? (
-                  <>
-                  <p
-                    className={`text-2xl font-bold ${
-                      pkg.highlighted ? 'text-accent' : 'text-primary dark:text-white'
-                    }`}
-                  >
-                    {formatNgn(pkg.usdAmount, rate, pkg.isMonthly)}
-                  </p>
-                  <p
-                    className={`text-sm mt-1 ${
-                      pkg.highlighted ? 'text-white/80' : 'text-text/70 dark:text-gray-400'
-                    }`}
-                  >
-                    {formatUsd(pkg.usdAmount, pkg.isMonthly)}
-                  </p>
-                  </>
-                ) : (
-                  <p
-                    className={`text-2xl font-bold ${
-                      pkg.highlighted ? 'text-accent' : 'text-primary dark:text-white'
-                    }`}
-                  >
-                    {pkg.price}
-                  </p>
-                )}
+                <p
+                  className={`text-2xl font-bold ${
+                    pkg.highlighted ? 'text-accent' : 'text-primary dark:text-white'
+                  }`}
+                >
+                  {pkg.price}
+                </p>
               </div>
               <p
                 className={`text-sm mb-6 ${
@@ -313,9 +264,8 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                 className="rounded-card-lg border border-gray-200 dark:border-white/10 bg-background dark:bg-slate-800 p-5 shadow-soft text-left"
               >
                 <p className="text-xs font-semibold tracking-wide uppercase text-accent mb-1">
-                  From {formatNgn(group.usdAmount, rate)}
+                  From {group.from}
                 </p>
-                <p className="text-text/70 dark:text-gray-400 text-xs mb-3">{group.from}</p>
                 <h4 className="font-heading font-semibold text-primary dark:text-white mb-1">
                   {group.name}
                 </h4>
