@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+const SITE_URL = 'https://elevatewebandmarketing.com';
+
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
@@ -7,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Pricing | Elevate Web & Marketing',
     description: 'Web design and marketing package pricing. Clear, fixed options.',
-    url: '/pricing',
+    url: `${SITE_URL}/pricing`,
   },
   alternates: { canonical: '/pricing' },
 };

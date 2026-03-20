@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+const SITE_URL = 'https://elevatewebandmarketing.com';
+
 export const metadata: Metadata = {
   title: 'About Us',
   description:
@@ -8,7 +10,7 @@ export const metadata: Metadata = {
     title: 'About Elevate Web & Marketing | Nigeria Web Design Agency',
     description:
       'Nigeria-based web & marketing studio. We design and develop modern websites, run effective marketing campaigns, and support businesses globally.',
-    url: '/about',
+    url: `${SITE_URL}/about`,
   },
   alternates: { canonical: '/about' },
 };

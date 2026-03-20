@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
 
+const SITE_URL = 'https://elevatewebandmarketing.com';
+
 export const metadata: Metadata = {
   title: 'Blog',
   description:
@@ -8,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Blog | Elevate Web & Marketing',
     description: 'Web design, SEO, and marketing insights for businesses.',
-    url: '/blog',
+    url: `${SITE_URL}/blog`,
   },
   alternates: { canonical: '/blog' },
 };

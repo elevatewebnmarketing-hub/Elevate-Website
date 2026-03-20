@@ -35,7 +35,7 @@
 ## Your to-dos (post-launch)
 
 1. **OG / social image**
-   - Add `public/og-image.png` (1200×630 px) for link previews. Used in root metadata; without it, shares may have no image or a fallback.
+   - Ensure OG/Twitter preview images exist. This project generates them via `app/opengraph-image.tsx` and `app/twitter-image.tsx` (served at `/opengraph-image` and `/twitter-image`).
 
 2. **Search console**
    - [Google Search Console](https://search.google.com/search-console): add property for https://elevatewebandmarketing.com, verify (HTML tag or DNS).

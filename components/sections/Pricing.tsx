@@ -149,12 +149,13 @@ function formatUsd(usd: number, isMonthly?: boolean): string {
 }
 
 export default function Pricing({ isStandalone = false }: PricingProps) {
-  const [rate, setRate] = useState<number | null>(null);
+  const FALLBACK_RATE = Number(process.env.NEXT_PUBLIC_EXCHANGE_RATE_FALLBACK) || 1600;
+  const [rate, setRate] = useState<number>(FALLBACK_RATE);
   useEffect(() => {
     fetch('/api/exchange-rate')
       .then((r) => r.json())
-      .then((d) => setRate(typeof d.rate === 'number' ? d.rate : null))
-      .catch(() => setRate(null));
+      .then((d) => setRate(typeof d.rate === 'number' && d.rate > 0 ? d.rate : FALLBACK_RATE))
+      .catch(() => setRate(FALLBACK_RATE));
   }, []);
 
   const wrapperClass = isStandalone ? 'py-24 bg-background dark:bg-slate-900' : 'py-24 bg-white dark:bg-slate-900';
@@ -224,22 +225,22 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                 {pkg.name}
               </h3>
               <div className="mb-4">
-                {pkg.usdAmount != null && rate ? (
+                {pkg.usdAmount != null ? (
                   <>
-                    <p
-                      className={`text-2xl font-bold ${
-                        pkg.highlighted ? 'text-accent' : 'text-primary dark:text-white'
-                      }`}
-                    >
-                      {formatNgn(pkg.usdAmount, rate, pkg.isMonthly)}
-                    </p>
-                    <p
-                      className={`text-sm mt-1 ${
-                        pkg.highlighted ? 'text-white/80' : 'text-text/70 dark:text-gray-400'
-                      }`}
-                    >
-                      {formatUsd(pkg.usdAmount, pkg.isMonthly)}
-                    </p>
+                  <p
+                    className={`text-2xl font-bold ${
+                      pkg.highlighted ? 'text-accent' : 'text-primary dark:text-white'
+                    }`}
+                  >
+                    {formatNgn(pkg.usdAmount, rate, pkg.isMonthly)}
+                  </p>
+                  <p
+                    className={`text-sm mt-1 ${
+                      pkg.highlighted ? 'text-white/80' : 'text-text/70 dark:text-gray-400'
+                    }`}
+                  >
+                    {formatUsd(pkg.usdAmount, pkg.isMonthly)}
+                  </p>
                   </>
                 ) : (
                   <p
@@ -311,16 +312,10 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                 key={group.name}
                 className="rounded-card-lg border border-gray-200 dark:border-white/10 bg-background dark:bg-slate-800 p-5 shadow-soft text-left"
               >
-                {rate ? (
-                  <>
-                    <p className="text-xs font-semibold tracking-wide uppercase text-accent mb-1">
-                      From {formatNgn(group.usdAmount, rate)}
-                    </p>
-                    <p className="text-text/70 dark:text-gray-400 text-xs mb-3">{group.from}</p>
-                  </>
-                ) : (
-                  <p className="text-xs font-semibold tracking-wide uppercase text-accent mb-3">From {group.from}</p>
-                )}
+                <p className="text-xs font-semibold tracking-wide uppercase text-accent mb-1">
+                  From {formatNgn(group.usdAmount, rate)}
+                </p>
+                <p className="text-text/70 dark:text-gray-400 text-xs mb-3">{group.from}</p>
                 <h4 className="font-heading font-semibold text-primary dark:text-white mb-1">
                   {group.name}
                 </h4>
