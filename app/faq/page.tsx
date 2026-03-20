@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'What is included in your website packages?',
-    a: 'All packages include responsive design, basic SEO setup (meta tags, clean URLs), and a contact or enquiry form. Business and higher tiers add more pages, custom branding, blog or portfolio sections, and post‑launch support. E‑commerce packages include product catalog and checkout.',
+    a: 'All packages include responsive design, basic on-page SEO setup (title/meta description, headings, and clean URLs), and a contact form with email notifications and user confirmation. Business and higher tiers add more pages, custom branding, blog or portfolio sections, and post-launch support. E-commerce packages include product catalog pages, cart and checkout setup, and basic SEO for products and categories.',
   },
   {
     q: 'Do you accept payment in Naira?',
