@@ -13,10 +13,28 @@ function WhatsAppIcon({ size = 22 }: { size?: number }) {
   );
 }
 
+function FacebookIcon({ size = 22 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M13.5 22v-8h2.7l.4-3H13.5V9.1c0-.9.3-1.6 1.6-1.6H16.6V4.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V11H7V14h2.9v8h3.6Z" />
+    </svg>
+  );
+}
+
+function XIcon({ size = 22 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M18.9 2H22l-6.9 7.9L22.6 22h-6.8l-4.2-5.5-5 5.5H2.3l7.4-8.5L2.1 2h7l3.8 5.1L18.9 2Z" />
+    </svg>
+  );
+}
+
 type SocialIconProps = { size?: number };
 const socialIcons: Record<string, React.ComponentType<SocialIconProps>> = {
   Instagram: Instagram as React.ComponentType<SocialIconProps>,
   WhatsApp: WhatsAppIcon,
+  Facebook: FacebookIcon,
+  X: XIcon,
 };
 
 export default function Footer() {

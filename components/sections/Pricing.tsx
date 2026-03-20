@@ -137,9 +137,15 @@ interface PricingProps {
 }
 
 function formatNgn(usd: number, rate: number, isMonthly?: boolean): string {
-  const ngn = Math.round(usd * rate);
+  // Round UP so clients always see a conservative minimum in NGN
+  const ngn = Math.ceil(usd * rate);
   const formatted = ngn.toLocaleString('en-NG', { maximumFractionDigits: 0 });
   return isMonthly ? `~₦${formatted}/mo` : `~₦${formatted}`;
+}
+
+function formatUsd(usd: number, isMonthly?: boolean): string {
+  const formatted = usd.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  return isMonthly ? `$${formatted}/mo` : `$${formatted}`;
 }
 
 export default function Pricing({ isStandalone = false }: PricingProps) {
@@ -218,20 +224,30 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                 {pkg.name}
               </h3>
               <div className="mb-4">
-                <p
-                  className={`text-2xl font-bold ${
-                    pkg.highlighted ? 'text-accent' : 'text-primary dark:text-white'
-                  }`}
-                >
-                  {pkg.price}
-                </p>
-                {pkg.usdAmount != null && rate && (
+                {pkg.usdAmount != null && rate ? (
+                  <>
+                    <p
+                      className={`text-2xl font-bold ${
+                        pkg.highlighted ? 'text-accent' : 'text-primary dark:text-white'
+                      }`}
+                    >
+                      {formatNgn(pkg.usdAmount, rate, pkg.isMonthly)}
+                    </p>
+                    <p
+                      className={`text-sm mt-1 ${
+                        pkg.highlighted ? 'text-white/80' : 'text-text/70 dark:text-gray-400'
+                      }`}
+                    >
+                      {formatUsd(pkg.usdAmount, pkg.isMonthly)}
+                    </p>
+                  </>
+                ) : (
                   <p
-                    className={`text-sm mt-0.5 ${
-                      pkg.highlighted ? 'text-white/80' : 'text-text/70 dark:text-gray-400'
+                    className={`text-2xl font-bold ${
+                      pkg.highlighted ? 'text-accent' : 'text-primary dark:text-white'
                     }`}
                   >
-                    {formatNgn(pkg.usdAmount, rate, pkg.isMonthly)}
+                    {pkg.price}
                   </p>
                 )}
               </div>
@@ -295,14 +311,16 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                 key={group.name}
                 className="rounded-card-lg border border-gray-200 dark:border-white/10 bg-background dark:bg-slate-800 p-5 shadow-soft text-left"
               >
-                <p className="text-xs font-semibold tracking-wide uppercase text-accent mb-1">
-                  From {group.from}
-                  {rate && (
-                    <span className="font-normal text-text/70 dark:text-gray-400 ml-1">
-                      ({formatNgn(group.usdAmount, rate)})
-                    </span>
-                  )}
-                </p>
+                {rate ? (
+                  <>
+                    <p className="text-xs font-semibold tracking-wide uppercase text-accent mb-1">
+                      From {formatNgn(group.usdAmount, rate)}
+                    </p>
+                    <p className="text-text/70 dark:text-gray-400 text-xs mb-3">{group.from}</p>
+                  </>
+                ) : (
+                  <p className="text-xs font-semibold tracking-wide uppercase text-accent mb-3">From {group.from}</p>
+                )}
                 <h4 className="font-heading font-semibold text-primary dark:text-white mb-1">
                   {group.name}
                 </h4>

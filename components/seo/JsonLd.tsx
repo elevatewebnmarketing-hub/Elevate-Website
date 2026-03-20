@@ -7,6 +7,11 @@ const organizationSchema = {
   url: SITE_URL,
   image: `${SITE_URL}/opengraph-image`,
   logo: `${SITE_URL}/icon.svg`,
+  sameAs: [
+    'https://www.facebook.com/profile.php?id=61578521342361',
+    'https://www.instagram.com/elevate_web_and_marketing/',
+    'https://x.com/elevate_web_',
+  ],
   description:
     'Nigeria-based. High-performance websites and marketing systems that help businesses grow—working with brands across the world.',
   address: {

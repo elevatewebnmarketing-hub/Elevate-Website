@@ -38,14 +38,14 @@ export default function LogoStrip() {
             {logos.map((logo, index) => (
               <div
                 key={`${logo.alt}-${index}`}
-                className="relative h-10 sm:h-12 w-auto flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity"
+                className="relative h-10 sm:h-12 w-32 sm:w-40 flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity flex items-center justify-center"
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  height={48}
-                  width={160}
-                  className="h-full w-auto object-contain"
+                  fill
+                  sizes="(max-width: 640px) 128px, 160px"
+                  className="h-full w-full object-contain object-center"
                 />
               </div>
             ))}

@@ -38,7 +38,12 @@ export const siteConfig = {
   ],
 
   socialLinks: [
+    {
+      href: 'https://www.facebook.com/profile.php?id=61578521342361',
+      label: 'Facebook',
+    },
     { href: 'https://www.instagram.com/elevate_web_and_marketing/', label: 'Instagram' },
+    { href: 'https://x.com/elevate_web_', label: 'X' },
     { href: 'https://wa.me/2348144933788', label: 'WhatsApp' },
   ],
 } as const;
