@@ -69,7 +69,7 @@ export default function GetQuotePage() {
               Get a Quote
             </h1>
             <p className="text-text/80 dark:text-gray-300 text-lg">
-              Tell us about your project and we&apos;ll send a custom quote within 24 hours.
+              Tell us about your project and we&apos;ll send a custom quote within 48 hours.
             </p>
           </motion.div>
 
@@ -234,7 +234,7 @@ export default function GetQuotePage() {
                 {loading ? 'Sending...' : 'Request Quote'}
               </button>
               {success && (
-                <p className="text-accent font-medium text-sm">Thanks! We&apos;ll send your quote within 24 hours.</p>
+                <p className="text-accent font-medium text-sm">Thanks! We&apos;ll send your quote within 48 hours.</p>
               )}
               {error && <p className="text-red-600 dark:text-red-400 font-medium text-sm">{error}</p>}
             </form>

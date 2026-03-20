@@ -42,7 +42,7 @@ function userConfirmationEmailHtml(name: string): string {
     <div style="max-width:600px;margin:0 auto;font-family:sans-serif;color:#111111;background:#F7F9FC;padding:32px;">
       <div style="color:#0B1F3A;font-size:24px;font-weight:bold;margin-bottom:24px;">Elevate Web &amp; Marketing</div>
       <p style="font-size:16px;line-height:1.6;">Hi ${name},</p>
-      <p style="font-size:16px;line-height:1.6;">Thank you for reaching out. We've received your inquiry and will get back to you within 24 hours.</p>
+      <p style="font-size:16px;line-height:1.6;">Thank you for reaching out. We've received your inquiry and will get back to you within 48 hours.</p>
       <ul style="font-size:16px;line-height:1.8;">
         <li>We're here Monday – Friday, 9:00 AM – 6:00 PM WAT.</li>
         <li>Want to chat sooner? <a href="${CALENDLY_URL}" style="color:#4F9CF9;">Book a call</a>.</li>

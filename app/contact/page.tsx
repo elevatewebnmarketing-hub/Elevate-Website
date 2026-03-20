@@ -71,7 +71,7 @@ export default function ContactPage() {
                   <span className="text-accent">extraordinary.</span>
                 </h1>
                 <p className="text-text/80 dark:text-gray-300 text-lg max-w-xl">
-                  Tell us about your project and we&apos;ll get back to you within 24 hours.
+                  Tell us about your project and we&apos;ll get back to you within 48 hours.
                 </p>
                 <button
                   type="button"
@@ -321,7 +321,7 @@ export default function ContactPage() {
                   </button>
                   {success && (
                     <p className="text-accent font-medium text-sm">
-                      Thanks! We&apos;ll get back to you within 24 hours.
+                      Thanks! We&apos;ll get back to you within 48 hours.
                     </p>
                   )}
                   {error && (
