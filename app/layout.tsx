@@ -6,6 +6,7 @@ import { ThemeScript } from '@/components/providers/ThemeScript';
 import JsonLd from '@/components/seo/JsonLd';
 import CalendlyBadge from '@/components/CalendlyBadge';
 import WhatsAppFloatButton from '@/components/WhatsAppFloatButton';
+import MetaPixel from '@/components/analytics/MetaPixel';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -20,6 +21,8 @@ const inter = Inter({
 });
 
 const SITE_URL = 'https://elevatewebandmarketing.com';
+
+const FACEBOOK_DOMAIN_VERIFICATION = process.env.NEXT_PUBLIC_FACEBOOK_DOMAIN_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -78,6 +81,13 @@ export const metadata: Metadata = {
     // google: 'google-site-verification-code',
     // yandex: 'yandex-verification-code',
   },
+  ...(FACEBOOK_DOMAIN_VERIFICATION
+    ? {
+        other: {
+          'facebook-domain-verification': FACEBOOK_DOMAIN_VERIFICATION,
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({
@@ -110,6 +120,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
+        <MetaPixel />
         <JsonLd />
         <ThemeScript />
         <ThemeProvider>{children}</ThemeProvider>
