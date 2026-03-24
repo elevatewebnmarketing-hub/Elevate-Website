@@ -1,7 +1,15 @@
 import { Suspense } from 'react';
+import type { Metadata } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import PortfolioSection from '@/components/sections/Portfolio';
+
+export const metadata: Metadata = {
+  title: 'Case Studies',
+  description:
+    'Explore web design and development case studies from Elevate Web & Marketing—real projects and outcomes for Nigerian and global businesses.',
+  alternates: { canonical: '/case-studies' },
+};
 
 export default function CaseStudiesPage() {
   return (

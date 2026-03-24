@@ -67,9 +67,6 @@ export const metadata: Metadata = {
     apple: [{ url: '/icon.svg' }],
   },
   manifest: '/manifest.webmanifest',
-  alternates: {
-    canonical: '/',
-  },
   category: 'business',
   robots: {
     index: true,
