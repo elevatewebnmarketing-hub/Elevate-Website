@@ -50,6 +50,24 @@ const caseStudies = [
       'Built custom property search with filters, virtual tour integration, and optimized listing pages for SEO.',
     result: 'Organic traffic up 85%, with 2x more inquiry form submissions.',
   },
+  {
+    client: 'Lagos Retail Growth',
+    service: 'meta-ads' as const,
+    problem:
+      'Facebook and Instagram ads were getting clicks, but lead quality was inconsistent and tracking was unclear.',
+    solution:
+      'We validated Meta Pixel events, restructured the campaign objective for conversions, and ran structured creative tests across FB/IG placements. We also aligned landing page messaging with the ad promise.',
+    result: 'Reduced cost per lead and increased qualified inquiries within 6–8 weeks.',
+  },
+  {
+    client: 'Studio Brand Scaling',
+    service: 'meta-ads' as const,
+    problem:
+      'Creative fatigue set in quickly, and performance dropped even when budgets stayed the same.',
+    solution:
+      'We implemented a creative testing cadence (new hooks, formats, and angles), kept audiences and placements focused, and refreshed landing page sections to maintain conversion rate as spend scaled.',
+    result: 'Improved ROAS through better creative iteration and tighter on-site conversion alignment.',
+  },
 ];
 
 interface CaseStudiesProps {

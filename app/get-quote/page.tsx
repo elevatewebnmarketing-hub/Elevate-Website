@@ -170,6 +170,7 @@ export default function GetQuotePage() {
                   <option value="website-redesign">Website Redesign</option>
                   <option value="seo">SEO</option>
                   <option value="google-ads">Google Ads</option>
+                  <option value="meta-ads">Meta Ads (Facebook &amp; Instagram)</option>
                   <option value="website-maintenance">Website Maintenance</option>
                   <option value="full-package">Full Package (design + marketing)</option>
                 </select>

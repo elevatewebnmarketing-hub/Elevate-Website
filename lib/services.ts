@@ -3,6 +3,7 @@ export const SERVICE_OPTIONS = [
   { slug: 'website-development', label: 'Website Development' },
   { slug: 'website-redesign', label: 'Website Redesign' },
   { slug: 'seo-optimization', label: 'SEO Optimization' },
+  { slug: 'meta-ads', label: 'Meta Ads (FB/IG)' },
   { slug: 'landing-pages', label: 'Landing Pages' },
   { slug: 'website-maintenance', label: 'Website Maintenance' },
 ] as const;

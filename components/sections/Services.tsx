@@ -15,7 +15,12 @@ import {
   MapPin,
 } from 'lucide-react';
 
-const services = [
+const services: Array<{
+  icon: any;
+  title: string;
+  description: string;
+  href?: string;
+}> = [
   {
     icon: Palette,
     title: 'Website Design',
@@ -58,6 +63,13 @@ const services = [
       'Manage search and display campaigns to generate leads and sales. We set up, optimize, and report on performance so you can focus on running your business.',
   },
   {
+    icon: BarChart3,
+    title: 'Meta Ads (Facebook & Instagram)',
+    description:
+      'Facebook Ads and Instagram Ads managed with Meta Pixel tracking, disciplined creative testing, and conversion-focused landing pages.',
+    href: '/meta-ads',
+  },
+  {
     icon: MapPin,
     title: 'Google Business Profile & Analytics',
     description:
@@ -93,27 +105,38 @@ export default function Services() {
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="group bg-white dark:bg-slate-800 rounded-card-lg p-8 shadow-soft hover:shadow-soft-xl border border-gray-100 dark:border-white/10 transition-shadow cursor-default"
-            >
-              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                <service.icon className="text-accent" size={28} />
-              </div>
-              <h3 className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">
-                {service.title}
-              </h3>
-              <p className="text-text/80 dark:text-gray-300 text-base leading-relaxed">
-                {service.description}
-              </p>
-            </motion.div>
-          ))}
+          {services.map((service, index) => {
+            const card = (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                className={`group bg-white dark:bg-slate-800 rounded-card-lg p-8 shadow-soft hover:shadow-soft-xl border border-gray-100 dark:border-white/10 transition-shadow ${
+                  service.href ? 'cursor-pointer' : 'cursor-default'
+                }`}
+              >
+                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                  <service.icon className="text-accent" size={28} />
+                </div>
+                <h3 className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-text/80 dark:text-gray-300 text-base leading-relaxed">
+                  {service.description}
+                </p>
+              </motion.div>
+            );
+
+            return service.href ? (
+              <Link key={service.title} href={service.href} className="block">
+                {card}
+              </Link>
+            ) : (
+              <div key={service.title}>{card}</div>
+            );
+          })}
         </div>
       </div>
     </SectionWrapper>

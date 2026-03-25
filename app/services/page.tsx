@@ -24,6 +24,7 @@ const serviceSlugMap: Record<string, string> = {
   'SEO Optimization': 'seo',
   'Website Maintenance': 'website-maintenance',
   'Google Ads & Campaign Management': 'google-ads',
+  'Meta Ads (Facebook & Instagram)': '/meta-ads',
 };
 
 const services = [
@@ -112,6 +113,18 @@ const services = [
     ],
   },
   {
+    icon: BarChart3,
+    title: 'Meta Ads (Facebook & Instagram)',
+    description:
+      'Facebook Ads and Instagram Ads managed with Meta Pixel tracking, disciplined creative testing, and conversion-focused landing pages.',
+    details: [
+      'Meta Pixel + conversion event tracking validation',
+      'Facebook & Instagram campaign setup and optimization',
+      'Creative testing plan (hooks, formats, angles) to reduce fatigue',
+      'Landing page alignment to turn clicks into leads and sales',
+    ],
+  },
+  {
     icon: MapPin,
     title: 'Google Business Profile & Analytics',
     description:
@@ -192,7 +205,13 @@ export default function ServicesPage() {
                 <Button
                   variant="outline"
                   size="sm"
-                  href={serviceSlugMap[service.title] ? `/services/${serviceSlugMap[service.title]}` : '/contact'}
+                  href={
+                    serviceSlugMap[service.title]
+                      ? serviceSlugMap[service.title].startsWith('/')
+                        ? serviceSlugMap[service.title]
+                        : `/services/${serviceSlugMap[service.title]}`
+                      : '/contact'
+                  }
                 >
                   {serviceSlugMap[service.title] ? 'Learn More' : 'Get Started'}
                 </Button>

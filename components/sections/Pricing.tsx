@@ -119,6 +119,21 @@ const packages: PackageItem[] = [
     ],
     highlighted: false,
   },
+  {
+    name: 'Meta Growth Package',
+    price: 'From $200/mo',
+    description:
+      'Monthly Facebook Ads + Instagram Ads management with Meta Pixel tracking, creative testing, and conversion-focused landing page optimization (total $200/mo): $100 for Ads/Creative operations and $100 company/management fee.',
+    features: [
+      '$100/mo: Facebook + Instagram Ads management (setup, optimization, and ongoing execution)',
+      '$100/mo: Company management fee (strategy, reporting, and monthly optimization QA)',
+      'Meta Pixel + conversion event tracking validation',
+      'Creative testing plan (hooks, formats, and angles) to reduce fatigue',
+      'Landing page alignment to turn clicks into leads and sales',
+      'Monthly performance report + 30-minute strategy call',
+    ],
+    highlighted: false,
+  },
 ];
 
 type WebsiteTypeGroup = {
