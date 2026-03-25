@@ -6,7 +6,7 @@ import { siteConfig } from '@/lib/site-config';
 import { ArrowRight } from 'lucide-react';
 import MetaAdsJsonLd from '@/components/seo/MetaAdsJsonLd';
 
-const SITE_URL = 'https://elevatewebandmarketing.com';
+const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
   title: 'Meta Ads (Facebook & Instagram) | Elevate Web & Marketing',

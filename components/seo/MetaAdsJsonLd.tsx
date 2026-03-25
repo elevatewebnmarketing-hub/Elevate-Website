@@ -1,6 +1,6 @@
 import { siteConfig } from '@/lib/site-config';
 
-const SITE_URL = 'https://elevatewebandmarketing.com';
+const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 const serviceSchema = {
   '@context': 'https://schema.org',

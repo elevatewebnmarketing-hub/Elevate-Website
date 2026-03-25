@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   description:
     'Explore web design and development case studies from Elevate Web & Marketing—real projects and outcomes for Nigerian and global businesses.',
   alternates: { canonical: '/case-studies' },
+  openGraph: {
+    title: 'Case Studies | Elevate Web & Marketing',
+    description: 'Explore case studies and outcomes from Elevate Web & Marketing projects.',
+    url: 'https://www.elevatewebandmarketing.com/case-studies',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Case Studies | Elevate Web & Marketing',
+    description: 'Explore case studies and outcomes from Elevate Web & Marketing projects.',
+    images: ['/twitter-image'],
+  },
 };
 
 export default function CaseStudiesPage() {

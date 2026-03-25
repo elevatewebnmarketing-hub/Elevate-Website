@@ -20,7 +20,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const SITE_URL = 'https://elevatewebandmarketing.com';
+const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 const FACEBOOK_DOMAIN_VERIFICATION = process.env.NEXT_PUBLIC_FACEBOOK_DOMAIN_VERIFICATION;
 

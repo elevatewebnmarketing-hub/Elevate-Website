@@ -7,6 +7,17 @@ export const metadata: Metadata = {
   title: 'Terms of Service',
   description: `Terms of service for ${siteConfig.companyName}. Rules and guidelines for using our website and services.`,
   alternates: { canonical: '/terms' },
+  openGraph: {
+    title: 'Terms of Service | Elevate Web & Marketing',
+    description: `Terms of service for ${siteConfig.companyName}.`,
+    url: 'https://www.elevatewebandmarketing.com/terms',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | Elevate Web & Marketing',
+    description: `Terms of service for ${siteConfig.companyName}.`,
+    images: ['/twitter-image'],
+  },
 };
 
 export default function TermsPage() {

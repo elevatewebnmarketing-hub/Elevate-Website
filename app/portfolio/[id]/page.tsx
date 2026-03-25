@@ -9,7 +9,7 @@ import { ArrowLeft, Monitor, ExternalLink } from 'lucide-react';
 import { getServiceLabel } from '@/lib/services';
 import { DeviceMockup } from '@/components/ui/DeviceMockup';
 
-const BASE_URL = 'https://elevatewebandmarketing.com';
+const BASE_URL = 'https://www.elevatewebandmarketing.com';
 
 export async function generateMetadata({
   params,

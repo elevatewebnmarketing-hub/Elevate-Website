@@ -1,4 +1,4 @@
-const SITE_URL = 'https://elevatewebandmarketing.com';
+const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 const organizationSchema = {
   '@context': 'https://schema.org',

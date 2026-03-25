@@ -4,11 +4,12 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { getBlogPostBySlug, getBlogPosts } from '@/lib/data';
 import { stripHtmlTags } from '@/lib/blog-utils';
+import BlogPostJsonLd from '@/components/seo/BlogPostJsonLd';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, User, ArrowRight, Clock } from 'lucide-react';
 
-const BASE_URL = 'https://elevatewebandmarketing.com';
+const BASE_URL = 'https://www.elevatewebandmarketing.com';
 
 export async function generateMetadata({
   params,
@@ -133,6 +134,7 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <BlogPostJsonLd post={post} />
       <Header />
       <main className="min-h-screen bg-background dark:bg-slate-900">
         <article>
@@ -178,7 +180,7 @@ export default async function BlogPostPage({
               <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-gray-100 dark:bg-slate-700 shadow-soft">
                 <Image
                   src={post.image}
-                  alt=""
+                  alt={post.title}
                   fill
                   className="object-cover"
                   sizes="(max-width: 896px) 100vw, 832px"
@@ -214,7 +216,7 @@ export default async function BlogPostPage({
                         <div className="relative aspect-video overflow-hidden">
                           <Image
                             src={p.image}
-                            alt=""
+                            alt={p.title}
                             fill
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

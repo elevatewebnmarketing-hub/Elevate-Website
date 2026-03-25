@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-const SITE_URL = 'https://elevatewebandmarketing.com';
+const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
   title: 'Contact',
