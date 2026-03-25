@@ -12,11 +12,19 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-gray-200/50 dark:border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 relative bg-background/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-gray-200/50 dark:border-white/10">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="/" className="group flex-shrink-0 max-w-[45%] sm:max-w-none min-w-[8rem] block transition-transform duration-200 hover:scale-105 origin-left">
-            <Logo variant={theme === 'dark' ? 'white' : 'black'} width={382} height={120} className="w-[16.31rem] sm:w-[19rem] md:w-[21.75rem] h-auto max-h-[6.34rem]" />
+          <a
+            href="/"
+            className="group flex-shrink-0 block transition-transform duration-200 hover:scale-[1.03] origin-left"
+          >
+            <Logo
+              variant={theme === 'dark' ? 'white' : 'black'}
+              width={382}
+              height={120}
+              className="w-[8.5rem] sm:w-[10.25rem] md:w-[12.25rem] h-auto max-h-[3.9rem]"
+            />
           </a>
 
           <div className="hidden lg:flex items-center gap-6">
@@ -62,6 +70,7 @@ export default function Header() {
               className="p-2 text-primary dark:text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -76,9 +85,9 @@ export default function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden bg-background dark:bg-slate-900 border-t border-gray-200/50 dark:border-white/10"
+            className="lg:hidden absolute left-0 right-0 top-full bg-background/95 dark:bg-slate-900/95 backdrop-blur-sm border-t border-gray-200/50 dark:border-white/10"
           >
-            <div className="px-4 py-4 space-y-4">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-4">
               {siteConfig.navLinks.map((link) => (
                 <a
                   key={link.href}
