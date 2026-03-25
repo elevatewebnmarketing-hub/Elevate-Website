@@ -143,7 +143,9 @@ export default function ContactPage() {
                       Headquarters
                     </p>
                     <p className="text-primary dark:text-white font-medium mt-0.5">
-                      Lagos, Nigeria
+                      Lagos,
+                      <br />
+                      Nigeria
                     </p>
                     <p className="text-text/70 dark:text-gray-400 text-sm mt-0.5">
                       Serving brands across the world
@@ -155,16 +157,21 @@ export default function ContactPage() {
               <div className="rounded-card-lg overflow-hidden shadow-soft border border-gray-100 dark:border-white/10 bg-white dark:bg-slate-800">
                 <div className="aspect-[16/10] relative bg-primary/5">
                   <Image
-                    src="https://images.pexels.com/photos/29387556/pexels-photo-29387556.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop"
-                    alt="Elevate team - Nigeria-based professionals"
+                    src="/images/founder-ufuoma-onakpoyan.png"
+                    alt="Ufuoma Onakpoyan - Business owner"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 400px"
                   />
                 </div>
-                <p className="p-4 text-sm text-text/80 dark:text-gray-300 font-body">
-                  A Nigeria-based team focused on big results for brands worldwide.
-                </p>
+                <div className="p-4">
+                  <p className="font-heading font-bold text-sm text-primary dark:text-white mb-1">
+                    Elevate team - Nigeria-based professionals
+                  </p>
+                  <p className="text-sm text-text/80 dark:text-gray-300 font-body">
+                    A Nigeria-based team focused on big results for brands worldwide.
+                  </p>
+                </div>
               </div>
             </motion.div>
 
