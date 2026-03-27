@@ -2,15 +2,18 @@
  * Site-wide configuration. Update these values to customize your site.
  */
 
+/** Nigerian mobile in E.164 without + (WhatsApp / wa.me). Matches display phone 07086039012. */
+const PHONE_E164 = '2347086039012';
+
 export const siteConfig = {
   companyName: 'Elevate Web & Marketing',
   tagline:
     'Nigeria-based web & marketing studio building high-performance websites and growth systems for businesses worldwide—no matter the timezone.',
   contactEmail: 'hello@elevatewebandmarketing.com',
-  phone: '+234 814 493 3788',
+  phone: '+234 708 603 9012',
   location: 'Nigeria · Worldwide',
 
-  whatsappNumber: '2348144933788',
+  whatsappNumber: PHONE_E164,
   whatsappMessage: "Hi! I'm visiting from the Elevate Web & Marketing website and would like to learn more about your services.",
 
   navLinks: [
@@ -46,6 +49,6 @@ export const siteConfig = {
     },
     { href: 'https://www.instagram.com/elevate_web_and_marketing/', label: 'Instagram' },
     { href: 'https://x.com/elevate_web_', label: 'X' },
-    { href: 'https://wa.me/2348144933788', label: 'WhatsApp' },
+    { href: `https://wa.me/${PHONE_E164}`, label: 'WhatsApp' },
   ],
 } as const;

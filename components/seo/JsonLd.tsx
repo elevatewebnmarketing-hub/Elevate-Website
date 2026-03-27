@@ -22,7 +22,7 @@ const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'hello@elevatewebandmarketing.com',
-    telephone: '+234-814-493-3788',
+    telephone: '+234-708-603-9012',
     contactType: 'customer service',
     areaServed: 'Worldwide',
     availableLanguage: 'English',
