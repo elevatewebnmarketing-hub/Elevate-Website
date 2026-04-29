@@ -5,13 +5,11 @@ import {
   type LocationCode,
   type PricingPackage,
   LOCATION_CURRENCY_MAP,
-  DEFAULT_LOCATION,
   buildFallbackPackages,
 } from '@/lib/pricing-config';
 import {
   readCachedLocation,
-  writeLocation,
-  detectLocationFromIP,
+  FALLBACK_LOCATION,
   LOCATION_UPDATED_EVENT,
 } from '@/lib/detect-location';
 
@@ -20,24 +18,12 @@ export interface ResolvedPricing {
   countryName: string;
   packages: PricingPackage[];
   isLoading: boolean;
-  error: string | null;
-}
-
-async function resolveLocation(): Promise<LocationCode> {
-  // 1. User-confirmed or cached location
-  const cached = readCachedLocation();
-  if (cached) return cached;
-
-  // 2. IP detection
-  const detected = await detectLocationFromIP();
-  writeLocation(detected, false);
-  return detected;
 }
 
 async function fetchPricingData(loc: LocationCode): Promise<PricingPackage[]> {
   try {
     const res = await fetch(`/api/pricing?location=${loc}`);
-    if (!res.ok) throw new Error('pricing fetch failed');
+    if (!res.ok) throw new Error('failed');
     return await res.json();
   } catch {
     return buildFallbackPackages(loc);
@@ -45,10 +31,9 @@ async function fetchPricingData(loc: LocationCode): Promise<PricingPackage[]> {
 }
 
 export function useLocationPricing(): ResolvedPricing {
-  const [locationCode, setLocationCode] = useState<LocationCode>(DEFAULT_LOCATION);
+  const [locationCode, setLocationCode] = useState<LocationCode>(FALLBACK_LOCATION);
   const [packages, setPackages] = useState<PricingPackage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error] = useState<string | null>(null);
 
   async function loadForLocation(loc: LocationCode) {
     setIsLoading(true);
@@ -59,10 +44,12 @@ export function useLocationPricing(): ResolvedPricing {
   }
 
   useEffect(() => {
-    resolveLocation().then(loadForLocation);
+    // On mount use whatever is confirmed in localStorage, else fall back to US
+    const cached = readCachedLocation();
+    loadForLocation(cached?.code ?? FALLBACK_LOCATION);
   }, []);
 
-  // Listen for banner confirming a location
+  // Live-update when the LocationModal confirms a location
   useEffect(() => {
     function onLocationUpdated(e: Event) {
       const loc = (e as CustomEvent<LocationCode>).detail;
@@ -77,6 +64,5 @@ export function useLocationPricing(): ResolvedPricing {
     countryName: LOCATION_CURRENCY_MAP[locationCode].country,
     packages,
     isLoading,
-    error,
   };
 }
