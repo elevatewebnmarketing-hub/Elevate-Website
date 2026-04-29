@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -6,6 +7,13 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'Learn about Elevate Web & Marketing—a Nigeria-based studio building high-performance websites and digital marketing for businesses worldwide. Founded 2023, CAC registered.',
+  keywords: [
+    'Nigeria web design agency',
+    'web design company Nigeria',
+    'digital marketing agency Lagos',
+    'Elevate Web Marketing team',
+    'CAC registered web agency Nigeria',
+  ],
   openGraph: {
     title: 'About Elevate Web & Marketing | Nigeria Web Design Agency',
     description:
@@ -20,5 +28,15 @@ export default function AboutLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: 'Home', url: SITE_URL },
+          { name: 'About Us', url: `${SITE_URL}/about` },
+        ]}
+      />
+      {children}
+    </>
+  );
 }

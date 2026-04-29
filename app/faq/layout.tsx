@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -6,6 +7,12 @@ export const metadata: Metadata = {
   title: 'FAQ',
   description:
     'Frequently asked questions about web design, pricing, timelines, and digital marketing in Nigeria. Elevate Web & Marketing answers your questions.',
+  keywords: [
+    'web design FAQ Nigeria',
+    'how much does a website cost Nigeria',
+    'website development questions',
+    'digital marketing FAQ Nigeria',
+  ],
   openGraph: {
     title: 'FAQ | Elevate Web & Marketing',
     description: 'Common questions about web design, pricing, and marketing services in Nigeria.',
@@ -15,5 +22,15 @@ export const metadata: Metadata = {
 };
 
 export default function FaqLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: 'Home', url: SITE_URL },
+          { name: 'FAQ', url: `${SITE_URL}/faq` },
+        ]}
+      />
+      {children}
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -7,6 +8,12 @@ export const metadata: Metadata = {
   title: 'Blog',
   description:
     'Insights on web design, digital marketing, and growing your business online. Tips and best practices from Elevate Web & Marketing.',
+  keywords: [
+    'web design blog Nigeria',
+    'digital marketing tips Nigeria',
+    'SEO tips Nigeria',
+    'website growth blog',
+  ],
   openGraph: {
     title: 'Blog | Elevate Web & Marketing',
     description: 'Web design, SEO, and marketing insights for businesses.',
@@ -20,5 +27,17 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>{children}</Suspense>;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: 'Home', url: SITE_URL },
+          { name: 'Blog', url: `${SITE_URL}/blog` },
+        ]}
+      />
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+        {children}
+      </Suspense>
+    </>
+  );
 }

@@ -1,0 +1,57 @@
+# Elevate Web & Marketing
+
+> Nigeria-based web design and digital marketing agency that builds high-performance websites and marketing systems for businesses in Nigeria and worldwide.
+
+Elevate Web & Marketing is a CAC-registered studio founded in 2023 and headquartered in Lagos, Nigeria. We design and develop modern, conversion-focused websites and run comprehensive digital marketing campaigns. Our clients range from Nigerian startups and SMEs to international brands across the UK, US, Canada, and Australia. Pricing is shown in the visitor's local currency (NGN, GBP, USD, CAD, AUD).
+
+## Services
+
+- [Website Design](https://www.elevatewebandmarketing.com/services/website-design): Custom, mobile-responsive website designs built for conversions. Every layout, colour, and CTA is chosen with your business goals in mind.
+- [Website Development](https://www.elevatewebandmarketing.com/services/website-development): Fast, modern websites built with Next.js and React. SEO-friendly structure, Core Web Vitals optimisation, and WCAG accessibility standards.
+- [Website Redesign](https://www.elevatewebandmarketing.com/services/website-redesign): Audit and rebuild of existing sites. Improved user flows, modern design refresh, and content migration.
+- [SEO Optimisation](https://www.elevatewebandmarketing.com/services/seo): Search engine optimisation to rank higher on Google and drive organic traffic. On-page, technical, and content SEO.
+- [Website Maintenance](https://www.elevatewebandmarketing.com/services/website-maintenance): Ongoing updates, security monitoring, performance checks, and content changes.
+- [Google Ads / PPC](https://www.elevatewebandmarketing.com/services/google-ads): Google Search and Display advertising campaigns managed for ROI. Includes keyword research, ad copy, and monthly reporting.
+- [Meta Ads (Facebook & Instagram)](https://www.elevatewebandmarketing.com/meta-ads): Facebook and Instagram advertising to reach targeted audiences. Campaign setup, creative guidance, and performance tracking.
+- [Construction Industry Websites](https://www.elevatewebandmarketing.com/services/construction): Specialist web design for construction companies, contractors, and builders.
+- [Real Estate Websites](https://www.elevatewebandmarketing.com/services/real-estate): Property listing websites and marketing for real estate agents and developers.
+- [E-commerce Websites](https://www.elevatewebandmarketing.com/services/ecommerce): Online stores with product management, payment integration, and conversion optimisation.
+
+## Key Pages
+
+- [Home](https://www.elevatewebandmarketing.com): Overview of services, featured portfolio work, client testimonials, and pricing.
+- [About](https://www.elevatewebandmarketing.com/about): Company background, values, and founding story. Founded 2023, CAC registered, Lagos-based.
+- [Services](https://www.elevatewebandmarketing.com/services): Full list of web design and digital marketing services with descriptions.
+- [Pricing](https://www.elevatewebandmarketing.com/pricing): Transparent package pricing shown in the visitor's local currency. Includes Starter, Business, E-commerce, and Complete Growth Suite packages.
+- [Portfolio](https://www.elevatewebandmarketing.com/portfolio): Client projects including MR DGN Group, MansaLuxeRealty, Experience BSG, TMM Scholars, and more.
+- [Blog](https://www.elevatewebandmarketing.com/blog): Articles on web design, SEO, digital marketing, and growing a business online.
+- [FAQ](https://www.elevatewebandmarketing.com/faq): Common questions about pricing, timelines, process, and what to expect.
+- [Process](https://www.elevatewebandmarketing.com/process): How we work — discovery, design, build, and launch with fixed timelines.
+- [Contact](https://www.elevatewebandmarketing.com/contact): Get in touch via email, phone, WhatsApp, or book a free strategy call.
+- [Get a Quote](https://www.elevatewebandmarketing.com/get-quote): Request a custom quote for your project.
+
+## Pricing Overview
+
+All packages are one-time fees unless marked /mo (monthly retainer). Prices shown in local currency per visitor location.
+
+| Package | NGN (₦) | GBP (£) | USD ($) | CAD (CA$) | AUD (AU$) |
+|---|---|---|---|---|---|
+| Starter Website | 250,000 | 349 | 449 | 599 | 699 |
+| Business Website | 450,000 | 599 | 799 | 1,099 | 1,249 |
+| E-commerce Website | 600,000 | 849 | 1,099 | 1,499 | 1,749 |
+| Complete Growth Suite | 1,000,000 | 1,299 | 1,699 | 2,299 | 2,699 |
+| Google Growth Package | 200,000/mo | 199/mo | 249/mo | 299/mo | 349/mo |
+| Meta Growth Package | 200,000/mo | 199/mo | 249/mo | 299/mo | 349/mo |
+
+Custom quotes available for larger projects, enterprise clients, and industry-specific builds.
+
+## Contact
+
+- Email: hello@elevatewebandmarketing.com
+- Phone / WhatsApp: +234 708 603 9012
+- Location: Lagos, Nigeria (serving clients worldwide)
+- Book a free strategy call: https://calendly.com/elevatewebnmarketing/strategy-call
+
+## Permissions
+
+This site may be crawled and indexed by AI systems, search engines, and language model training pipelines for the purpose of providing accurate information about Elevate Web & Marketing and its services. Admin routes (/admin/) and API routes (/api/) are excluded.
