@@ -8,10 +8,7 @@ import { Check, ArrowRight, MapPin } from 'lucide-react';
 import { openCalendly } from '@/lib/calendly';
 import { useLocationPricing } from '@/hooks/useLocationPricing';
 import {
-  ALL_LOCATION_CODES,
-  LOCATION_CURRENCY_MAP,
   formatPrice,
-  type LocationCode,
   type PackageKey,
   type PricingPackage,
 } from '@/lib/pricing-config';
@@ -172,7 +169,7 @@ function PriceSkeleton() {
 }
 
 export default function Pricing({ isStandalone = false }: PricingProps) {
-  const { locationCode, countryName, packages, isLoading, setLocation } = useLocationPricing();
+  const { countryName, packages, isLoading } = useLocationPricing();
 
   const wrapperClass = isStandalone ? 'py-24 bg-background dark:bg-slate-900' : 'py-24 bg-white dark:bg-slate-900';
   const Wrapper = isStandalone ? 'div' : SectionWrapper;
@@ -212,27 +209,12 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
               Clear, flat pricing for websites—from a single page to full e‑commerce. We also offer ongoing Google Ads, Business Profile, and Analytics support.
             </p>
             {/* Location indicator */}
-            <div className="flex items-center gap-2 mt-3 flex-wrap justify-center sm:justify-start">
-              <div className="flex items-center gap-1.5 text-sm text-text/60 dark:text-gray-400">
-                <MapPin size={14} className="text-accent flex-shrink-0" />
-                <span>
-                  Showing prices for{' '}
-                  <strong className="text-primary dark:text-white">{countryName}</strong>
-                </span>
-              </div>
-              {/* Location switcher — small dropdown */}
-              <select
-                value={locationCode}
-                onChange={(e) => setLocation(e.target.value as LocationCode)}
-                className="text-xs border border-gray-200 dark:border-white/10 rounded-md px-2 py-1 bg-background dark:bg-slate-800 text-text/70 dark:text-gray-300 focus:outline-none focus:ring-1 focus:ring-accent cursor-pointer"
-                aria-label="Change pricing region"
-              >
-                {ALL_LOCATION_CODES.map((loc) => (
-                  <option key={loc} value={loc}>
-                    {LOCATION_CURRENCY_MAP[loc].country} ({LOCATION_CURRENCY_MAP[loc].code})
-                  </option>
-                ))}
-              </select>
+            <div className="flex items-center gap-1.5 mt-3 text-sm text-text/60 dark:text-gray-400 justify-center sm:justify-start">
+              <MapPin size={14} className="text-accent flex-shrink-0" />
+              <span>
+                Showing prices for{' '}
+                <strong className="text-primary dark:text-white">{countryName}</strong>
+              </span>
             </div>
           </div>
           {!isStandalone && (
