@@ -7,10 +7,7 @@ import {
 export const LOCATION_STORAGE_KEY = 'elevate_location';
 export const LOCATION_UPDATED_EVENT = 'elevate:location-updated';
 
-// When we can't determine location, default to US (not Nigeria)
 export const FALLBACK_LOCATION: LocationCode = 'US';
-
-// Nigeria is the only location shown automatically without asking
 export const HOME_LOCATION: LocationCode = 'NG';
 
 const LOCATION_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
@@ -18,7 +15,7 @@ const LOCATION_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 interface CacheEntry {
   code: LocationCode;
   ts: number;
-  confirmed: boolean; // true = user explicitly chose this; never expires
+  confirmed: boolean;
 }
 
 export function readCachedLocation(): { code: LocationCode; confirmed: boolean } | null {
@@ -45,24 +42,47 @@ export function writeLocation(code: LocationCode, confirmed: boolean): void {
   }
 }
 
-/**
- * Detects country from IP. Returns the mapped LocationCode if it is one
- * of our known regions, or null if unknown / detection failed.
- */
-export async function detectLocationFromIP(): Promise<LocationCode | null> {
+async function reverseGeocode(lat: number, lon: number): Promise<string | null> {
   try {
-    const res = await fetch('https://ip-api.com/json/?fields=status,countryCode', {
-      signal: AbortSignal.timeout(4000),
-    });
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`,
+      {
+        headers: { 'Accept-Language': 'en', 'User-Agent': 'ElevateWebMarketing/1.0' },
+        signal: AbortSignal.timeout(5000),
+      }
+    );
     if (res.ok) {
       const data = await res.json();
-      if (data.status === 'success' && data.countryCode) {
-        const mapped = COUNTRY_TO_LOCATION[data.countryCode as string];
-        return mapped ?? null; // null = unknown country
-      }
+      const cc = (data?.address?.country_code as string | undefined)?.toUpperCase();
+      return cc ?? null;
     }
   } catch {
-    // network error / timeout
+    // ignore
   }
-  return null; // null = detection failed
+  return null;
+}
+
+/**
+ * Requests location via the browser's native Geolocation API (triggers browser
+ * permission prompt). Reverse-geocodes the coordinates to a country code.
+ * Returns the mapped LocationCode for known regions, or null on denial / failure.
+ */
+export async function detectLocationFromBrowser(): Promise<LocationCode | null> {
+  if (typeof navigator === 'undefined' || !navigator.geolocation) {
+    return null;
+  }
+
+  return new Promise((resolve) => {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const cc = await reverseGeocode(
+          position.coords.latitude,
+          position.coords.longitude
+        );
+        resolve(cc ? (COUNTRY_TO_LOCATION[cc] ?? null) : null);
+      },
+      () => resolve(null),
+      { timeout: 10_000, maximumAge: 300_000 }
+    );
+  });
 }

@@ -9,8 +9,9 @@ import {
 } from '@/lib/pricing-config';
 import {
   readCachedLocation,
+  writeLocation,
+  detectLocationFromBrowser,
   FALLBACK_LOCATION,
-  LOCATION_UPDATED_EVENT,
 } from '@/lib/detect-location';
 
 export interface ResolvedPricing {
@@ -44,20 +45,32 @@ export function useLocationPricing(): ResolvedPricing {
   }
 
   useEffect(() => {
-    // On mount use whatever is confirmed in localStorage, else fall back to US
-    const cached = readCachedLocation();
-    loadForLocation(cached?.code ?? FALLBACK_LOCATION);
-  }, []);
+    async function init() {
+      // If we already have a cached answer, use it immediately — no prompt
+      const cached = readCachedLocation();
+      if (cached) {
+        await loadForLocation(cached.code);
+        return;
+      }
 
-  // Live-update when the LocationModal confirms a location
-  useEffect(() => {
-    function onLocationUpdated(e: Event) {
-      const loc = (e as CustomEvent<LocationCode>).detail;
-      loadForLocation(loc);
+      // First visit: show US prices right away so the page isn't blank
+      await loadForLocation(FALLBACK_LOCATION);
+
+      // Ask browser for location (triggers native OS/browser permission prompt)
+      const detected = await detectLocationFromBrowser();
+      const loc = detected ?? FALLBACK_LOCATION;
+
+      // Cache the result so we don't prompt again for 24 h
+      writeLocation(loc, false);
+
+      // Only re-render if the detected location differs from the default
+      if (loc !== FALLBACK_LOCATION) {
+        await loadForLocation(loc);
+      }
     }
-    window.addEventListener(LOCATION_UPDATED_EVENT, onLocationUpdated);
-    return () => window.removeEventListener(LOCATION_UPDATED_EVENT, onLocationUpdated);
-  }, []);
+
+    init();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     locationCode,

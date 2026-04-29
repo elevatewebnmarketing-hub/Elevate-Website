@@ -7,7 +7,6 @@ import JsonLd from '@/components/seo/JsonLd';
 import CalendlyBadge from '@/components/CalendlyBadge';
 import WhatsAppFloatButton from '@/components/WhatsAppFloatButton';
 import MetaPixel from '@/components/analytics/MetaPixel';
-import LocationModal from '@/components/ui/LocationModal';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -124,7 +123,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <ThemeProvider>{children}</ThemeProvider>
         <CalendlyBadge />
         <WhatsAppFloatButton />
-        <LocationModal />
       </body>
     </html>
   );
