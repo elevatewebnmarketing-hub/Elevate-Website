@@ -1,11 +1,12 @@
 /**
- * Backend data layer - handles blog, testimonials, and portfolio.
+ * Backend data layer - handles blog, testimonials, portfolio, and pricing.
  * Uses Supabase when configured (production). Falls back to JSON files for local dev.
  */
 
 import { promises as fs } from 'fs';
 import path from 'path';
 import { getSupabase } from '@/lib/supabase';
+import type { PricingPackage, LocationCode, PackageKey } from '@/lib/pricing-config';
 
 const dataDir = path.join(process.cwd(), 'data');
 
@@ -311,4 +312,73 @@ function generateId(): string {
 
 export function createId(): string {
   return generateId();
+}
+
+// --- Pricing ---
+
+function toPricingRow(pkg: PricingPackage) {
+  return {
+    id: pkg.id,
+    package_key: pkg.packageKey,
+    location_code: pkg.locationCode,
+    amount: pkg.amount,
+    currency_code: pkg.currencyCode,
+    currency_symbol: pkg.currencySymbol,
+    is_monthly: pkg.isMonthly,
+    is_custom: pkg.isCustom,
+    updated_at: pkg.updatedAt || new Date().toISOString(),
+  };
+}
+
+function fromPricingRow(row: Record<string, unknown>): PricingPackage {
+  return {
+    id: String(row.id),
+    packageKey: String(row.package_key) as PackageKey,
+    locationCode: String(row.location_code) as LocationCode,
+    amount: Number(row.amount),
+    currencyCode: String(row.currency_code),
+    currencySymbol: String(row.currency_symbol),
+    isMonthly: Boolean(row.is_monthly),
+    isCustom: Boolean(row.is_custom),
+    updatedAt: String(row.updated_at ?? ''),
+  };
+}
+
+export async function getPricingPackages(locationCode?: string): Promise<PricingPackage[]> {
+  const supabase = getSupabase();
+  if (supabase) {
+    let query = supabase
+      .from('pricing_packages')
+      .select('*')
+      .order('location_code')
+      .order('package_key');
+    if (locationCode) query = query.eq('location_code', locationCode.toUpperCase());
+    const { data, error } = await query;
+    if (!error && data) return data.map((row) => fromPricingRow(row));
+  }
+  const all = await readJsonFile<PricingPackage[]>('pricing.json');
+  if (locationCode) return all.filter((p) => p.locationCode === locationCode.toUpperCase());
+  return all;
+}
+
+export async function savePricingPackage(pkg: PricingPackage): Promise<void> {
+  const supabase = getSupabase();
+  if (supabase) {
+    const row = { ...toPricingRow(pkg), updated_at: new Date().toISOString() };
+    const { error } = await supabase
+      .from('pricing_packages')
+      .upsert(row, { onConflict: 'package_key,location_code' });
+    if (error) throw new Error(`Failed to save pricing: ${error.message}`);
+    return;
+  }
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error(
+      'Database not configured. Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in Vercel environment variables.'
+    );
+  }
+  const all = await getPricingPackages();
+  const index = all.findIndex((p) => p.id === pkg.id);
+  if (index >= 0) all[index] = pkg;
+  else all.push(pkg);
+  await writeJsonFile('pricing.json', all);
 }

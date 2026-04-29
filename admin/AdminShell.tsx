@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from '@/components/ui/Logo';
-import { LayoutDashboard, FileText, MessageSquare, Briefcase, Menu, X } from 'lucide-react';
+import { LayoutDashboard, FileText, MessageSquare, Briefcase, DollarSign, Menu, X } from 'lucide-react';
 
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -20,6 +20,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     { href: '/admin/blog', label: 'Blog', icon: FileText, match: (p: string) => p.startsWith('/admin/blog') },
     { href: '/admin/testimonials', label: 'Testimonials', icon: MessageSquare },
     { href: '/admin/portfolio', label: 'Portfolio', icon: Briefcase },
+    { href: '/admin/pricing', label: 'Pricing', icon: DollarSign, match: (p: string) => p.startsWith('/admin/pricing') },
   ];
 
   return (

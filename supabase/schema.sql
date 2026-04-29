@@ -45,3 +45,19 @@ CREATE TABLE IF NOT EXISTS portfolio_items (
 
 CREATE INDEX IF NOT EXISTS idx_portfolio_items_featured ON portfolio_items(featured) WHERE featured = TRUE;
 CREATE INDEX IF NOT EXISTS idx_portfolio_items_service ON portfolio_items(service);
+
+-- Pricing packages per location
+CREATE TABLE IF NOT EXISTS pricing_packages (
+  id              TEXT PRIMARY KEY,
+  package_key     TEXT NOT NULL,
+  location_code   TEXT NOT NULL,
+  amount          NUMERIC(12,2) NOT NULL,
+  currency_code   TEXT NOT NULL,
+  currency_symbol TEXT NOT NULL,
+  is_monthly      BOOLEAN NOT NULL DEFAULT FALSE,
+  is_custom       BOOLEAN NOT NULL DEFAULT FALSE,
+  updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  CONSTRAINT pricing_packages_unique UNIQUE (package_key, location_code)
+);
+
+CREATE INDEX IF NOT EXISTS idx_pricing_packages_location ON pricing_packages(location_code);

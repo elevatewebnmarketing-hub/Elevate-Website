@@ -229,7 +229,7 @@ export default function ServicesPage() {
               Google Growth Package
             </h2>
             <p className="text-white/80 mb-6 max-w-2xl mx-auto text-center">
-              For businesses ready to grow with Google: we combine Ads, Business Profile, and Analytics into one flat monthly package ($450/mo). Ideal for local businesses, service providers, and education brands. Setup month includes full configuration; ongoing months focus on optimization and reporting.
+              For businesses ready to grow with Google: we combine Ads, Business Profile, and Analytics into one flat monthly package. Ideal for local businesses, service providers, and education brands. Setup month includes full configuration; ongoing months focus on optimization and reporting.
             </p>
             <div className="text-center">
               <Button

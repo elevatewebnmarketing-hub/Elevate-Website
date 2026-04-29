@@ -1,0 +1,36 @@
+[
+  { "id": "ng_starter",       "packageKey": "starter",       "locationCode": "NG", "amount": 250000,  "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ng_business",      "packageKey": "business",      "locationCode": "NG", "amount": 450000,  "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ng_ecommerce",     "packageKey": "ecommerce",     "locationCode": "NG", "amount": 600000,  "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ng_growth_suite",  "packageKey": "growth_suite",  "locationCode": "NG", "amount": 1000000, "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ng_google_growth", "packageKey": "google_growth", "locationCode": "NG", "amount": 200,     "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ng_meta_growth",   "packageKey": "meta_growth",   "locationCode": "NG", "amount": 200,     "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+
+  { "id": "gb_starter",       "packageKey": "starter",       "locationCode": "GB", "amount": 349,     "currencyCode": "GBP", "currencySymbol": "£",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "gb_business",      "packageKey": "business",      "locationCode": "GB", "amount": 599,     "currencyCode": "GBP", "currencySymbol": "£",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "gb_ecommerce",     "packageKey": "ecommerce",     "locationCode": "GB", "amount": 849,     "currencyCode": "GBP", "currencySymbol": "£",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "gb_growth_suite",  "packageKey": "growth_suite",  "locationCode": "GB", "amount": 1299,    "currencyCode": "GBP", "currencySymbol": "£",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "gb_google_growth", "packageKey": "google_growth", "locationCode": "GB", "amount": 199,     "currencyCode": "GBP", "currencySymbol": "£",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "gb_meta_growth",   "packageKey": "meta_growth",   "locationCode": "GB", "amount": 199,     "currencyCode": "GBP", "currencySymbol": "£",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+
+  { "id": "us_starter",       "packageKey": "starter",       "locationCode": "US", "amount": 449,     "currencyCode": "USD", "currencySymbol": "$",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "us_business",      "packageKey": "business",      "locationCode": "US", "amount": 799,     "currencyCode": "USD", "currencySymbol": "$",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "us_ecommerce",     "packageKey": "ecommerce",     "locationCode": "US", "amount": 1099,    "currencyCode": "USD", "currencySymbol": "$",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "us_growth_suite",  "packageKey": "growth_suite",  "locationCode": "US", "amount": 1699,    "currencyCode": "USD", "currencySymbol": "$",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "us_google_growth", "packageKey": "google_growth", "locationCode": "US", "amount": 249,     "currencyCode": "USD", "currencySymbol": "$",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "us_meta_growth",   "packageKey": "meta_growth",   "locationCode": "US", "amount": 249,     "currencyCode": "USD", "currencySymbol": "$",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+
+  { "id": "ca_starter",       "packageKey": "starter",       "locationCode": "CA", "amount": 599,     "currencyCode": "CAD", "currencySymbol": "CA$", "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ca_business",      "packageKey": "business",      "locationCode": "CA", "amount": 1099,    "currencyCode": "CAD", "currencySymbol": "CA$", "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ca_ecommerce",     "packageKey": "ecommerce",     "locationCode": "CA", "amount": 1499,    "currencyCode": "CAD", "currencySymbol": "CA$", "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ca_growth_suite",  "packageKey": "growth_suite",  "locationCode": "CA", "amount": 2299,    "currencyCode": "CAD", "currencySymbol": "CA$", "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ca_google_growth", "packageKey": "google_growth", "locationCode": "CA", "amount": 299,     "currencyCode": "CAD", "currencySymbol": "CA$", "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ca_meta_growth",   "packageKey": "meta_growth",   "locationCode": "CA", "amount": 299,     "currencyCode": "CAD", "currencySymbol": "CA$", "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+
+  { "id": "au_starter",       "packageKey": "starter",       "locationCode": "AU", "amount": 699,     "currencyCode": "AUD", "currencySymbol": "AU$", "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "au_business",      "packageKey": "business",      "locationCode": "AU", "amount": 1249,    "currencyCode": "AUD", "currencySymbol": "AU$", "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "au_ecommerce",     "packageKey": "ecommerce",     "locationCode": "AU", "amount": 1749,    "currencyCode": "AUD", "currencySymbol": "AU$", "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "au_growth_suite",  "packageKey": "growth_suite",  "locationCode": "AU", "amount": 2699,    "currencyCode": "AUD", "currencySymbol": "AU$", "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "au_google_growth", "packageKey": "google_growth", "locationCode": "AU", "amount": 349,     "currencyCode": "AUD", "currencySymbol": "AU$", "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "au_meta_growth",   "packageKey": "meta_growth",   "locationCode": "AU", "amount": 349,     "currencyCode": "AUD", "currencySymbol": "AU$", "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" }
+]

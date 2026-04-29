@@ -1,16 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
+import { useLocationPricing } from '@/hooks/useLocationPricing';
+import { formatPrice } from '@/lib/pricing-config';
+import type { PackageKey } from '@/lib/pricing-config';
 
-const faqs = [
+const STATIC_FAQS = [
   {
-    q: 'How much does it cost to build a website in Nigeria?',
-    a: 'Our website packages start at 250,000(199$) (Starter), 450,000(349$) (Business), 600,000(459$) (E‑commerce), and 1,000,000(749$) (Complete Growth Suite). Custom and enterprise projects are quoted separately.',
+    q: 'How much does it cost to build a website?',
+    a: '', // filled dynamically
   },
   {
     q: 'How long does it take to build a website?',
@@ -50,12 +53,42 @@ const faqs = [
   },
   {
     q: 'How do I get started?',
-    a: 'Book a free strategy call or send us a message via the contact form. We’ll discuss your goals, recommend the right package, and outline next steps.',
+    a: "Book a free strategy call or send us a message via the contact form. We'll discuss your goals, recommend the right package, and outline next steps.",
   },
 ];
 
+const PRICING_KEYS: PackageKey[] = ['starter', 'business', 'ecommerce', 'growth_suite'];
+const PRICING_LABELS: Record<PackageKey, string> = {
+  starter: 'Starter',
+  business: 'Business',
+  ecommerce: 'E‑commerce',
+  growth_suite: 'Complete Growth Suite',
+  google_growth: 'Google Growth',
+  meta_growth: 'Meta Growth',
+};
+
 export default function FaqPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { packages, isLoading } = useLocationPricing();
+
+  const priceMap = new Map(packages.map((p) => [p.packageKey, p]));
+
+  const pricingAnswer = useMemo(() => {
+    if (isLoading || packages.length === 0) {
+      return 'Our website packages start from an affordable flat rate for Starter sites, going up through Business, E‑commerce, and our Complete Growth Suite. Custom and enterprise projects are quoted separately. Visit our pricing page for full details.';
+    }
+    const parts = PRICING_KEYS.map((key) => {
+      const pkg = priceMap.get(key);
+      return pkg ? `${formatPrice(pkg)} (${PRICING_LABELS[key]})` : null;
+    }).filter(Boolean);
+    return `Our website packages start at ${parts.join(', ')}. Custom and enterprise projects are quoted separately.`;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [packages, isLoading]);
+
+  const faqs = useMemo(
+    () => STATIC_FAQS.map((faq, i) => (i === 0 ? { ...faq, a: pricingAnswer } : faq)),
+    [pricingAnswer]
+  );
 
   return (
     <>
