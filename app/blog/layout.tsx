@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
@@ -35,9 +34,7 @@ export default function BlogLayout({
           { name: 'Blog', url: `${SITE_URL}/blog` },
         ]}
       />
-      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-        {children}
-      </Suspense>
+      {children}
     </>
   );
 }
