@@ -56,6 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@elevate_web_',
+    creator: '@elevate_web_',
     title: 'Elevate Web & Marketing | Websites That Convert',
     description:
       'Nigeria-based. High-performance websites and marketing systems that help businesses grow.',
@@ -74,9 +76,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
   verification: {
-    // Optional: add when you have them
-    // google: 'google-site-verification-code',
-    // yandex: 'yandex-verification-code',
+    google: '31a95d9495b6f180',
   },
   ...(FACEBOOK_DOMAIN_VERIFICATION
     ? {

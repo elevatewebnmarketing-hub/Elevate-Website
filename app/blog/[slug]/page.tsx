@@ -11,6 +11,17 @@ import { ArrowLeft, Calendar, User, ArrowRight, Clock } from 'lucide-react';
 
 const BASE_URL = 'https://www.elevatewebandmarketing.com';
 
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  try {
+    const posts = await getBlogPosts();
+    return posts.map((post) => ({ slug: post.slug }));
+  } catch {
+    return [];
+  }
+}
+
 export async function generateMetadata({
   params,
 }: {

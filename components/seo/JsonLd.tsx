@@ -6,7 +6,12 @@ const organizationSchema = {
   name: 'Elevate Web & Marketing',
   url: SITE_URL,
   image: `${SITE_URL}/opengraph-image`,
-  logo: `${SITE_URL}/icon.svg`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/logo.png`,
+    width: 512,
+    height: 512,
+  },
   founder: {
     '@type': 'Person',
     name: 'Ufuoma Onakpoyan',
@@ -128,24 +133,26 @@ const organizationSchema = {
 };
 
 const websiteSchema = {
-  '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Elevate Web & Marketing',
   url: SITE_URL,
   description: 'Web design, SEO, and digital marketing services for growing businesses.',
+  inLanguage: 'en',
+};
+
+const graphSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { ...organizationSchema, '@context': undefined },
+    websiteSchema,
+  ],
 };
 
 export default function JsonLd() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graphSchema) }}
+    />
   );
 }
