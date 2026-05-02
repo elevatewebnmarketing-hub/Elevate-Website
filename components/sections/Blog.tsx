@@ -93,7 +93,7 @@ export default function Blog({ initialPosts = [] }: BlogProps) {
                     {post.image ? (
                       <Image
                         src={post.image}
-                        alt=""
+                        alt={post.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 1024px) 50vw, 33vw"

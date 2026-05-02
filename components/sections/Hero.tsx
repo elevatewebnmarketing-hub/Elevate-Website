@@ -62,7 +62,7 @@ export default function Hero() {
         aria-hidden
       />
       {/* Gradient layers */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10 animate-gradient" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10" />
       <div className="absolute inset-0 opacity-30 hero-radial" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,6 +140,7 @@ export default function Hero() {
                       width={36}
                       height={36}
                       className="object-cover w-full h-full"
+                      priority
                     />
                   </div>
                 ))}

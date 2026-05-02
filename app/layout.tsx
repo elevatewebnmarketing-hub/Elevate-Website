@@ -105,7 +105,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M5H9XHZ8');`,
           }}
         />
-        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        {/* Calendly CSS is loaded asynchronously by CalendlyBadge to avoid render-blocking */}
       </head>
       <body className="font-body antialiased">
         {/* Google Tag Manager (noscript) */}
