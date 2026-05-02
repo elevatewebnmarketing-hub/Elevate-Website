@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { ThemeScript } from '@/components/providers/ThemeScript';
@@ -95,8 +96,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
-        {/* Google Tag Manager (placed high in <head> for early loading) */}
-        <script
+        {/* Calendly CSS is loaded asynchronously by CalendlyBadge to avoid render-blocking */}
+      </head>
+      <body className="font-body antialiased">
+        {/* Google Tag Manager — afterInteractive defers main-thread work past first paint */}
+        <Script
+          id="gtm-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -105,10 +111,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M5H9XHZ8');`,
           }}
         />
-        {/* Calendly CSS is loaded asynchronously by CalendlyBadge to avoid render-blocking */}
-      </head>
-      <body className="font-body antialiased">
-        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-M5H9XHZ8"
