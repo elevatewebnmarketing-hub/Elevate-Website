@@ -1,0 +1,249 @@
+import { config } from 'dotenv';
+config({ path: '.env.local' });
+
+import { createClient } from '@supabase/supabase-js';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
+
+interface PortfolioItem {
+  id: string;
+  name: string;
+  industry: string;
+  description: string;
+  image: string | null;
+  url: string | null;
+  featured: boolean;
+  service: string | null;
+  problem: string | null;
+  solution: string | null;
+  screenshots: string[];
+  technologies: string[];
+  result: string | null;
+  ownerName: string | null;
+  ownerJob: string | null;
+}
+
+const items: PortfolioItem[] = [
+  {
+    id: '1',
+    name: 'MR DGN Group',
+    industry: 'Business & Consulting',
+    description: 'Corporate website for MR DGN Group—a conglomerate driving innovation across construction, entertainment, and real estate. Features portfolio showcase, subsidiary links, media section, and contact flows.',
+    image: '/images/portfolio/mrdn-group-logo.png',
+    url: 'https://mrdgngroup.com',
+    featured: true,
+    service: 'website-development',
+    problem: 'MR DGN Group needed a central online presence to establish credibility, present its diverse businesses (construction, entertainment, real estate), and attract partners and investors.',
+    solution: 'Built a modern corporate site with clear structure: About, Our Businesses (MR DGN Entertainment, Construction, Mansa Luxe Realty, Duerents), Portfolio, Media, and contact. Clean branding and navigation support lead generation and brand trust.',
+    screenshots: [],
+    technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    result: 'Professional hub that communicates the conglomerate\'s reach and supports partnership inquiries. Central place for subsidiaries and latest news.',
+    ownerName: null,
+    ownerJob: null,
+  },
+  {
+    id: '2',
+    name: 'MR DGN Construction',
+    industry: 'Construction',
+    description: 'Building materials supplier and construction services website for MR DGN Construction and Developers Limited in Asaba. Products catalog, project gallery, services, and WhatsApp ordering.',
+    image: '/images/portfolio/mrdn-construction-logo.png',
+    url: 'https://construction.mrdgngroup.com',
+    featured: true,
+    service: 'website-development',
+    problem: 'The construction arm needed its own branded site to showcase building materials, project portfolio, and services—with an easy way for customers to order and request quotes.',
+    solution: 'Dedicated subdomain with product listings, construction project gallery, service pages (commercial, residential, infrastructure, renovation, project management, safety consulting), and WhatsApp-powered ordering. Stats and trust elements highlight 50+ projects and team expertise.',
+    screenshots: [],
+    technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    result: 'Clear separation of the construction brand with focused messaging. Builders and project owners can browse products, view projects, and reach out via WhatsApp or contact forms.',
+    ownerName: null,
+    ownerJob: null,
+  },
+  {
+    id: '3',
+    name: 'Mansa Luxe Realty',
+    industry: 'Real Estate',
+    description: 'Premium luxury real estate website for Mansa Luxe Realty Limited—curated properties, consultation booking, and trust signals for Nigeria\'s high-end property market.',
+    image: '/images/portfolio/mansa-luxe-realty-logo.png',
+    url: 'https://mansaluxerealty.mrdgngroup.com',
+    featured: true,
+    service: 'website-development',
+    problem: 'The real estate division needed a dedicated luxury brand presence with property listings and a seamless path for high-net-worth clients to schedule consultations.',
+    solution: 'Branded real estate site with featured properties, property browse, consultation scheduling, and trust metrics (10+ properties sold, $2M+ in transactions). Premium design aligned with luxury positioning.',
+    screenshots: [],
+    technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    result: 'Dedicated channel for luxury real estate leads. Clients can explore properties and get in touch for consultations with a clear, professional experience.',
+    ownerName: null,
+    ownerJob: null,
+  },
+  {
+    id: '4',
+    name: 'BSG Beelicious Signatures Global',
+    industry: 'Luxury Retail & E-commerce',
+    description: 'E-commerce and brand site for BSG Beelicious Signatures Global—luxury fragrances and home scents. Product collections, curated shopping experience, and newsletter community.',
+    image: '/images/portfolio/experience-bsg-logo.png',
+    url: 'https://experiencebsg.com',
+    featured: true,
+    service: 'website-development',
+    problem: 'BSG needed a strong digital presence to showcase luxury fragrances, drive online sales, and build a loyal community around the brand.',
+    solution: 'Elegant e-commerce site with body fragrances and home & space collections, curated product selection, and subscription for new arrivals. Clean design and clear product navigation support conversions.',
+    screenshots: [],
+    technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Supabase'],
+    result: 'Clear brand story and product discovery. Customers can browse collections and purchase online with a premium, cohesive experience.',
+    ownerName: null,
+    ownerJob: null,
+  },
+  {
+    id: '5',
+    name: 'TMM Scholars',
+    industry: 'Education & Non-profit',
+    description: 'Education and scholarship program site for The Mighty Men Scholars Program. Application flow, eligibility criteria, 5-step selection process, and contact via WhatsApp and email.',
+    image: '/images/portfolio/tmm-scholars-logo.png',
+    url: 'https://TMMscholars.com',
+    featured: true,
+    service: 'website-development',
+    problem: 'The scholarship program needed an online home for information, eligibility, and applications—with clear paths for applicants to get in touch and learn about the opportunity.',
+    solution: 'Accessible site with vision, mission, scriptural foundation, target beneficiaries (16–26, financially disadvantaged), 5-step selection process, and Apply Now CTA. WhatsApp and email contact for questions.',
+    screenshots: [],
+    technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    result: 'Central hub for scholars and applicants. Streamlined information access and clear application pathway for eligible youth in Delta and Edo State.',
+    ownerName: null,
+    ownerJob: null,
+  },
+  {
+    id: '6',
+    name: 'Trade with MRK',
+    industry: 'Trading & Finance',
+    description: 'Professional crypto and forex trading mentorship platform. Free resources, tools, blog, consultation booking, and partner exchange recommendations for retail traders.',
+    image: '/images/portfolio/trade-with-mrk-logo.png',
+    url: 'https://TradewithMRk.com',
+    featured: true,
+    service: 'website-development',
+    problem: 'Mr. K Trading Arena needed a credible web presence to share strategies, offer mentorship, and convert visitors into consultation bookings and trading platform users.',
+    solution: 'Modern site with free resources, tools (TradingView, Notion, Coinglass), recommended platforms (WEEX, BingX) with partner codes, blog, and 30-minute consultation booking. Trust-building content supports conversion.',
+    screenshots: [],
+    technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    result: 'Professional presence that supports mentorship sign-ups and resource discovery. Traders can explore tools, book consultations, and engage with the brand.',
+    ownerName: null,
+    ownerJob: null,
+  },
+  {
+    id: '7',
+    name: 'FP Conglomerate',
+    industry: 'Business & Consulting',
+    description: 'Full-stack marketing and corporate website for FP Conglomerate — lead capture, staff admin portal, blog, careers, and portfolio content powered by a custom API backend.',
+    image: null,
+    url: 'https://www.fpconglomerate.com',
+    featured: true,
+    service: 'website-development',
+    problem: 'FP Conglomerate needed a professional web presence with integrated lead management, a CMS for blog and portfolio content, and a private staff admin portal — all on one platform.',
+    solution: 'Monorepo with a Vite + React public marketing site, a staff admin panel, and a dedicated Fastify + Postgres API (Elevate Central API) handling leads, content, and role-based authentication.',
+    screenshots: [],
+    technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Fastify', 'PostgreSQL'],
+    result: 'End-to-end platform: marketing site captures leads, admin manages content, and the API tracks everything — no third-party CMS needed.',
+    ownerName: null,
+    ownerJob: null,
+  },
+  {
+    id: '8',
+    name: 'Mama Onome Natural Health',
+    industry: 'Health & Wellness',
+    description: 'Clean, elegant website for a natural health and wellness brand — showcasing products and services with a calm, trust-building design built for her target audience.',
+    image: null,
+    url: 'https://mama-onome.vercel.app',
+    featured: true,
+    service: 'website-development',
+    problem: 'Mama Onome Natural Health needed a warm, professional online presence to build credibility and attract health-conscious customers to her natural wellness products.',
+    solution: 'Lightweight multi-page static site built with Jinja2 templating — fast, mobile-first, and designed for trust with clear product and service messaging and direct contact integration.',
+    screenshots: [],
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Jinja2'],
+    result: 'Online home that communicates brand values and gives customers a clear path to learn about products and get in touch.',
+    ownerName: null,
+    ownerJob: null,
+  },
+  {
+    id: '9',
+    name: 'Runway Refined by Alek',
+    industry: 'Fashion & Lifestyle',
+    description: 'Premium fashion brand website for Runway Refined by Alek — editorial design, collection showcases, media gallery, and brand storytelling for a modern luxury audience.',
+    image: null,
+    url: 'https://runwayrefinedbyalek.com',
+    featured: true,
+    service: 'website-development',
+    problem: 'Runway Refined needed a high-end digital presence that matched the brand\'s luxury aesthetic — with fast media delivery, editorial feel, and a polished experience on every device.',
+    solution: 'Built with TanStack Start (SSR) deployed on Vercel via Nitro for performance, Cloudinary for optimised media delivery, and a strict Content Security Policy. Brand-forward layout with collection showcase and editorial sections.',
+    screenshots: [],
+    technologies: ['React', 'TanStack Start', 'TypeScript', 'Tailwind CSS', 'Cloudinary', 'Nitro'],
+    result: 'A luxury-grade digital experience that positions the brand credibly alongside established fashion labels.',
+    ownerName: null,
+    ownerJob: null,
+  },
+  {
+    id: '10',
+    name: 'NovaTrade',
+    industry: 'Trading & Finance',
+    description: 'Full-featured crypto and stock trading platform UI — spot trading, margin, copy trading, bot trading, market data, wallet, and user dashboard. A showcase of Elevate\'s fintech capability.',
+    image: null,
+    url: 'https://novatrade-test.vercel.app',
+    featured: true,
+    service: 'website-development',
+    problem: 'Demonstrate Elevate\'s capability to design and build complex, data-rich financial platform interfaces with real-world trading workflows and professional UX.',
+    solution: 'Complete trading dashboard with public marketing pages, authentication flows, and a full suite of trading interfaces: spot, margin, copy trading, bot trading, stocks, wallet, and notifications.',
+    screenshots: [],
+    technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'TanStack Query'],
+    result: 'Production-quality trading platform UI — proof that Elevate can build sophisticated fintech products from the ground up.',
+    ownerName: null,
+    ownerJob: null,
+  },
+];
+
+async function main() {
+  // Write to portfolio.json
+  const jsonPath = path.join(process.cwd(), 'data', 'portfolio.json');
+  fs.writeFileSync(jsonPath, JSON.stringify(items, null, 2));
+  console.log(`✓ Wrote ${items.length} items to data/portfolio.json`);
+
+  if (!supabase) {
+    console.log('⚠ No Supabase credentials found — JSON file updated only.');
+    return;
+  }
+
+  console.log('\nUpserting portfolio items to Supabase...');
+  for (const item of items) {
+    const row = {
+      id: item.id,
+      name: item.name,
+      industry: item.industry,
+      description: item.description,
+      image: item.image ?? null,
+      url: item.url ?? null,
+      featured: item.featured,
+      service: item.service ?? null,
+      problem: item.problem ?? null,
+      solution: item.solution ?? null,
+      screenshots: item.screenshots ?? [],
+      technologies: item.technologies ?? [],
+      result: item.result ?? null,
+      owner_name: item.ownerName ?? null,
+      owner_job: item.ownerJob ?? null,
+    };
+    const { error } = await supabase
+      .from('portfolio_items')
+      .upsert(row, { onConflict: 'id' });
+    if (error) {
+      console.error(`  ✗ ${item.id}: ${item.name} — ${error.message}`);
+    } else {
+      console.log(`  ✓ ${item.id}: ${item.name}`);
+    }
+  }
+
+  console.log('\nDone. Run "npm run dev" and visit /portfolio to verify all items appear.');
+}
+
+main().catch((err) => {
+  console.error('Fatal error:', err);
+  process.exit(1);
+});
