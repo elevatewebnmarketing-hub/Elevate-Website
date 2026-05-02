@@ -84,7 +84,7 @@ export default function AdminLoginPage() {
           </form>
 
           <p className="mt-6 text-xs text-text/60">
-            Default password: elevate2024. Set ADMIN_PASSWORD in .env to change.
+            Contact the site administrator if you need access.
           </p>
         </div>
       </div>

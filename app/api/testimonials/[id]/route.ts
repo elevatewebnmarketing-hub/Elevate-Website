@@ -26,6 +26,8 @@ export async function PUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const authError = await requireAdmin();
+  if (authError) return authError;
   try {
     const { id } = await params;
     const existing = await getTestimonialById(id);
