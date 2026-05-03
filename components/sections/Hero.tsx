@@ -52,7 +52,6 @@ export default function Hero() {
           radius={2}
         />
       </div>
-      {/* Glow orbs */}
       <div
         className="absolute top-[-200px] right-[-100px] w-[600px] h-[600px] rounded-full bg-accent/20 blur-[80px] opacity-15 pointer-events-none"
         aria-hidden
@@ -61,13 +60,11 @@ export default function Hero() {
         className="absolute bottom-[-100px] left-[-200px] w-[600px] h-[600px] rounded-full bg-primary/20 blur-[80px] opacity-15 pointer-events-none"
         aria-hidden
       />
-      {/* Gradient layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10" />
       <div className="absolute inset-0 opacity-30 hero-radial" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center text-center w-full max-w-3xl mx-auto">
-          {/* Left - Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -78,11 +75,11 @@ export default function Hero() {
               variants={itemVariants}
               className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-primary dark:text-white leading-tight max-w-4xl mx-auto"
             >
-              Agency-Grade Websites Built to{' '}
+              Websites Built to Turn{' '}
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                Convert Traffic
+                More Visitors
               </span>{' '}
-              on Autopilot.
+              Into Qualified Leads.
             </motion.h1>
             <motion.p
               variants={itemVariants}
@@ -109,9 +106,9 @@ export default function Hero() {
                 onClick={openCalendly}
                 className="inline-flex flex-col items-center justify-center min-h-[44px] px-8 py-4 bg-accent text-white font-heading font-semibold rounded-xl shadow-soft hover:bg-accent/90 hover:shadow-soft-lg transition-all duration-200 hover:-translate-y-0.5"
               >
-                <span className="block text-base sm:text-lg">Book a Strategy Call</span>
+                <span className="block text-base sm:text-lg">Book a Free Strategy Call</span>
                 <span className="block text-sm opacity-80 mt-0.5 font-body font-normal">
-                  Free 30-min consultation
+                  Clear advice, no pressure
                 </span>
               </button>
               <Link
@@ -130,9 +127,9 @@ export default function Hero() {
               className="flex items-center gap-4 justify-center"
             >
               <div className="flex -space-x-3">
-                {TRUST_AVATARS.map((src, i) => (
+                {TRUST_AVATARS.map((src, index) => (
                   <div
-                    key={i}
+                    key={index}
                     className="relative w-9 h-9 rounded-full border-2 border-background overflow-hidden bg-gray-200"
                   >
                     <Image

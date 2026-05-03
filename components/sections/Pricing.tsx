@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ArrowRight, Check } from 'lucide-react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import Button from '@/components/ui/Button';
-import { Check, ArrowRight, MapPin } from 'lucide-react';
 import { openCalendly } from '@/lib/calendly';
 import { useLocationPricing } from '@/hooks/useLocationPricing';
 import {
@@ -19,6 +19,7 @@ type PackageMeta = {
   description: string;
   features: string[];
   highlighted: boolean;
+  category: 'build' | 'retainer';
 };
 
 const PACKAGE_META: PackageMeta[] = [
@@ -26,136 +27,144 @@ const PACKAGE_META: PackageMeta[] = [
     key: 'starter',
     name: 'Starter Website',
     description:
-      'Best for simple one-page sites, launch pages, or link-in-bio experiences that clearly explain who you are and what you offer. Includes on-page SEO basics, a contact form, and a fast turnaround.',
+      'For solo operators and small local businesses that need a clean, credible website fast.',
     features: [
-      'Single-page layout (Home + key sections)',
-      'Mobile-first responsive design',
-      'On-page SEO basics (title/meta description, headings, and clean URL structure)',
-      'Contact form integration (email notifications + user confirmation)',
-      'Admin panel access to update content after launch (where included in your package)',
-      '1 round of revisions before final launch',
-      'Standard delivery: 1–2 weeks (based on content readiness)',
-      'Rush option: 48 hours (+rush fee for Starter)',
+      '1 to 3 conversion-focused pages',
+      'Mobile-first design and build',
+      'Contact form, call button, and clear CTA sections',
+      'Basic on-page SEO and analytics setup',
+      'One revision round before launch',
+      'Typical delivery: 7 to 10 business days',
     ],
     highlighted: false,
+    category: 'build',
   },
   {
     key: 'business',
     name: 'Business Website',
     description:
-      'Everything in Starter, plus room to grow—ideal for small businesses, portfolios, and content sites that need multiple pages with a clear structure.',
+      'Our most popular package for service businesses that need stronger trust, clearer messaging, and more leads.',
     features: [
-      'Everything in Starter Website',
-      'Up to 8 pages (Home, About, Services, Contact, etc.)',
+      'Up to 6 core pages',
       'Custom design matched to your brand',
-      'SEO-friendly site structure (internal linking between pages)',
-      'Blog or portfolio section',
-      'Admin panel login to manage Blog, Portfolio, and Testimonials content',
-      'Add/edit content from the dashboard (create posts, edit items, delete where needed)',
-      'Image updates via admin panel (upload or paste image URLs)',
-      '2 rounds of revisions before final launch',
-      '2 weeks post-launch support',
-      'Standard delivery: 3–6 weeks (depending on scope and revisions)',
-      'Rush option: 1 week (+rush fee for Business)',
+      'Service pages structured for SEO and conversions',
+      'Testimonials, FAQ, and lead capture sections',
+      'Basic analytics and conversion tracking',
+      'Two revision rounds before launch',
+      'Typical delivery: 2 to 4 weeks',
     ],
     highlighted: true,
+    category: 'build',
   },
   {
     key: 'ecommerce',
-    name: 'E‑commerce Website',
+    name: 'E-commerce Website',
     description:
-      'Everything in Business, plus a full product catalog, cart, and checkout—built for brands that want to sell online with conversion-focused pages.',
+      'For brands that need a polished storefront, clear product structure, and a smoother path to checkout.',
     features: [
       'Everything in Business Website',
-      'Product catalog with categories and product detail pages',
-      'Cart and checkout setup (payment flow integration, e.g., Stripe/Paystack-style)',
-      'Basic SEO for products and categories',
-      'Key conversion-focused sections (featured products, offers, trust)',
-      'Admin panel access for managing your content sections (blog/portfolio/testimonials where enabled)',
-      '2 rounds of revisions before final launch',
-      '2 weeks post-launch support',
-      'Standard delivery: 3–6 weeks (depending on scope and content readiness)',
-      'Rush option: 1 week (+rush fee for E-commerce)',
+      'Product catalog, categories, and product pages',
+      'Cart and checkout setup',
+      'Product-focused SEO foundations',
+      'Core trust and upsell sections',
+      'Two revision rounds before launch',
+      'Typical delivery: 3 to 5 weeks',
     ],
     highlighted: false,
+    category: 'build',
   },
   {
     key: 'growth_suite',
-    name: 'Complete Growth Suite',
+    name: 'Growth Suite',
     description:
-      'Website build + launch + your first month of Google Growth in one package—built for businesses ready to invest in a full digital foundation.',
+      'A stronger launch package for businesses that want website build, analytics, and local visibility support together.',
     features: [
-      'Everything in Business or E-commerce Website (depending on needs)',
-      'Strategy session to plan site structure, content priorities, and conversion goals',
-      'Initial Google Analytics (GA4) and conversion tracking setup',
-      'Google Business Profile optimization and launch support',
-      'First month of Google Growth Package management included',
-      'Priority support during the launch window',
-      'Admin panel access to keep content fresh after go-live',
-      'Rush option: 1 week (+rush fee for Growth Suite)',
+      'Business Website or E-commerce Website scope',
+      'Strategy session and sitemap planning',
+      'GA4 and conversion tracking setup',
+      'Google Business Profile support',
+      'First month of local visibility support included',
+      'Priority launch support',
     ],
     highlighted: false,
+    category: 'build',
+  },
+  {
+    key: 'google_growth',
+    name: 'Local Visibility Retainer',
+    description:
+      'Monthly support for businesses that want help keeping their website, Google Business Profile, and reporting aligned.',
+    features: [
+      'Google Business Profile updates and cleanup',
+      'Monthly website edits and light support',
+      'Lead tracking and monthly reporting',
+      'Local SEO recommendations and action list',
+      'Monthly strategy check-in',
+    ],
+    highlighted: false,
+    category: 'retainer',
+  },
+  {
+    key: 'meta_growth',
+    name: 'Paid Growth Retainer',
+    description:
+      'Monthly campaign management for businesses ready to pair their website with paid traffic and cleaner tracking.',
+    features: [
+      'Google Ads or Meta Ads management',
+      'Conversion tracking review and event checks',
+      'Landing page alignment recommendations',
+      'Monthly reporting and optimization',
+      'Creative or offer feedback where needed',
+    ],
+    highlighted: false,
+    category: 'retainer',
   },
   {
     key: 'custom',
     name: 'Custom & Enterprise',
     description:
-      'For larger or more complex platforms: memberships, multi‑brand sites, internal tools, or advanced integrations.',
+      'For advanced builds, internal tools, directories, portals, or projects with more complex integrations.',
     features: [
-      'Discovery and scoping workshop',
-      'Custom flows (membership, directory, dashboards, or portals)',
-      'Performance and SEO tuning for complex architectures',
-      'Integration with third‑party platforms and APIs',
-      'Staging environment and structured rollout plan',
+      'Discovery and scope workshop',
+      'Custom workflows and integrations',
+      'Advanced performance and SEO planning',
+      'Staging and structured rollout support',
     ],
     highlighted: false,
-  },
-  {
-    key: 'google_growth',
-    name: 'Google Growth Package',
-    description:
-      'Monthly Google Ads + Social Media management and reporting. Half covers Ads/Social Media operations, half covers strategy, reporting and optimization.',
-    features: [
-      'Social Media + Google Ads management (setup, optimization, and ongoing execution)',
-      'Strategy, reporting, and monthly optimization QA',
-      'Google Business Profile optimization and updates (hours, services, posts)',
-      'Conversion tracking and Google Analytics (GA4) setup for key actions',
-      'Monthly performance report + 30-minute strategy call',
-      'Keyword research for core services and locations',
-    ],
-    highlighted: false,
-  },
-  {
-    key: 'meta_growth',
-    name: 'Meta Growth Package',
-    description:
-      'Monthly Facebook Ads + Instagram Ads management with Meta Pixel tracking, creative testing, and conversion-focused landing page optimization.',
-    features: [
-      'Facebook + Instagram Ads management (setup, optimization, and ongoing execution)',
-      'Strategy, reporting, and monthly optimization QA',
-      'Meta Pixel + conversion event tracking validation',
-      'Creative testing plan (hooks, formats, and angles) to reduce fatigue',
-      'Landing page alignment to turn clicks into leads and sales',
-      'Monthly performance report + 30-minute strategy call',
-    ],
-    highlighted: false,
+    category: 'build',
   },
 ];
 
-type WebsiteTypeGroup = {
+const WEBSITE_TYPE_GROUPS: Array<{
   name: string;
   examples: string;
   packageKey: PackageKey;
   bestFor: string;
-};
-
-const WEBSITE_TYPE_GROUPS: WebsiteTypeGroup[] = [
-  { name: 'Campaign & Micro-sites',  examples: 'Landing pages, link-in-bio, simple personal or event pages', packageKey: 'starter',      bestFor: 'Starter Website' },
-  { name: 'Business & Corporate',    examples: 'Business/corporate, non-profit/charity, personal brand sites', packageKey: 'business',     bestFor: 'Business Website' },
-  { name: 'Portfolio & Creative',    examples: 'Designers, photographers, agencies, creative studios',          packageKey: 'business',     bestFor: 'Business Website' },
-  { name: 'Content & Education',     examples: 'Blogs, news & media, educational or resource sites',            packageKey: 'business',     bestFor: 'Business Website' },
-  { name: 'E‑commerce & Sales',      examples: 'Online stores, e‑commerce landing pages, product funnels',      packageKey: 'ecommerce',    bestFor: 'E‑commerce Website' },
-  { name: 'Community & Membership',  examples: 'Membership sites, directories, forums/communities',             packageKey: 'growth_suite', bestFor: 'Custom & Enterprise' },
+}> = [
+  {
+    name: 'Lead-Gen Starter Sites',
+    examples: 'Solo businesses, consultants, trades, and local services launching fast',
+    packageKey: 'starter',
+    bestFor: 'Starter Website',
+  },
+  {
+    name: 'Service Business Websites',
+    examples: 'Roofers, real estate teams, agencies, clinics, coaches, and local brands',
+    packageKey: 'business',
+    bestFor: 'Business Website',
+  },
+  {
+    name: 'Stores & Catalog Sites',
+    examples: 'Product brands, online shops, and businesses selling direct online',
+    packageKey: 'ecommerce',
+    bestFor: 'E-commerce Website',
+  },
+  {
+    name: 'Launch + Visibility',
+    examples: 'Businesses that need a new website plus early tracking and local growth support',
+    packageKey: 'growth_suite',
+    bestFor: 'Growth Suite',
+  },
 ];
 
 interface PricingProps {
@@ -164,33 +173,40 @@ interface PricingProps {
 
 function PriceSkeleton() {
   return (
-    <span className="inline-block h-6 w-20 bg-gray-200 dark:bg-slate-700 rounded animate-pulse" />
+    <span className="inline-block h-6 w-24 rounded bg-gray-200 dark:bg-slate-700 animate-pulse" />
   );
 }
 
 export default function Pricing({ isStandalone = false }: PricingProps) {
-  const { countryName, packages, isLoading } = useLocationPricing();
+  const { packages, isLoading } = useLocationPricing();
 
-  const wrapperClass = isStandalone ? 'py-24 bg-background dark:bg-slate-900' : 'py-24 bg-white dark:bg-slate-900';
+  const wrapperClass = isStandalone
+    ? 'py-24 bg-background dark:bg-slate-900'
+    : 'py-24 bg-white dark:bg-slate-900';
   const Wrapper = isStandalone ? 'div' : SectionWrapper;
-  const wrapperProps = isStandalone ? { className: wrapperClass } : { id: 'pricing', className: wrapperClass };
+  const wrapperProps = isStandalone
+    ? { className: wrapperClass }
+    : { id: 'pricing', className: wrapperClass };
 
   const priceMap = new Map<PackageKey, PricingPackage>(
-    packages.map((p) => [p.packageKey, p])
+    packages.map((pkg) => [pkg.packageKey, pkg])
   );
 
   function renderPrice(key: PackageKey | 'custom'): React.ReactNode {
     if (key === 'custom') return 'Custom';
     if (isLoading) return <PriceSkeleton />;
-    const pkg = priceMap.get(key as PackageKey);
-    return pkg ? formatPrice(pkg) : '—';
+    const pkg = priceMap.get(key);
+    return pkg ? formatPrice(pkg) : 'Custom';
   }
 
   function renderFromPrice(key: PackageKey): React.ReactNode {
     if (isLoading) return <PriceSkeleton />;
     const pkg = priceMap.get(key);
-    return pkg ? `From ${formatPrice(pkg)}` : '—';
+    return pkg ? `From ${formatPrice(pkg)}` : 'Custom';
   }
+
+  const buildPackages = PACKAGE_META.filter((pkg) => pkg.category === 'build');
+  const retainers = PACKAGE_META.filter((pkg) => pkg.category === 'retainer');
 
   return (
     <Wrapper {...wrapperProps}>
@@ -206,16 +222,13 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
               Pricing
             </h2>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto sm:mx-0">
-              Clear, flat pricing for websites—from a single page to full e‑commerce. We also offer ongoing Google Ads, Business Profile, and Analytics support.
+              Clear public pricing in USD for businesses that want a professional website
+              without typical agency overhead. Final quotes only change when scope, content,
+              or integrations change.
             </p>
-            {/* Location indicator */}
-            <div className="flex items-center gap-1.5 mt-3 text-sm text-text/60 dark:text-gray-400 justify-center sm:justify-start">
-              <MapPin size={14} className="text-accent flex-shrink-0" />
-              <span>
-                Showing prices for{' '}
-                <strong className="text-primary dark:text-white">{countryName}</strong>
-              </span>
-            </div>
+            <p className="text-sm text-text/60 dark:text-gray-400 mt-3">
+              All public prices are shown in USD. Other currencies can be invoiced on request.
+            </p>
           </div>
           {!isStandalone && (
             <Link
@@ -229,14 +242,14 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
         </motion.div>
 
         <div className="overflow-visible">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {PACKAGE_META.map((pkg, index) => (
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+            {buildPackages.map((pkg, index) => (
               <motion.div
                 key={pkg.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 whileHover={{ y: -8 }}
                 className={`relative rounded-card-lg p-8 border ${
                   pkg.highlighted
@@ -278,15 +291,12 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                   {pkg.features.map((feature) => (
                     <li
                       key={feature}
-                      className={`flex items-center gap-2 text-sm ${
+                      className={`flex items-start gap-2 text-sm ${
                         pkg.highlighted ? 'text-white/90' : 'text-text dark:text-gray-200'
                       }`}
                     >
-                      <Check
-                        className="flex-shrink-0 text-accent"
-                        size={18}
-                      />
-                      {feature}
+                      <Check className="flex-shrink-0 text-accent mt-0.5" size={18} />
+                      <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -308,6 +318,67 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-16"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+            <div>
+              <h3 className="font-heading font-semibold text-2xl text-primary dark:text-white mb-2">
+                Ongoing Support
+              </h3>
+              <p className="text-text/70 dark:text-gray-400 text-sm max-w-2xl">
+                One-off builds create momentum. Retainers create monthly stability, cleaner
+                lead tracking, and a website that keeps improving after launch.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {retainers.map((pkg, index) => (
+              <motion.div
+                key={pkg.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="rounded-card-lg border border-gray-200 dark:border-white/10 bg-background dark:bg-slate-800 p-6 shadow-soft"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                  <div>
+                    <h4 className="font-heading font-semibold text-xl text-primary dark:text-white">
+                      {pkg.name}
+                    </h4>
+                    <p className="text-text/80 dark:text-gray-300 text-sm mt-1">
+                      {pkg.description}
+                    </p>
+                  </div>
+                  <p className="font-heading font-bold text-xl text-primary dark:text-white whitespace-nowrap">
+                    {renderPrice(pkg.key)}
+                  </p>
+                </div>
+                <ul className="space-y-3 mb-6">
+                  {pkg.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm text-text dark:text-gray-200"
+                    >
+                      <Check className="flex-shrink-0 text-accent mt-0.5" size={18} />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button variant="outline" size="md" onClick={openCalendly} className="w-full min-h-[44px]">
+                  Discuss Retainers
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-16"
         >
@@ -315,10 +386,10 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
             Website Types & Starting Prices
           </h3>
           <p className="text-text/70 dark:text-gray-400 text-sm max-w-2xl mx-auto text-center mb-8">
-            Every project is different, but these ranges show typical starting points for
-            the kinds of websites we build most often.
+            Every project is different, but these starting points reflect the kinds of
+            websites we build most often for service businesses and growing brands.
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {WEBSITE_TYPE_GROUPS.map((group) => (
               <div
                 key={group.name}
@@ -332,7 +403,7 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                 </h4>
                 <p className="text-text/80 dark:text-gray-300 text-sm mb-3">{group.examples}</p>
                 <p className="text-text/60 dark:text-gray-400 text-xs">
-                  Best fit:&nbsp;
+                  Best fit:{' '}
                   <span className="font-medium text-primary dark:text-accent">{group.bestFor}</span>
                 </p>
               </div>

@@ -36,9 +36,9 @@ export default async function Home() {
         <LogoStrip />
         <Process />
         <Testimonials />
+        <Pricing />
         <FounderStrip />
         <Blog initialPosts={posts.slice(0, 3)} />
-        <Pricing />
         <FinalCTA />
       </main>
       <Footer />

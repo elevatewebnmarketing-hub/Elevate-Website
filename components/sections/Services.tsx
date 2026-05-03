@@ -2,78 +2,45 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ArrowRight, BarChart3, FileText, MapPin, RefreshCw, Wrench } from 'lucide-react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
-import { ArrowRight } from 'lucide-react';
-import {
-  Palette,
-  Code,
-  RefreshCw,
-  Search,
-  FileText,
-  Wrench,
-  BarChart3,
-  MapPin,
-} from 'lucide-react';
 
-const services: Array<{
-  icon: any;
-  title: string;
-  description: string;
-  href?: string;
-}> = [
+const services = [
   {
-    icon: Palette,
-    title: 'Website Design',
+    icon: FileText,
+    title: 'Lead-Generating Websites',
     description:
-      'Custom designs for business, portfolio, and personal brands that reflect who you are and convert visitors into customers.',
-  },
-  {
-    icon: Code,
-    title: 'Website Development',
-    description:
-      'Fast, responsive websites built with modern technology and best practices, from static sites to dynamic, content-driven experiences.',
+      'Professional websites for service businesses that need clearer messaging, stronger trust, and more inbound leads.',
   },
   {
     icon: RefreshCw,
-    title: 'Website Redesign',
+    title: 'Website Redesigns',
     description:
-      'Breathe new life into your existing site with a fresh look, improved UX, and clearer user journeys that support your goals.',
+      'Rebuild outdated websites around better structure, better messaging, and a clearer path to conversion.',
   },
   {
-    icon: Search,
-    title: 'SEO Optimization',
-    description: 'Get found by your ideal customers with data-driven SEO strategies.',
+    icon: Wrench,
+    title: 'Website Care Plans',
+    description:
+      'Monthly support for updates, fixes, tracking checks, and the small improvements that keep a site working hard.',
+  },
+  {
+    icon: MapPin,
+    title: 'Local Visibility Support',
+    description:
+      'Google Business Profile support, local search cleanup, and reporting that helps service businesses get found.',
+  },
+  {
+    icon: BarChart3,
+    title: 'Paid Growth Support',
+    description:
+      'Campaign setup and management for businesses that are ready to pair a better website with paid traffic.',
   },
   {
     icon: FileText,
     title: 'Landing Pages',
     description:
-      'High-converting landing pages and micro-sites designed to turn traffic into leads and sales for specific campaigns.',
-  },
-  {
-    icon: Wrench,
-    title: 'Website Maintenance',
-    description:
-      'Keep your site secure, fast, and up-to-date with ongoing maintenance, updates, and small enhancements over time.',
-  },
-  {
-    icon: BarChart3,
-    title: 'Google Ads & Campaign Management',
-    description:
-      'Manage search and display campaigns to generate leads and sales. We set up, optimize, and report on performance so you can focus on running your business.',
-  },
-  {
-    icon: BarChart3,
-    title: 'Meta Ads (Facebook & Instagram)',
-    description:
-      'Facebook Ads and Instagram Ads managed with Meta Pixel tracking, disciplined creative testing, and conversion-focused landing pages.',
-    href: '/meta-ads',
-  },
-  {
-    icon: MapPin,
-    title: 'Google Business Profile & Analytics',
-    description:
-      'Optimize your Business Profile, set up reviews and posts, and configure Google Analytics (GA4) for conversion tracking and monthly reporting.',
+      'Focused campaign pages built to turn traffic into quote requests, consultations, and high-intent enquiries.',
   },
 ];
 
@@ -89,10 +56,11 @@ export default function Services() {
         >
           <div className="text-center sm:text-left">
             <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary dark:text-white mb-4">
-              Our Services
+              What We Do
             </h2>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl">
-              Everything you need to grow online—from launch pages and portfolios to full business and e‑commerce websites.
+              We focus on high-performance websites, redesigns, local visibility, and the
+              recurring support that keeps your online presence improving after launch.
             </p>
           </div>
           <Link
@@ -105,38 +73,27 @@ export default function Services() {
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
-            const card = (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                className={`group bg-white dark:bg-slate-800 rounded-card-lg p-8 shadow-soft hover:shadow-soft-xl border border-gray-100 dark:border-white/10 transition-shadow ${
-                  service.href ? 'cursor-pointer' : 'cursor-default'
-                }`}
-              >
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                  <service.icon className="text-accent" size={28} />
-                </div>
-                <h3 className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-text/80 dark:text-gray-300 text-base leading-relaxed">
-                  {service.description}
-                </p>
-              </motion.div>
-            );
-
-            return service.href ? (
-              <Link key={service.title} href={service.href} className="block">
-                {card}
-              </Link>
-            ) : (
-              <div key={service.title}>{card}</div>
-            );
-          })}
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              className="group bg-white dark:bg-slate-800 rounded-card-lg p-8 shadow-soft hover:shadow-soft-xl border border-gray-100 dark:border-white/10 transition-shadow"
+            >
+              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                <service.icon className="text-accent" size={28} />
+              </div>
+              <h3 className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">
+                {service.title}
+              </h3>
+              <p className="text-text/80 dark:text-gray-300 text-base leading-relaxed">
+                {service.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </SectionWrapper>

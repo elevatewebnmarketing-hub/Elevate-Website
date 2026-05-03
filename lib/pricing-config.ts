@@ -35,14 +35,13 @@ export const LOCATION_CURRENCY_MAP: Record<
   LocationCode,
   { code: string; symbol: string; country: string }
 > = {
-  NG: { code: 'NGN', symbol: '₦',   country: 'Nigeria' },
-  GB: { code: 'GBP', symbol: '£',   country: 'United Kingdom' },
-  US: { code: 'USD', symbol: '$',   country: 'United States' },
-  CA: { code: 'CAD', symbol: 'CA$', country: 'Canada' },
-  AU: { code: 'AUD', symbol: 'AU$', country: 'Australia' },
+  NG: { code: 'NGN', symbol: 'NGN ', country: 'Nigeria' },
+  GB: { code: 'GBP', symbol: 'GBP ', country: 'United Kingdom' },
+  US: { code: 'USD', symbol: '$', country: 'United States' },
+  CA: { code: 'CAD', symbol: 'CAD ', country: 'Canada' },
+  AU: { code: 'AUD', symbol: 'AUD ', country: 'Australia' },
 };
 
-// IP country code → location code (unrecognised countries default to NG)
 export const COUNTRY_TO_LOCATION: Record<string, LocationCode> = {
   NG: 'NG',
   GB: 'GB',
@@ -52,51 +51,51 @@ export const COUNTRY_TO_LOCATION: Record<string, LocationCode> = {
   AU: 'AU',
 };
 
-export const DEFAULT_LOCATION: LocationCode = 'NG';
+export const DEFAULT_LOCATION: LocationCode = 'US';
 
 export const STATIC_PRICING_FALLBACK: Record<
   LocationCode,
   Record<PackageKey, { amount: number; isMonthly: boolean }>
 > = {
   NG: {
-    starter:       { amount: 250000,   isMonthly: false },
-    business:      { amount: 450000,   isMonthly: false },
-    ecommerce:     { amount: 600000,   isMonthly: false },
-    growth_suite:  { amount: 1000000,  isMonthly: false },
-    google_growth: { amount: 200,      isMonthly: true  },
-    meta_growth:   { amount: 200,      isMonthly: true  },
+    starter: { amount: 850000, isMonthly: false },
+    business: { amount: 1650000, isMonthly: false },
+    ecommerce: { amount: 2750000, isMonthly: false },
+    growth_suite: { amount: 3650000, isMonthly: false },
+    google_growth: { amount: 180000, isMonthly: true },
+    meta_growth: { amount: 280000, isMonthly: true },
   },
   GB: {
-    starter:       { amount: 349,   isMonthly: false },
-    business:      { amount: 599,   isMonthly: false },
-    ecommerce:     { amount: 849,   isMonthly: false },
-    growth_suite:  { amount: 1299,  isMonthly: false },
-    google_growth: { amount: 199,   isMonthly: true  },
-    meta_growth:   { amount: 199,   isMonthly: true  },
+    starter: { amount: 950, isMonthly: false },
+    business: { amount: 1850, isMonthly: false },
+    ecommerce: { amount: 2995, isMonthly: false },
+    growth_suite: { amount: 3995, isMonthly: false },
+    google_growth: { amount: 199, isMonthly: true },
+    meta_growth: { amount: 319, isMonthly: true },
   },
   US: {
-    starter:       { amount: 449,   isMonthly: false },
-    business:      { amount: 799,   isMonthly: false },
-    ecommerce:     { amount: 1099,  isMonthly: false },
-    growth_suite:  { amount: 1699,  isMonthly: false },
-    google_growth: { amount: 249,   isMonthly: true  },
-    meta_growth:   { amount: 249,   isMonthly: true  },
+    starter: { amount: 1250, isMonthly: false },
+    business: { amount: 2400, isMonthly: false },
+    ecommerce: { amount: 3900, isMonthly: false },
+    growth_suite: { amount: 5200, isMonthly: false },
+    google_growth: { amount: 249, isMonthly: true },
+    meta_growth: { amount: 399, isMonthly: true },
   },
   CA: {
-    starter:       { amount: 599,   isMonthly: false },
-    business:      { amount: 1099,  isMonthly: false },
-    ecommerce:     { amount: 1499,  isMonthly: false },
-    growth_suite:  { amount: 2299,  isMonthly: false },
-    google_growth: { amount: 299,   isMonthly: true  },
-    meta_growth:   { amount: 299,   isMonthly: true  },
+    starter: { amount: 1695, isMonthly: false },
+    business: { amount: 3295, isMonthly: false },
+    ecommerce: { amount: 5295, isMonthly: false },
+    growth_suite: { amount: 6995, isMonthly: false },
+    google_growth: { amount: 349, isMonthly: true },
+    meta_growth: { amount: 549, isMonthly: true },
   },
   AU: {
-    starter:       { amount: 699,   isMonthly: false },
-    business:      { amount: 1249,  isMonthly: false },
-    ecommerce:     { amount: 1749,  isMonthly: false },
-    growth_suite:  { amount: 2699,  isMonthly: false },
-    google_growth: { amount: 349,   isMonthly: true  },
-    meta_growth:   { amount: 349,   isMonthly: true  },
+    starter: { amount: 1895, isMonthly: false },
+    business: { amount: 3595, isMonthly: false },
+    ecommerce: { amount: 5795, isMonthly: false },
+    growth_suite: { amount: 7595, isMonthly: false },
+    google_growth: { amount: 399, isMonthly: true },
+    meta_growth: { amount: 599, isMonthly: true },
   },
 };
 
@@ -120,9 +119,7 @@ export function buildFallbackPackages(locationCode: LocationCode): PricingPackag
 
 export function formatPrice(pkg: PricingPackage): string {
   if (pkg.isCustom) return 'Custom';
-  const n =
-    pkg.locationCode === 'NG'
-      ? pkg.amount.toLocaleString('en-NG')
-      : pkg.amount.toLocaleString('en-US');
+  const locale = pkg.locationCode === 'NG' ? 'en-NG' : 'en-US';
+  const n = pkg.amount.toLocaleString(locale);
   return `${pkg.currencySymbol}${n}${pkg.isMonthly ? '/mo' : ''}`;
 }

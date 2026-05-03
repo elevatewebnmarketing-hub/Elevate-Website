@@ -6,18 +6,17 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about Elevate Web & Marketing—a Nigeria-based studio building high-performance websites and digital marketing for businesses worldwide. Founded 2023, CAC registered.',
+    'Learn about Elevate Web & Marketing, a Lagos-based web studio helping service businesses build stronger trust and better lead-generation systems online.',
   keywords: [
-    'Nigeria web design agency',
-    'web design company Nigeria',
-    'digital marketing agency Lagos',
-    'Elevate Web Marketing team',
-    'CAC registered web agency Nigeria',
+    'about elevate web marketing',
+    'lagos web studio',
+    'service business website studio',
+    'web design founder story',
   ],
   openGraph: {
-    title: 'About Elevate Web & Marketing | Nigeria Web Design Agency',
+    title: 'About Elevate Web & Marketing',
     description:
-      'Nigeria-based web & marketing studio. We design and develop modern websites, run effective marketing campaigns, and support businesses globally.',
+      'A Lagos-based studio building high-performance websites and growth systems for service businesses and growing brands.',
     url: `${SITE_URL}/about`,
   },
   alternates: { canonical: '/about' },

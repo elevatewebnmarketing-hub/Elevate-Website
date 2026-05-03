@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FileText } from 'lucide-react';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 export default function GetQuotePage() {
   const [loading, setLoading] = useState(false);
@@ -18,6 +18,7 @@ export default function GetQuotePage() {
     setSuccess(false);
     const form = formRef.current;
     if (!form) return;
+
     const fd = new FormData(form);
     const payload = {
       name: (fd.get('name') as string) ?? '',
@@ -31,6 +32,7 @@ export default function GetQuotePage() {
       message: (fd.get('message') as string) ?? '',
       source: 'quote',
     };
+
     setLoading(true);
     try {
       const res = await fetch('/api/contact', {
@@ -66,10 +68,10 @@ export default function GetQuotePage() {
               <FileText className="text-accent" size={28} />
             </div>
             <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-4">
-              Get a Quote
+              Request a Quote
             </h1>
             <p className="text-text/80 dark:text-gray-300 text-lg">
-              Tell us about your project and we&apos;ll send a custom quote within 48 hours.
+              Share the basics and we will send a directionally useful quote within 48 hours.
             </p>
           </motion.div>
 
@@ -134,10 +136,9 @@ export default function GetQuotePage() {
                   <option value="">Select</option>
                   <option value="new-website">New Website</option>
                   <option value="website-redesign">Website Redesign</option>
-                  <option value="ecommerce">E‑commerce Store</option>
                   <option value="landing-page">Landing Page</option>
-                  <option value="seo-marketing">SEO / Digital Marketing</option>
-                  <option value="maintenance">Website Maintenance</option>
+                  <option value="ecommerce">E-commerce Website</option>
+                  <option value="ongoing-support">Ongoing Support</option>
                   <option value="other">Other</option>
                 </select>
               </div>
@@ -151,7 +152,7 @@ export default function GetQuotePage() {
                   type="text"
                   name="industry"
                   className="w-full min-h-[44px] px-4 py-3 rounded-lg border border-gray-200 dark:border-white/20 bg-background/50 dark:bg-slate-700/50 text-primary dark:text-white placeholder:text-text/50 focus:ring-2 focus:ring-accent focus:border-accent outline-none"
-                  placeholder="e.g. Real estate, Construction, Education"
+                  placeholder="e.g. Roofing, consulting, real estate, education"
                 />
               </div>
 
@@ -165,14 +166,13 @@ export default function GetQuotePage() {
                   className="w-full min-h-[44px] px-4 py-3 rounded-lg border border-gray-200 dark:border-white/20 bg-background/50 dark:bg-slate-700/50 text-primary dark:text-white focus:ring-2 focus:ring-accent focus:border-accent outline-none"
                 >
                   <option value="">Select</option>
-                  <option value="website-design">Website Design</option>
-                  <option value="website-development">Website Development</option>
+                  <option value="starter-website">Starter Website</option>
+                  <option value="business-website">Business Website</option>
+                  <option value="ecommerce-website">E-commerce Website</option>
                   <option value="website-redesign">Website Redesign</option>
-                  <option value="seo">SEO</option>
-                  <option value="google-ads">Google Ads</option>
-                  <option value="meta-ads">Meta Ads (Facebook &amp; Instagram)</option>
-                  <option value="website-maintenance">Website Maintenance</option>
-                  <option value="full-package">Full Package (design + marketing)</option>
+                  <option value="local-visibility">Local Visibility Support</option>
+                  <option value="paid-growth">Paid Growth Support</option>
+                  <option value="website-care">Website Care Plan</option>
                 </select>
               </div>
 
@@ -188,9 +188,8 @@ export default function GetQuotePage() {
                   >
                     <option value="">Select</option>
                     <option value="asap">ASAP</option>
-                    <option value="1-2-weeks">1–2 weeks</option>
-                    <option value="1-month">Within 1 month</option>
-                    <option value="2-3-months">2–3 months</option>
+                    <option value="2-4-weeks">2 to 4 weeks</option>
+                    <option value="1-2-months">1 to 2 months</option>
                     <option value="flexible">Flexible</option>
                   </select>
                 </div>
@@ -204,11 +203,10 @@ export default function GetQuotePage() {
                     className="w-full min-h-[44px] px-4 py-3 rounded-lg border border-gray-200 dark:border-white/20 bg-background/50 dark:bg-slate-700/50 text-primary dark:text-white focus:ring-2 focus:ring-accent focus:border-accent outline-none"
                   >
                     <option value="">Select</option>
-                    <option value="150-300">$150 – $300</option>
-                    <option value="300-500">$300 – $500</option>
-                    <option value="500-1000">$500 – $1,000</option>
-                    <option value="1000-2000">$1,000 – $2,000</option>
-                    <option value="2000+">$2,000+</option>
+                    <option value="under-1500">Under $1,500</option>
+                    <option value="1500-2500">$1,500 to $2,500</option>
+                    <option value="2500-5000">$2,500 to $5,000</option>
+                    <option value="5000-plus">$5,000+</option>
                   </select>
                 </div>
               </div>
@@ -223,7 +221,7 @@ export default function GetQuotePage() {
                   rows={4}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-white/20 bg-background/50 dark:bg-slate-700/50 text-primary dark:text-white placeholder:text-text/50 focus:ring-2 focus:ring-accent focus:border-accent outline-none resize-y min-h-[100px]"
-                  placeholder="Describe your project, goals, and any specific requirements..."
+                  placeholder="Describe the business, the website you need, and anything that must be included."
                 />
               </div>
 
@@ -235,9 +233,13 @@ export default function GetQuotePage() {
                 {loading ? 'Sending...' : 'Request Quote'}
               </button>
               {success && (
-                <p className="text-accent font-medium text-sm">Thanks! We&apos;ll send your quote within 48 hours.</p>
+                <p className="text-accent font-medium text-sm">
+                  Thanks! We&apos;ll send your quote within 48 hours.
+                </p>
               )}
-              {error && <p className="text-red-600 dark:text-red-400 font-medium text-sm">{error}</p>}
+              {error && (
+                <p className="text-red-600 dark:text-red-400 font-medium text-sm">{error}</p>
+              )}
             </form>
           </motion.div>
         </div>

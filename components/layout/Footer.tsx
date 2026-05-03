@@ -1,9 +1,9 @@
 'use client';
 
 import Logo from '@/components/ui/Logo';
-import { Mail, Phone, MapPin, Calendar, Instagram } from 'lucide-react';
-import { siteConfig } from '@/lib/site-config';
+import { Calendar, Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import { openCalendly } from '@/lib/calendly';
+import { siteConfig } from '@/lib/site-config';
 
 function WhatsAppIcon({ size = 22 }: { size?: number }) {
   return (
@@ -46,9 +46,7 @@ export default function Footer() {
             <a href="/" className="inline-block mb-3 max-w-[280px]">
               <Logo variant="white" width={326} height={109} className="w-full h-auto max-h-14" />
             </a>
-            <p className="text-white/80 text-sm max-w-xs mb-4">
-              {siteConfig.tagline}
-            </p>
+            <p className="text-white/80 text-sm max-w-xs mb-4">{siteConfig.tagline}</p>
             <p className="flex items-center gap-2 text-white/70 text-sm mb-4">
               <MapPin size={14} aria-hidden />
               {siteConfig.location}
@@ -96,7 +94,7 @@ export default function Footer() {
               {siteConfig.phone}
             </a>
             <p className="text-white/60 text-sm mt-4">
-              Ready to grow your business? Book a free strategy call.
+              Public pricing is shown in USD. Strategy calls are free.
             </p>
           </div>
 

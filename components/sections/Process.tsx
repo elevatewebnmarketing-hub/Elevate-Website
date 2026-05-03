@@ -53,7 +53,7 @@ export default function Process({ showHeading = true }: ProcessProps) {
                 Our Process
               </h2>
               <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto sm:mx-0">
-                A proven approach to delivering results
+                A clear, low-friction process from first call to launch
               </p>
             </div>
             <Link

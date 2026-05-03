@@ -42,7 +42,7 @@ export default function FinalCTA({ isCompact = false }: FinalCTAProps) {
           </Link>
         </motion.div>
         <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-6xl text-white mb-6">
-          Ready to Grow Your Business Online?
+          Ready for a stronger website?
         </h2>
         <p className="text-white/80 text-lg sm:text-xl mb-10 max-w-2xl mx-auto">
           Let&apos;s discuss how we can help you attract more qualified leads,

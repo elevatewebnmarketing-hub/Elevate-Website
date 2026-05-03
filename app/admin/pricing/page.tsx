@@ -18,9 +18,9 @@ const PACKAGE_LABELS: Record<PackageKey, string> = {
   starter:       'Starter Website',
   business:      'Business Website',
   ecommerce:     'E-commerce Website',
-  growth_suite:  'Complete Growth Suite',
-  google_growth: 'Google Growth Package',
-  meta_growth:   'Meta Growth Package',
+  growth_suite:  'Growth Suite',
+  google_growth: 'Local Visibility Retainer',
+  meta_growth:   'Paid Growth Retainer',
 };
 
 type EditValues = Record<PackageKey, string>;
@@ -34,10 +34,10 @@ function defaultValues(loc: LocationCode): EditValues {
 }
 
 export default function AdminPricingPage() {
-  const [selectedLoc, setSelectedLoc] = useState<LocationCode>('NG');
+  const [selectedLoc, setSelectedLoc] = useState<LocationCode>('US');
   // allPackages keyed by location, loaded once on mount
   const [allPackages, setAllPackages] = useState<Partial<Record<LocationCode, PricingPackage[]>>>({});
-  const [editValues, setEditValues] = useState<EditValues>(defaultValues('NG'));
+  const [editValues, setEditValues] = useState<EditValues>(defaultValues('US'));
   const [saving, setSaving] = useState(false);
   const [status, setStatus] = useState<{ ok: boolean; msg: string } | null>(null);
 
@@ -154,7 +154,7 @@ export default function AdminPricingPage() {
         <div>
           <h1 className="font-heading font-bold text-2xl text-primary">Pricing Management</h1>
           <p className="text-sm text-text/70 mt-0.5">
-            Edit prices per region. Changes save to the database immediately.
+            Edit package defaults by region. The public website now shows a USD-first pricing model.
           </p>
         </div>
       </div>

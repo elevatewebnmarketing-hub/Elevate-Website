@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronDown, HelpCircle } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle } from 'lucide-react';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import { useLocationPricing } from '@/hooks/useLocationPricing';
 import { formatPrice } from '@/lib/pricing-config';
@@ -13,80 +13,81 @@ import type { PackageKey } from '@/lib/pricing-config';
 const STATIC_FAQS = [
   {
     q: 'How much does it cost to build a website?',
-    a: '', // filled dynamically
+    a: '',
+  },
+  {
+    q: 'Why are your prices lower than many agencies?',
+    a: 'We keep our public packages focused, lean, and conversion-oriented. You are not paying for large-agency overhead or bloated process. That lets us stay just below many traditional agency price points while still delivering custom, professional work.',
   },
   {
     q: 'How long does it take to build a website?',
-    a: 'A simple one-page site can be ready in 1–2 weeks. Business and e‑commerce sites typically take 3–6 weeks depending on scope, content readiness, and revisions. We agree on a clear timeline before starting.',
+    a: 'Starter websites usually take 7 to 10 business days. Multi-page business websites typically take 2 to 4 weeks. E-commerce or more complex builds often take 3 to 5 weeks depending on scope, content readiness, and revisions.',
   },
   {
     q: 'What is included in your website packages?',
-    a: 'All packages include responsive design, basic on-page SEO setup (title/meta description, headings, and clean URLs), and a contact form with email notifications and user confirmation. Business and higher tiers add more pages, custom branding, blog or portfolio sections, post-launch support, and an admin panel login so you can update content after go-live (Blog, Portfolio, and Testimonials where enabled). E-commerce packages include product catalog pages, cart and checkout setup, and basic SEO for products and categories.',
+    a: 'Every build includes mobile-first design, conversion-focused structure, core technical SEO foundations, and a clear lead capture path. Higher packages add more pages, stronger strategy, deeper tracking, and launch support.',
   },
   {
-    q: 'Do you accept payment in Naira?',
-    a: 'Yes. We can invoice in Naira using the fixed package prices shown on the website. Payment terms are discussed during the project kickoff.',
+    q: 'Do you only work with clients in Nigeria?',
+    a: 'No. We are based in Lagos and work with clients internationally. The website uses public pricing in USD so the offer stays simple for international clients.',
   },
   {
     q: 'Do I need to provide content and images?',
-    a: 'Yes. You provide text, images, and brand assets. We guide you on what we need and can suggest stock imagery or copy support if required.',
+    a: 'Yes, although we guide you on what is needed. If your content is not ready yet, we can help shape the page structure, suggest what to write, and recommend stock imagery where appropriate.',
   },
   {
     q: 'Can you redesign my existing website?',
-    a: 'Yes. We offer website redesign—auditing your current site, proposing a fresh structure and design, and migrating content. This is ideal when your site is outdated or underperforming.',
+    a: 'Yes. Website redesigns are one of our core offers. We review what is not working, improve the structure and messaging, and rebuild around clearer trust and conversion goals.',
   },
   {
-    q: 'Do you offer SEO and digital marketing?',
-    a: 'Yes. We provide SEO optimization, Google Ads management, Google Business Profile optimization, and analytics setup. Our Google Growth Package combines Ads, Business Profile, and reporting for a flat monthly fee.',
+    q: 'Do you offer monthly support after launch?',
+    a: 'Yes. We offer monthly retainers for website care, Google Business Profile support, reporting, and paid growth management. Those plans are designed to create ongoing momentum after launch.',
   },
   {
-    q: 'Do you provide website maintenance?',
-    a: 'Yes. We offer maintenance plans to keep your site secure, updated, and performing well. This includes security updates, backups, content updates, and performance monitoring.',
+    q: 'Do I need a blog to rank on Google?',
+    a: 'Not always. For many local and service businesses, strong service pages, clear site structure, reviews, Google Business Profile work, and fast page speed matter more than publishing constant blog posts. We only recommend a blog when it genuinely supports the business.',
   },
   {
     q: 'Are your websites mobile-friendly?',
-    a: 'Yes. All our websites are mobile-responsive and work well on phones, tablets, and desktops.',
-  },
-  {
-    q: 'Which industries do you work with?',
-    a: 'We work with businesses across industries—construction, real estate, education, e‑commerce, consulting, and more. Our portfolio includes MR DGN Construction, MansaLuxeRealty, TMM Scholars, Experience BSG, and others.',
+    a: 'Yes. Every website is designed to work well on phones, tablets, and desktops.',
   },
   {
     q: 'How do I get started?',
-    a: "Book a free strategy call or send us a message via the contact form. We'll discuss your goals, recommend the right package, and outline next steps.",
+    a: "Book a strategy call or send a quote request. We will review your goals, recommend the best-fit package, and outline the next steps.",
   },
 ];
 
 const PRICING_KEYS: PackageKey[] = ['starter', 'business', 'ecommerce', 'growth_suite'];
 const PRICING_LABELS: Record<PackageKey, string> = {
-  starter: 'Starter',
-  business: 'Business',
-  ecommerce: 'E‑commerce',
-  growth_suite: 'Complete Growth Suite',
-  google_growth: 'Google Growth',
-  meta_growth: 'Meta Growth',
+  starter: 'Starter Website',
+  business: 'Business Website',
+  ecommerce: 'E-commerce Website',
+  growth_suite: 'Growth Suite',
+  google_growth: 'Local Visibility Retainer',
+  meta_growth: 'Paid Growth Retainer',
 };
 
 export default function FaqPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const { packages, isLoading } = useLocationPricing();
 
-  const priceMap = new Map(packages.map((p) => [p.packageKey, p]));
+  const priceMap = new Map(packages.map((pkg) => [pkg.packageKey, pkg]));
 
   const pricingAnswer = useMemo(() => {
     if (isLoading || packages.length === 0) {
-      return 'Our website packages start from an affordable flat rate for Starter sites, going up through Business, E‑commerce, and our Complete Growth Suite. Custom and enterprise projects are quoted separately. Visit our pricing page for full details.';
+      return 'Our public website pricing is shown in USD and starts with a clear Starter package, followed by Business, E-commerce, and Growth Suite options. Retainers and custom work are quoted based on scope.';
     }
+
     const parts = PRICING_KEYS.map((key) => {
       const pkg = priceMap.get(key);
-      return pkg ? `${formatPrice(pkg)} (${PRICING_LABELS[key]})` : null;
+      return pkg ? `${PRICING_LABELS[key]} from ${formatPrice(pkg)}` : null;
     }).filter(Boolean);
-    return `Our website packages start at ${parts.join(', ')}. Custom and enterprise projects are quoted separately.`;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [packages, isLoading]);
+
+    return `${parts.join(', ')}. Retainers and custom work are quoted separately when needed.`;
+  }, [isLoading, packages, priceMap]);
 
   const faqs = useMemo(
-    () => STATIC_FAQS.map((faq, i) => (i === 0 ? { ...faq, a: pricingAnswer } : faq)),
+    () => STATIC_FAQS.map((faq, index) => (index === 0 ? { ...faq, a: pricingAnswer } : faq)),
     [pricingAnswer]
   );
 
@@ -108,14 +109,14 @@ export default function FaqPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-text/80 dark:text-gray-300 text-lg">
-              Common questions about our web design and marketing services.
+              Straight answers about pricing, process, and how we approach website projects.
             </p>
           </motion.div>
 
           <div className="space-y-3">
             {faqs.map((faq, index) => (
               <motion.div
-                key={index}
+                key={faq.q}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.03 }}

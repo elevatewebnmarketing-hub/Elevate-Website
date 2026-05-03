@@ -6,19 +6,19 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Website design, development, SEO, digital marketing, and maintenance. Elevate Web & Marketing builds high-performance sites and growth systems for businesses in Nigeria and worldwide.',
+    'Website design, redesign, landing pages, local visibility support, and ongoing website care for service businesses that want more qualified leads.',
   keywords: [
-    'web design services Nigeria',
-    'website development services Lagos',
-    'SEO services Nigeria',
-    'digital marketing services Nigeria',
-    'Google Ads Nigeria',
-    'Meta Ads Nigeria',
-    'website maintenance Nigeria',
+    'service business website design',
+    'local business website packages',
+    'website redesign services',
+    'landing page design',
+    'website care plan',
+    'google business profile support',
   ],
   openGraph: {
-    title: 'Web Design & Marketing Services | Elevate Web & Marketing',
-    description: 'Custom websites, SEO, Google Ads, and digital marketing. Nigeria-based agency serving businesses globally.',
+    title: 'Website & Growth Services | Elevate Web & Marketing',
+    description:
+      'Lead-generating websites, redesigns, landing pages, and recurring support for service businesses.',
     url: `${SITE_URL}/services`,
   },
   alternates: { canonical: '/services' },
