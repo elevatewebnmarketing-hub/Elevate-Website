@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: '%s | Elevate Web & Marketing',
   },
   description:
-    'Nigeria-based, Nigerian-owned. We design high-performance websites and marketing systems that help businesses grow—working with brands across the world. Web design, development, SEO, and digital marketing.',
+    'We design high-performance websites and marketing systems that help businesses grow. Web design, development, SEO, and digital marketing for brands that want clearer positioning, stronger trust, and more leads.',
   keywords: [
     'web design Nigeria',
     'website development Lagos',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: 'Elevate Web & Marketing',
     title: 'Elevate Web & Marketing | Websites That Convert',
     description:
-      'Nigeria-based. High-performance websites and marketing systems that help businesses grow—working with brands across the world.',
+      'High-performance websites and marketing systems that help businesses grow with clearer positioning, stronger trust, and more leads.',
     images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Elevate Web & Marketing' }],
   },
   twitter: {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     creator: '@elevate_web_',
     title: 'Elevate Web & Marketing | Websites That Convert',
     description:
-      'Nigeria-based. High-performance websites and marketing systems that help businesses grow.',
+      'High-performance websites and marketing systems that help businesses grow with clearer positioning, stronger trust, and more leads.',
     images: ['/twitter-image'],
   },
   icons: {
@@ -99,7 +99,7 @@ export default function RootLayout({
         {/* Calendly CSS is loaded asynchronously by CalendlyBadge to avoid render-blocking */}
       </head>
       <body className="font-body antialiased">
-        {/* Google Tag Manager — afterInteractive defers main-thread work past first paint */}
+        {/* Google Tag Manager - afterInteractive defers main-thread work past first paint */}
         <Script
           id="gtm-init"
           strategy="afterInteractive"

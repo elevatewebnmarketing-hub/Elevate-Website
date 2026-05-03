@@ -89,14 +89,15 @@ export default function Hero() {
               className="text-lg sm:text-xl text-text/80 dark:text-gray-300 max-w-xl mx-auto"
             >
               Stop losing leads to a slow, outdated website. We design, build, and
-              optimize digital experiences that turn clicks into revenue. Clear
-              pricing, zero headaches.
+              optimize high-performance websites that turn clicks into qualified
+              leads. Clear pricing, fast delivery, zero headaches.
             </motion.p>
             <motion.p
               variants={itemVariants}
               className="text-base text-text/60 dark:text-gray-400"
             >
-              Nigeria-based studio working with businesses in any country, in any timezone.
+              Trusted by growing brands that want clear communication, reliable delivery,
+              and websites built to convert.
             </motion.p>
 
             <motion.div

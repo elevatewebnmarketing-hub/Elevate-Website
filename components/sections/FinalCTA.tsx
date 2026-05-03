@@ -45,8 +45,8 @@ export default function FinalCTA({ isCompact = false }: FinalCTAProps) {
           Ready to Grow Your Business Online?
         </h2>
         <p className="text-white/80 text-lg sm:text-xl mb-10 max-w-2xl mx-auto">
-          Let&apos;s discuss how we can help you reach more customers and
-          convert more leads. From Nigeria to the world.
+          Let&apos;s discuss how we can help you attract more qualified leads,
+          build trust faster, and turn your website into a stronger sales tool.
         </p>
         <motion.div
           initial={{ opacity: 0, y: 10 }}

@@ -29,7 +29,7 @@ const organizationSchema = {
     'https://x.com/elevate_web_',
   ],
   description:
-    'Nigeria-based. High-performance websites and marketing systems that help businesses grow—working with brands across the world.',
+    'High-performance websites and marketing systems that help businesses grow with clearer positioning, stronger trust, and more leads.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Lagos',

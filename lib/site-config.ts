@@ -8,7 +8,7 @@ const PHONE_E164 = '2347086039012';
 export const siteConfig = {
   companyName: 'Elevate Web & Marketing',
   tagline:
-    'Nigeria-based web & marketing studio building high-performance websites and growth systems for businesses worldwide—no matter the timezone.',
+    'High-performance websites and growth systems for businesses that want clearer messaging, stronger trust, and more leads.',
   contactEmail: 'hello@elevatewebandmarketing.com',
   phone: '+234 708 603 9012',
   location: 'Nigeria · Worldwide',
