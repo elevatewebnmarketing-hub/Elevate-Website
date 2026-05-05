@@ -3,8 +3,8 @@
   { "id": "ng_business",      "packageKey": "business",      "locationCode": "NG", "amount": 450000,  "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
   { "id": "ng_ecommerce",     "packageKey": "ecommerce",     "locationCode": "NG", "amount": 600000,  "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
   { "id": "ng_growth_suite",  "packageKey": "growth_suite",  "locationCode": "NG", "amount": 1000000, "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
-  { "id": "ng_google_growth", "packageKey": "google_growth", "locationCode": "NG", "amount": 200,     "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
-  { "id": "ng_meta_growth",   "packageKey": "meta_growth",   "locationCode": "NG", "amount": 200,     "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
+  { "id": "ng_google_growth", "packageKey": "google_growth", "locationCode": "NG", "amount": 200000, "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-05-05T00:00:00Z" },
+  { "id": "ng_meta_growth",   "packageKey": "meta_growth",   "locationCode": "NG", "amount": 200000, "currencyCode": "NGN", "currencySymbol": "₦",   "isMonthly": true,  "isCustom": false, "updatedAt": "2026-05-05T00:00:00Z" },
 
   { "id": "gb_starter",       "packageKey": "starter",       "locationCode": "GB", "amount": 349,     "currencyCode": "GBP", "currencySymbol": "£",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },
   { "id": "gb_business",      "packageKey": "business",      "locationCode": "GB", "amount": 599,     "currencyCode": "GBP", "currencySymbol": "£",   "isMonthly": false, "isCustom": false, "updatedAt": "2026-04-29T00:00:00Z" },

@@ -35,7 +35,7 @@ export const LOCATION_CURRENCY_MAP: Record<
   LocationCode,
   { code: string; symbol: string; country: string }
 > = {
-  NG: { code: 'NGN', symbol: 'NGN ', country: 'Nigeria' },
+  NG: { code: 'NGN', symbol: '₦', country: 'Nigeria' },
   GB: { code: 'GBP', symbol: 'GBP ', country: 'United Kingdom' },
   US: { code: 'USD', symbol: '$', country: 'United States' },
   CA: { code: 'CAD', symbol: 'CAD ', country: 'Canada' },
@@ -51,19 +51,19 @@ export const COUNTRY_TO_LOCATION: Record<string, LocationCode> = {
   AU: 'AU',
 };
 
-export const DEFAULT_LOCATION: LocationCode = 'US';
+export const DEFAULT_LOCATION: LocationCode = 'NG';
 
 export const STATIC_PRICING_FALLBACK: Record<
   LocationCode,
   Record<PackageKey, { amount: number; isMonthly: boolean }>
 > = {
   NG: {
-    starter: { amount: 850000, isMonthly: false },
-    business: { amount: 1650000, isMonthly: false },
-    ecommerce: { amount: 2750000, isMonthly: false },
-    growth_suite: { amount: 3650000, isMonthly: false },
-    google_growth: { amount: 180000, isMonthly: true },
-    meta_growth: { amount: 280000, isMonthly: true },
+    starter: { amount: 250000, isMonthly: false },
+    business: { amount: 450000, isMonthly: false },
+    ecommerce: { amount: 600000, isMonthly: false },
+    growth_suite: { amount: 1000000, isMonthly: false },
+    google_growth: { amount: 200000, isMonthly: true },
+    meta_growth: { amount: 200000, isMonthly: true },
   },
   GB: {
     starter: { amount: 950, isMonthly: false },

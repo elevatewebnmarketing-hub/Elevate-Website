@@ -6,11 +6,11 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'Transparent pricing for web design and marketing services. Fixed packages and custom quotes for businesses in Nigeria and worldwide.',
+    'Transparent pricing for web design and marketing services. Fixed packages and custom quotes for businesses in Asaba, Delta State, and across Nigeria.',
   keywords: [
-    'web design pricing Nigeria',
+    'web design pricing Asaba',
     'website cost Nigeria',
-    'affordable web design Nigeria',
+    'affordable web design Asaba',
     'website packages Nigeria',
     'digital marketing pricing Nigeria',
   ],

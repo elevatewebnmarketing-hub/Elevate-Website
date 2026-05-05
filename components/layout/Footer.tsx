@@ -94,7 +94,7 @@ export default function Footer() {
               {siteConfig.phone}
             </a>
             <p className="text-white/60 text-sm mt-4">
-              Public pricing is shown in USD. Strategy calls are free.
+              Public pricing is shown in naira. Strategy calls are free.
             </p>
           </div>
 

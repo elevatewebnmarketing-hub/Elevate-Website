@@ -134,9 +134,9 @@ export default function ContactPage() {
                     <p className="font-heading font-semibold text-primary dark:text-gray-300 text-sm uppercase tracking-wide text-text/70 dark:text-gray-400">
                       Base
                     </p>
-                    <p className="text-primary dark:text-white font-medium mt-0.5">Lagos, Nigeria</p>
+                    <p className="text-primary dark:text-white font-medium mt-0.5">Asaba, Delta State</p>
                     <p className="text-text/70 dark:text-gray-400 text-sm mt-0.5">
-                      Working with clients internationally
+                      Working with businesses across Nigeria
                     </p>
                   </div>
                 </div>
@@ -154,7 +154,7 @@ export default function ContactPage() {
                 </div>
                 <div className="p-4">
                   <p className="font-heading font-bold text-sm text-primary dark:text-white mb-1">
-                    Lagos-based team, international delivery
+                    Asaba-based team, reliable delivery
                   </p>
                   <p className="text-sm text-text/80 dark:text-gray-300 font-body">
                     We keep the process clear, the scope focused, and the communication reliable.
@@ -263,10 +263,10 @@ export default function ContactPage() {
                         className="w-full min-h-[44px] px-4 py-3 rounded-lg border border-gray-200 dark:border-white/20 bg-background/50 dark:bg-slate-700/50 text-primary dark:text-white focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
                       >
                         <option value="">Select</option>
-                        <option value="under-1500">Under $1,500</option>
-                        <option value="1500-2500">$1,500 to $2,500</option>
-                        <option value="2500-5000">$2,500 to $5,000</option>
-                        <option value="5000-plus">$5,000+</option>
+                        <option value="under-250k">Under ₦250,000</option>
+                        <option value="250k-450k">₦250,000 to ₦450,000</option>
+                        <option value="450k-1m">₦450,000 to ₦1,000,000</option>
+                        <option value="1m-plus">₦1,000,000+</option>
                       </select>
                     </div>
                   </div>

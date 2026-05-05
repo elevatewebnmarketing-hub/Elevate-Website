@@ -17,11 +17,11 @@ const organizationSchema = {
     name: 'Ufuoma Onakpoyan',
   },
   foundingDate: '2023',
-  priceRange: '$$',
+  priceRange: '₦₦',
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 6.5244,
-    longitude: 3.3792,
+    latitude: 6.1982,
+    longitude: 6.7319,
   },
   sameAs: [
     'https://www.facebook.com/profile.php?id=61578521342361',
@@ -29,10 +29,11 @@ const organizationSchema = {
     'https://x.com/elevate_web_',
   ],
   description:
-    'High-performance websites and marketing systems that help businesses grow with clearer positioning, stronger trust, and more leads.',
+    'High-performance websites and marketing systems for businesses in Asaba and across Nigeria that want clearer positioning, stronger trust, and more leads.',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Lagos',
+    addressLocality: 'Asaba',
+    addressRegion: 'Delta State',
     addressCountry: 'NG',
   },
   contactPoint: {
@@ -40,10 +41,10 @@ const organizationSchema = {
     email: 'hello@elevatewebandmarketing.com',
     telephone: '+234-708-603-9012',
     contactType: 'customer service',
-    areaServed: 'Worldwide',
+    areaServed: 'Nigeria',
     availableLanguage: 'English',
   },
-  areaServed: ['Nigeria', 'United Kingdom', 'United States', 'Canada', 'Australia'],
+  areaServed: ['Asaba', 'Delta State', 'Nigeria'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Web Design & Digital Marketing Services',

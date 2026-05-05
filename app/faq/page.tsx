@@ -29,7 +29,7 @@ const STATIC_FAQS = [
   },
   {
     q: 'Do you only work with clients in Nigeria?',
-    a: 'No. We are based in Lagos and work with clients internationally. The website uses public pricing in USD so the offer stays simple for international clients.',
+    a: 'No. We are based in Asaba, Delta State, and work with businesses across Nigeria and beyond. The website now shows public pricing in naira for clarity.',
   },
   {
     q: 'Do I need to provide content and images?',
@@ -75,7 +75,7 @@ export default function FaqPage() {
 
   const pricingAnswer = useMemo(() => {
     if (isLoading || packages.length === 0) {
-      return 'Our public website pricing is shown in USD and starts with a clear Starter package, followed by Business, E-commerce, and Growth Suite options. Retainers and custom work are quoted based on scope.';
+      return 'Our public website pricing is shown in naira and starts with a clear Starter package, followed by Business, E-commerce, and Growth Suite options. Retainers and custom work are quoted based on scope.';
     }
 
     const parts = PRICING_KEYS.map((key) => {

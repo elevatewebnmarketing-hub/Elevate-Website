@@ -27,12 +27,13 @@ const PACKAGE_META: PackageMeta[] = [
     key: 'starter',
     name: 'Starter Website',
     description:
-      'For solo operators and small local businesses that need a clean, credible website fast.',
+      'For small businesses in Asaba that need a clean, credible website and a simple launch campaign without overcomplicating the process.',
     features: [
-      '1 to 3 conversion-focused pages',
-      'Mobile-first design and build',
-      'Contact form, call button, and clear CTA sections',
-      'Basic on-page SEO and analytics setup',
+      '3 conversion-focused pages',
+      'Mobile-first design with contact form, click-to-call, and WhatsApp CTA',
+      'Google Business Profile setup or cleanup',
+      'One Google Ads lead-generation campaign managed for 1 week',
+      'Basic on-page SEO, indexation setup, and analytics foundation',
       'One revision round before launch',
       'Typical delivery: 7 to 10 business days',
     ],
@@ -43,13 +44,15 @@ const PACKAGE_META: PackageMeta[] = [
     key: 'business',
     name: 'Business Website',
     description:
-      'Our most popular package for service businesses that need stronger trust, clearer messaging, and more leads.',
+      'Our most popular package for service businesses that want a stronger online presence, faster trust, and a direct path to leads.',
     features: [
-      'Up to 6 core pages',
-      'Custom design matched to your brand',
-      'Service pages structured for SEO and conversions',
-      'Testimonials, FAQ, and lead capture sections',
-      'Basic analytics and conversion tracking',
+      'Up to 6 core website pages plus one dedicated lead-generation landing page',
+      'Custom design matched to your brand and offer',
+      '1 year of domain registration included',
+      'Google Business Profile registration and setup',
+      'A direct-response sales funnel built around your service offer',
+      '2 weeks of Google Ads or Meta Ads campaign management based on your business type',
+      'GA4 setup, lead form tracking, testimonials, FAQ, and clear call-to-action sections',
       'Two revision rounds before launch',
       'Typical delivery: 2 to 4 weeks',
     ],
@@ -60,13 +63,13 @@ const PACKAGE_META: PackageMeta[] = [
     key: 'ecommerce',
     name: 'E-commerce Website',
     description:
-      'For brands that need a polished storefront, clear product structure, and a smoother path to checkout.',
+      'For product-based businesses that need a polished storefront, better checkout flow, and a setup ready to support growth.',
     features: [
-      'Everything in Business Website',
-      'Product catalog, categories, and product pages',
-      'Cart and checkout setup',
-      'Product-focused SEO foundations',
-      'Core trust and upsell sections',
+      'Custom storefront with product catalog, categories, and product pages',
+      'Cart, checkout, payment gateway, and order notification setup',
+      'Product-focused SEO foundations and mobile optimization',
+      'Trust-building sections, upsell opportunities, and clear sales CTAs',
+      'Basic analytics, lead capture, and store launch support',
       'Two revision rounds before launch',
       'Typical delivery: 3 to 5 weeks',
     ],
@@ -75,15 +78,16 @@ const PACKAGE_META: PackageMeta[] = [
   },
   {
     key: 'growth_suite',
-    name: 'Growth Suite',
+    name: 'E-commerce Growth Suite',
     description:
-      'A stronger launch package for businesses that want website build, analytics, and local visibility support together.',
+      'A full launch package for ambitious businesses that want the store, the funnel, the campaign setup, and the tracking done properly from day one.',
     features: [
-      'Business Website or E-commerce Website scope',
-      'Strategy session and sitemap planning',
-      'GA4 and conversion tracking setup',
-      'Google Business Profile support',
-      'First month of local visibility support included',
+      'Everything in the E-commerce Website package',
+      'One-month Google Ads and Meta Ads launch management',
+      'GA4 setup with ecommerce and lead event tracking',
+      'Google Tag Manager, Google Ads conversion tracking, and Search Console setup',
+      'Meta Pixel and Meta Conversions API setup for cleaner attribution',
+      'Funnel page alignment, reporting dashboard, and optimization recommendations',
       'Priority launch support',
     ],
     highlighted: false,
@@ -91,30 +95,30 @@ const PACKAGE_META: PackageMeta[] = [
   },
   {
     key: 'google_growth',
-    name: 'Local Visibility Retainer',
+    name: 'Google Ads Management',
     description:
-      'Monthly support for businesses that want help keeping their website, Google Business Profile, and reporting aligned.',
+      'Monthly Google Ads management with a transparent split between media spend and management.',
     features: [
-      'Google Business Profile updates and cleanup',
-      'Monthly website edits and light support',
-      'Lead tracking and monthly reporting',
-      'Local SEO recommendations and action list',
-      'Monthly strategy check-in',
+      '₦100,000 monthly ad spend',
+      '₦100,000 monthly management fee',
+      'Campaign setup, keyword targeting, and landing page alignment',
+      'Conversion tracking checks and monthly reporting',
+      'Ongoing optimization focused on leads and calls',
     ],
     highlighted: false,
     category: 'retainer',
   },
   {
     key: 'meta_growth',
-    name: 'Paid Growth Retainer',
+    name: 'Meta Ads Management',
     description:
-      'Monthly campaign management for businesses ready to pair their website with paid traffic and cleaner tracking.',
+      'Monthly Meta Ads management for Facebook and Instagram with a transparent spend-versus-fee breakdown.',
     features: [
-      'Google Ads or Meta Ads management',
-      'Conversion tracking review and event checks',
-      'Landing page alignment recommendations',
-      'Monthly reporting and optimization',
-      'Creative or offer feedback where needed',
+      '₦100,000 monthly ad spend',
+      '₦100,000 monthly management fee',
+      'Campaign setup for Facebook and Instagram placements',
+      'Meta Pixel event checks, audience testing, and reporting',
+      'Creative, offer, and landing page feedback where needed',
     ],
     highlighted: false,
     category: 'retainer',
@@ -222,12 +226,12 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
               Pricing
             </h2>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto sm:mx-0">
-              Clear public pricing in USD for businesses that want a professional website
-              without typical agency overhead. Final quotes only change when scope, content,
-              or integrations change.
+              Clear public pricing in naira for businesses in Asaba and across Nigeria that
+              want a professional website, stronger visibility, and a practical path to leads.
+              Final quotes only change when scope, content, or integrations change.
             </p>
             <p className="text-sm text-text/60 dark:text-gray-400 mt-3">
-              All public prices are shown in USD. Other currencies can be invoiced on request.
+              All public prices are shown in Nigerian naira.
             </p>
           </div>
           {!isStandalone && (
@@ -373,6 +377,10 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
               </motion.div>
             ))}
           </div>
+          <div className="mt-6 rounded-card-lg border border-accent/20 bg-accent/5 p-5 text-sm text-text dark:text-gray-200">
+            Need both Google Ads and Meta Ads together? Ask about our combined paid traffic plan at
+            ₦500,000 per month: ₦400,000 ad spend and ₦100,000 management.
+          </div>
         </motion.div>
 
         <motion.div
@@ -387,7 +395,8 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
           </h3>
           <p className="text-text/70 dark:text-gray-400 text-sm max-w-2xl mx-auto text-center mb-8">
             Every project is different, but these starting points reflect the kinds of
-            websites we build most often for service businesses and growing brands.
+            websites we build most often for service businesses, local brands, and growing
+            companies around Asaba.
           </p>
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {WEBSITE_TYPE_GROUPS.map((group) => (

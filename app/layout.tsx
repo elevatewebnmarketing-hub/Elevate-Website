@@ -33,10 +33,11 @@ export const metadata: Metadata = {
     template: '%s | Elevate Web & Marketing',
   },
   description:
-    'We design high-performance websites and marketing systems that help businesses grow. Web design, development, SEO, and digital marketing for brands that want clearer positioning, stronger trust, and more leads.',
+    'We design high-performance websites and marketing systems for businesses in Asaba and across Nigeria. Web design, development, SEO, and digital marketing for brands that want clearer positioning, stronger trust, and more leads.',
   keywords: [
-    'web design Nigeria',
-    'website development Lagos',
+    'web design Asaba',
+    'website development Asaba',
+    'digital marketing Asaba',
     'digital marketing Nigeria',
     'SEO Nigeria',
     'business website',
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
   creator: 'Elevate Web & Marketing',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'en_NG',
     url: SITE_URL,
     siteName: 'Elevate Web & Marketing',
     title: 'Elevate Web & Marketing | Websites That Convert',
