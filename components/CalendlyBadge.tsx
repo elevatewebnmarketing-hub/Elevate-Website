@@ -14,7 +14,7 @@ export default function CalendlyBadge() {
   return (
     <Script
       src="https://assets.calendly.com/assets/external/widget.js"
-      strategy="afterInteractive"
+      strategy="lazyOnload"
     />
   );
 }

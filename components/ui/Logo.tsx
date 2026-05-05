@@ -11,6 +11,7 @@ interface LogoProps {
   height?: number;
   /** Use for responsive sizing; overrides fixed width/height when set. e.g. "w-28 sm:w-36 md:w-40 lg:w-44 h-auto" */
   className?: string;
+  priority?: boolean;
 }
 
 const filterStyles: Record<LogoVariant, string> = {
@@ -23,6 +24,7 @@ export default function Logo({
   width = 180,
   height = 60,
   className = '',
+  priority = false,
 }: LogoProps) {
   const [whiteAssetFailed, setWhiteAssetFailed] = useState(false);
   const useWhiteAsset = variant === 'white' && !whiteAssetFailed;
@@ -38,7 +40,7 @@ export default function Logo({
       height={height}
       className={`object-contain object-left max-w-full ${filterClass} ${className}`}
       style={isResponsive ? { height: 'auto' } : undefined}
-      priority
+      priority={priority}
       onError={() => {
         if (variant === 'white') setWhiteAssetFailed(true);
       }}
