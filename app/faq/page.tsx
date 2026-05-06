@@ -28,6 +28,10 @@ const STATIC_FAQS = [
     a: 'Every build includes mobile-first design, conversion-focused structure, core technical SEO foundations, and a clear lead capture path. Our Starter Website package at ₦250,000 includes a 4-page website, Google Business Profile setup, 1 year of domain registration, mobile optimization, and core search-engine optimization.',
   },
   {
+    q: 'What exactly is included in the ₦250,000 Starter Website package?',
+    a: 'The ₦250,000 Starter Website package includes a 4-page business website, 1 year of domain registration, Google Business Profile setup or cleanup, mobile optimization, core on-page SEO, indexation setup, and conversion-focused contact options such as WhatsApp, click-to-call, and contact form sections.',
+  },
+  {
     q: 'Do you only work with clients in Nigeria?',
     a: 'No. We are based in Asaba, Delta State, and work with businesses across Nigeria and beyond. The website now shows public pricing in naira for clarity.',
   },
