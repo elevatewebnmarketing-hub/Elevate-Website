@@ -15,6 +15,7 @@ interface BlogPost {
   publishedAt: string;
   author: string;
   image: string | null;
+  viewCount?: number;
 }
 
 export default function AdminBlogPage() {
@@ -77,13 +78,14 @@ export default function AdminBlogPage() {
                 <th className="text-left px-4 py-3 text-sm font-semibold text-primary">Title</th>
                 <th className="text-left px-4 py-3 text-sm font-semibold text-primary hidden sm:table-cell">Excerpt</th>
                 <th className="text-left px-4 py-3 text-sm font-semibold text-primary">Date</th>
+                <th className="text-left px-4 py-3 text-sm font-semibold text-primary">Views</th>
                 <th className="text-left px-4 py-3 text-sm font-semibold text-primary hidden md:table-cell">Author</th>
                 <th className="w-28 px-4 py-3 text-right text-sm font-semibold text-primary">Actions</th>
               </tr>
             </thead>
             <tbody>
               {[1, 2, 3, 4, 5].map((i) => (
-                <TableRowSkeleton key={i} cols={4} />
+                <TableRowSkeleton key={i} cols={5} />
               ))}
             </tbody>
           </table>
@@ -148,6 +150,7 @@ export default function AdminBlogPage() {
                   <th className="text-left px-4 py-3 text-sm font-semibold text-primary">Title</th>
                   <th className="text-left px-4 py-3 text-sm font-semibold text-primary hidden sm:table-cell">Excerpt</th>
                   <th className="text-left px-4 py-3 text-sm font-semibold text-primary">Date</th>
+                  <th className="text-left px-4 py-3 text-sm font-semibold text-primary">Views</th>
                   <th className="text-left px-4 py-3 text-sm font-semibold text-primary hidden md:table-cell">Author</th>
                   <th className="w-28 px-4 py-3 text-right text-sm font-semibold text-primary">Actions</th>
                 </tr>
@@ -166,6 +169,9 @@ export default function AdminBlogPage() {
                     </td>
                     <td className="px-4 py-3 text-sm text-text/70 whitespace-nowrap">
                       {new Date(post.publishedAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-4 py-3 text-sm text-text/70 whitespace-nowrap">
+                      {post.viewCount ?? 0}
                     </td>
                     <td className="px-4 py-3 text-sm text-text/70 hidden md:table-cell">
                       {post.author}

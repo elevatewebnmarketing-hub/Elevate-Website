@@ -19,6 +19,15 @@ export interface BlogPost {
   publishedAt: string;
   author: string;
   image: string | null;
+  viewCount?: number;
+}
+
+interface BlogPostView {
+  id: string;
+  postId: string;
+  visitorId: string;
+  viewedAt: string;
+  userAgent: string | null;
 }
 
 export interface Testimonial {
@@ -96,7 +105,42 @@ function fromBlogRow(row: Record<string, unknown>): BlogPost {
     publishedAt: String(row.published_at ?? row.publishedAt ?? ''),
     author: String(row.author ?? ''),
     image: row.image ? String(row.image) : null,
+    viewCount: typeof row.view_count === 'number' ? Number(row.view_count) : undefined,
   };
+}
+
+function fromBlogViewRow(row: Record<string, unknown>): BlogPostView {
+  return {
+    id: String(row.id),
+    postId: String(row.post_id ?? row.postId),
+    visitorId: String(row.visitor_id ?? row.visitorId),
+    viewedAt: String(row.viewed_at ?? row.viewedAt ?? ''),
+    userAgent: row.user_agent ? String(row.user_agent) : null,
+  };
+}
+
+async function getBlogViewEvents(): Promise<BlogPostView[]> {
+  const supabase = getSupabase();
+  if (supabase) {
+    const { data, error } = await supabase
+      .from('blog_post_views')
+      .select('id, post_id, visitor_id, viewed_at, user_agent');
+    if (!error && data) return data.map((row) => fromBlogViewRow(row));
+  }
+
+  try {
+    return await readJsonFile<BlogPostView[]>('blog-views.json');
+  } catch {
+    return [];
+  }
+}
+
+function buildBlogViewCountMap(events: BlogPostView[]): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const event of events) {
+    counts.set(event.postId, (counts.get(event.postId) ?? 0) + 1);
+  }
+  return counts;
 }
 
 function toTestimonialRow(item: Testimonial) {
@@ -161,13 +205,25 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       .select('*')
       .order('published_at', { ascending: false });
     if (!error && data) {
-      return data.map((row) => fromBlogRow(row));
+      const viewCounts = buildBlogViewCountMap(await getBlogViewEvents());
+      return data.map((row) => {
+        const post = fromBlogRow(row);
+        post.viewCount = viewCounts.get(post.id) ?? 0;
+        return post;
+      });
     }
   }
-  const posts = await readJsonFile<BlogPost[]>('blog.json');
+  const [posts, viewEvents] = await Promise.all([
+    readJsonFile<BlogPost[]>('blog.json'),
+    getBlogViewEvents(),
+  ]);
+  const viewCounts = buildBlogViewCountMap(viewEvents);
   return posts.sort(
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  ).map((post) => ({
+    ...post,
+    viewCount: viewCounts.get(post.id) ?? post.viewCount ?? 0,
+  }));
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
@@ -200,8 +256,9 @@ export async function saveBlogPost(post: BlogPost): Promise<void> {
   }
   const posts = await getBlogPosts();
   const index = posts.findIndex((p) => p.id === post.id);
-  if (index >= 0) posts[index] = post;
-  else posts.push(post);
+  const normalizedPost = { ...post, viewCount: post.viewCount ?? posts[index]?.viewCount ?? 0 };
+  if (index >= 0) posts[index] = normalizedPost;
+  else posts.push(normalizedPost);
   await writeJsonFile('blog.json', posts);
 }
 
@@ -215,6 +272,78 @@ export async function deleteBlogPost(id: string): Promise<void> {
   const posts = await getBlogPosts();
   const filtered = posts.filter((p) => p.id !== id);
   await writeJsonFile('blog.json', filtered);
+
+  try {
+    const events = await getBlogViewEvents();
+    const remaining = events.filter((event) => event.postId !== id);
+    await writeJsonFile('blog-views.json', remaining);
+  } catch {
+    // ignore local cleanup failure
+  }
+}
+
+export async function getBlogPostViewCount(postId: string): Promise<number> {
+  const events = await getBlogViewEvents();
+  return events.filter((event) => event.postId === postId).length;
+}
+
+export async function recordBlogPostView(input: {
+  postId: string;
+  visitorId: string;
+  userAgent?: string | null;
+  dedupeWindowHours?: number;
+}): Promise<number> {
+  const { postId, visitorId, userAgent = null, dedupeWindowHours = 12 } = input;
+  const now = new Date();
+  const cutoff = new Date(now.getTime() - dedupeWindowHours * 60 * 60 * 1000).toISOString();
+
+  const supabase = getSupabase();
+  if (supabase) {
+    const { data: existing, error: existingError } = await supabase
+      .from('blog_post_views')
+      .select('id')
+      .eq('post_id', postId)
+      .eq('visitor_id', visitorId)
+      .gte('viewed_at', cutoff)
+      .limit(1);
+
+    if (!existingError && existing && existing.length > 0) {
+      return getBlogPostViewCount(postId);
+    }
+
+    const { error: insertError } = await supabase.from('blog_post_views').insert({
+      id: createId(),
+      post_id: postId,
+      visitor_id: visitorId,
+      viewed_at: now.toISOString(),
+      user_agent: userAgent,
+    });
+
+    if (!insertError) {
+      return getBlogPostViewCount(postId);
+    }
+  }
+
+  const events = await getBlogViewEvents();
+  const hasRecentView = events.some(
+    (event) =>
+      event.postId === postId &&
+      event.visitorId === visitorId &&
+      event.viewedAt >= cutoff
+  );
+
+  if (!hasRecentView) {
+    events.push({
+      id: createId(),
+      postId,
+      visitorId,
+      viewedAt: now.toISOString(),
+      userAgent,
+    });
+    await writeJsonFile('blog-views.json', events);
+  }
+
+  return events.filter((event) => event.postId === postId).length;
 }
 
 // --- Testimonials ---

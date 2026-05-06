@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import { getBlogPostBySlug, getBlogPosts } from '@/lib/data';
 import { stripHtmlTags } from '@/lib/blog-utils';
 import BlogPostJsonLd from '@/components/seo/BlogPostJsonLd';
+import BlogPostViewTracker from '@/components/blog/BlogPostViewTracker';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, User, ArrowRight, Clock } from 'lucide-react';
@@ -146,6 +147,7 @@ export default async function BlogPostPage({
   return (
     <>
       <BlogPostJsonLd post={post} />
+      <BlogPostViewTracker slug={post.slug} />
       <Header />
       <main className="min-h-screen bg-background dark:bg-slate-900">
         <article>
