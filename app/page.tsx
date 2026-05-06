@@ -14,6 +14,7 @@ import FounderStrip from '@/components/sections/FounderStrip';
 import Blog from '@/components/sections/Blog';
 import Pricing from '@/components/sections/Pricing';
 import FinalCTA from '@/components/sections/FinalCTA';
+import OfferSummary from '@/components/sections/OfferSummary';
 import { getBlogPosts } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -37,6 +38,7 @@ export default async function Home() {
         <Process />
         <Testimonials />
         <Pricing />
+        <OfferSummary />
         <FounderStrip />
         <Blog initialPosts={posts.slice(0, 3)} />
         <FinalCTA />

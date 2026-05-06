@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
+import ServicesJsonLd from '@/components/seo/ServicesJsonLd';
 import {
   ArrowRight,
   BarChart3,
@@ -98,6 +99,7 @@ export default function ServicesPage() {
     <>
       <Header />
       <main className="pt-24 pb-16 min-h-screen bg-background dark:bg-slate-900">
+        <ServicesJsonLd />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
