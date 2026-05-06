@@ -6,7 +6,7 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'Transparent pricing for web design and marketing services. Fixed packages and custom quotes for businesses in Asaba, Delta State, and across Nigeria.',
+    'Transparent pricing for web design and marketing services. Our ₦250,000 Starter Website package includes a 4-page website, 1 year of domain registration, Google Business Profile setup, SEO foundations, and mobile optimization.',
   keywords: [
     'web design pricing Asaba',
     'website cost Nigeria',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Pricing | Elevate Web & Marketing',
-    description: 'Web design and marketing package pricing. Clear, fixed options.',
+    description: 'Clear, fixed package pricing including a ₦250,000 Starter Website with domain, Google Business Profile, SEO foundations, and mobile optimization.',
     url: `${SITE_URL}/pricing`,
   },
   alternates: { canonical: '/pricing' },

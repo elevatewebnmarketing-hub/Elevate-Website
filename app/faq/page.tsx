@@ -25,7 +25,7 @@ const STATIC_FAQS = [
   },
   {
     q: 'What is included in your website packages?',
-    a: 'Every build includes mobile-first design, conversion-focused structure, core technical SEO foundations, and a clear lead capture path. Higher packages add more pages, stronger strategy, deeper tracking, and launch support.',
+    a: 'Every build includes mobile-first design, conversion-focused structure, core technical SEO foundations, and a clear lead capture path. Our Starter Website package at ₦250,000 includes a 4-page website, Google Business Profile setup, 1 year of domain registration, mobile optimization, and core search-engine optimization.',
   },
   {
     q: 'Do you only work with clients in Nigeria?',

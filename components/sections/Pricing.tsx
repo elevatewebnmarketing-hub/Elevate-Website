@@ -27,13 +27,14 @@ const PACKAGE_META: PackageMeta[] = [
     key: 'starter',
     name: 'Starter Website',
     description:
-      'For small businesses in Asaba that need a clean, credible website and a simple launch campaign without overcomplicating the process.',
+      'For small businesses that need a clean, credible website with the essentials handled properly from day one.',
     features: [
-      '3 conversion-focused pages',
+      '4 conversion-focused pages',
       'Mobile-first design with contact form, click-to-call, and WhatsApp CTA',
+      'Search-engine-optimized page structure and core on-page SEO setup',
       'Google Business Profile setup or cleanup',
-      'One Google Ads lead-generation campaign managed for 1 week',
-      'Basic on-page SEO, indexation setup, and analytics foundation',
+      '1 year of domain registration included',
+      'Indexation setup and mobile performance optimization',
       'One revision round before launch',
       'Typical delivery: 7 to 10 business days',
     ],
