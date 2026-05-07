@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import { siteConfig } from '@/lib/site-config';
 import LandingPageVideo from '@/app/google-business-profile-website-offer/LandingPageVideo';
+import LandingPageViewTracker from '@/app/google-business-profile-website-offer/LandingPageViewTracker';
 import TrackedActionLink from '@/app/google-business-profile-website-offer/TrackedActionLink';
 import TrackedWhatsAppLink from '@/app/google-business-profile-website-offer/TrackedWhatsAppLink';
 import {
@@ -148,6 +149,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
     <>
       <Header />
       <main className="min-h-screen bg-background pt-24 pb-16 dark:bg-slate-900">
+        <LandingPageViewTracker />
         <FaqJsonLd faqs={faqs} />
 
         <section className="relative overflow-hidden">
