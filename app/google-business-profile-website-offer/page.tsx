@@ -3,6 +3,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import { siteConfig } from '@/lib/site-config';
+import LandingPageVideo from '@/app/google-business-profile-website-offer/LandingPageVideo';
 import {
   ArrowRight,
   BadgeCheck,
@@ -39,7 +40,7 @@ const faqs = [
   },
   {
     q: 'What does Google Business Profile optimization usually cover?',
-    a: 'Optimization typically focuses on complete business information, the right categories, service details, visual assets, review strategy, and profile accuracy so customers can more easily understand and trust your business.',
+    a: 'Optimization typically focuses on complete business information, the right categories, service details, business hours, photos, website links, review strategy, and profile accuracy so customers can more easily understand and trust your business.',
   },
   {
     q: 'How long does the process usually take?',
@@ -48,6 +49,30 @@ const faqs = [
   {
     q: 'Will I need to provide anything?',
     a: 'Usually yes. Most businesses will need to provide basic business details, contact information, brand assets, service descriptions, and access to any existing Google Business Profile or website accounts.',
+  },
+  {
+    q: 'Will you help us verify the Google Business Profile if needed?',
+    a: 'Yes. If verification is required, we will guide you through the steps and tell you what is needed. Google requires verified profiles for some profile features and for performance data inside Business Profile.',
+  },
+  {
+    q: 'Can reviews really affect whether people choose my business?',
+    a: 'Yes. Reviews influence trust, and Google also points business owners toward review management as part of stronger profile performance. We help you present your business well and create a clearer review follow-up strategy.',
+  },
+  {
+    q: 'Do photos and videos on Google Business Profile matter?',
+    a: 'Yes. Visual content helps customers understand what your business offers and makes the profile feel more complete and trustworthy. That is one reason profile optimization should not stop at just the text fields.',
+  },
+  {
+    q: 'What if my business serves customers at their location instead of at a shop?',
+    a: 'That can still work. Service-area businesses can be eligible for Google Business Profile, as long as the business meets Google’s eligibility rules for in-person service and accurate service-area representation.',
+  },
+  {
+    q: 'Can you guarantee that my business will rank number one on Google?',
+    a: 'No one can guarantee that. Google says local results are influenced by factors like relevance, distance, and prominence. What we can do is help your business present complete, accurate, and stronger information so you are in a much better position.',
+  },
+  {
+    q: 'Will the website include a way for people to contact me quickly?',
+    a: 'Yes. The goal is to make it easy for a visitor to understand what you do and then take the next step, whether that is calling, messaging on WhatsApp, or submitting an enquiry.',
   },
   {
     q: 'Are domain, hosting, or other third-party costs part of the NGN 250,000?',
@@ -135,13 +160,13 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
                 Website + Google Business Profile Offer
               </div>
               <h1 className="font-heading text-4xl font-bold leading-tight text-primary dark:text-white sm:text-5xl lg:text-6xl">
-                You are here because your business needs to look credible online and turn more searches into leads.
+                If customers cannot find your business online, this is how we help them find you now.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-text/80 dark:text-gray-300 sm:text-xl">
-                This page explains the exact offer in the ad: a business website plus Google
-                Business Profile optimization for <span className="font-bold text-primary dark:text-white">NGN 250,000</span>.
-                Watch the video below to see why this matters and why businesses that show up
-                clearly online are easier to trust, contact, and buy from.
+                Play now to understand what we will do for your business. We build a business
+                website and optimize your Google Business Profile so people can find you, trust
+                you, and message you more easily. The full offer is
+                <span className="font-bold text-primary dark:text-white"> NGN 250,000</span>.
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -150,7 +175,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
                   className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 font-heading text-base font-semibold text-white shadow-soft transition-colors hover:bg-accent/90"
                 >
                   <PlayCircle size={20} />
-                  Click Here to Watch the Video
+                  Play This Video
                 </a>
                 <a
                   href={whatsappUrl}
@@ -159,7 +184,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
                   className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-primary/15 bg-white px-7 py-4 font-heading text-base font-semibold text-primary transition-colors hover:border-accent hover:text-accent dark:border-white/15 dark:bg-slate-800 dark:text-white"
                 >
                   <MessageCircleMore size={20} />
-                  Message Us on WhatsApp
+                  Message Us Directly on WhatsApp
                 </a>
               </div>
 
@@ -200,8 +225,8 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
                     <div className="flex items-start gap-3">
                       <ArrowRight className="mt-0.5 h-5 w-5 text-accent" />
                       <p className="text-sm text-white/90">
-                        Watch the video first, then message us on WhatsApp when you are ready to
-                        move forward.
+                        Play this video, understand what we will do for your business, then message
+                        us on WhatsApp when you are ready to move forward.
                       </p>
                     </div>
                   </div>
@@ -228,30 +253,21 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
                 Watch the explanation
               </p>
               <h2 className="font-heading text-3xl font-bold text-primary dark:text-white sm:text-4xl">
-                Watch the video to understand why this offer matters for your business.
+                Play this video to see how customers can find your business online now.
               </h2>
               <p className="mt-4 text-base leading-7 text-text/80 dark:text-gray-300 sm:text-lg">
-                The video explains why a business website and a properly optimized Google Business
-                Profile can help your business generate more trust, more visibility, and more
-                enquiries from people who are already looking for what you do.
+                This video explains what a better website and a properly optimized Google Business
+                Profile can do for your business, why visibility matters, and how this helps turn
+                search interest into real enquiries.
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-[28px] border border-primary/10 bg-primary p-2 shadow-2xl shadow-primary/10">
-              <video
-                controls
-                preload="metadata"
-                className="aspect-video w-full rounded-[22px] bg-black object-contain"
-              >
-                <source src="/videos/website-google-business-profile-offer.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+            <LandingPageVideo src="/videos/customers-find-you-online-offer.mp4" />
 
             <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-accent/20 bg-accent/10 p-5 sm:flex-row sm:items-center sm:justify-between">
               <p className="max-w-2xl text-sm leading-6 text-primary dark:text-white">
-                Finished watching? If you are ready to purchase the offer, click below and message
-                us directly on WhatsApp.
+                Finished watching? Message us directly on WhatsApp now if you are ready to purchase
+                the <span className="font-bold">NGN 250,000</span> offer.
               </p>
               <a
                 href={whatsappUrl}
@@ -348,7 +364,8 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
               </h2>
               <p className="mt-4 text-base leading-7 text-text/80 dark:text-gray-300">
                 These questions reflect the things businesses commonly ask before investing in a
-                website and Google Business Profile optimization.
+                website and Google Business Profile optimization, including the extra questions that
+                usually come up around eligibility, verification, reviews, and ranking.
               </p>
             </div>
 
@@ -375,12 +392,13 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
                 Clear next step
               </p>
               <h2 className="mt-4 font-heading text-3xl font-bold sm:text-4xl">
-                Watch the video. If you are ready, message us on WhatsApp and purchase the offer.
+                Play this video. If you are ready, message us on WhatsApp and get started.
               </h2>
               <p className="mt-4 max-w-3xl text-base leading-7 text-white/80">
                 This page is here to remind you why you clicked, what the offer is, and what to do
                 next. The offer is <span className="font-bold text-white">NGN 250,000</span> for a
-                business website plus Google Business Profile optimization.
+                business website plus Google Business Profile optimization so customers can find and
+                trust your business more easily online.
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -389,7 +407,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
                   className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 font-heading text-base font-semibold text-primary transition-colors hover:bg-white/90"
                 >
                   <PlayCircle size={20} />
-                  Watch the Video
+                  Play This Video
                 </a>
                 <a
                   href={whatsappUrl}
