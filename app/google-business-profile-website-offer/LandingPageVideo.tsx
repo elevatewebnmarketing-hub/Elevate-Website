@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { PlayCircle } from 'lucide-react';
+import { trackMetaEvent } from '@/app/google-business-profile-website-offer/tracking';
 
 type LandingPageVideoProps = {
   src: string;
@@ -9,12 +10,18 @@ type LandingPageVideoProps = {
 
 export default function LandingPageVideo({ src }: LandingPageVideoProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const pendingOverlayPlayRef = useRef(false);
   const [hasStarted, setHasStarted] = useState(false);
 
   const handlePlay = async () => {
     if (!videoRef.current) return;
 
     setHasStarted(true);
+    pendingOverlayPlayRef.current = true;
+    trackMetaEvent('LandingPageVideoPlay', {
+      landing_page: 'google-business-profile-website-offer',
+      click_target: 'video_overlay_button',
+    });
     try {
       await videoRef.current.play();
     } catch {
@@ -28,7 +35,17 @@ export default function LandingPageVideo({ src }: LandingPageVideoProps) {
         ref={videoRef}
         controls
         preload="metadata"
-        onPlay={() => setHasStarted(true)}
+        onPlay={() => {
+          setHasStarted(true);
+          if (pendingOverlayPlayRef.current) {
+            pendingOverlayPlayRef.current = false;
+            return;
+          }
+          trackMetaEvent('LandingPageVideoPlay', {
+            landing_page: 'google-business-profile-website-offer',
+            click_target: 'video_controls',
+          });
+        }}
         className="aspect-video w-full rounded-[22px] bg-black object-contain"
       >
         <source src={src} type="video/mp4" />

@@ -4,6 +4,8 @@ import Footer from '@/components/layout/Footer';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import { siteConfig } from '@/lib/site-config';
 import LandingPageVideo from '@/app/google-business-profile-website-offer/LandingPageVideo';
+import TrackedActionLink from '@/app/google-business-profile-website-offer/TrackedActionLink';
+import TrackedWhatsAppLink from '@/app/google-business-profile-website-offer/TrackedWhatsAppLink';
 import {
   ArrowRight,
   BadgeCheck,
@@ -170,22 +172,25 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <a
+                <TrackedActionLink
                   href="#watch-video"
+                  eventName="PlayVideoLinkClick"
+                  eventLabel="hero_play_video_cta"
                   className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-accent px-7 py-4 font-heading text-base font-semibold text-white shadow-soft transition-colors hover:bg-accent/90"
                 >
                   <PlayCircle size={20} />
                   Play This Video
-                </a>
-                <a
+                </TrackedActionLink>
+                <TrackedWhatsAppLink
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  eventLabel="hero_whatsapp_cta"
                   className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border-2 border-primary/15 bg-white px-7 py-4 font-heading text-base font-semibold text-primary transition-colors hover:border-accent hover:text-accent dark:border-white/15 dark:bg-slate-800 dark:text-white"
                 >
                   <MessageCircleMore size={20} />
                   Message Us Directly on WhatsApp
-                </a>
+                </TrackedWhatsAppLink>
               </div>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -231,15 +236,16 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
                     </div>
                   </div>
 
-                  <a
+                  <TrackedWhatsAppLink
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    eventLabel="pricing_card_whatsapp_cta"
                     className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-6 py-4 font-heading text-base font-semibold text-white transition-transform hover:scale-[1.01]"
                   >
                     <MessageCircleMore size={20} />
                     Buy via WhatsApp
-                  </a>
+                  </TrackedWhatsAppLink>
                 </div>
               </div>
             </div>
@@ -269,15 +275,16 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
                 Finished watching? Message us directly on WhatsApp now if you are ready to purchase
                 the <span className="font-bold">NGN 250,000</span> offer.
               </p>
-              <a
+              <TrackedWhatsAppLink
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                eventLabel="video_section_whatsapp_cta"
                 className="inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 font-heading text-sm font-semibold text-white"
               >
                 <MessageCircleMore size={18} />
                 Message Us on WhatsApp
-              </a>
+              </TrackedWhatsAppLink>
             </div>
           </div>
         </section>
@@ -402,22 +409,25 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <a
+                <TrackedActionLink
                   href="#watch-video"
+                  eventName="PlayVideoLinkClick"
+                  eventLabel="final_play_video_cta"
                   className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 font-heading text-base font-semibold text-primary transition-colors hover:bg-white/90"
                 >
                   <PlayCircle size={20} />
                   Play This Video
-                </a>
-                <a
+                </TrackedActionLink>
+                <TrackedWhatsAppLink
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  eventLabel="final_whatsapp_cta"
                   className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#25D366] px-7 py-4 font-heading text-base font-semibold text-white"
                 >
                   <MessageCircleMore size={20} />
                   Message Us on WhatsApp
-                </a>
+                </TrackedWhatsAppLink>
               </div>
             </div>
           </div>

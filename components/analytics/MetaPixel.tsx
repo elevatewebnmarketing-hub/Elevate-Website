@@ -10,7 +10,7 @@ import Script from 'next/script';
  * NEXT_PUBLIC_META_PIXEL_ID unset here to avoid duplicate PageView events.
  */
 export default function MetaPixel() {
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || '1014477000909776';
   if (!pixelId) return null;
 
   return (
