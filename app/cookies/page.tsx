@@ -18,7 +18,7 @@ export default function CookiePolicyPage() {
             Cookie Policy
           </h1>
           <p className="text-text/60 dark:text-gray-400 text-sm mb-10">
-            Last updated: April 2026
+            Last updated: May 2026
           </p>
 
           <div className="prose prose-sm sm:prose max-w-none dark:prose-invert text-text/80 dark:text-gray-300 space-y-8">
@@ -79,6 +79,12 @@ export default function CookiePolicyPage() {
                       <td className="px-4 py-3">Meta Pixel — used to measure the effectiveness of our Facebook and Instagram advertising.</td>
                       <td className="px-4 py-3">90 days</td>
                     </tr>
+                    <tr>
+                      <td className="px-4 py-3 font-mono text-xs">_ttp, ttclid, ttcsid*</td>
+                      <td className="px-4 py-3">Cookie</td>
+                      <td className="px-4 py-3">TikTok Pixel — used to measure and improve the effectiveness of our TikTok advertising.</td>
+                      <td className="px-4 py-3">Up to 13 months</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -108,6 +114,7 @@ export default function CookiePolicyPage() {
               <ul className="list-disc pl-5 space-y-1 mt-2">
                 <li><strong>Google Analytics / GTM</strong> — website analytics</li>
                 <li><strong>Meta (Facebook) Pixel</strong> — advertising measurement</li>
+                <li><strong>TikTok Pixel</strong> — advertising measurement</li>
                 <li><strong>Calendly</strong> — booking widget (sets cookies when you interact with it)</li>
                 <li><strong>ip-api.com</strong> — IP-based country detection (no cookies set by us)</li>
               </ul>

@@ -8,6 +8,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import CalendlyBadge from '@/components/CalendlyBadge';
 import WhatsAppFloatButton from '@/components/WhatsAppFloatButton';
 import MetaPixel from '@/components/analytics/MetaPixel';
+import TikTokPixel from '@/components/analytics/TikTokPixel';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -121,6 +122,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         <MetaPixel />
+        <TikTokPixel />
         <JsonLd />
         <ThemeScript />
         <ThemeProvider>{children}</ThemeProvider>

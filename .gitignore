@@ -37,3 +37,14 @@ next-env.d.ts
 
 # Claude Code local notes (never push to GitHub)
 .claude/
+
+# Local-only client payment docs (never push to GitHub)
+/docs/client-payment-pack/
+/scripts/generate_client_payment_pack_pdf.py
+
+# Local-only business/marketing material (never push to GitHub)
+/docs/business-playbook/
+/docs/meta-ads-upload-sheet.csv
+/scripts/generate_business_playbook_docx.py
+/scripts/generate_target_towns_docx.py
+/tmp_ad_review/

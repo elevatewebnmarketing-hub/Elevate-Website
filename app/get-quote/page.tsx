@@ -5,6 +5,11 @@ import { motion } from 'framer-motion';
 import { FileText } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import {
+  createTikTokEventId,
+  getTikTokAttribution,
+  trackTikTokEvent,
+} from '@/lib/tiktok';
 
 export default function GetQuotePage() {
   const [loading, setLoading] = useState(false);
@@ -20,6 +25,7 @@ export default function GetQuotePage() {
     if (!form) return;
 
     const fd = new FormData(form);
+    const tiktokEventId = createTikTokEventId('Lead');
     const payload = {
       name: (fd.get('name') as string) ?? '',
       email: (fd.get('email') as string) ?? '',
@@ -31,6 +37,8 @@ export default function GetQuotePage() {
       budget: (fd.get('budget') as string) || undefined,
       message: (fd.get('message') as string) ?? '',
       source: 'quote',
+      tiktokEventId,
+      ...getTikTokAttribution(),
     };
 
     setLoading(true);
@@ -45,6 +53,7 @@ export default function GetQuotePage() {
         setError(typeof data.error === 'string' ? data.error : 'Something went wrong. Please try again.');
         return;
       }
+      trackTikTokEvent('Lead', undefined, tiktokEventId);
       setSuccess(true);
       form.reset();
     } catch {

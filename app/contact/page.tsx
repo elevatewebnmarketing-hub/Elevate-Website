@@ -9,6 +9,11 @@ import Footer from '@/components/layout/Footer';
 import FinalCTASection from '@/components/sections/FinalCTA';
 import { openCalendly } from '@/lib/calendly';
 import { siteConfig } from '@/lib/site-config';
+import {
+  createTikTokEventId,
+  getTikTokAttribution,
+  trackTikTokEvent,
+} from '@/lib/tiktok';
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
@@ -24,6 +29,7 @@ export default function ContactPage() {
     if (!form) return;
 
     const fd = new FormData(form);
+    const tiktokEventId = createTikTokEventId('Lead');
     const payload = {
       name: (fd.get('name') as string) ?? '',
       email: (fd.get('email') as string) ?? '',
@@ -32,6 +38,8 @@ export default function ContactPage() {
       timeline: (fd.get('timeline') as string) || undefined,
       budget: (fd.get('budget') as string) || undefined,
       message: (fd.get('message') as string) ?? '',
+      tiktokEventId,
+      ...getTikTokAttribution(),
     };
 
     setLoading(true);
@@ -46,6 +54,7 @@ export default function ContactPage() {
         setError(typeof data.error === 'string' ? data.error : 'Something went wrong. Please try again.');
         return;
       }
+      trackTikTokEvent('Lead', undefined, tiktokEventId);
       setSuccess(true);
       form.reset();
     } catch {

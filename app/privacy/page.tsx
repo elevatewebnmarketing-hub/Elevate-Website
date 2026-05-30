@@ -51,7 +51,7 @@ export default function PrivacyPage() {
                 We may collect information you provide directly, such as when you fill out a contact form, subscribe to our newsletter, or book a call. This may include your name, email address, phone number, company name, and any message or project details you share.
               </p>
               <p>
-                We also collect information automatically when you visit our website, including your IP address, browser type, device information, and pages you visit. We may use cookies and similar technologies for analytics and to improve your experience.
+                We also collect information automatically when you visit our website, including your IP address, browser type, device information, and pages you visit. We may use cookies and similar technologies for analytics, advertising measurement, and to improve your experience.
               </p>
             </section>
 
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
                 Sharing Your Information
               </h2>
               <p>
-                We do not sell your personal information. We may share your information with trusted service providers who assist us in operating our website and business (e.g., email delivery, analytics) under confidentiality agreements. We may disclose information if required by law.
+                We do not sell your personal information. We may share your information with trusted service providers who assist us in operating our website and business (e.g., email delivery, analytics, and advertising measurement) under confidentiality agreements. Where permitted, advertising measurement may include privacy-safe hashed contact details and browser signals used to understand campaign performance. We may disclose information if required by law.
               </p>
             </section>
 

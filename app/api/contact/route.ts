@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { headers } from 'next/headers';
+import { randomUUID } from 'crypto';
+import { sendTikTokServerEvent } from '@/lib/tiktok-events-api';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev';
@@ -48,6 +50,11 @@ type ContactBody = {
   source?: string;
   projectType?: string;
   industry?: string;
+  tiktokEventId?: string;
+  tiktokEventSourceUrl?: string;
+  tiktokReferrer?: string;
+  tiktokTtp?: string;
+  tiktokTtclid?: string;
 };
 
 function businessEmailHtml(data: Required<Pick<ContactBody, 'name' | 'email' | 'message'>> & ContactBody): string {
@@ -121,6 +128,20 @@ export async function POST(request: Request) {
   const source = typeof body.source === 'string' ? body.source.slice(0, 50) : undefined;
   const projectType = typeof body.projectType === 'string' ? body.projectType.slice(0, 100) : undefined;
   const industry = typeof body.industry === 'string' ? body.industry.slice(0, 100) : undefined;
+  const tiktokEventId =
+    typeof body.tiktokEventId === 'string'
+      ? body.tiktokEventId.trim().slice(0, 200)
+      : `Lead-${randomUUID()}`;
+  const tiktokEventSourceUrl =
+    typeof body.tiktokEventSourceUrl === 'string'
+      ? body.tiktokEventSourceUrl.slice(0, 500)
+      : `https://www.elevatewebandmarketing.com/${source === 'quote' ? 'get-quote' : 'contact'}`;
+  const tiktokReferrer =
+    typeof body.tiktokReferrer === 'string' ? body.tiktokReferrer.slice(0, 500) : undefined;
+  const tiktokTtp =
+    typeof body.tiktokTtp === 'string' ? body.tiktokTtp.slice(0, 500) : undefined;
+  const tiktokTtclid =
+    typeof body.tiktokTtclid === 'string' ? body.tiktokTtclid.slice(0, 500) : undefined;
 
   try {
     const [toBusiness, toUser] = await Promise.all([
@@ -141,6 +162,22 @@ export async function POST(request: Request) {
     if (toBusiness.error || toUser.error) {
       console.error('Resend contact error:', toBusiness.error ?? toUser.error);
       return NextResponse.json({ error: 'Failed to send email. Please try again later.' }, { status: 500 });
+    }
+
+    try {
+      await sendTikTokServerEvent({
+        event: 'Lead',
+        eventId: tiktokEventId,
+        email,
+        ip,
+        userAgent: headerStore.get('user-agent') ?? undefined,
+        ttclid: tiktokTtclid,
+        ttp: tiktokTtp,
+        pageUrl: tiktokEventSourceUrl,
+        referrer: tiktokReferrer,
+      });
+    } catch (error) {
+      console.error('TikTok Events API error:', error);
     }
 
     return NextResponse.json({ success: true });
