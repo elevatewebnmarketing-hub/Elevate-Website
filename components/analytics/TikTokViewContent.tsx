@@ -1,7 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
-import { trackTikTokEvent } from '@/lib/tiktok';
+import {
+  tiktokContentParams,
+  tiktokSlug,
+  trackTikTokEvent,
+} from '@/lib/tiktok';
 
 /**
  * Fires a TikTok `ViewContent` event once when a high-intent page mounts.
@@ -10,15 +14,17 @@ import { trackTikTokEvent } from '@/lib/tiktok';
  */
 export default function TikTokViewContent({
   contentName,
+  contentId,
 }: {
   contentName: string;
+  contentId?: string;
 }) {
   useEffect(() => {
-    trackTikTokEvent('ViewContent', {
-      content_type: 'product',
-      content_name: contentName,
-    });
-  }, [contentName]);
+    trackTikTokEvent(
+      'ViewContent',
+      tiktokContentParams(contentId ?? tiktokSlug(contentName), contentName)
+    );
+  }, [contentName, contentId]);
 
   return null;
 }

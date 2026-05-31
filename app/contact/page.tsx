@@ -13,6 +13,7 @@ import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 import {
   createTikTokEventId,
   getTikTokAttribution,
+  tiktokContentParams,
   trackTikTokEvent,
 } from '@/lib/tiktok';
 
@@ -26,10 +27,10 @@ export default function ContactPage() {
   function handleFormFocus() {
     if (addedToCartRef.current) return;
     addedToCartRef.current = true;
-    trackTikTokEvent('AddToCart', {
-      content_type: 'product',
-      content_name: 'Project Inquiry',
-    });
+    trackTikTokEvent(
+      'AddToCart',
+      tiktokContentParams('project-inquiry', 'Project Inquiry')
+    );
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -53,10 +54,10 @@ export default function ContactPage() {
       ...getTikTokAttribution(),
     };
 
-    trackTikTokEvent('InitiateCheckout', {
-      content_type: 'product',
-      content_name: 'Project Inquiry',
-    });
+    trackTikTokEvent(
+      'InitiateCheckout',
+      tiktokContentParams('project-inquiry', 'Project Inquiry')
+    );
 
     setLoading(true);
     try {
@@ -70,7 +71,11 @@ export default function ContactPage() {
         setError(typeof data.error === 'string' ? data.error : 'Something went wrong. Please try again.');
         return;
       }
-      trackTikTokEvent('Lead', undefined, tiktokEventId);
+      trackTikTokEvent(
+        'Lead',
+        tiktokContentParams('project-inquiry', 'Project Inquiry'),
+        tiktokEventId
+      );
       setSuccess(true);
       form.reset();
     } catch {

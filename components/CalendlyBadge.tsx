@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import Script from 'next/script';
-import { trackTikTokEvent } from '@/lib/tiktok';
+import { tiktokContentParams, trackTikTokEvent } from '@/lib/tiktok';
 
 export default function CalendlyBadge() {
   useEffect(() => {
@@ -20,8 +20,7 @@ export default function CalendlyBadge() {
         (event.data as { event?: string })?.event === 'calendly.event_scheduled'
       ) {
         trackTikTokEvent('Purchase', {
-          content_type: 'product',
-          content_name: 'Discovery Call',
+          ...tiktokContentParams('discovery-call', 'Discovery Call'),
           currency: 'GBP',
           value: 0,
         });

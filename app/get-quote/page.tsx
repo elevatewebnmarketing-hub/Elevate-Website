@@ -9,6 +9,7 @@ import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 import {
   createTikTokEventId,
   getTikTokAttribution,
+  tiktokContentParams,
   trackTikTokEvent,
 } from '@/lib/tiktok';
 
@@ -22,10 +23,10 @@ export default function GetQuotePage() {
   function handleFormFocus() {
     if (addedToCartRef.current) return;
     addedToCartRef.current = true;
-    trackTikTokEvent('AddToCart', {
-      content_type: 'product',
-      content_name: 'Quote Request',
-    });
+    trackTikTokEvent(
+      'AddToCart',
+      tiktokContentParams('quote-request', 'Quote Request')
+    );
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -52,10 +53,10 @@ export default function GetQuotePage() {
       ...getTikTokAttribution(),
     };
 
-    trackTikTokEvent('InitiateCheckout', {
-      content_type: 'product',
-      content_name: 'Quote Request',
-    });
+    trackTikTokEvent(
+      'InitiateCheckout',
+      tiktokContentParams('quote-request', 'Quote Request')
+    );
 
     setLoading(true);
     try {
@@ -69,7 +70,11 @@ export default function GetQuotePage() {
         setError(typeof data.error === 'string' ? data.error : 'Something went wrong. Please try again.');
         return;
       }
-      trackTikTokEvent('Lead', undefined, tiktokEventId);
+      trackTikTokEvent(
+        'Lead',
+        tiktokContentParams('quote-request', 'Quote Request'),
+        tiktokEventId
+      );
       setSuccess(true);
       form.reset();
     } catch {

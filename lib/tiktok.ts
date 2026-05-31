@@ -1,4 +1,49 @@
-type TikTokEventParams = Record<string, string | number | boolean>;
+type TikTokContent = {
+  content_id: string;
+  content_type?: string;
+  content_name?: string;
+  quantity?: number;
+  price?: number;
+};
+
+type TikTokEventParams = Record<
+  string,
+  string | number | boolean | TikTokContent[] | undefined
+>;
+
+/**
+ * Builds the standard TikTok content parameters required for shopping events.
+ * Supplies `content_id` both at the top level and inside the `contents` array
+ * so Video Shopping Ads (VSA) and the diagnostics that scan for `content_id`
+ * are satisfied.
+ */
+export function tiktokContentParams(
+  contentId: string,
+  contentName: string
+): TikTokEventParams {
+  return {
+    content_type: 'product',
+    content_id: contentId,
+    content_name: contentName,
+    contents: [
+      {
+        content_id: contentId,
+        content_type: 'product',
+        content_name: contentName,
+      },
+    ],
+  };
+}
+
+/** Turns a human label into a stable, URL-safe content id. */
+export function tiktokSlug(value: string) {
+  return (
+    value
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'content'
+  );
+}
 
 type TikTokQueue = {
   track: (
