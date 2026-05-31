@@ -7,6 +7,7 @@ import LandingPageVideo from '@/app/google-business-profile-website-offer/Landin
 import LandingPageViewTracker from '@/app/google-business-profile-website-offer/LandingPageViewTracker';
 import TrackedActionLink from '@/app/google-business-profile-website-offer/TrackedActionLink';
 import TrackedWhatsAppLink from '@/app/google-business-profile-website-offer/TrackedWhatsAppLink';
+import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 import {
   ArrowRight,
   BadgeCheck,
@@ -147,6 +148,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
 
   return (
     <>
+      <TikTokViewContent contentName="Google Business Profile Offer" />
       <Header />
       <main className="min-h-screen bg-background pt-24 pb-16 dark:bg-slate-900">
         <LandingPageViewTracker />

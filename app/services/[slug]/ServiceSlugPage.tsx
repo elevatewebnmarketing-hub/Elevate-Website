@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import type { ServicePageConfig } from '@/lib/services-content';
 import { ArrowRight, Check } from 'lucide-react';
+import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 
 interface Props {
   config: ServicePageConfig;
@@ -14,6 +15,7 @@ interface Props {
 export default function ServiceSlugPage({ config }: Props) {
   return (
     <>
+      <TikTokViewContent contentName={config.title} />
       <Header />
       <main className="pt-32 sm:pt-36 md:pt-40 pb-20 min-h-screen bg-background dark:bg-slate-900">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

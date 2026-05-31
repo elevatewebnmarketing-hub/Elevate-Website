@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import { siteConfig } from '@/lib/site-config';
 import { ArrowRight } from 'lucide-react';
 import MetaAdsJsonLd from '@/components/seo/MetaAdsJsonLd';
+import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -34,6 +35,7 @@ export const metadata: Metadata = {
 export default function MetaAdsPage() {
   return (
     <>
+      <TikTokViewContent contentName="Meta Ads Landing" />
       <Header />
       <main className="pt-24 pb-16 min-h-screen bg-background dark:bg-slate-900">
         {/* Hero */}

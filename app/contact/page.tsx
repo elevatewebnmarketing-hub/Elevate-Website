@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import FinalCTASection from '@/components/sections/FinalCTA';
 import { openCalendly } from '@/lib/calendly';
 import { siteConfig } from '@/lib/site-config';
+import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 import {
   createTikTokEventId,
   getTikTokAttribution,
@@ -20,6 +21,16 @@ export default function ContactPage() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const addedToCartRef = useRef(false);
+
+  function handleFormFocus() {
+    if (addedToCartRef.current) return;
+    addedToCartRef.current = true;
+    trackTikTokEvent('AddToCart', {
+      content_type: 'product',
+      content_name: 'Project Inquiry',
+    });
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -41,6 +52,11 @@ export default function ContactPage() {
       tiktokEventId,
       ...getTikTokAttribution(),
     };
+
+    trackTikTokEvent('InitiateCheckout', {
+      content_type: 'product',
+      content_name: 'Project Inquiry',
+    });
 
     setLoading(true);
     try {
@@ -66,6 +82,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <TikTokViewContent contentName="Contact" />
       <Header />
       <main className="pt-24 pb-16 min-h-screen bg-background dark:bg-slate-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -181,7 +198,7 @@ export default function ContactPage() {
                 <h2 className="font-heading font-bold text-2xl text-primary dark:text-white mb-6">
                   Project Inquiry
                 </h2>
-                <form ref={formRef} className="space-y-5" onSubmit={handleSubmit}>
+                <form ref={formRef} className="space-y-5" onSubmit={handleSubmit} onFocus={handleFormFocus}>
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="name" className="block font-body font-medium text-primary dark:text-gray-200 text-sm mb-1.5">

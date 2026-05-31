@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import ServicesJsonLd from '@/components/seo/ServicesJsonLd';
+import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 import {
   ArrowRight,
   BarChart3,
@@ -97,6 +98,7 @@ const supportServices = [
 export default function ServicesPage() {
   return (
     <>
+      <TikTokViewContent contentName="Services" />
       <Header />
       <main className="pt-24 pb-16 min-h-screen bg-background dark:bg-slate-900">
         <ServicesJsonLd />

@@ -1,3 +1,5 @@
+import { trackTikTokEvent } from '@/lib/tiktok';
+
 export const CALENDLY_URL = 'https://calendly.com/elevatewebnmarketing/30min';
 
 declare global {
@@ -25,6 +27,11 @@ function openPopup(): void {
 
 export function openCalendly(): void {
   if (typeof window === 'undefined') return;
+  // Opening the booking widget is a strong intent signal -> AddToCart.
+  trackTikTokEvent('AddToCart', {
+    content_type: 'product',
+    content_name: 'Discovery Call',
+  });
   if (window.Calendly) {
     openPopup();
     return;

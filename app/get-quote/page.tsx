@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { FileText } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 import {
   createTikTokEventId,
   getTikTokAttribution,
@@ -16,6 +17,16 @@ export default function GetQuotePage() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const addedToCartRef = useRef(false);
+
+  function handleFormFocus() {
+    if (addedToCartRef.current) return;
+    addedToCartRef.current = true;
+    trackTikTokEvent('AddToCart', {
+      content_type: 'product',
+      content_name: 'Quote Request',
+    });
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -41,6 +52,11 @@ export default function GetQuotePage() {
       ...getTikTokAttribution(),
     };
 
+    trackTikTokEvent('InitiateCheckout', {
+      content_type: 'product',
+      content_name: 'Quote Request',
+    });
+
     setLoading(true);
     try {
       const res = await fetch('/api/contact', {
@@ -65,6 +81,7 @@ export default function GetQuotePage() {
 
   return (
     <>
+      <TikTokViewContent contentName="Get a Quote" />
       <Header />
       <main className="pt-32 sm:pt-36 md:pt-40 pb-20 min-h-screen bg-background dark:bg-slate-900">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,7 +107,7 @@ export default function GetQuotePage() {
             transition={{ delay: 0.1 }}
             className="bg-white dark:bg-slate-800 rounded-card-lg border border-gray-200 dark:border-white/10 shadow-soft-xl p-6 sm:p-8"
           >
-            <form ref={formRef} className="space-y-5" onSubmit={handleSubmit}>
+            <form ref={formRef} className="space-y-5" onSubmit={handleSubmit} onFocus={handleFormFocus}>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="name" className="block font-body font-medium text-primary dark:text-gray-200 text-sm mb-1.5">
