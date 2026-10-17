@@ -7,6 +7,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { getSupabase } from '@/lib/supabase';
 import type { PricingPackage, LocationCode, PackageKey } from '@/lib/pricing-config';
+import { ALL_LOCATION_CODES, buildFallbackPackages } from '@/lib/pricing-config';
 
 const dataDir = path.join(process.cwd(), 'data');
 
@@ -347,12 +348,9 @@ export async function recordBlogPostView(input: {
 }
 
 // --- Testimonials ---
+// Testimonials, portfolio and pricing are managed in code, not the admin panel (Ufuoma, 17 Oct 2026).
+// Public reads ignore the database; the real Google reviews live in components/sections/Testimonials.tsx.
 export async function getTestimonials(): Promise<Testimonial[]> {
-  const supabase = getSupabase();
-  if (supabase) {
-    const { data, error } = await supabase.from('testimonials').select('*');
-    if (!error && data) return data.map((row) => fromTestimonialRow(row));
-  }
   return readJsonFile<Testimonial[]>('testimonials.json');
 }
 
@@ -390,11 +388,7 @@ export async function deleteTestimonial(id: string): Promise<void> {
 
 // --- Portfolio ---
 export async function getPortfolioItems(): Promise<PortfolioItem[]> {
-  const supabase = getSupabase();
-  if (supabase) {
-    const { data, error } = await supabase.from('portfolio_items').select('*');
-    if (!error && data) return data.map((row) => fromPortfolioRow(row));
-  }
+  // Source of truth: data/portfolio.json (managed in code).
   const raw = await readJsonFile<PortfolioItemInput[]>('portfolio.json');
   return raw.map(normalizePortfolioItem);
 }
@@ -474,20 +468,11 @@ function fromPricingRow(row: Record<string, unknown>): PricingPackage {
 }
 
 export async function getPricingPackages(locationCode?: string): Promise<PricingPackage[]> {
-  const supabase = getSupabase();
-  if (supabase) {
-    let query = supabase
-      .from('pricing_packages')
-      .select('*')
-      .order('location_code')
-      .order('package_key');
-    if (locationCode) query = query.eq('location_code', locationCode.toUpperCase());
-    const { data, error } = await query;
-    if (!error && data) return data.map((row) => fromPricingRow(row));
-  }
-  const all = await readJsonFile<PricingPackage[]>('pricing.json');
-  if (locationCode) return all.filter((p) => p.locationCode === locationCode.toUpperCase());
-  return all;
+  // Source of truth: STATIC_PRICING_FALLBACK in lib/pricing-config.ts (managed in code).
+  const codes = locationCode
+    ? ALL_LOCATION_CODES.filter((c) => c === locationCode.toUpperCase())
+    : ALL_LOCATION_CODES;
+  return codes.flatMap((c) => buildFallbackPackages(c));
 }
 
 export async function savePricingPackage(pkg: PricingPackage): Promise<void> {

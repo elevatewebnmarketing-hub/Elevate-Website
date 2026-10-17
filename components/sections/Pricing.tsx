@@ -52,7 +52,7 @@ const PACKAGE_META: PackageMeta[] = [
       '1 year of domain registration included',
       'Google Business Profile registration and setup',
       'A direct-response sales funnel built around your service offer',
-      '2 weeks of Google Ads or Meta Ads campaign management based on your business type',
+      'Google Business Profile services matched one-to-one with your service pages',
       'GA4 setup, lead form tracking, testimonials, FAQ, and clear call-to-action sections',
       'Two revision rounds before launch',
       'Typical delivery: 2 to 4 weeks',
@@ -81,13 +81,11 @@ const PACKAGE_META: PackageMeta[] = [
     key: 'growth_suite',
     name: 'E-commerce Growth Suite',
     description:
-      'A full launch package for ambitious businesses that want the store, the funnel, the campaign setup, and the tracking done properly from day one.',
+      'A full launch package for ambitious businesses that want the store, the funnel, and the tracking done properly from day one.',
     features: [
       'Everything in the E-commerce Website package',
-      'One-month Google Ads and Meta Ads launch management',
       'GA4 setup with ecommerce and lead event tracking',
-      'Google Tag Manager, Google Ads conversion tracking, and Search Console setup',
-      'Meta Pixel and Meta Conversions API setup for cleaner attribution',
+      'Google Tag Manager and Search Console setup',
       'Funnel page alignment, reporting dashboard, and optimization recommendations',
       'Priority launch support',
     ],
@@ -96,30 +94,26 @@ const PACKAGE_META: PackageMeta[] = [
   },
   {
     key: 'google_growth',
-    name: 'Google Ads Management',
-    description:
-      'Monthly Google Ads management with a transparent split between media spend and management.',
+    name: 'Website Care Plan',
+    description: 'Monthly upkeep so your website stays online, secure and accurate after launch.',
     features: [
-      '₦100,000 monthly ad spend',
-      '₦100,000 monthly management fee',
-      'Campaign setup, keyword targeting, and landing page alignment',
-      'Conversion tracking checks and monthly reporting',
-      'Ongoing optimization focused on leads and calls',
+      'Hosting, domain renewal reminders and uptime monitoring',
+      'Updates, security fixes and backups',
+      'Small text, price and photo changes on WhatsApp',
+      'Monthly form, WhatsApp button and tracking checks',
     ],
     highlighted: false,
     category: 'retainer',
   },
   {
     key: 'meta_growth',
-    name: 'Meta Ads Management',
-    description:
-      'Monthly Meta Ads management for Facebook and Instagram with a transparent spend-versus-fee breakdown.',
+    name: 'SEO Care Plan',
+    description: 'Everything in the Website Care Plan, plus the ongoing work that keeps you visible on Google and AI search.',
     features: [
-      '₦100,000 monthly ad spend',
-      '₦100,000 monthly management fee',
-      'Campaign setup for Facebook and Instagram placements',
-      'Meta Pixel event checks, audience testing, and reporting',
-      'Creative, offer, and landing page feedback where needed',
+      'Google Business Profile posts, photos and review replies',
+      'One new page or blog post a month',
+      'Monthly report: map positions, searches, calls and website clicks',
+      'Listing and citation checks',
     ],
     highlighted: false,
     category: 'retainer',
@@ -183,7 +177,10 @@ function PriceSkeleton() {
 }
 
 export default function Pricing({ isStandalone = false }: PricingProps) {
-  const { packages, isLoading } = useLocationPricing();
+  const { packages, isLoading, locationCode, countryName } = useLocationPricing();
+  // The standalone /pricing page needs this as its one H1.
+  const Heading = isStandalone ? 'h1' : 'h2';
+  const currencyName = { NG: 'Nigerian naira', GB: 'British pounds' }[locationCode as 'NG' | 'GB'] ?? 'US dollars';
 
   const wrapperClass = isStandalone
     ? 'py-24 bg-background dark:bg-slate-900'
@@ -223,16 +220,16 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16"
         >
           <div className="text-center sm:text-left">
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary dark:text-white mb-4">
+            <Heading className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary dark:text-white mb-4">
               Pricing
-            </h2>
+            </Heading>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto sm:mx-0">
-              Clear public pricing in naira for businesses in Asaba and across Nigeria that
-              want a professional website, stronger visibility, and a practical path to leads.
+              Clear public pricing for SEO-ready websites, landing pages and care plans.
               Final quotes only change when scope, content, or integrations change.
             </p>
             <p className="text-sm text-text/60 dark:text-gray-400 mt-3">
-              All public prices are shown in Nigerian naira.
+              Prices shown in {currencyName}
+              {locationCode === 'US' ? ' for clients outside Nigeria and the UK' : ` for clients in ${countryName}`}.
             </p>
           </div>
           {!isStandalone && (
@@ -378,10 +375,6 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
               </motion.div>
             ))}
           </div>
-          <div className="mt-6 rounded-card-lg border border-accent/20 bg-accent/5 p-5 text-sm text-text dark:text-gray-200">
-            Need both Google Ads and Meta Ads together? Ask about our combined paid traffic plan at
-            ₦500,000 per month: ₦400,000 ad spend and ₦100,000 management.
-          </div>
         </motion.div>
 
         <motion.div
@@ -397,7 +390,7 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
           <p className="text-text/70 dark:text-gray-400 text-sm max-w-2xl mx-auto text-center mb-8">
             Every project is different, but these starting points reflect the kinds of
             websites we build most often for service businesses, local brands, and growing
-            companies around Asaba.
+            companies across Nigeria.
           </p>
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {WEBSITE_TYPE_GROUPS.map((group) => (

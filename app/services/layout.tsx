@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -29,15 +28,6 @@ export default function ServicesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <BreadcrumbJsonLd
-        crumbs={[
-          { name: 'Home', url: SITE_URL },
-          { name: 'Services', url: `${SITE_URL}/services` },
-        ]}
-      />
-      {children}
-    </>
-  );
+  // Breadcrumb schema lives on each page: the hub and each service page need different trails.
+  return <>{children}</>;
 }

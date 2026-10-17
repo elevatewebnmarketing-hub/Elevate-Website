@@ -80,8 +80,8 @@ export default function AboutPage() {
                 <ul className="grid sm:grid-cols-2 gap-3 text-base text-text/80 dark:text-gray-300">
                   <li>Website design and development</li>
                   <li>Web applications and internal tools</li>
-                  <li>Google Ads and digital advertising campaigns</li>
-                  <li>Social media and content support</li>
+                  <li>SEO and Google Business Profile optimisation</li>
+                  <li>Landing pages for offers and launches</li>
                   <li>Conversion tracking and analytics</li>
                   <li>Ongoing optimisation and maintenance</li>
                 </ul>

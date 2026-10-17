@@ -6,7 +6,7 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Book a strategy call or request a quote for a website, redesign, landing page, or ongoing support. Elevate works with clients across Nigeria from Asaba, Delta State.',
+    'Book a strategy call or request a quote for a website, redesign, landing page, or ongoing support. Elevate works with clients across Nigeria from Abuja.',
   keywords: [
     'book website strategy call',
     'request website quote',

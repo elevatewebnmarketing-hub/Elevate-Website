@@ -93,7 +93,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-base text-text/60 dark:text-gray-400"
             >
-              Based in Asaba, Delta State, and trusted by growing brands that want clear
+              Based in Abuja, and trusted by growing brands that want clear
               communication, reliable delivery, and websites built to convert.
             </motion.p>
 

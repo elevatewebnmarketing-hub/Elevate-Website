@@ -52,7 +52,7 @@ export default function ServiceSlugPage({ config }: Props) {
                 Common challenges
               </h2>
               <ul className="space-y-2">
-                {config.challenges.map((c) => (
+                {(config.challenges ?? []).map((c) => (
                   <li key={c} className="flex items-start gap-2 text-sm text-text/80 dark:text-gray-300">
                     <span className="text-accent mt-0.5">•</span>
                     {c}
@@ -65,7 +65,7 @@ export default function ServiceSlugPage({ config }: Props) {
                 How we help
               </h2>
               <ul className="space-y-2">
-                {config.solutions.map((s) => (
+                {(config.solutions ?? []).map((s) => (
                   <li key={s} className="flex items-start gap-2 text-sm text-text/80 dark:text-gray-300">
                     <Check className="text-accent flex-shrink-0 mt-0.5" size={16} />
                     {s}

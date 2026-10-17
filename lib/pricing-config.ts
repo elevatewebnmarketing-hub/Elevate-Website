@@ -5,6 +5,8 @@ export type PackageKey =
   | 'business'
   | 'ecommerce'
   | 'growth_suite'
+  // Retired ads plans, reused for care plans so stored prices and the admin panel keep working:
+  // google_growth = Website Care Plan, meta_growth = SEO Care Plan.
   | 'google_growth'
   | 'meta_growth';
 
@@ -62,24 +64,24 @@ export const STATIC_PRICING_FALLBACK: Record<
     business: { amount: 450000, isMonthly: false },
     ecommerce: { amount: 600000, isMonthly: false },
     growth_suite: { amount: 1000000, isMonthly: false },
-    google_growth: { amount: 200000, isMonthly: true },
-    meta_growth: { amount: 200000, isMonthly: true },
+    google_growth: { amount: 30000, isMonthly: true },
+    meta_growth: { amount: 80000, isMonthly: true },
   },
   GB: {
-    starter: { amount: 950, isMonthly: false },
-    business: { amount: 1850, isMonthly: false },
+    starter: { amount: 600, isMonthly: false },
+    business: { amount: 1100, isMonthly: false },
     ecommerce: { amount: 2995, isMonthly: false },
     growth_suite: { amount: 3995, isMonthly: false },
-    google_growth: { amount: 199, isMonthly: true },
-    meta_growth: { amount: 319, isMonthly: true },
+    google_growth: { amount: 49, isMonthly: true },
+    meta_growth: { amount: 149, isMonthly: true },
   },
   US: {
-    starter: { amount: 1250, isMonthly: false },
-    business: { amount: 2400, isMonthly: false },
+    starter: { amount: 750, isMonthly: false },
+    business: { amount: 1400, isMonthly: false },
     ecommerce: { amount: 3900, isMonthly: false },
     growth_suite: { amount: 5200, isMonthly: false },
-    google_growth: { amount: 249, isMonthly: true },
-    meta_growth: { amount: 399, isMonthly: true },
+    google_growth: { amount: 59, isMonthly: true },
+    meta_growth: { amount: 179, isMonthly: true },
   },
   CA: {
     starter: { amount: 1695, isMonthly: false },

@@ -6,17 +6,17 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about Elevate Web & Marketing, an Asaba-based web studio helping service businesses build stronger trust and better lead-generation systems online.',
+    'Learn about Elevate Web & Marketing, an Abuja-based web studio building SEO-ready websites that help service businesses get found and win more customers.',
   keywords: [
     'about elevate web marketing',
-    'asaba web studio',
+    'abuja web studio',
     'service business website studio',
     'web design founder story',
   ],
   openGraph: {
     title: 'About Elevate Web & Marketing',
     description:
-      'An Asaba-based studio building high-performance websites and growth systems for service businesses and growing brands.',
+      'An Abuja-based studio building SEO-ready websites for service businesses across Nigeria.',
     url: `${SITE_URL}/about`,
   },
   alternates: { canonical: '/about' },

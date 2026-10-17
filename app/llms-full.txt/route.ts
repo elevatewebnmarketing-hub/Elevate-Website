@@ -2,7 +2,7 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 const content = `# Elevate Web & Marketing
 
-Elevate Web & Marketing is a web design and digital marketing business based in Asaba, Delta State, Nigeria. The website is public and intended to be crawlable by traditional search engines and AI systems that can read public web pages.
+Elevate Web & Marketing is a web design and SEO business based in Abuja, Nigeria. The website is public and intended to be crawlable by traditional search engines and AI systems that can read public web pages.
 
 ## Core Website Purpose
 
@@ -52,8 +52,7 @@ E-commerce Growth Suite
 - Price: NGN 1,000,000
 - Includes:
   - E-commerce website scope
-  - One-month Google Ads and Meta Ads launch management
-  - GA4, Google Tag Manager, Search Console, Meta Pixel, and Meta Conversions API setup
+  - GA4, Google Tag Manager and Search Console setup
 
 ## Services Summary
 
@@ -65,14 +64,12 @@ Main public service categories include:
 - SEO optimization
 - Google Business Profile support
 - Website care plans
-- Google Ads support
-- Meta Ads support
 
 ## Business Details
 
 - Business name: Elevate Web & Marketing
 - Website: ${SITE_URL}
-- Location: Asaba, Delta State, Nigeria
+- Location: Abuja, Nigeria (service-area business; meetings in Asaba by appointment)
 - Email: hello@elevatewebandmarketing.com
 - Phone: +234 708 603 9012
 

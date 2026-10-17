@@ -12,61 +12,32 @@ interface Testimonial {
   review: string;
 }
 
+// Real 5-star Google reviews, quoted word for word. Add new ones only from the Google profile.
 const defaultTestimonials: Testimonial[] = [
   {
-    id: '1',
-    name: 'MR DGN Group team',
-    business: 'MR DGN Group',
-    review:
-      'Elevate Web & Marketing designed and built our group website from the ground up, bringing all our subsidiaries into one clear, modern home. Partners can now understand what we do at a glance and contact the right business unit easily.',
+    id: 'g-mrdgn',
+    name: 'MrDGN',
+    business: 'MR DGN Group · Google review',
+    review: 'Multiple Website projects well done',
   },
   {
-    id: '2',
-    name: 'MR DGN Construction team',
-    business: 'MR DGN Construction',
-    review:
-      'We needed a website that properly explained our construction services and building materials. Elevate structured the content, created service pages, and added project highlights so clients can request quotes with confidence.',
+    id: 'g-bsg',
+    name: 'Experience Bsg',
+    business: 'Experience BSG · Google review',
+    review: 'I love the website they created for my business. Very professional',
   },
   {
-    id: '3',
-    name: 'MansaLuxeRealty Limited',
-    business: 'MansaLuxeRealty Limited',
-    review:
-      'Elevate designed and developed our real estate website to match our luxury brand. Property listings, enquiry forms, and key pages are now organised in a way that makes it easy for serious buyers to reach out.',
-  },
-  {
-    id: '4',
-    name: 'BSG Beelicious Signatures Global',
-    business: 'Experience BSG',
-    review:
-      'For Experience BSG, Elevate created a product‑focused website that tells our story and showcases our collections. Customers can browse fragrances, learn about each line, and move smoothly towards making a purchase.',
-  },
-  {
-    id: '5',
-    name: 'The Mighty Men Scholars Program',
-    business: 'TMM Scholars',
-    review:
-      'Elevate built our program website to clearly explain our mission, who can apply, and how the selection works. Now, both potential scholars and partners are directed to one central place for accurate information.',
-  },
-  {
-    id: '6',
-    name: 'Mr K Trading Arena',
-    business: 'Trade with MRK',
-    review:
-      'For Trade with MRK, Elevate created a professional online home for our trading education brand. The site now presents our offers, free resources, and mentorship options in a way that builds trust with new traders.',
+    id: 'g-alek',
+    name: 'Alek Malek',
+    business: 'Runway Refined by Alec · Google review',
+    review: 'Amazing work, very professional! I’m pleased with my website',
   },
 ];
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>(defaultTestimonials);
+  // Managed in code (defaultTestimonials above), not the admin panel.
+  const testimonials = defaultTestimonials;
   const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    fetch('/api/testimonials')
-      .then((res) => res.json())
-      .then((data) => Array.isArray(data) && data.length > 0 && setTestimonials(data))
-      .catch(() => {});
-  }, []);
 
   useEffect(() => {
     if (testimonials.length === 0) return;

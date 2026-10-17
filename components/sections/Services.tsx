@@ -9,36 +9,35 @@ const services = [
   {
     icon: FileText,
     title: 'Lead-Generating Websites',
+    href: '/services/website-design',
     description:
       'Professional websites for service businesses that need clearer messaging, stronger trust, and more inbound leads.',
   },
   {
     icon: RefreshCw,
     title: 'Website Redesigns',
+    href: '/services/website-redesign',
     description:
       'Rebuild outdated websites around better structure, better messaging, and a clearer path to conversion.',
   },
   {
     icon: Wrench,
     title: 'Website Care Plans',
+    href: '/services/website-maintenance',
     description:
       'Monthly support for updates, fixes, tracking checks, and the small improvements that keep a site working hard.',
   },
   {
     icon: MapPin,
     title: 'Local Visibility Support',
+    href: '/services/local-seo',
     description:
       'Google Business Profile support, local search cleanup, and reporting that helps service businesses get found.',
   },
   {
-    icon: BarChart3,
-    title: 'Paid Growth Support',
-    description:
-      'Campaign setup and management for businesses that are ready to pair a better website with paid traffic.',
-  },
-  {
     icon: FileText,
     title: 'Landing Pages',
+    href: '/services/landing-pages',
     description:
       'Focused campaign pages built to turn traffic into quote requests, consultations, and high-intent enquiries.',
   },
@@ -87,7 +86,7 @@ export default function Services() {
                 <service.icon className="text-accent" size={28} />
               </div>
               <h3 className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">
-                {service.title}
+                <Link href={service.href} className="hover:text-accent">{service.title}</Link>
               </h3>
               <p className="text-text/80 dark:text-gray-300 text-base leading-relaxed">
                 {service.description}

@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getBlogPosts } from '@/lib/data';
 import { getPortfolioItems } from '@/lib/data';
 import { serviceSlugs } from '@/lib/services-content';
+import { locationSlugs } from '@/lib/location-pages';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -21,11 +22,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/case-studies`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${SITE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
-    { url: `${SITE_URL}/meta-ads`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   ];
 
   const serviceUrls: MetadataRoute.Sitemap = serviceSlugs.map((slug) => ({
     url: `${SITE_URL}/services/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  const locationUrls: MetadataRoute.Sitemap = locationSlugs.map((slug) => ({
+    url: `${SITE_URL}/locations/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
@@ -58,5 +65,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ignore
   }
 
-  return [...staticPages, ...serviceUrls, ...blogUrls, ...portfolioUrls];
+  return [...staticPages, ...serviceUrls, ...locationUrls, ...blogUrls, ...portfolioUrls];
 }

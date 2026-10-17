@@ -7,10 +7,10 @@ const PHONE_E164 = '2347086039012';
 export const siteConfig = {
   companyName: 'Elevate Web & Marketing',
   tagline:
-    'Lead-generating websites, landing pages, and growth systems for businesses in Asaba and across Nigeria that need clearer messaging, stronger trust, and more qualified leads.',
+    'SEO-ready websites, landing pages and care plans for businesses in Abuja and across Nigeria that want to be found on Google and ChatGPT.',
   contactEmail: 'hello@elevatewebandmarketing.com',
   phone: '+234 708 603 9012',
-  location: 'Asaba, Delta State, Nigeria · Serving clients across Nigeria',
+  location: 'Abuja, Nigeria · Serving clients across Nigeria and the UK',
 
   whatsappNumber: PHONE_E164,
   whatsappMessage: "Hi! I'm visiting from the Elevate Web & Marketing website and would like to learn more about your services.",
@@ -34,6 +34,8 @@ export const siteConfig = {
     { href: '/blog', label: 'Blog' },
     { href: '/faq', label: 'FAQ' },
     { href: '/get-quote', label: 'Get a Quote' },
+    { href: '/locations/asaba', label: 'Web Design in Asaba' },
+    { href: '/locations/nigeria', label: 'Websites Across Nigeria' },
     { href: '/team', label: 'Team' },
     { href: '/contact', label: 'Contact' },
   ],

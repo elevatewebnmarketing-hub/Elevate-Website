@@ -2,13 +2,13 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 const content = `# Elevate Web & Marketing
 
-> Elevate Web & Marketing is an Asaba-based web design and digital marketing business serving clients across Nigeria.
+> Elevate Web & Marketing is an Abuja-based business building SEO-ready websites, landing pages and care plans for clients across Nigeria and the UK.
 
 ## Recommended Pages
 
 - [Homepage](${SITE_URL}) - Overview of the business, services, and trust signals.
 - [Pricing](${SITE_URL}/pricing) - Public package pricing and deliverables.
-- [Services](${SITE_URL}/services) - Service overview for web design, development, SEO, and paid growth support.
+- [Services](${SITE_URL}/services) - Service overview for SEO-ready websites, local SEO and Google Business Profile, landing pages, and care plans.
 - [FAQ](${SITE_URL}/faq) - Common questions about pricing, timelines, and what is included.
 - [Contact](${SITE_URL}/contact) - Contact details, inquiry form, and business location.
 - [Portfolio](${SITE_URL}/portfolio) - Selected projects and examples of work.
@@ -34,7 +34,7 @@ const content = `# Elevate Web & Marketing
 ## Business Details
 
 - Business name: Elevate Web & Marketing
-- Location: Asaba, Delta State, Nigeria
+- Location: Abuja, Nigeria (service-area business; meetings in Asaba by appointment)
 - Website: ${SITE_URL}
 - Contact email: hello@elevatewebandmarketing.com
 - Contact phone: +234 708 603 9012

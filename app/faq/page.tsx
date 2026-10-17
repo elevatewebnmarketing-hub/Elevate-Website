@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -33,7 +33,7 @@ const STATIC_FAQS = [
   },
   {
     q: 'Do you only work with clients in Nigeria?',
-    a: 'No. We are based in Asaba, Delta State, and work with businesses across Nigeria and beyond. The website now shows public pricing in naira for clarity.',
+    a: 'No. We are based in Abuja and work with businesses across Nigeria, the UK and beyond. Prices show in naira, pounds or dollars depending on where you are.',
   },
   {
     q: 'Do I need to provide content and images?',
@@ -45,7 +45,7 @@ const STATIC_FAQS = [
   },
   {
     q: 'Do you offer monthly support after launch?',
-    a: 'Yes. We offer monthly retainers for website care, Google Business Profile support, reporting, and paid growth management. Those plans are designed to create ongoing momentum after launch.',
+    a: 'Yes. We offer monthly retainers for website care, SEO, Google Business Profile management, and monthly reporting. Those plans are designed to create ongoing momentum after launch.',
   },
   {
     q: 'Do I need a blog to rank on Google?',
@@ -67,8 +67,8 @@ const PRICING_LABELS: Record<PackageKey, string> = {
   business: 'Business Website',
   ecommerce: 'E-commerce Website',
   growth_suite: 'Growth Suite',
-  google_growth: 'Local Visibility Retainer',
-  meta_growth: 'Paid Growth Retainer',
+  google_growth: 'Website Care Plan',
+  meta_growth: 'SEO Care Plan',
 };
 
 export default function FaqPage() {
@@ -141,21 +141,13 @@ export default function FaqPage() {
                     size={20}
                   />
                 </button>
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-5 pt-0 text-text/80 dark:text-gray-300 border-t border-gray-100 dark:border-white/5">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Always in the HTML (hidden when closed) so search engines and AI tools can read every answer. */}
+                <div
+                  hidden={openIndex !== index}
+                  className="px-6 pb-5 pt-0 text-text/80 dark:text-gray-300 border-t border-gray-100 dark:border-white/5"
+                >
+                  {faq.a}
+                </div>
               </motion.div>
             ))}
           </div>

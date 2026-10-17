@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   description:
     'Transparent pricing for web design and marketing services. Our ₦250,000 Starter Website package includes a 4-page website, 1 year of domain registration, Google Business Profile setup, SEO foundations, and mobile optimization.',
   keywords: [
-    'web design pricing Asaba',
+    'web design pricing Abuja',
     'website cost Nigeria',
-    'affordable web design Asaba',
+    'website cost Nigeria',
     'website packages Nigeria',
     'digital marketing pricing Nigeria',
   ],

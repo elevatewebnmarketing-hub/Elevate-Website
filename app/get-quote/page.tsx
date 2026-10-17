@@ -202,7 +202,7 @@ export default function GetQuotePage() {
                   <option value="ecommerce-website">E-commerce Website</option>
                   <option value="website-redesign">Website Redesign</option>
                   <option value="local-visibility">Local Visibility Support</option>
-                  <option value="paid-growth">Paid Growth Support</option>
+                  <option value="landing-page">Landing Page</option>
                   <option value="website-care">Website Care Plan</option>
                 </select>
               </div>

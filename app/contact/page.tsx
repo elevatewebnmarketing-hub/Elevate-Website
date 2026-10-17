@@ -165,7 +165,7 @@ export default function ContactPage() {
                     <p className="font-heading font-semibold text-primary dark:text-gray-300 text-sm uppercase tracking-wide text-text/70 dark:text-gray-400">
                       Base
                     </p>
-                    <p className="text-primary dark:text-white font-medium mt-0.5">Asaba, Delta State</p>
+                    <p className="text-primary dark:text-white font-medium mt-0.5">Abuja, Nigeria (Asaba meetings by appointment)</p>
                     <p className="text-text/70 dark:text-gray-400 text-sm mt-0.5">
                       Working with businesses across Nigeria
                     </p>
@@ -185,7 +185,7 @@ export default function ContactPage() {
                 </div>
                 <div className="p-4">
                   <p className="font-heading font-bold text-sm text-primary dark:text-white mb-1">
-                    Asaba-based team, reliable delivery
+                    Abuja-based, reliable delivery
                   </p>
                   <p className="text-sm text-text/80 dark:text-gray-300 font-body">
                     We keep the process clear, the scope focused, and the communication reliable.

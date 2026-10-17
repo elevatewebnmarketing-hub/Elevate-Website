@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import portfolioData from '@/data/portfolio.json';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import SectionWrapper from '@/components/ui/SectionWrapper';
@@ -27,18 +27,8 @@ interface PortfolioItem {
   ownerJob?: string | null;
 }
 
-const defaultProjects: PortfolioItem[] = [
-  { id: '1', name: 'MR DGN Group', industry: 'Business & Consulting', description: 'Corporate website for MR DGN Group—a conglomerate driving innovation across construction, entertainment, and real estate. Features portfolio showcase, subsidiary links, media section, and contact flows.', image: '/images/portfolio/mrdn-group-logo.png', url: 'https://mrdgngroup.com', featured: true, service: 'website-development', technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'] },
-  { id: '2', name: 'MR DGN Construction', industry: 'Construction', description: 'Building materials supplier and construction services website for MR DGN Construction and Developers Limited in Asaba. Products catalog, project gallery, services, and WhatsApp ordering.', image: '/images/portfolio/mrdn-construction-logo.png', url: 'https://construction.mrdgngroup.com', featured: true, service: 'website-development', technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'] },
-  { id: '3', name: 'Mansa Luxe Realty', industry: 'Real Estate', description: 'Premium luxury real estate website for Mansa Luxe Realty Limited—curated properties, consultation booking, and trust signals for Nigeria\'s high-end property market.', image: '/images/portfolio/mansa-luxe-realty-logo.png', url: 'https://mansaluxerealty.mrdgngroup.com', featured: true, service: 'website-development', technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'] },
-  { id: '4', name: 'BSG Beelicious Signatures Global', industry: 'Luxury Retail & E-commerce', description: 'E-commerce and brand site for BSG Beelicious Signatures Global—luxury fragrances and home scents. Product collections, curated shopping experience, and newsletter community.', image: '/images/portfolio/experience-bsg-logo.png', url: 'https://experiencebsg.com', featured: true, service: 'website-development', technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Supabase'] },
-  { id: '5', name: 'TMM Scholars', industry: 'Education & Non-profit', description: 'Education and scholarship program site for The Mighty Men Scholars Program. Application flow, eligibility criteria, 5-step selection process, and contact via WhatsApp and email.', image: '/images/portfolio/tmm-scholars-logo.png', url: 'https://TMMscholars.com', featured: true, service: 'website-development', technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'] },
-  { id: '6', name: 'Trade with MRK', industry: 'Trading & Finance', description: 'Professional crypto and forex trading mentorship platform. Free resources, tools, blog, consultation booking, and partner exchange recommendations for retail traders.', image: '/images/portfolio/trade-with-mrk-logo.png', url: 'https://TradewithMRk.com', featured: true, service: 'website-development', technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'] },
-  { id: '7', name: 'FP Conglomerate', industry: 'Business & Consulting', description: 'Full-stack marketing and corporate website for FP Conglomerate — lead capture, staff admin portal, blog, careers, and portfolio content powered by a custom API backend.', image: null, url: 'https://www.fpconglomerate.com', featured: true, service: 'website-development', technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Fastify', 'PostgreSQL'] },
-  { id: '8', name: 'Mama Onome Natural Health', industry: 'Health & Wellness', description: 'Clean, elegant website for a natural health and wellness brand — showcasing products and services with a calm, trust-building design built for her target audience.', image: null, url: 'https://mama-onome.vercel.app', featured: true, service: 'website-development', technologies: ['HTML', 'CSS', 'JavaScript', 'Jinja2'] },
-  { id: '9', name: 'Runway Refined by Alek', industry: 'Fashion & Lifestyle', description: 'Premium fashion brand website for Runway Refined by Alek — editorial design, collection showcases, media gallery, and brand storytelling for a modern luxury audience.', image: null, url: 'https://runwayrefinedbyalek.com', featured: true, service: 'website-development', technologies: ['React', 'TanStack Start', 'TypeScript', 'Tailwind CSS', 'Cloudinary'] },
-  { id: '10', name: 'NovaTrade', industry: 'Trading & Finance', description: 'Full-featured crypto and stock trading platform UI — spot trading, margin, copy trading, bot trading, market data, wallet, and user dashboard. A showcase of Elevate\'s fintech capability.', image: null, url: 'https://novatrade-test.vercel.app', featured: true, service: 'website-development', technologies: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'TanStack Query'] },
-];
+// Managed in code: edit data/portfolio.json, not the admin panel.
+const projects = portfolioData as PortfolioItem[];
 
 function ProjectPlaceholder() {
   return (
@@ -50,21 +40,17 @@ function ProjectPlaceholder() {
 
 interface PortfolioProps {
   showAll?: boolean;
+  /** Read by the page on the server, so the list renders into the HTML. */
+  service?: string | null;
 }
 
-export default function Portfolio({ showAll = false }: PortfolioProps) {
-  const [projects, setProjects] = useState<PortfolioItem[]>(defaultProjects);
-  const searchParams = useSearchParams();
+export default function Portfolio({ showAll = false, service = null }: PortfolioProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const serviceParam = showAll ? searchParams.get('service') : null;
+  const serviceParam = showAll ? service : null;
+  // The standalone /portfolio page needs this as its one H1.
+  const Heading = showAll ? 'h1' : 'h2';
 
-  useEffect(() => {
-    fetch('/api/portfolio')
-      .then((res) => res.json())
-      .then((data) => Array.isArray(data) && data.length > 0 && setProjects(data))
-      .catch(() => {});
-  }, []);
 
   const filteredProjects = serviceParam
     ? projects.filter((p) => p.service === serviceParam)
@@ -72,11 +58,7 @@ export default function Portfolio({ showAll = false }: PortfolioProps) {
   const displayProjects = showAll ? filteredProjects : projects.slice(0, 6);
 
   function setServiceFilter(slug: string | null) {
-    const params = new URLSearchParams(searchParams.toString());
-    if (slug) params.set('service', slug);
-    else params.delete('service');
-    const q = params.toString();
-    router.replace(q ? `${pathname}?${q}` : pathname);
+    router.replace(slug ? `${pathname}?service=${slug}` : pathname);
   }
 
   return (
@@ -89,9 +71,9 @@ export default function Portfolio({ showAll = false }: PortfolioProps) {
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16"
         >
           <div className="text-center sm:text-left">
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary dark:text-white mb-4">
+            <Heading className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary dark:text-white mb-4">
               Our Portfolio
-            </h2>
+            </Heading>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl">
               Websites we&apos;ve built that drive results
             </p>

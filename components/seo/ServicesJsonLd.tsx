@@ -8,7 +8,7 @@ const services = Object.values(servicePages).map((service) => ({
   description: service.description,
   url: `${SITE_URL}/services/${service.slug}`,
   serviceType: service.type === 'industry' ? 'Industry Website Service' : 'Digital Service',
-  areaServed: ['Asaba', 'Delta State', 'Nigeria'],
+  areaServed: ['Abuja', 'Federal Capital Territory', 'Nigeria'],
   provider: {
     '@type': 'ProfessionalService',
     name: 'Elevate Web & Marketing',

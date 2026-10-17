@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import ServicesJsonLd from '@/components/seo/ServicesJsonLd';
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 import {
   ArrowRight,
@@ -21,6 +22,7 @@ const coreServices = [
   {
     icon: Globe,
     title: 'Starter & Business Websites',
+    href: '/services/website-design',
     description:
       'Custom marketing websites for service businesses that need clearer positioning and stronger trust online.',
     details: [
@@ -33,6 +35,7 @@ const coreServices = [
   {
     icon: RefreshCw,
     title: 'Website Redesigns',
+    href: '/services/website-redesign',
     description:
       'For businesses with an outdated or underperforming website that needs a stronger message and cleaner flow.',
     details: [
@@ -45,13 +48,14 @@ const coreServices = [
   {
     icon: FileText,
     title: 'Landing Pages',
+    href: '/services/landing-pages',
     description:
       'Standalone pages for ads, launches, offers, or specific campaigns that need a tighter conversion journey.',
     details: [
       'Offer-focused layout and messaging',
       'Lead capture and tracking setup',
       'Campaign-specific CTA sections',
-      'Fast handoff for paid traffic or outreach',
+      'Ready for your own promotions, launches or outreach',
     ],
   },
 ];
@@ -60,6 +64,7 @@ const supportServices = [
   {
     icon: Wrench,
     title: 'Website Care Plans',
+    href: '/services/website-maintenance',
     description:
       'Monthly support for updates, edits, and small improvements after your site goes live.',
     details: [
@@ -72,6 +77,7 @@ const supportServices = [
   {
     icon: MapPin,
     title: 'Local Visibility Support',
+    href: '/services/local-seo',
     description:
       'Support for Google Business Profile, local search presence, and the reporting that shows what is working.',
     details: [
@@ -79,18 +85,6 @@ const supportServices = [
       'Location and service consistency checks',
       'Monthly local visibility recommendations',
       'Lead tracking support',
-    ],
-  },
-  {
-    icon: BarChart3,
-    title: 'Paid Growth Support',
-    description:
-      'For businesses ready to pair their website with Google Ads or Meta Ads and tighter conversion tracking.',
-    details: [
-      'Campaign setup or management',
-      'Tracking review and conversion alignment',
-      'Landing page recommendations',
-      'Monthly reporting and optimization',
     ],
   },
 ];
@@ -102,6 +96,12 @@ export default function ServicesPage() {
       <Header />
       <main className="pt-24 pb-16 min-h-screen bg-background dark:bg-slate-900">
         <ServicesJsonLd />
+        <BreadcrumbJsonLd
+          crumbs={[
+            { name: 'Home', url: 'https://www.elevatewebandmarketing.com' },
+            { name: 'Services', url: 'https://www.elevatewebandmarketing.com/services' },
+          ]}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -155,7 +155,7 @@ export default function ServicesPage() {
                     <service.icon className="text-accent" size={28} />
                   </div>
                   <h2 className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">
-                    {service.title}
+                    <Link href={service.href} className="hover:text-accent">{service.title}</Link>
                   </h2>
                   <p className="text-text/80 dark:text-gray-300 text-base leading-relaxed mb-4">
                     {service.description}
@@ -197,7 +197,7 @@ export default function ServicesPage() {
                     <service.icon className="text-accent" size={28} />
                   </div>
                   <h2 className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">
-                    {service.title}
+                    <Link href={service.href} className="hover:text-accent">{service.title}</Link>
                   </h2>
                   <p className="text-text/80 dark:text-gray-300 text-base leading-relaxed mb-4">
                     {service.description}

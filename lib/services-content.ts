@@ -1,4 +1,31 @@
+import { localSeo } from '@/lib/service-pages/local-seo';
+import { websiteDesign } from '@/lib/service-pages/website-design';
+import { websiteRedesign } from '@/lib/service-pages/website-redesign';
+import { landingPages } from '@/lib/service-pages/landing-pages';
+import { websiteMaintenance } from '@/lib/service-pages/website-maintenance';
+
 export type PageType = 'service' | 'industry';
+
+/** Full service page, built to the rank-ready-website service page spec. */
+export interface ServiceDetail {
+  /** Without the brand: the root layout's title template appends it. */
+  metaTitle: string;
+  metaDescription: string;
+  h1: string;
+  intro: string[];
+  problems: string[];
+  included: { title: string; detail: string }[];
+  process: { title: string; detail: string }[];
+  pricing: { summary: string; points: string[] };
+  proof: { name: string; detail: string; url?: string }[];
+  localContext: string[];
+  /** Heading over localContext; defaults to the Abuja heading. */
+  localHeading?: string;
+  whyUs: string[];
+  faqs: { q: string; a: string }[];
+  /** Slugs of related service pages. */
+  related: string[];
+}
 
 export interface ServicePageConfig {
   slug: string;
@@ -6,129 +33,21 @@ export interface ServicePageConfig {
   title: string;
   subtitle: string;
   description: string;
-  challenges: string[];
-  solutions: string[];
+  challenges?: string[];
+  solutions?: string[];
   portfolioId?: string;
   portfolioName?: string;
   portfolioUrl?: string;
+  detail?: ServiceDetail;
 }
 
 export const servicePages: Record<string, ServicePageConfig> = {
-  // Services
-  'website-design': {
-    slug: 'website-design',
-    type: 'service',
-    title: 'Website Design',
-    subtitle: 'Custom designs that convert',
-    description:
-      'We create visually stunning, user-friendly interfaces that reflect your brand and turn visitors into customers. Every design decision—layout, typography, colour, imagery—is made with your business goals in mind.',
-    challenges: [
-      'Your current site looks outdated or doesn\'t reflect your brand',
-      'Visitors leave without taking action',
-      'Design is inconsistent or hard to navigate on mobile',
-    ],
-    solutions: [
-      'Brand-aligned visual design that feels premium and professional',
-      'User experience (UX) research and optimization for conversions',
-      'Responsive layouts for all devices and screen sizes',
-      'Conversion-focused layouts with clear CTAs and trust elements',
-    ],
-  },
-  'website-development': {
-    slug: 'website-development',
-    type: 'service',
-    title: 'Website Development',
-    subtitle: 'Fast, modern, built to last',
-    description:
-      'We build websites with modern technology and best practices. Clean code, SEO-friendly structure, and performance you can measure. From Next.js and React to accessibility standards (WCAG), we deliver sites that work.',
-    challenges: [
-      'Your site is slow or breaks on certain devices',
-      'You need more than a template—custom features and flows',
-      'You want a site that ranks and loads quickly',
-    ],
-    solutions: [
-      'Next.js, React, and modern frameworks for speed and reliability',
-      'SEO-friendly structure, meta tags, and clean URLs',
-      'Performance optimization (Core Web Vitals, fast loading)',
-      'Accessibility standards (WCAG) for inclusive design',
-    ],
-  },
-  'website-redesign': {
-    slug: 'website-redesign',
-    type: 'service',
-    title: 'Website Redesign',
-    subtitle: 'Fresh look, better results',
-    description:
-      'We audit your current site and rebuild it for better results. A modern design refresh, improved user flows, and content migration so you keep what works and fix what doesn\'t.',
-    challenges: [
-      'Your site looks old or doesn\'t match your current brand',
-      'Navigation is confusing and visitors can\'t find what they need',
-      'Content is scattered and hard to update',
-    ],
-    solutions: [
-      'Current site audit and strategy before we build',
-      'Modern design refresh aligned with your brand',
-      'Improved user flows and navigation',
-      'Content migration and structured layouts',
-    ],
-  },
-  seo: {
-    slug: 'seo',
-    type: 'service',
-    title: 'SEO Optimization',
-    subtitle: 'Get found by your ideal customers',
-    description:
-      'We use data-driven SEO strategies to improve your search visibility and organic traffic. Technical audits, keyword research, on-page optimization, and content strategy that supports long-term growth.',
-    challenges: [
-      'Your site doesn\'t rank for relevant search terms',
-      'You\'re not sure which keywords matter for your business',
-      'Technical issues are holding back your visibility',
-    ],
-    solutions: [
-      'Technical SEO audits to fix crawl and index issues',
-      'Keyword research and strategy aligned with your goals',
-      'On-page optimization (titles, meta, headings, content)',
-      'Link building and content strategy for authority',
-    ],
-  },
-  'website-maintenance': {
-    slug: 'website-maintenance',
-    type: 'service',
-    title: 'Website Maintenance',
-    subtitle: 'Keep your site secure and up to date',
-    description:
-      'Ongoing maintenance so your site stays secure, fast, and up-to-date. Security updates, backups, content updates, and performance monitoring—peace of mind so you can focus on your business.',
-    challenges: [
-      'You worry about security breaches or downtime',
-      'Plugins or themes need updates and you\'re not technical',
-      'Content changes take too long or require developer help',
-    ],
-    solutions: [
-      'Security updates and monitoring',
-      'Backup and recovery so you never lose data',
-      'Content updates and minor changes as needed',
-      'Performance monitoring and optimization',
-    ],
-  },
-  'google-ads': {
-    slug: 'google-ads',
-    type: 'service',
-    title: 'Google Ads & Campaign Management',
-    subtitle: 'Turn search traffic into leads and sales',
-    description:
-      'We set up, optimize, and report on Google Ads campaigns. From keyword research to conversion tracking, we help you reach the right people at the right time and turn clicks into customers.',
-    challenges: [
-      'You want to appear in search results but don\'t know how',
-      'Ad spend feels wasted with little return',
-      'You need someone to manage campaigns and report on performance',
-    ],
-    solutions: [
-      'Campaign setup and monthly optimization (1–3 core campaigns)',
-      'Keyword research and targeting for your services and locations',
-      'Conversion tracking and Google Analytics (GA4) setup',
-      'Monthly performance reports and 30-minute strategy calls',
-    ],
-  },
+  // Services (full pages, one file each)
+  'local-seo': localSeo,
+  'website-design': websiteDesign,
+  'website-redesign': websiteRedesign,
+  'landing-pages': landingPages,
+  'website-maintenance': websiteMaintenance,
   // Industries
   construction: {
     slug: 'construction',

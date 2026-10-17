@@ -19,8 +19,8 @@ const PACKAGE_LABELS: Record<PackageKey, string> = {
   business:      'Business Website',
   ecommerce:     'E-commerce Website',
   growth_suite:  'E-commerce Growth Suite',
-  google_growth: 'Google Ads Management',
-  meta_growth:   'Meta Ads Management',
+  google_growth: 'Website Care Plan (monthly)',
+  meta_growth:   'SEO Care Plan (monthly)',
 };
 
 type EditValues = Record<PackageKey, string>;

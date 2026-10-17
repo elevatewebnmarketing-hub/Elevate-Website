@@ -16,10 +16,11 @@ async function getUrls(): Promise<string[]> {
     `${SITE_URL}/about`,
     `${SITE_URL}/services`,
     `${SITE_URL}/services/website-design`,
-    `${SITE_URL}/services/website-development`,
     `${SITE_URL}/services/website-redesign`,
-    `${SITE_URL}/services/seo`,
-    `${SITE_URL}/services/google-ads`,
+    `${SITE_URL}/services/local-seo`,
+    `${SITE_URL}/services/landing-pages`,
+    `${SITE_URL}/locations/asaba`,
+    `${SITE_URL}/locations/nigeria`,
     `${SITE_URL}/services/website-maintenance`,
     `${SITE_URL}/services/construction`,
     `${SITE_URL}/services/real-estate`,
@@ -32,7 +33,6 @@ async function getUrls(): Promise<string[]> {
     `${SITE_URL}/faq`,
     `${SITE_URL}/get-quote`,
     `${SITE_URL}/team`,
-    `${SITE_URL}/meta-ads`,
   ];
 
   const dynamicUrls: string[] = [];

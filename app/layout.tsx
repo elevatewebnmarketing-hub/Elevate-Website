@@ -30,15 +30,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: 'Elevate Web & Marketing',
   title: {
-    default: 'Elevate Web & Marketing | Websites That Convert',
+    default: 'SEO Websites in Abuja & Nigeria | Elevate Web & Marketing',
     template: '%s | Elevate Web & Marketing',
   },
   description:
-    'We design high-performance websites and marketing systems for businesses in Asaba and across Nigeria. Web design, development, SEO, and digital marketing for brands that want clearer positioning, stronger trust, and more leads.',
+    'SEO-ready websites for businesses in Abuja and across Nigeria: service pages, Google Business Profile setup and care plans, built to be found on Google and ChatGPT.',
   keywords: [
-    'web design Asaba',
-    'website development Asaba',
-    'digital marketing Asaba',
+    'web design Abuja',
+    'SEO agency Abuja',
+    'website design Nigeria',
     'digital marketing Nigeria',
     'SEO Nigeria',
     'business website',
@@ -52,18 +52,18 @@ export const metadata: Metadata = {
     locale: 'en_NG',
     url: SITE_URL,
     siteName: 'Elevate Web & Marketing',
-    title: 'Elevate Web & Marketing | Websites That Convert',
+    title: 'SEO Websites in Abuja & Nigeria | Elevate Web & Marketing',
     description:
-      'High-performance websites and marketing systems that help businesses grow with clearer positioning, stronger trust, and more leads.',
+      'SEO-ready websites, local SEO and landing pages for businesses in Abuja and across Nigeria, built to be found on Google and ChatGPT.',
     images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Elevate Web & Marketing' }],
   },
   twitter: {
     card: 'summary_large_image',
     site: '@elevate_web_',
     creator: '@elevate_web_',
-    title: 'Elevate Web & Marketing | Websites That Convert',
+    title: 'SEO Websites in Abuja & Nigeria | Elevate Web & Marketing',
     description:
-      'High-performance websites and marketing systems that help businesses grow with clearer positioning, stronger trust, and more leads.',
+      'SEO-ready websites, local SEO and landing pages for businesses in Abuja and across Nigeria, built to be found on Google and ChatGPT.',
     images: ['/twitter-image'],
   },
   icons: {

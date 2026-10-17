@@ -18,7 +18,7 @@ const offerLinks = [
     title: 'Services Overview',
     href: '/services',
     summary:
-      'Our services page explains our website design, redesign, landing page, local visibility, and paid growth support offers in plain language.',
+      'Our services page explains our website design, redesign, landing page, local SEO and Google Business Profile, and care plan offers in plain language.',
   },
   {
     title: 'Frequently Asked Questions',

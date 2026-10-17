@@ -1,4 +1,5 @@
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 
 const packageOffers = [
   {
@@ -34,6 +35,7 @@ const packageOffers = [
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
+  '@id': ORGANIZATION_ID,
   name: 'Elevate Web & Marketing',
   url: SITE_URL,
   image: `${SITE_URL}/opengraph-image`,
@@ -49,22 +51,17 @@ const organizationSchema = {
   },
   foundingDate: '2023',
   priceRange: '₦₦',
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 6.1982,
-    longitude: 6.7319,
-  },
   sameAs: [
     'https://www.facebook.com/profile.php?id=61578521342361',
     'https://www.instagram.com/elevate_web_and_marketing/',
     'https://x.com/elevate_web_',
   ],
   description:
-    'High-performance websites and marketing systems for businesses in Asaba and across Nigeria that want clearer positioning, stronger trust, and more leads.',
+    'SEO-ready websites, local SEO and Google Business Profile optimisation, landing pages and care plans for businesses in Abuja and across Nigeria.',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Asaba',
-    addressRegion: 'Delta State',
+    addressLocality: 'Abuja',
+    addressRegion: 'Federal Capital Territory',
     addressCountry: 'NG',
   },
   contactPoint: {
@@ -75,7 +72,7 @@ const organizationSchema = {
     areaServed: 'Nigeria',
     availableLanguage: 'English',
   },
-  areaServed: ['Asaba', 'Delta State', 'Nigeria'],
+  areaServed: ['Abuja', 'Federal Capital Territory', 'Nigeria'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Web Design & Digital Marketing Services',
@@ -94,14 +91,6 @@ const organizationSchema = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Website Development',
-          url: `${SITE_URL}/services/website-development`,
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
           name: 'Website Redesign',
           url: `${SITE_URL}/services/website-redesign`,
         },
@@ -110,8 +99,16 @@ const organizationSchema = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'SEO Optimisation',
-          url: `${SITE_URL}/services/seo`,
+          name: 'Local SEO & Google Business Profile',
+          url: `${SITE_URL}/services/local-seo`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Landing Pages',
+          url: `${SITE_URL}/services/landing-pages`,
         },
       },
       {
@@ -120,22 +117,6 @@ const organizationSchema = {
           '@type': 'Service',
           name: 'Website Maintenance',
           url: `${SITE_URL}/services/website-maintenance`,
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Google Ads / PPC',
-          url: `${SITE_URL}/services/google-ads`,
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Meta Ads (Facebook & Instagram)',
-          url: `${SITE_URL}/meta-ads`,
         },
       },
       {

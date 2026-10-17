@@ -9,6 +9,17 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
+  async redirects() {
+    return [
+      // Merged into website-design (same search intent).
+      { source: '/services/website-development', destination: '/services/website-design', permanent: true },
+      // Replaced by the local SEO and Google Business Profile page.
+      { source: '/services/seo', destination: '/services/local-seo', permanent: true },
+      // Ads services retired on 17 Oct 2026: Elevate does websites, SEO, landing pages and care plans only.
+      { source: '/services/google-ads', destination: '/services/local-seo', permanent: true },
+      { source: '/meta-ads', destination: '/services/landing-pages', permanent: true },
+    ];
+  },
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },
