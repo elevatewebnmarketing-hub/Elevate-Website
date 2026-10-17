@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'web design founder story',
   ],
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'About Elevate Web & Marketing',
     description:
       'An Abuja-based studio building SEO-ready websites for service businesses across Nigeria.',

@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'website growth blog',
   ],
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Blog | Elevate Web & Marketing',
     description: 'Web design, SEO, and marketing insights for businesses.',
     url: `${SITE_URL}/blog`,

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     'Meet Ufuoma Onakpoyan—Founder and Lead Strategist at Elevate Web & Marketing. Self-taught developer, digital strategist, and UNIBEN Civil Engineering graduate.',
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Our Team | Elevate Web & Marketing',
     description: 'Meet the founder and lead strategist behind Elevate Web & Marketing.',
     url: `${SITE_URL}/team`,

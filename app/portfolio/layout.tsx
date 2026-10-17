@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'website case studies Nigeria',
   ],
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Our Work | Elevate Web & Marketing Portfolio',
     description: 'Web design and development projects for Nigerian and global businesses.',
     url: `${SITE_URL}/portfolio`,

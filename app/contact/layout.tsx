@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'international web design agency contact',
   ],
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Contact Elevate Web & Marketing',
     description:
       'Reach out for website builds, redesigns, landing pages, and recurring support.',

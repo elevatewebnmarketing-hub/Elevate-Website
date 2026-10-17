@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     'Explore web design and development case studies from Elevate Web & Marketing—real projects and outcomes for Nigerian and global businesses.',
   alternates: { canonical: '/case-studies' },
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Case Studies | Elevate Web & Marketing',
     description: 'Explore case studies and outcomes from Elevate Web & Marketing projects.',
     url: 'https://www.elevatewebandmarketing.com/case-studies',

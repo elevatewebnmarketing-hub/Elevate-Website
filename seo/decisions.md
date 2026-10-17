@@ -45,3 +45,5 @@ Elevate's GBP may use the MR DGN office in Asaba. That's only allowed if Elevate
 | 2026-10-17 | Care plans: up to 4 (Website) or 8 (SEO) small changes a month, done within 2 business days; sites built by others need a one-off ₦30,000 check; cancel with 30 days' notice, and the client keeps the domain, content and files while hosting moves to their account | Accepted defaults |
 | 2026-10-17 | Redesigns: package prices from ₦250,000; larger sites or JavaScript-app migrations quoted after a free audit, usually ₦600,000 to ₦1,000,000; 30 days of Search Console monitoring included | Accepted defaults |
 | 2026-10-17 | Prices, testimonials and portfolio are managed in code; the admin panel isn't used for Elevate's own site | Ufuoma |
+| 2026-10-17 | Added `/how-to-get-more-customers` guide (Article + Person + FAQPage schema, author Ufuoma), linked from the footer, sitemap and llms.txt | Plain-language lead page in Ufuoma's voice; ends with the free SEO check offer |
+| 2026-10-17 | Share images restated on 11 segment layouts; portfolio detail titles get "Website Project" and the brand; descriptions trimmed to 160 | Rank-ready warnings |

@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'digital marketing FAQ Nigeria',
   ],
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'FAQ | Elevate Web & Marketing',
     description: 'Common questions about web design, pricing, and marketing services in Nigeria.',
     url: `${SITE_URL}/faq`,

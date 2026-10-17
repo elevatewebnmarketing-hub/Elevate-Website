@@ -48,7 +48,10 @@ const organizationSchema = {
   founder: {
     '@type': 'Person',
     name: 'Ufuoma Onakpoyan',
+    image: `${SITE_URL}/images/founder-ufuoma-onakpoyan.png`,
   },
+  telephone: '+234-708-603-9012',
+  email: 'hello@elevatewebandmarketing.com',
   foundingDate: '2023',
   priceRange: '₦₦',
   sameAs: [

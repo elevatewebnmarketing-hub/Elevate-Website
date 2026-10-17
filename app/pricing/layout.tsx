@@ -6,15 +6,15 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'Transparent pricing for web design and marketing services. Our ₦250,000 Starter Website package includes a 4-page website, 1 year of domain registration, Google Business Profile setup, SEO foundations, and mobile optimization.',
+    'Website prices from ₦250,000: SEO-ready sites with domain, Google Business Profile setup and mobile optimisation, plus care plans from ₦30,000 a month.',
   keywords: [
     'web design pricing Abuja',
-    'website cost Nigeria',
     'website cost Nigeria',
     'website packages Nigeria',
     'digital marketing pricing Nigeria',
   ],
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Pricing | Elevate Web & Marketing',
     description: 'Clear, fixed package pricing including a ₦250,000 Starter Website with domain, Google Business Profile, SEO foundations, and mobile optimization.',
     url: `${SITE_URL}/pricing`,

@@ -19,22 +19,26 @@ export async function generateMetadata({
   const { id } = await params;
   const item = await getPortfolioItemById(id);
   if (!item) return { title: 'Project Not Found' };
-  const description = item.description.slice(0, 160);
+  // Keep the whole description inside Google's ~160-character snippet.
+  const full = `${item.industry}. ${item.description}`;
+  const description = full.length > 160 ? `${full.slice(0, 157).trimEnd()}...` : full;
   const url = `${BASE_URL}/portfolio/${item.id}`;
+  // absolute: the portfolio layout's plain title stops the root "| Elevate" template reaching here.
+  const title = `${item.name}: Website Project | Elevate Web & Marketing`;
   return {
-    title: item.name,
-    description: `${item.industry}. ${description}`,
+    title: { absolute: title },
+    description,
     openGraph: {
-      title: item.name,
-      description: `${item.industry}. ${description}`,
+      title,
+      description,
       url,
       type: 'website',
-      images: item.image ? [{ url: item.image, width: 1200, height: 630, alt: item.name }] : undefined,
+      images: item.image ? [{ url: item.image, width: 1200, height: 630, alt: item.name }] : ['/opengraph-image'],
     },
     twitter: {
       card: 'summary_large_image',
-      title: item.name,
-      description: `${item.industry}. ${description}`,
+      title,
+      description,
       images: item.image ? [item.image] : undefined,
     },
     alternates: { canonical: url },

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     'Request a custom quote for web design, development, SEO, or digital marketing. Tell us about your project and we’ll get back within 48 hours.',
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Get a Quote | Elevate Web & Marketing',
     description: 'Request a quote for your web design or marketing project.',
     url: `${SITE_URL}/get-quote`,

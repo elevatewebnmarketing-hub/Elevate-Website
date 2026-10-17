@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'digital marketing process Nigeria',
   ],
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Our Process | Elevate Web & Marketing',
     description: 'Discovery to launch. See how we deliver websites and marketing projects.',
     url: `${SITE_URL}/process`,

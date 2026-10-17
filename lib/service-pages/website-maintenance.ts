@@ -8,7 +8,7 @@ export const websiteMaintenance: ServicePageConfig = {
   description:
     'Website care plans in Abuja: hosting and domain renewals, updates, uptime and security checks, small content changes, and a monthly search report, for a fixed monthly fee.',
   detail: {
-    metaTitle: 'Website Maintenance & Care Plans in Abuja',
+    metaTitle: 'Website Maintenance in Abuja',
     metaDescription:
       'Website maintenance in Abuja: hosting, renewals, updates, uptime checks, content changes and a monthly Google report for one fixed monthly fee.',
     h1: 'Website maintenance and care plans in Abuja',

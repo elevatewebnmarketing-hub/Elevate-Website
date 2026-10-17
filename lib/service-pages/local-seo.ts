@@ -8,7 +8,7 @@ export const localSeo: ServicePageConfig = {
   description:
     'Local SEO for businesses in Abuja and across Nigeria: Google Business Profile setup and optimisation, service pages that match how customers search, local listings, a review system, and visibility in ChatGPT and Gemini answers.',
   detail: {
-    metaTitle: 'Local SEO & Google Business Profile in Abuja',
+    metaTitle: 'Local SEO Services in Abuja',
     metaDescription:
       'Local SEO in Abuja: Google Business Profile setup, service pages, listings and reviews so customers find you on Google Maps and ChatGPT. WhatsApp us.',
     h1: 'Local SEO and Google Business Profile in Abuja',

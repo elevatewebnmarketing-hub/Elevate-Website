@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     'google business profile support',
   ],
   openGraph: {
+    images: ['/opengraph-image'],
     title: 'Website & Growth Services | Elevate Web & Marketing',
     description:
       'Lead-generating websites, redesigns, landing pages, and recurring support for service businesses.',
