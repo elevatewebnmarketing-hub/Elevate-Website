@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Target, Zap, Heart, Github, Linkedin, FileCheck, Download } from 'lucide-react';
 
 const VALUES = [
@@ -78,12 +79,18 @@ export default function AboutPage() {
                   What we help you with
                 </p>
                 <ul className="grid sm:grid-cols-2 gap-3 text-base text-text/80 dark:text-gray-300">
-                  <li>Website design and development</li>
-                  <li>Web applications and internal tools</li>
-                  <li>SEO and Google Business Profile optimisation</li>
-                  <li>Landing pages for offers and launches</li>
-                  <li>Conversion tracking and analytics</li>
-                  <li>Ongoing optimisation and maintenance</li>
+                  {[
+                    ['/services/website-design', 'SEO-ready website design'],
+                    ['/services/website-redesign', 'Website redesigns'],
+                    ['/services/local-seo', 'Local SEO and Google Business Profile optimisation'],
+                    ['/services/landing-pages', 'Landing pages for offers and launches'],
+                    ['/services/website-maintenance', 'Website care plans and maintenance'],
+                    ['/ai-visibility-check', 'Free AI visibility check'],
+                  ].map(([href, label]) => (
+                    <li key={href}>
+                      <Link href={href} className="hover:text-accent underline-offset-2 hover:underline">{label}</Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <p>

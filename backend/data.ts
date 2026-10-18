@@ -199,21 +199,7 @@ function fromPortfolioRow(row: Record<string, unknown>): PortfolioItem {
 
 // --- Blog ---
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const supabase = getSupabase();
-  if (supabase) {
-    const { data, error } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .order('published_at', { ascending: false });
-    if (!error && data) {
-      const viewCounts = buildBlogViewCountMap(await getBlogViewEvents());
-      return data.map((row) => {
-        const post = fromBlogRow(row);
-        post.viewCount = viewCounts.get(post.id) ?? 0;
-        return post;
-      });
-    }
-  }
+  // Source of truth: data/blog.json (managed in code, like portfolio and pricing). View counts still come from the database.
   const [posts, viewEvents] = await Promise.all([
     readJsonFile<BlogPost[]>('blog.json'),
     getBlogViewEvents(),

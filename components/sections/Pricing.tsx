@@ -224,7 +224,10 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
               Pricing
             </Heading>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto sm:mx-0">
-              Clear public pricing for SEO-ready websites, landing pages and care plans.
+              Clear public pricing for{' '}
+              <Link href="/services/website-design" className="text-accent hover:underline">SEO-ready websites</Link>,{' '}
+              <Link href="/services/landing-pages" className="text-accent hover:underline">landing pages</Link> and{' '}
+              <Link href="/services/website-maintenance" className="text-accent hover:underline">care plans</Link>.
               Final quotes only change when scope, content, or integrations change.
             </p>
             <p className="text-sm text-text/60 dark:text-gray-400 mt-3">

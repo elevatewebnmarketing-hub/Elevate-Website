@@ -18,6 +18,10 @@ const nextConfig = {
       // Ads services retired on 17 Oct 2026: Elevate does websites, SEO, landing pages and care plans only.
       { source: '/services/google-ads', destination: '/services/local-seo', permanent: true },
       { source: '/meta-ads', destination: '/services/landing-pages', permanent: true },
+      // Ads posts retired, and the duplicate of the new guide consolidated into it (18 Oct 2026).
+      { source: '/blog/how-to-get-more-customers-from-your-website-nigeria', destination: '/how-to-get-more-customers', permanent: true },
+      { source: '/blog/meta-ads-vs-google-ads-2026', destination: '/how-to-get-more-customers', permanent: true },
+      { source: '/blog/facebook-instagram-meta-ads-growth-engine', destination: '/how-to-get-more-customers', permanent: true },
     ];
   },
   async headers() {

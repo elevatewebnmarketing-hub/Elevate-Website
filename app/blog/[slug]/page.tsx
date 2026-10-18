@@ -63,6 +63,13 @@ function escapeHtml(text: string): string {
     .replace(/"/g, '&quot;');
 }
 
+/** Bold plus [text](/path) links. Only same-site paths become links, so post text can't inject outside URLs. */
+function formatInline(raw: string): string {
+  return escapeHtml(raw)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-primary dark:text-white">$1</strong>')
+    .replace(/\[([^\]]+)\]\((\/[a-z0-9\-/#?=&;]*)\)/gi, '<a href="$2" class="text-accent font-medium underline underline-offset-2 hover:no-underline">$1</a>');
+}
+
 function formatContent(content: string): string {
   const cleaned = stripHtmlTags(content);
   const parts: string[] = [];
@@ -86,9 +93,7 @@ function formatContent(content: string): string {
         parts.push('<ul class="blog-prose-ul">');
         inList = true;
       }
-      const raw = line.slice(2);
-      const inner = escapeHtml(raw).replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-primary dark:text-white">$1</strong>');
-      parts.push(`<li class="blog-prose-li">${inner}</li>`);
+      parts.push(`<li class="blog-prose-li">${formatInline(line.slice(2))}</li>`);
     } else if (line.trim() === '') {
       if (inList) {
         parts.push('</ul>');
@@ -100,8 +105,7 @@ function formatContent(content: string): string {
         parts.push('</ul>');
         inList = false;
       }
-      const inner = escapeHtml(line).replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-primary dark:text-white">$1</strong>');
-      parts.push(`<p class="blog-prose-p">${inner}</p>`);
+      parts.push(`<p class="blog-prose-p">${formatInline(line)}</p>`);
     }
   });
 
