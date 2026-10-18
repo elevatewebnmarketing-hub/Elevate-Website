@@ -180,6 +180,8 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
   const { packages, isLoading, locationCode, countryName } = useLocationPricing();
   // The standalone /pricing page needs this as its one H1.
   const Heading = isStandalone ? 'h1' : 'h2';
+  const SubHeading = isStandalone ? 'h2' : 'h3';
+  const MinorHeading = isStandalone ? 'h3' : 'h4';
   const currencyName = { NG: 'Nigerian naira', GB: 'British pounds' }[locationCode as 'NG' | 'GB'] ?? 'US dollars';
 
   const wrapperClass = isStandalone
@@ -268,13 +270,13 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                   </div>
                 )}
 
-                <h3
+                <SubHeading
                   className={`font-heading font-bold text-2xl mb-2 ${
                     pkg.highlighted ? 'text-white' : 'text-primary dark:text-white'
                   }`}
                 >
                   {pkg.name}
-                </h3>
+                </SubHeading>
                 <div className="mb-4">
                   <p
                     className={`text-2xl font-bold ${
@@ -328,9 +330,9 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
         >
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
-              <h3 className="font-heading font-semibold text-2xl text-primary dark:text-white mb-2">
+              <SubHeading className="font-heading font-semibold text-2xl text-primary dark:text-white mb-2">
                 Ongoing Support
-              </h3>
+              </SubHeading>
               <p className="text-text/70 dark:text-gray-400 text-sm max-w-2xl">
                 One-off builds create momentum. Retainers create monthly stability, cleaner
                 lead tracking, and a website that keeps improving after launch.
@@ -350,9 +352,9 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
               >
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                   <div>
-                    <h4 className="font-heading font-semibold text-xl text-primary dark:text-white">
+                    <MinorHeading className="font-heading font-semibold text-xl text-primary dark:text-white">
                       {pkg.name}
-                    </h4>
+                    </MinorHeading>
                     <p className="text-text/80 dark:text-gray-300 text-sm mt-1">
                       {pkg.description}
                     </p>
@@ -387,9 +389,9 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-16"
         >
-          <h3 className="font-heading font-semibold text-2xl text-primary dark:text-white mb-4 text-center">
+          <SubHeading className="font-heading font-semibold text-2xl text-primary dark:text-white mb-4 text-center">
             Website Types & Starting Prices
-          </h3>
+          </SubHeading>
           <p className="text-text/70 dark:text-gray-400 text-sm max-w-2xl mx-auto text-center mb-8">
             Every project is different, but these starting points reflect the kinds of
             websites we build most often for service businesses, local brands, and growing
@@ -404,9 +406,9 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                 <p className="text-xs font-semibold tracking-wide uppercase text-accent mb-1">
                   {renderFromPrice(group.packageKey)}
                 </p>
-                <h4 className="font-heading font-semibold text-primary dark:text-white mb-1">
+                <MinorHeading className="font-heading font-semibold text-primary dark:text-white mb-1">
                   {group.name}
-                </h4>
+                </MinorHeading>
                 <p className="text-text/80 dark:text-gray-300 text-sm mb-3">{group.examples}</p>
                 <p className="text-text/60 dark:text-gray-400 text-xs">
                   Best fit:{' '}

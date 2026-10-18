@@ -38,6 +38,8 @@ interface ProcessProps {
 }
 
 export default function Process({ showHeading = true }: ProcessProps) {
+  // Without the section heading, the page's own h1 sits directly above the steps.
+  const StepHeading = showHeading ? 'h3' : 'h2';
   return (
     <SectionWrapper id="process" className="py-24 bg-white dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,9 +88,9 @@ export default function Process({ showHeading = true }: ProcessProps) {
                 <span className="text-accent font-heading font-bold text-lg mb-2">
                   Step {step.number.slice(-1)}
                 </span>
-                <h3 className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">
+                <StepHeading className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">
                   {step.title}
-                </h3>
+                </StepHeading>
                 <p className="text-text/80 dark:text-gray-300 text-sm leading-relaxed">
                   {step.description}
                 </p>

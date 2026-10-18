@@ -50,6 +50,7 @@ export default function Portfolio({ showAll = false, service = null }: Portfolio
   const serviceParam = showAll ? service : null;
   // The standalone /portfolio page needs this as its one H1.
   const Heading = showAll ? 'h1' : 'h2';
+  const CardHeading = showAll ? 'h2' : 'h3';
 
 
   const filteredProjects = serviceParam
@@ -160,9 +161,9 @@ export default function Portfolio({ showAll = false, service = null }: Portfolio
                       </span>
                     )}
                   </div>
-                  <h3 className="font-heading font-semibold text-xl text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
+                  <CardHeading className="font-heading font-semibold text-xl text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
                     {project.name}
-                  </h3>
+                  </CardHeading>
                   <p className="text-text/80 dark:text-gray-300 text-sm leading-relaxed">
                     {project.description}
                   </p>

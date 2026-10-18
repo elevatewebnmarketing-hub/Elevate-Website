@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading font-semibold mb-4">Quick Links</h3>
+            <h2 className="font-heading font-semibold mb-4">Quick Links</h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm">
               {siteConfig.footerLinks.map((link) => (
                 <li key={link.href}>
@@ -88,7 +88,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading font-semibold mb-4">Get in Touch</h3>
+            <h2 className="font-heading font-semibold mb-4">Get in Touch</h2>
             <a
               href={`mailto:${siteConfig.contactEmail}`}
               className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors mb-3 break-words"
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading font-semibold mb-4">Follow Us</h3>
+            <h2 className="font-heading font-semibold mb-4">Follow Us</h2>
             <div className="flex gap-4">
               {siteConfig.socialLinks.map((social) => {
                 const Icon = socialIcons[social.label];

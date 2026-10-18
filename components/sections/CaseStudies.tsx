@@ -71,6 +71,7 @@ export default function CaseStudies({ isStandalone = false, service = null }: Ca
   const serviceParam = isStandalone ? service : null;
   // The standalone /case-studies page needs this as its one H1.
   const Heading = isStandalone ? 'h1' : 'h2';
+  const CardHeading = isStandalone ? 'h2' : 'h3';
 
   const filteredStudies = serviceParam
     ? caseStudies.filter((s) => s.service === serviceParam)
@@ -158,9 +159,9 @@ export default function CaseStudies({ isStandalone = false, service = null }: Ca
               className="bg-white dark:bg-slate-800 rounded-card-lg p-8 lg:p-12 shadow-soft border border-gray-100 dark:border-white/10 overflow-hidden"
             >
               <div className="flex flex-wrap items-center gap-2 mb-8">
-                <h3 className="font-heading font-bold text-2xl text-primary dark:text-white">
+                <CardHeading className="font-heading font-bold text-2xl text-primary dark:text-white">
                   {study.client}
-                </h3>
+                </CardHeading>
                 {study.service && (
                   <Link
                     href={`/case-studies?service=${study.service}`}
