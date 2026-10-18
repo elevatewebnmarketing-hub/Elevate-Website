@@ -3,6 +3,7 @@ import { getBlogPosts } from '@/lib/data';
 import { getPortfolioItems } from '@/lib/data';
 import { serviceSlugs } from '@/lib/services-content';
 import { locationSlugs } from '@/lib/location-pages';
+import { nicheSlugs } from '@/lib/niche-pages';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -20,6 +21,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/get-quote`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/team`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/how-to-get-more-customers`, lastModified: new Date('2026-10-17'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/uk`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/case-studies/runway-refined`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/case-studies`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${SITE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
@@ -32,12 +35,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const locationUrls: MetadataRoute.Sitemap = locationSlugs.map((slug) => ({
-    url: `${SITE_URL}/locations/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  const locationUrls: MetadataRoute.Sitemap = [
+    ...locationSlugs.map((slug) => `${SITE_URL}/locations/${slug}`),
+    ...nicheSlugs.map((slug) => `${SITE_URL}/websites-for/${slug}`),
+  ].map((url) => ({ url, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.7 }));
 
   let blogUrls: MetadataRoute.Sitemap = [];
   let portfolioUrls: MetadataRoute.Sitemap = [];

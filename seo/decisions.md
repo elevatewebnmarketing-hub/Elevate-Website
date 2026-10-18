@@ -47,3 +47,4 @@ Elevate's GBP may use the MR DGN office in Asaba. That's only allowed if Elevate
 | 2026-10-17 | Prices, testimonials and portfolio are managed in code; the admin panel isn't used for Elevate's own site | Ufuoma |
 | 2026-10-17 | Added `/how-to-get-more-customers` guide (Article + Person + FAQPage schema, author Ufuoma), linked from the footer, sitemap and llms.txt | Plain-language lead page in Ufuoma's voice; ends with the free SEO check offer |
 | 2026-10-17 | Share images restated on 11 segment layouts; portfolio detail titles get "Website Project" and the brand; descriptions trimmed to 160 | Rank-ready warnings |
+| 2026-10-18 | Added `/uk`, `/case-studies/runway-refined` and niche pages `/websites-for/coaches`, `/clinics` and `/diaspora-businesses` (Service schema covering the UK, US and Nigeria, with no local address) | Foreign-client plan; Runway Refined is proof for coaches and diaspora, Mama Onome for clinics and wellness |

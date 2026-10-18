@@ -41,6 +41,7 @@ const caseStudies = [
     problem: 'A UK-based model coach working with clients worldwide needed a professional home for packages, portfolio and resources.',
     solution: 'Designed and built the site with services, portfolio, journal, testimonials and FAQ, aimed at models at every stage.',
     result: 'Live at runwayrefinedbyalek.com. The client\'s Google review: “Amazing work, very professional! I’m pleased with my website.”',
+    link: '/case-studies/runway-refined',
   },
   {
     client: 'SOCASEMP Initiative, Lagos',
@@ -205,6 +206,11 @@ export default function CaseStudies({ isStandalone = false, service = null }: Ca
                   <p className="text-accent font-semibold leading-relaxed">
                     {study.result}
                   </p>
+                  {'link' in study && study.link && (
+                    <Link href={study.link} className="mt-3 text-primary dark:text-white font-medium hover:text-accent">
+                      Read the full case study →
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>

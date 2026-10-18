@@ -13,7 +13,8 @@ interface Props {
   parent?: { name: string; href: string } | null;
 }
 
-const h2 = 'font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mb-5';
+const DEFAULT_TRUST = ['Based in Abuja, serving all of Nigeria', 'Working since 2023', '50+ websites built', 'Replies within 48 hours'];
+const h2 ='font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mb-5';
 const body = 'text-text/80 dark:text-gray-300 text-base sm:text-lg leading-relaxed';
 const card = 'bg-white dark:bg-slate-800 rounded-card-lg border border-gray-200 dark:border-white/10 p-6';
 
@@ -82,10 +83,9 @@ export default function ServiceDetailPage({
             </div>
             <ContactButtons service={config.title} />
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-text/70 dark:text-gray-400">
-              <li>Based in Abuja, serving all of Nigeria</li>
-              <li>Working since 2023</li>
-              <li>50+ websites built</li>
-              <li>Replies within 48 hours</li>
+              {(detail.trust ?? DEFAULT_TRUST).map((t) => (
+                <li key={t}>{t}</li>
+              ))}
             </ul>
           </header>
 

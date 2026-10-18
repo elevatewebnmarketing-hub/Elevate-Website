@@ -21,6 +21,8 @@ export interface ServiceDetail {
   localContext: string[];
   /** Heading over localContext; defaults to the Abuja heading. */
   localHeading?: string;
+  /** Short trust facts under the hero; defaults to the Nigeria set. */
+  trust?: string[];
   whyUs: string[];
   faqs: { q: string; a: string }[];
   /** Slugs of related service pages. */
