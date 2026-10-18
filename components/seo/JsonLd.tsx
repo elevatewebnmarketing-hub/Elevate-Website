@@ -124,30 +124,6 @@ const organizationSchema = {
           url: `${SITE_URL}/services/website-maintenance`,
         },
       },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Construction Industry Websites',
-          url: `${SITE_URL}/services/construction`,
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Real Estate Websites',
-          url: `${SITE_URL}/services/real-estate`,
-        },
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'E-commerce Websites',
-          url: `${SITE_URL}/services/ecommerce`,
-        },
-      },
     ],
   },
 };

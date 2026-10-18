@@ -117,7 +117,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
     description:
       'SEO-ready websites, Google Business Profile optimisation, landing pages and care plans for businesses across Nigeria, delivered remotely with fixed naira prices.',
     detail: {
-      metaTitle: 'SEO Websites for Nigerian Businesses',
+      metaTitle: 'SEO Websites Across Nigeria',
       metaDescription:
         'SEO-ready websites for Nigerian businesses: service pages, Google Business Profile setup and fast sites built for mobile data. Fixed naira prices.',
       h1: 'SEO website design for businesses in Nigeria',

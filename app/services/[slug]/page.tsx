@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import ServiceSlugPage from './ServiceSlugPage';
 import ServiceDetailPage from '@/components/sections/ServiceDetailPage';
 import { getServiceBySlug, serviceSlugs } from '@/lib/services-content';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
@@ -88,7 +87,7 @@ export default async function ServicePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
-      {detail ? <ServiceDetailPage config={config} detail={detail} /> : <ServiceSlugPage config={config} />}
+      {detail && <ServiceDetailPage config={config} detail={detail} />}
     </>
   );
 }

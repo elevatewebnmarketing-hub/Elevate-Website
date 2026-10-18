@@ -24,7 +24,9 @@ export async function generateMetadata({
   const description = full.length > 160 ? `${full.slice(0, 157).trimEnd()}...` : full;
   const url = `${BASE_URL}/portfolio/${item.id}`;
   // absolute: the portfolio layout's plain title stops the root "| Elevate" template reaching here.
-  const title = `${item.name}: Website Project | Elevate Web & Marketing`;
+  // Long project names drop the "Website Project" label so the title stays near 60 characters.
+  const longTitle = `${item.name}: Website Project | Elevate Web & Marketing`;
+  const title = longTitle.length <= 60 ? longTitle : `${item.name} | Elevate Web & Marketing`;
   return {
     title: { absolute: title },
     description,

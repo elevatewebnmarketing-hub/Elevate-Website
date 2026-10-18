@@ -4,7 +4,7 @@ import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
-  title: 'FAQ',
+  title: 'Website, SEO & Pricing FAQs',
   description:
     'Frequently asked questions about web design, pricing, timelines, and digital marketing in Nigeria. Elevate Web & Marketing answers your questions.',
   keywords: [

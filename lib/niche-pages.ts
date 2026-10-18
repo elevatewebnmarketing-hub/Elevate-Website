@@ -33,7 +33,7 @@ export const nichePages: Record<string, ServicePageConfig> = {
     description:
       'Websites for coaches, consultants and personal brands: clear packages, booking and checkout, lead capture and SEO, so attention turns into paying clients.',
     detail: {
-      metaTitle: 'Websites for Coaches & Personal Brands',
+      metaTitle: 'Coach & Personal Brand Websites',
       metaDescription:
         `Websites for coaches and personal brands: packages, booking, checkout and email sign-ups, built to be found on Google and ChatGPT. From ${money(gb.starter.amount, '£')} or ${money(us.starter.amount, '$')}.`,
       h1: 'Websites for coaches and personal brands',
@@ -92,7 +92,7 @@ export const nichePages: Record<string, ServicePageConfig> = {
     description:
       'Websites for clinics, therapists and wellness businesses: a page per treatment, practitioner profiles, booking, Google Business Profile setup and privacy-aware forms.',
     detail: {
-      metaTitle: 'Websites for Clinics & Health Practices',
+      metaTitle: 'Websites for Clinics & Practices',
       metaDescription:
         'Websites for clinics and wellness businesses: treatment pages, booking, Google Maps setup and privacy-aware forms, built to be found on Google and ChatGPT.',
       h1: 'Websites for clinics and health practices',
@@ -158,7 +158,7 @@ export const nichePages: Record<string, ServicePageConfig> = {
     description:
       'Websites for diaspora-owned businesses in the UK, US and beyond: built to win local customers on Google, reach your community worldwide and take payment in any currency.',
     detail: {
-      metaTitle: 'Websites for Diaspora-Owned Businesses',
+      metaTitle: 'Websites for Diaspora Businesses',
       metaDescription:
         'Websites for diaspora-owned businesses in the UK and US: found on Google and ChatGPT, built for local and international customers, with fixed £ and $ prices.',
       h1: 'Websites for diaspora-owned businesses',

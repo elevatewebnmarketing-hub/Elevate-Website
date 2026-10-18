@@ -30,6 +30,10 @@ const nextConfig = {
       { source: '/blog/measuring-website-roi', destination: '/blog/your-website-is-costing-you-customers', permanent: true },
       { source: '/blog/nigerian-businesses-digital-marketing-2026', destination: '/how-to-get-more-customers', permanent: true },
       { source: '/blog/choosing-a-cms', destination: '/guides/lovable-wix-squarespace-seo', permanent: true },
+      { source: '/services/construction', destination: '/services/website-design', permanent: true },
+      { source: '/services/real-estate', destination: '/services/website-design', permanent: true },
+      { source: '/services/education', destination: '/services/website-design', permanent: true },
+      { source: '/services/ecommerce', destination: '/services/website-design', permanent: true },
       { source: '/blog/why-your-business-isnt-showing-up-on-google-2026', destination: '/guides/why-your-website-isnt-on-google', permanent: true },
     ];
   },

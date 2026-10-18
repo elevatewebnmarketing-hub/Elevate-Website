@@ -13,7 +13,7 @@ export const ukPage: ServicePageConfig = {
   description:
     'SEO-ready websites for UK small businesses, coaches and personal brands: service pages, structured data and AI readability built in, at fixed prices in pounds.',
   detail: {
-    metaTitle: 'SEO Websites for UK Small Businesses',
+    metaTitle: 'SEO Websites for UK Businesses',
     metaDescription: `SEO-ready websites for UK small businesses and coaches, built to be found on Google and ChatGPT. Fixed prices from ${gbp(gb.starter.amount)}, delivered remotely.`,
     h1: 'SEO websites for UK small businesses',
     intro: [
@@ -123,7 +123,7 @@ export const usPage: ServicePageConfig = {
   description:
     'SEO-ready websites for US small businesses, coaches and personal brands: service pages, structured data and AI readability built in, at fixed prices in dollars.',
   detail: {
-    metaTitle: 'SEO Websites for US Small Businesses',
+    metaTitle: 'SEO Websites for US Businesses',
     metaDescription: `SEO-ready websites for US small businesses and coaches, built to be found on Google and ChatGPT. Fixed prices from ${usd(us.starter.amount)}, delivered remotely.`,
     h1: 'SEO websites for US small businesses',
     intro: [
