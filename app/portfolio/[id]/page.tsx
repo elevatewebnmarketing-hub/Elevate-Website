@@ -79,14 +79,17 @@ export default async function PortfolioDetailPage({
           <div className="rounded-card-lg overflow-hidden shadow-soft-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-slate-800 mb-10">
             <div className="aspect-video relative bg-gradient-to-br from-primary/5 to-accent/10 dark:from-primary/20 dark:to-accent/20 flex items-center justify-center">
               {item.image ? (
-                <Image
-                  src={item.image}
-                  alt={`${item.name} website homepage`}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 896px"
-                  priority
-                />
+                // A screenshot, not an iframe: most client sites send X-Frame-Options DENY, so embeds render blank.
+                <a href={item.url ?? undefined} target="_blank" rel="noopener noreferrer" aria-label={`Visit the ${item.name} website`}>
+                  <Image
+                    src={item.image}
+                    alt={`${item.name} website homepage`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 1024px) 100vw, 896px"
+                    priority
+                  />
+                </a>
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Monitor className="text-primary/30 dark:text-white/30" size={80} />
@@ -135,43 +138,6 @@ export default async function PortfolioDetailPage({
               <p className="text-text/80 dark:text-gray-300 leading-relaxed">
                 {item.solution}
               </p>
-            </section>
-          )}
-
-          {/* Live website preview (embedded iframe) */}
-          {item.url && (
-            <section className="mb-10" id="live-preview">
-              <h2 className="font-heading font-semibold text-xl text-primary dark:text-white mb-4">
-                Live website preview
-              </h2>
-              <div className="rounded-card-lg overflow-hidden shadow-soft-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-slate-800">
-                <div className="flex items-center justify-between gap-4 px-4 py-3 border-b border-gray-100 dark:border-white/10 bg-gray-50 dark:bg-slate-800/80">
-                  <span className="text-sm text-text/70 dark:text-gray-400 truncate font-mono">
-                    {item.url}
-                  </span>
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 shrink-0 px-3 py-1.5 text-sm font-medium rounded-lg bg-accent text-white hover:bg-accent/90 transition-colors"
-                  >
-                    Open in new tab
-                    <ExternalLink size={14} />
-                  </a>
-                </div>
-                <div className="relative w-full bg-gray-100 dark:bg-slate-700" style={{ minHeight: '500px' }}>
-                  <iframe
-                    src={item.url}
-                    title={`Live preview of ${item.name}`}
-                    width="100%"
-                    height="500"
-                    loading="lazy"
-                    className="w-full border-0"
-                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                    allow="fullscreen"
-                  />
-                </div>
-              </div>
             </section>
           )}
 
