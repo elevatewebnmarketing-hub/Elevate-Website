@@ -213,6 +213,12 @@ export default function HowToGetMoreCustomersPage() {
             ))}
           </ul>
 
+          <p className={p}>
+            Want a quick answer first? Run our{' '}
+            <Link href="/ai-visibility-check" className="text-accent hover:underline">free AI visibility check</Link> to see
+            what Google and ChatGPT can read on your website.
+          </p>
+
           <h2 className={h2}>A 10-minute checklist for today</h2>
           <ul className="space-y-3 mb-4">
             {checklist.map((item) => (

@@ -18,6 +18,7 @@ Elevate Web & Marketing is a CAC-registered studio founded in 2023 and headquart
 - [Websites for Coaches & Personal Brands](https://www.elevatewebandmarketing.com/websites-for/coaches): Packages, booking, checkout and email sign-ups, built to be found on Google and ChatGPT.
 - [Websites for Clinics & Health Practices](https://www.elevatewebandmarketing.com/websites-for/clinics): Treatment pages, booking, Google Maps setup and privacy-aware forms.
 - [Websites for Diaspora-Owned Businesses](https://www.elevatewebandmarketing.com/websites-for/diaspora-businesses): Sites for founders abroad serving local and international customers.
+- [Free AI Visibility Check](https://www.elevatewebandmarketing.com/ai-visibility-check): Free tool showing whether Google, ChatGPT and other AI crawlers can read a website: readable text, headings, schema, robots.txt and sitemap.
 - [Website Maintenance](https://www.elevatewebandmarketing.com/services/website-maintenance): Ongoing updates, security monitoring, performance checks, and content changes.
 - [Construction Industry Websites](https://www.elevatewebandmarketing.com/services/construction): Specialist web design for construction companies, contractors, and builders.
 - [Real Estate Websites](https://www.elevatewebandmarketing.com/services/real-estate): Property listing websites and marketing for real estate agents and developers.

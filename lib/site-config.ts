@@ -36,6 +36,7 @@ export const siteConfig = {
     { href: '/get-quote', label: 'Get a Quote' },
     { href: '/locations/asaba', label: 'Web Design in Asaba' },
     { href: '/locations/nigeria', label: 'Websites Across Nigeria' },
+    { href: '/ai-visibility-check', label: 'Free AI Visibility Check' },
     { href: '/how-to-get-more-customers', label: 'How to Get More Customers' },
     { href: '/uk', label: 'Websites for UK Businesses' },
     { href: '/websites-for/coaches', label: 'Websites for Coaches' },

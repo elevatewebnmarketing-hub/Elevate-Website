@@ -22,6 +22,7 @@ async function getUrls(): Promise<string[]> {
     `${SITE_URL}/locations/asaba`,
     `${SITE_URL}/locations/nigeria`,
     `${SITE_URL}/how-to-get-more-customers`,
+    `${SITE_URL}/ai-visibility-check`,
     `${SITE_URL}/uk`,
     `${SITE_URL}/websites-for/coaches`,
     `${SITE_URL}/websites-for/clinics`,
