@@ -6,7 +6,7 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Insights on web design, digital marketing, and growing your business online. Tips and best practices from Elevate Web & Marketing.',
+    'Guides and articles on getting your business found on Google and ChatGPT, and turning your website into a source of customers.',
   keywords: [
     'web design blog Nigeria',
     'digital marketing tips Nigeria',

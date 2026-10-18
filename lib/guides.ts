@@ -7,6 +7,8 @@ export interface Guide {
   h1: string;
   description: string;
   published: string;
+  /** Card image on the blog listing (Unsplash, free to use). */
+  image: string;
   intro: string[];
   sections: { h2: string; paragraphs?: string[]; list?: string[]; after?: string[] }[];
   faqs: { q: string; a: string }[];
@@ -24,6 +26,7 @@ const whyNotOnGoogle: Guide = {
   description:
     'Why a website doesn’t show up on Google or ChatGPT: no Search Console, no sitemap, pages crawlers can’t read, no Bing or schema, and how to fix each one.',
   published: '2026-10-18',
+  image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80',
   intro: [
     'The most common complaint I hear from business owners is this: “My website is fine. It looks nice. But nobody is reaching out.” The site is online, but it isn’t useful, because the people searching for what the business sells never see it.',
     'A website should be a reliable source of customers. Here are the reasons it usually isn’t, in the order I check them, and what to do about each one.',
@@ -152,6 +155,7 @@ const builders: Guide = {
   description:
     'Why Lovable, Wix and Squarespace sites often don’t show up on Google or ChatGPT, what changed in 2026, how to check yours, and when you need a rebuild.',
   published: '2026-10-18',
+  image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
   intro: [
     'Website builders make it easy to get a good-looking site online in a day. Getting that site found is a different job, and each builder has its own usual problems. Lovable is the one I’ve had to fix most often.',
   ],
@@ -255,6 +259,7 @@ const ukCost: Guide = {
   description:
     'Typical UK website prices in 2026 for DIY builders, freelancers and agencies, the running costs after launch, and the questions to ask before you pay a quote.',
   published: '2026-10-18',
+  image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
   intro: [
     'The honest answer is anything from a few pounds a month to tens of thousands. The useful answer depends on what the website has to do. Here are typical UK prices in 2026, what changes them, and how to judge a quote.',
   ],

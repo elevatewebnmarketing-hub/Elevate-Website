@@ -18,6 +18,8 @@ export interface BlogPost {
   excerpt: string;
   content: string;
   publishedAt: string;
+  /** Set when a post is substantially rewritten; shown as "Updated" and used as dateModified. */
+  updatedAt?: string;
   author: string;
   image: string | null;
   viewCount?: number;

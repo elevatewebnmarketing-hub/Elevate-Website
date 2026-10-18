@@ -12,14 +12,13 @@ export default function BlogPostJsonLd({ post }: { post: BlogPost }) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     wordCount,
     inLanguage: 'en',
-    author: {
-      '@type': 'Organization',
-      name: post.author || 'Elevate Team',
-      url: SITE_URL,
-    },
+    author:
+      post.author === 'Ufuoma Onakpoyan'
+        ? { '@type': 'Person', name: post.author, url: `${SITE_URL}/about`, jobTitle: 'Founder, Elevate Web & Marketing' }
+        : { '@type': 'Organization', name: post.author || 'Elevate Web & Marketing', url: SITE_URL },
     publisher: {
       '@type': 'Organization',
       name: 'Elevate Web & Marketing',

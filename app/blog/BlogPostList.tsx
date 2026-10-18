@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useState, useMemo } from 'react';
 import { ArrowRight, Calendar, User, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const POSTS_PER_PAGE = 6;
@@ -16,7 +15,12 @@ interface BlogPost {
   publishedAt: string;
   author: string;
   image?: string | null;
+  /** Guides live outside /blog; they set their own link. */
+  href?: string;
 }
+
+const postHref = (post: BlogPost) => post.href ?? `/blog/${post.slug}`;
+const pageHref = (p: number) => (p === 1 ? '/blog' : `/blog?page=${p}`);
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-US', {
@@ -33,28 +37,12 @@ export default function BlogPostList({
   posts: BlogPost[];
   initialPage: number;
 }) {
-  const [currentPage, setCurrentPage] = useState(initialPage);
-
-  const totalPages = useMemo(() => {
-    if (posts.length <= 6) return 1;
-    return 1 + Math.ceil((posts.length - 6) / POSTS_PER_PAGE);
-  }, [posts.length]);
-
-  const safePage = Math.min(currentPage, totalPages);
+  // Pages are real links (/blog?page=2) rendered on the server, so search engines can reach every post.
+  const totalPages = posts.length <= 6 ? 1 : 1 + Math.ceil((posts.length - 6) / POSTS_PER_PAGE);
+  const safePage = Math.min(initialPage, totalPages);
   const featuredPost = safePage === 1 ? posts[0] ?? null : null;
-  const gridPosts = useMemo(() => {
-    if (safePage === 1) return posts.slice(1, 6);
-    const start = 6 + (safePage - 2) * POSTS_PER_PAGE;
-    return posts.slice(start, start + POSTS_PER_PAGE);
-  }, [posts, safePage]);
-
-  const setPage = (p: number) => {
-    const next = Math.max(1, Math.min(p, totalPages));
-    setCurrentPage(next);
-    const url = new URL(window.location.href);
-    url.searchParams.set('page', String(next));
-    window.history.replaceState({}, '', url.pathname + url.search);
-  };
+  const start = safePage === 1 ? 1 : 6 + (safePage - 2) * POSTS_PER_PAGE;
+  const gridPosts = posts.slice(start, safePage === 1 ? 6 : start + POSTS_PER_PAGE);
 
   if (posts.length === 0) {
     return (
@@ -75,7 +63,7 @@ export default function BlogPostList({
           className="mb-16"
         >
           <Link
-            href={`/blog/${featuredPost.slug}`}
+            href={postHref(featuredPost)}
             className="group block overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-soft hover:shadow-soft-xl border border-gray-100 dark:border-white/10 transition-all duration-300"
           >
             <div className="grid lg:grid-cols-2 gap-0">
@@ -130,7 +118,7 @@ export default function BlogPostList({
             className="group"
           >
             <Link
-              href={`/blog/${post.slug}`}
+              href={postHref(post)}
               className="block h-full overflow-hidden rounded-2xl bg-white dark:bg-slate-800 shadow-soft hover:shadow-soft-xl border border-gray-100 dark:border-white/10 transition-all duration-300"
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-slate-700">
@@ -175,43 +163,40 @@ export default function BlogPostList({
             Page {safePage} of {totalPages}
           </p>
           <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setPage(safePage - 1)}
-              disabled={safePage <= 1}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-white/20 text-primary dark:text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
-            >
-              <ChevronLeft size={18} />
-              Previous
-            </button>
-            {totalPages <= 7 && (
-              <div className="flex items-center gap-1">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                  <button
-                    key={p}
-                    type="button"
-                    onClick={() => setPage(p)}
-                    className={`min-w-[2.5rem] h-10 rounded-xl font-medium transition-colors ${
-                      p === safePage
-                        ? 'bg-accent text-white'
-                        : 'text-primary dark:text-white hover:bg-gray-100 dark:hover:bg-white/10'
-                    }`}
-                    aria-current={p === safePage ? 'page' : undefined}
-                  >
-                    {p}
-                  </button>
-                ))}
-              </div>
+            {safePage > 1 && (
+              <Link
+                href={pageHref(safePage - 1)}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-white/20 text-primary dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+              >
+                <ChevronLeft size={18} />
+                Previous
+              </Link>
             )}
-            <button
-              type="button"
-              onClick={() => setPage(safePage + 1)}
-              disabled={safePage >= totalPages}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-white/20 text-primary dark:text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
-            >
-              Next
-              <ChevronRight size={18} />
-            </button>
+            <div className="flex items-center gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                <Link
+                  key={p}
+                  href={pageHref(p)}
+                  className={`min-w-[2.5rem] h-10 inline-flex items-center justify-center rounded-xl font-medium transition-colors ${
+                    p === safePage
+                      ? 'bg-accent text-white'
+                      : 'text-primary dark:text-white hover:bg-gray-100 dark:hover:bg-white/10'
+                  }`}
+                  aria-current={p === safePage ? 'page' : undefined}
+                >
+                  {p}
+                </Link>
+              ))}
+            </div>
+            {safePage < totalPages && (
+              <Link
+                href={pageHref(safePage + 1)}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-white/20 text-primary dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+              >
+                Next
+                <ChevronRight size={18} />
+              </Link>
+            )}
           </div>
         </nav>
       )}

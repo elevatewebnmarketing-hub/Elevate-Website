@@ -1,7 +1,40 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { getBlogPosts } from '@/lib/data';
+import type { Metadata } from 'next';
 import BlogPostList from './BlogPostList';
+import { guides } from '@/lib/guides';
+
+// The guides are listed with the posts so they're reachable from the blog, not only the footer.
+const guideEntries = [
+  ...guides.map((g) => ({
+    id: `guide-${g.slug}`,
+    slug: g.slug,
+    href: `/guides/${g.slug}`,
+    title: g.title,
+    excerpt: g.description,
+    publishedAt: g.published,
+    author: 'Ufuoma Onakpoyan',
+    image: g.image,
+  })),
+  {
+    id: 'guide-how-to-get-more-customers',
+    slug: 'how-to-get-more-customers',
+    href: '/how-to-get-more-customers',
+    title: 'How to Get More Customers Online',
+    excerpt:
+      'A plain-English guide for business owners: how an SEO-ready website, Google Business Profile and reviews bring customers who are already searching for you.',
+    publishedAt: '2026-10-17',
+    author: 'Ufuoma Onakpoyan',
+    image: 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80',
+  },
+];
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ page?: string }> }): Promise<Metadata> {
+  const page = parseInt((await searchParams).page ?? '1', 10);
+  // Page 2+ canonicalise to themselves so Google follows the posts listed there.
+  return page > 1 ? { title: `Blog: Page ${page}`, alternates: { canonical: `/blog?page=${page}` } } : {};
+}
 
 export default async function BlogPage({
   searchParams,
@@ -10,7 +43,9 @@ export default async function BlogPage({
 }) {
   const { page: pageParam } = await searchParams;
   const initialPage = Math.max(1, parseInt(pageParam ?? '1', 10) || 1);
-  const posts = await getBlogPosts();
+  const posts = [...(await getBlogPosts()), ...guideEntries].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
 
   return (
     <>
@@ -24,7 +59,7 @@ export default async function BlogPage({
                 Blog
               </h1>
               <p className="text-text/80 dark:text-gray-300 text-lg sm:text-xl leading-relaxed">
-                Insights on web design, digital marketing, and growing your business online.
+                Guides and articles on getting your business found on Google and ChatGPT, and turning your website into a source of customers.
               </p>
             </div>
           </div>
