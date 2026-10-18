@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { getBlogPostBySlug, getBlogPosts } from '@/lib/data';
-import { stripHtmlTags } from '@/lib/blog-utils';
+import { escapeHtml, formatInline, stripHtmlTags } from '@/lib/blog-utils';
 import BlogPostJsonLd from '@/components/seo/BlogPostJsonLd';
 import BlogPostViewTracker from '@/components/blog/BlogPostViewTracker';
 import Link from 'next/link';
@@ -53,21 +53,6 @@ export async function generateMetadata({
     },
     alternates: { canonical: url },
   };
-}
-
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-/** Bold plus [text](/path) links. Only same-site paths become links, so post text can't inject outside URLs. */
-function formatInline(raw: string): string {
-  return escapeHtml(raw)
-    .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-primary dark:text-white">$1</strong>')
-    .replace(/\[([^\]]+)\]\((\/[a-z0-9\-/#?=&;]*)\)/gi, '<a href="$2" class="text-accent font-medium underline underline-offset-2 hover:no-underline">$1</a>');
 }
 
 function formatContent(content: string): string {

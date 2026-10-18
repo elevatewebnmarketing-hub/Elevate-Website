@@ -1,4 +1,8 @@
+import { STATIC_PRICING_FALLBACK } from '@/lib/pricing-config';
+
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
+const { GB: gb, US: us } = STATIC_PRICING_FALLBACK;
+const n = (x: number) => x.toLocaleString('en-GB');
 
 const content = `# Elevate Web & Marketing
 
@@ -18,6 +22,13 @@ The site explains Elevate Web & Marketing's services, package pricing, portfolio
 - Portfolio: ${SITE_URL}/portfolio
 - About: ${SITE_URL}/about
 - Blog: ${SITE_URL}/blog
+- SEO websites for UK small businesses: ${SITE_URL}/uk
+- SEO websites for US small businesses: ${SITE_URL}/us
+- Guide, how to get more customers: ${SITE_URL}/how-to-get-more-customers
+- Guide, why your website isn't on Google or ChatGPT: ${SITE_URL}/guides/why-your-website-isnt-on-google
+- Guide, Lovable, Wix and Squarespace SEO: ${SITE_URL}/guides/lovable-wix-squarespace-seo
+- Guide, UK website cost 2026: ${SITE_URL}/guides/website-cost-uk
+- Free AI visibility check: ${SITE_URL}/ai-visibility-check
 
 ## Pricing Summary
 
@@ -53,6 +64,11 @@ E-commerce Growth Suite
 - Includes:
   - E-commerce website scope
   - GA4, Google Tag Manager and Search Console setup
+
+UK and US clients (fixed prices, delivered remotely)
+- Starter Website: GBP ${n(gb.starter.amount)} / USD ${n(us.starter.amount)}
+- Business Website: GBP ${n(gb.business.amount)} / USD ${n(us.business.amount)}
+- Website Care Plan: GBP ${gb.google_growth.amount} / USD ${us.google_growth.amount} per month; SEO Care Plan: GBP ${gb.meta_growth.amount} / USD ${us.meta_growth.amount} per month
 
 ## Services Summary
 

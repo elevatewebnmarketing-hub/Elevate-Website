@@ -7,18 +7,18 @@ The service pages only use facts listed here. Fill each TODO, then replace the m
 - **Name:** Elevate Web & Marketing
 - **Founder:** Ufuoma Onakpoyan
 - **Founded:** 2023
-- **Location:** Asaba, Delta State, Nigeria
+- **Location:** Abuja, FCT (service-area business, address hidden). Asaba was the old listing; see `decisions.md`.
 - **Phone and WhatsApp:** +234 708 603 9012
 - **Email:** hello@elevatewebandmarketing.com
 - **Homepage claims:** 50+ websites built, 20+ businesses helped, 48-hour reply window
 - **Prices:**
   - Starter Website ₦250,000: 4 pages, 1-year domain, GBP setup, 7 to 10 business days, one revision round
   - Business Website ₦450,000: up to 6 pages plus a landing page, 2 to 4 weeks, two revision rounds
-  - Google Ads and Meta Ads management: ₦100,000 a month, plus a suggested ₦100,000 a month ad spend
+  - Ads management: retired on 17 Oct 2026. Elevate sells no ads services. Current prices live in `lib/pricing-config.ts`.
 - **Proof sites:**
   - mrdgngroup.com and construction.mrdgngroup.com (both 0 FAIL on 17 Oct 2026; mrdgngroup.com was JavaScript-only on 6 Oct)
   - mansaluxerealty.mrdgngroup.com
-  - socasemp.org
+  - donate.socasemp.org (the donation platform only; socasemp.org itself is WordPress and not Elevate's build)
   - TMM Scholars
   - Experience BSG
   - needool.com

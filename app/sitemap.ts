@@ -4,6 +4,7 @@ import { getPortfolioItems } from '@/lib/data';
 import { serviceSlugs } from '@/lib/services-content';
 import { locationSlugs } from '@/lib/location-pages';
 import { nicheSlugs } from '@/lib/niche-pages';
+import { guides } from '@/lib/guides';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -23,6 +24,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/how-to-get-more-customers`, lastModified: new Date('2026-10-17'), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/ai-visibility-check`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/uk`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/us`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.8 },
+    ...guides.map((g) => ({ url: `${SITE_URL}/guides/${g.slug}`, lastModified: new Date(g.published), changeFrequency: 'monthly' as const, priority: 0.7 })),
     { url: `${SITE_URL}/case-studies/runway-refined`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/case-studies`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },

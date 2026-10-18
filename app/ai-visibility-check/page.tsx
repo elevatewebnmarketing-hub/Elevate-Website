@@ -88,7 +88,9 @@ export default function AiVisibilityCheckPage() {
           </p>
           <p className="text-text/80 dark:text-gray-300 text-lg leading-relaxed mb-4">
             Websites built with some AI builders and single-page app templates often look fine to people but send crawlers an
-            empty page. This check shows you in seconds. For the full story, read{' '}
+            empty page (see{' '}
+            <Link href="/guides/lovable-wix-squarespace-seo" className="text-accent hover:underline">Lovable, Wix and Squarespace sites not on Google</Link>
+            ). This check shows you in seconds. For the full story, read{' '}
             <Link href="/how-to-get-more-customers" className="text-accent hover:underline">how to get more customers online</Link>.
           </p>
 

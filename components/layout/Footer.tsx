@@ -1,7 +1,7 @@
 'use client';
 
 import Logo from '@/components/ui/Logo';
-import { Calendar, Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Calendar, Instagram, Mail, MapPin, Phone, Youtube } from 'lucide-react';
 import { openCalendly } from '@/lib/calendly';
 import { siteConfig } from '@/lib/site-config';
 
@@ -29,12 +29,22 @@ function XIcon({ size = 22 }: { size?: number }) {
   );
 }
 
+function TikTokIcon({ size = 22 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z" />
+    </svg>
+  );
+}
+
 type SocialIconProps = { size?: number };
 const socialIcons: Record<string, React.ComponentType<SocialIconProps>> = {
   Instagram: Instagram as React.ComponentType<SocialIconProps>,
   WhatsApp: WhatsAppIcon,
   Facebook: FacebookIcon,
   X: XIcon,
+  YouTube: Youtube as React.ComponentType<SocialIconProps>,
+  TikTok: TikTokIcon,
 };
 
 export default function Footer() {

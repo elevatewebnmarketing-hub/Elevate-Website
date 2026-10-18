@@ -58,6 +58,8 @@ const organizationSchema = {
     'https://www.facebook.com/profile.php?id=61578521342361',
     'https://www.instagram.com/elevate_web_and_marketing/',
     'https://x.com/elevate_web_',
+    'https://www.youtube.com/@elevatewebmarketing-b6j',
+    'https://www.tiktok.com/@elevate.web.marke',
   ],
   description:
     'SEO-ready websites, local SEO and Google Business Profile optimisation, landing pages and care plans for businesses in Abuja and across Nigeria.',

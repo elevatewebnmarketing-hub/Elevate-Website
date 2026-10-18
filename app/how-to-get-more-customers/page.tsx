@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Check, MessageCircle } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
 import { siteConfig } from '@/lib/site-config';
+import AuthorBio from '@/components/sections/AuthorBio';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 const PAGE_URL = `${SITE_URL}/how-to-get-more-customers`;
@@ -158,6 +158,11 @@ export default function HowToGetMoreCustomersPage() {
             An SEO-ready website has a separate page for each service, and for each product if you sell products, with
             your city in the title. It answers the questions customers ask, includes the technical setup Google needs
             (structured data, a sitemap, fast loading on phones), and is submitted to Google Search Console and Bing.
+            If your site doesn’t appear at all, see{' '}
+            <Link href="/guides/why-your-website-isnt-on-google" className="text-accent hover:underline">
+              why your website isn’t on Google or ChatGPT
+            </Link>
+            .
           </p>
 
           <h2 className={h2}>Step 2: a complete Google Business Profile</h2>
@@ -261,24 +266,7 @@ export default function HowToGetMoreCustomersPage() {
             ))}
           </div>
 
-          <aside className="mt-12 flex gap-5 items-start p-6 rounded-card-lg border border-gray-200 dark:border-white/10">
-            <Image
-              src="/images/founder-ufuoma-onakpoyan.png"
-              alt="Ufuoma Onakpoyan, founder of Elevate Web & Marketing"
-              width={80}
-              height={82}
-              className="rounded-full flex-shrink-0"
-            />
-            <div>
-              <p className="font-heading font-semibold text-primary dark:text-white">About the author</p>
-              <p className="text-text/80 dark:text-gray-300 leading-relaxed">
-                Ufuoma Onakpoyan is the founder of Elevate Web & Marketing, based in Abuja. Ufuoma builds SEO-ready websites
-                for businesses in Nigeria and the UK and also works in Abuja real estate, which means seeing both sides: the
-                business owner who needs customers, and the buyer searching online.{' '}
-                <Link href="/about" className="text-accent hover:underline">More about Elevate</Link>.
-              </p>
-            </div>
-          </aside>
+          <AuthorBio />
 
           <p className="text-sm text-text/60 dark:text-gray-400 mt-8">
             Sources:{' '}

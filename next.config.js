@@ -22,6 +22,7 @@ const nextConfig = {
       { source: '/blog/how-to-get-more-customers-from-your-website-nigeria', destination: '/how-to-get-more-customers', permanent: true },
       { source: '/blog/meta-ads-vs-google-ads-2026', destination: '/how-to-get-more-customers', permanent: true },
       { source: '/blog/facebook-instagram-meta-ads-growth-engine', destination: '/how-to-get-more-customers', permanent: true },
+      { source: '/blog/why-your-business-isnt-showing-up-on-google-2026', destination: '/guides/why-your-website-isnt-on-google', permanent: true },
     ];
   },
   async headers() {

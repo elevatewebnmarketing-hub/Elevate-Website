@@ -5,6 +5,7 @@ import { ArrowRight, Check, MessageCircle, Phone } from 'lucide-react';
 import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 import { getServiceBySlug, type ServicePageConfig, type ServiceDetail } from '@/lib/services-content';
 import { siteConfig } from '@/lib/site-config';
+import { formatInline } from '@/lib/blog-utils';
 
 interface Props {
   config: ServicePageConfig;
@@ -78,7 +79,7 @@ export default function ServiceDetailPage({
             <p className="text-accent font-heading font-semibold text-lg mb-6">{config.subtitle}</p>
             <div className="space-y-4 mb-8">
               {detail.intro.map((p) => (
-                <p key={p} className={body}>{p}</p>
+                <p key={p} className={body} dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
               ))}
             </div>
             <ContactButtons service={config.title} />

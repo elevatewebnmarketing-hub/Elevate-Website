@@ -43,6 +43,13 @@ Ufuoma does these by hand once the code work is finished and pushed. Code change
 - [ ] Create agency listings on Clutch and GoodFirms (real reviews only), linking to `/uk` and the case studies.
 - [ ] Ask Alek for a 30-second video testimonial for the Runway Refined case study.
 - [ ] Record a short face-to-camera video for the `/uk` page and LinkedIn: who you are and how a remote project works.
+- [ ] After the 18 Oct deploy, request indexing in Search Console (when the daily quota resets) for:
+  - https://www.elevatewebandmarketing.com/us
+  - https://www.elevatewebandmarketing.com/guides/why-your-website-isnt-on-google
+  - https://www.elevatewebandmarketing.com/guides/lovable-wix-squarespace-seo
+  - https://www.elevatewebandmarketing.com/guides/website-cost-uk
+- [ ] Put the website link (https://www.elevatewebandmarketing.com) in the bio of every social account: Instagram, X, Facebook, YouTube, TikTok.
+- [ ] Create a LinkedIn profile (and later a company page) with the same name. LinkedIn is where UK and US coaches and clinics are.
 
 ## Accounts
 
