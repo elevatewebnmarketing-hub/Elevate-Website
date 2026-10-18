@@ -75,15 +75,15 @@ export default async function PortfolioDetailPage({
             Back to Portfolio
           </Link>
 
-          {/* Project hero / logo */}
+          {/* Project hero: homepage screenshot */}
           <div className="rounded-card-lg overflow-hidden shadow-soft-xl border border-gray-100 dark:border-white/10 bg-white dark:bg-slate-800 mb-10">
-            <div className="aspect-video relative bg-gradient-to-br from-primary/5 to-accent/10 dark:from-primary/20 dark:to-accent/20 flex items-center justify-center p-8">
+            <div className="aspect-video relative bg-gradient-to-br from-primary/5 to-accent/10 dark:from-primary/20 dark:to-accent/20 flex items-center justify-center">
               {item.image ? (
                 <Image
                   src={item.image}
-                  alt={`${item.name} logo`}
+                  alt={`${item.name} website homepage`}
                   fill
-                  className="object-contain object-center"
+                  className="object-cover object-top"
                   sizes="(max-width: 1024px) 100vw, 896px"
                   priority
                 />

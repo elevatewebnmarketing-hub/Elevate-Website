@@ -139,7 +139,7 @@ export default function Portfolio({ showAll = false, service = null }: Portfolio
                   {project.image ? (
                     <Image
                       src={project.image}
-                      alt={project.name}
+                      alt={`${project.name} website homepage`}
                       width={600}
                       height={340}
                       className="w-full h-full object-cover"
