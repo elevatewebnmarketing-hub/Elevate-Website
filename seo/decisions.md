@@ -80,3 +80,10 @@ Research behind these: `seo/research-2026-11-09.md` (Search Console export and D
 | 2026-11-09 | Maintenance checklist refocused on small businesses, with a one-table summary and a monthly ChatGPT check | 285 impressions at #91 for a worldwide query; aim at reachable small-business searches and link to care plans and the ChatGPT guide |
 | 2026-11-09 | Lagos page corrected: SOCASEMP's donation platform is a Lagos client (no Lagos SEO case study yet) | The Nigeria page already listed it; the earlier Lagos copy said there was no Lagos work |
 | 2026-11-09 | Blog posts and guides render markdown tables (`| a | b |`), with a 34rem minimum width that scrolls inside its box on phones | Comparison tables help readers and AI summaries |
+
+## 2026-11-09 (evening): content from the AnswerThePublic topics (plan: `seo/content-plan-2026-11-09.md`)
+
+| Date | Decision | Why |
+|---|---|---|
+| 2026-11-09 | New guide `/guides/launch-online-store-nigeria` (the two ATP drafts merged): platforms table (custom, Shopify, WooCommerce), payments table (Paystack, Flutterwave, Stripe, bank transfer with manual checks, NOWPayments crypto), documents, testing, delivery, FCCPA/NDPA | Ufuoma: Elevate builds custom code, Shopify or any platform and integrates all of those gateways. Only Paystack's fees are stated (its own support page); Flutterwave, Shopify, CAC and courier figures conflict between sources, so readers are sent to the official pages. Stripe: no standard accounts for Nigerian-registered businesses |
+| 2026-11-09 | New guide `/guides/google-business-profile-setup-nigeria`, new post `/blog/seo-or-google-ads-small-business-nigeria`; care plan page gains a "care plan or one-off build" table and three FAQs; e-commerce page lists every payment option | ATP topics with measurable or AI-answer demand; ads stay "on request" |

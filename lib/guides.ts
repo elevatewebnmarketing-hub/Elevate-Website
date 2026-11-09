@@ -1,5 +1,6 @@
 import { STATIC_PRICING_FALLBACK } from '@/lib/pricing-config';
 import { recommendedByChatgpt } from '@/lib/guides-ai';
+import { launchOnlineStore, gbpSetup } from '@/lib/guides-growth';
 
 /** Long-form guides at /guides/[slug]. Paragraphs and list items accept **bold** and [text](/path) links. */
 export interface Guide {
@@ -394,7 +395,7 @@ const ukCost: Guide = {
   ],
 };
 
-export const guides: Guide[] = [recommendedByChatgpt, whyNotOnGoogle, builders, ukCost];
+export const guides: Guide[] = [launchOnlineStore, gbpSetup, recommendedByChatgpt, whyNotOnGoogle, builders, ukCost];
 
 export function getGuide(slug: string): Guide | undefined {
   return guides.find((g) => g.slug === slug);

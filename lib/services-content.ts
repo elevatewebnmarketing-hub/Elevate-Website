@@ -32,6 +32,8 @@ export interface ServiceDetail {
   evidenceIds?: string[];
   /** Links to related location pages, shown near the end. */
   nearby?: { label: string; href: string }[];
+  /** Optional comparison table shown after "What's included". */
+  compare?: { heading: string; head: string[]; rows: string[][] };
   /** Date the copy was last reviewed (YYYY-MM-DD), shown in the byline. */
   updated?: string;
   /** Slugs of related service pages. */

@@ -95,6 +95,18 @@ export const websiteMaintenance: ServicePageConfig = {
     ],
     faqs: [
       {
+        q: 'What is included in a website care plan?',
+        a: 'Hosting and renewals, uptime monitoring, updates, security fixes and backups, monthly form and tracking checks, and up to 4 small content changes a month. The SEO Care Plan adds Google Business Profile work, a new page or post each month and a monthly report.',
+      },
+      {
+        q: 'Is a care plan better than paying once for a website?',
+        a: 'A one-off build gets the site live. After that someone has to renew the domain, keep backups, fix forms and keep prices and hours current. If you or your staff will do that every month, a one-off build is enough; if not, a care plan costs less than fixing a site that quietly broke.',
+      },
+      {
+        q: 'How much does website maintenance cost in Nigeria?',
+        a: 'Our Website Care Plan and SEO Care Plan have fixed monthly prices, shown on the pricing page in your currency. Sites we didn’t build start with a one-off ₦30,000 check.',
+      },
+      {
         q: 'How do you show me it’s working?',
         a: 'Each month we show you clicks and visitors, and above all how many people called, messaged on WhatsApp or filled in a form after finding you on Google, ChatGPT or Bing.',
       },
@@ -115,6 +127,20 @@ export const websiteMaintenance: ServicePageConfig = {
         a: 'Yes. We start with a one-off ₦30,000 check of access, hosting and backups, then the care plan runs as normal.',
       },
     ],
+    compare: {
+      heading: 'Care plan or a one-off build?',
+      head: ['', 'One-off build only', 'Website Care Plan', 'SEO Care Plan'],
+      rows: [
+        ['Hosting, renewals and uptime monitoring', 'You manage them', 'Included', 'Included'],
+        ['Updates, security fixes and backups', 'You manage them', 'Included', 'Included'],
+        ['Small text, price and photo changes', 'Paid per job', 'Up to 4 a month, done within 2 business days', 'Up to 8 a month'],
+        ['Form, WhatsApp button and tracking checks', 'No', 'Monthly', 'Monthly'],
+        ['Google Business Profile posts, photos and review replies', 'No', 'No', 'Included'],
+        ['New page or blog post', 'No', 'No', 'One a month'],
+        ['Monthly report on searches, calls and clicks', 'No', 'No', 'Included'],
+        ['Contract', 'None', 'Month to month, 30 days’ notice', 'Month to month, 30 days’ notice'],
+      ],
+    },
     related: ['local-seo', 'website-redesign', 'website-design'],
   },
 };

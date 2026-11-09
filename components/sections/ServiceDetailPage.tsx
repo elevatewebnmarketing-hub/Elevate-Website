@@ -139,6 +139,32 @@ export default function ServiceDetailPage({
             </div>
           </section>
 
+          {detail.compare && (
+            <section>
+              <h2 className={h2}>{detail.compare.heading}</h2>
+              <div className="overflow-x-auto rounded-card-lg border border-gray-200 dark:border-white/10">
+                <table className="w-full min-w-[34rem] text-left text-sm sm:text-base">
+                  <thead className="bg-gray-50 dark:bg-slate-800">
+                    <tr>
+                      {detail.compare.head.map((h) => (
+                        <th key={h} scope="col" className="px-4 py-3 font-heading font-semibold text-primary dark:text-white">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {detail.compare.rows.map((row) => (
+                      <tr key={row.join('|')} className="border-t border-gray-100 dark:border-white/5 align-top">
+                        {row.map((c, i) => (
+                          <td key={i} className="px-4 py-3 text-text/80 dark:text-gray-300">{c}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          )}
+
           <section>
             <h2 className={h2}>How it works</h2>
             <ol className="space-y-5">

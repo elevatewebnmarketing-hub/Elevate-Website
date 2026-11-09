@@ -22,7 +22,7 @@ export const localSeo: ServicePageConfig = {
     ],
     evidenceIds: ['real-estate-abuja-asaba'],
     intro: [
-      'When someone in Abuja types “estate agent near me” or asks ChatGPT for “a good caterer in Wuse”, a short list of businesses appears. Local SEO is the work that gets your business onto that list and keeps it there. For the ChatGPT side, see [how to get your business recommended by ChatGPT](/guides/how-to-get-recommended-by-chatgpt).',
+      'When someone in Abuja types “estate agent near me” or asks ChatGPT for “a good caterer in Wuse”, a short list of businesses appears. Local SEO is the work that gets your business onto that list and keeps it there. For the ChatGPT side, see [how to get your business recommended by ChatGPT](/guides/how-to-get-recommended-by-chatgpt); to set up the profile yourself, follow our [Google Business Profile setup guide](/guides/google-business-profile-setup-nigeria).',
       'Google ranks local businesses on three things it names itself: relevance (do you clearly offer what was searched), distance (how close you are), and prominence (how well known and well reviewed you are). We work on all three: your Google Business Profile, a website that mirrors it page for page, consistent listings across the web, and a steady flow of genuine reviews.',
       'We don’t buy links, invent reviews or stuff keywords into your business name. Those shortcuts get profiles suspended, and an appeal can take a month or more.',
     ],

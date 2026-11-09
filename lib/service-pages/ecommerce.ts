@@ -22,7 +22,7 @@ export const ecommerce: ServicePageConfig = {
     ],
     intro: [
       'If you sell products on Instagram and WhatsApp, every order costs you a conversation: price, stock, delivery, account number, proof of payment. An online shop lets customers do that themselves, at any hour, and lets Google show your products to people searching for them.',
-      'We build shops with a product page for every item, a checkout that works on a phone, payment and order alerts, and the SEO groundwork done before launch.',
+      'We build shops in custom code, on Shopify or on the platform you prefer, and connect Paystack, Flutterwave, Stripe (for businesses in countries Stripe supports), bank transfer with manual checks, or crypto through NOWPayments. Every product gets a page Google can read. Our guide to [launching an online store in Nigeria](/guides/launch-online-store-nigeria) walks through each step.',
     ],
     problems: [
       'You sell products through Instagram or WhatsApp and spend hours answering the same questions.',
@@ -37,7 +37,7 @@ export const ecommerce: ServicePageConfig = {
       },
       {
         title: 'Cart, checkout and payment',
-        detail: 'A payment gateway set up for your market, with order notifications to you and to the customer.',
+        detail: 'Paystack, Flutterwave, Stripe (where available), bank transfer with manual verification, or crypto through NOWPayments, with order notifications to you and to the customer.',
       },
       {
         title: 'Product SEO',
