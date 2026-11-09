@@ -1,0 +1,3162 @@
+{
+    "version": "0.1.20261103",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "3.3287 sec.",
+    "cost": 0.09,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "11091648-3090-0367-0000-fe9916b85e51",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "3.2609 sec.",
+            "cost": 0.09,
+            "result_count": 66,
+            "path": [
+                "v3",
+                "keywords_data",
+                "google_ads",
+                "search_volume",
+                "live"
+            ],
+            "data": {
+                "api": "keywords_data",
+                "function": "search_volume",
+                "se": "google_ads",
+                "keywords": [
+                    "optimize website for ai assistants",
+                    "ai search optimization nigeria",
+                    "how to appear on chatgpt",
+                    "what is included in a website care plan",
+                    "website care plan",
+                    "monthly website support",
+                    "website maintenance nigeria",
+                    "website maintenance cost in nigeria",
+                    "website builder vs custom website",
+                    "wordpress vs custom website",
+                    "wordpress vs react",
+                    "how to start ecommerce business in nigeria",
+                    "how to sell online in nigeria",
+                    "ecommerce website nigeria",
+                    "ecommerce website abuja",
+                    "cost of ecommerce website in nigeria",
+                    "paystack vs flutterwave",
+                    "best payment gateway in nigeria",
+                    "website package nigeria",
+                    "affordable website abuja",
+                    "website not generating leads",
+                    "do i need a website",
+                    "website vs instagram",
+                    "is a website necessary for small business",
+                    "seo vs google ads",
+                    "local seo vs google ads",
+                    "google business profile nigeria",
+                    "how to set up google business profile",
+                    "google maps listing nigeria",
+                    "how to get my business on google maps",
+                    "how to get my business on google",
+                    "local seo abuja",
+                    "google seo nigeria",
+                    "property management abuja",
+                    "property management asaba",
+                    "property management company in abuja",
+                    "property management in nigeria",
+                    "cost of buying land in nigeria",
+                    "cost of buying a house in abuja",
+                    "stamp duty on property in nigeria",
+                    "certificate of occupancy",
+                    "certificate of occupancy nigeria",
+                    "c of o",
+                    "deed of assignment",
+                    "governor consent",
+                    "difference between c of o and deed of assignment",
+                    "buy property in nigeria from uk",
+                    "buying land in nigeria from abroad",
+                    "okpanam road asaba",
+                    "land for sale in okpanam",
+                    "okpanam",
+                    "land price in asaba",
+                    "guzape",
+                    "guzape abuja",
+                    "katampe extension",
+                    "katampe extension abuja",
+                    "guzape vs katampe",
+                    "asaba or abuja",
+                    "how to verify land documents in nigeria",
+                    "land verification in nigeria",
+                    "fake land documents",
+                    "how to buy land in asaba",
+                    "land for sale in asaba",
+                    "asaba land with c of o",
+                    "cost of building a house in nigeria",
+                    "cost of finishing a carcass building"
+                ],
+                "location_code": 2566,
+                "language_code": "en"
+            },
+            "result": [
+                {
+                    "keyword": "optimize website for ai assistants",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "ai search optimization nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "how to appear on chatgpt",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 0
+                        }
+                    ]
+                },
+                {
+                    "keyword": "what is included in a website care plan",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "website care plan",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 0
+                        }
+                    ]
+                },
+                {
+                    "keyword": "monthly website support",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "website maintenance nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "website maintenance cost in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "website builder vs custom website",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": 0,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 0
+                        }
+                    ]
+                },
+                {
+                    "keyword": "wordpress vs custom website",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 14,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "wordpress vs react",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "how to start ecommerce business in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 20
+                        }
+                    ]
+                },
+                {
+                    "keyword": "how to sell online in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 27,
+                    "search_volume": 20,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 30
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 30
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 20
+                        }
+                    ]
+                },
+                {
+                    "keyword": "ecommerce website nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 22,
+                    "search_volume": 170,
+                    "low_top_of_page_bid": 0.08,
+                    "high_top_of_page_bid": 0.5,
+                    "cpc": 0.52,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 110
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 140
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 140
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 140
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 140
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 260
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 210
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 210
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 210
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 210
+                        }
+                    ]
+                },
+                {
+                    "keyword": "ecommerce website abuja",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "cost of ecommerce website in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "paystack vs flutterwave",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 1,
+                    "search_volume": 50,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 40
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 40
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 40
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 50
+                        }
+                    ]
+                },
+                {
+                    "keyword": "best payment gateway in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 29,
+                    "search_volume": 50,
+                    "low_top_of_page_bid": 0.32,
+                    "high_top_of_page_bid": 1.24,
+                    "cpc": 1.08,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 40
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 40
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 30
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 50
+                        }
+                    ]
+                },
+                {
+                    "keyword": "website package nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "affordable website abuja",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "website not generating leads",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "do i need a website",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 0
+                        }
+                    ]
+                },
+                {
+                    "keyword": "website vs instagram",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": 0,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 0
+                        }
+                    ]
+                },
+                {
+                    "keyword": "is a website necessary for small business",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "seo vs google ads",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "local seo vs google ads",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "google business profile nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "how to set up google business profile",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 2,
+                    "search_volume": 30,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 30
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 40
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 40
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 30
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 30
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "google maps listing nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "how to get my business on google maps",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "how to get my business on google",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "MEDIUM",
+                    "competition_index": 34,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": 2.66,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "local seo abuja",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "google seo nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "property management abuja",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "property management asaba",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "property management company in abuja",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "property management in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 20,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 40
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 30
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 30
+                        }
+                    ]
+                },
+                {
+                    "keyword": "cost of buying land in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "cost of buying a house in abuja",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "stamp duty on property in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "certificate of occupancy",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 480,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 480
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 480
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 480
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 590
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 480
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 480
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 390
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 390
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 590
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 320
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 590
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 720
+                        }
+                    ]
+                },
+                {
+                    "keyword": "certificate of occupancy nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 70,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 90
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 110
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 140
+                        }
+                    ]
+                },
+                {
+                    "keyword": "c of o",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 720,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 720
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 880
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 720
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 720
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 880
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 720
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 720
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 720
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 880
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 720
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 880
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 1000
+                        }
+                    ]
+                },
+                {
+                    "keyword": "deed of assignment",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 1600,
+                    "low_top_of_page_bid": 0.01,
+                    "high_top_of_page_bid": 0.24,
+                    "cpc": 0.88,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 1900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 1900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 1900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 1900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 1300
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 1900
+                        }
+                    ]
+                },
+                {
+                    "keyword": "governor consent",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 170,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 140
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 210
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 210
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 110
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 210
+                        }
+                    ]
+                },
+                {
+                    "keyword": "difference between c of o and deed of assignment",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "buy property in nigeria from uk",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "buying land in nigeria from abroad",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "okpanam road asaba",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 210,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 210
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 210
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 210
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 210
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 260
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 260
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 170
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 260
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 170
+                        }
+                    ]
+                },
+                {
+                    "keyword": "land for sale in okpanam",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 10
+                        }
+                    ]
+                },
+                {
+                    "keyword": "okpanam",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 1600,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 1300
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 1300
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 1300
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 1300
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 1300
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 1600
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 1900
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 2400
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 2900
+                        }
+                    ]
+                },
+                {
+                    "keyword": "land price in asaba",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "guzape",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 2,
+                    "search_volume": 12100,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": 0.14,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 9900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 12100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 12100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 9900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 9900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 9900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 12100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 9900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 9900
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 12100
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 12100
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 12100
+                        }
+                    ]
+                },
+                {
+                    "keyword": "guzape abuja",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 2400,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 2400
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 2900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 2900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 2400
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 2400
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 2400
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 2400
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 1900
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 1900
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 2400
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 1900
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 2400
+                        }
+                    ]
+                },
+                {
+                    "keyword": "katampe extension",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 3,
+                    "search_volume": 8100,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": 0.11,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 6600
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 6600
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 9900
+                        }
+                    ]
+                },
+                {
+                    "keyword": "katampe extension abuja",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 3,
+                    "search_volume": 8100,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": 0.11,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 6600
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 8100
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 6600
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 9900
+                        }
+                    ]
+                },
+                {
+                    "keyword": "guzape vs katampe",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "asaba or abuja",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "how to verify land documents in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "land verification in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "fake land documents",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 10,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 0
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 0
+                        }
+                    ]
+                },
+                {
+                    "keyword": "how to buy land in asaba",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "land for sale in asaba",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 3,
+                    "search_volume": 70,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": 0.04,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 90
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 50
+                        }
+                    ]
+                },
+                {
+                    "keyword": "asaba land with c of o",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                },
+                {
+                    "keyword": "cost of building a house in nigeria",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": "LOW",
+                    "competition_index": 0,
+                    "search_volume": 20,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": [
+                        {
+                            "year": 2026,
+                            "month": 9,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 8,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 7,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 6,
+                            "search_volume": 40
+                        },
+                        {
+                            "year": 2026,
+                            "month": 5,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 4,
+                            "search_volume": 50
+                        },
+                        {
+                            "year": 2026,
+                            "month": 3,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2026,
+                            "month": 2,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2026,
+                            "month": 1,
+                            "search_volume": 70
+                        },
+                        {
+                            "year": 2025,
+                            "month": 12,
+                            "search_volume": 20
+                        },
+                        {
+                            "year": 2025,
+                            "month": 11,
+                            "search_volume": 10
+                        },
+                        {
+                            "year": 2025,
+                            "month": 10,
+                            "search_volume": 20
+                        }
+                    ]
+                },
+                {
+                    "keyword": "cost of finishing a carcass building",
+                    "spell": null,
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "search_partners": false,
+                    "competition": null,
+                    "competition_index": null,
+                    "search_volume": null,
+                    "low_top_of_page_bid": null,
+                    "high_top_of_page_bid": null,
+                    "cpc": null,
+                    "monthly_searches": null
+                }
+            ]
+        }
+    ]
+}
