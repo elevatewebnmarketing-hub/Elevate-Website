@@ -69,3 +69,14 @@ Research behind these: `seo/research-2026-11-09.md` (Search Console export and D
 | 2026-11-09 | FAQ rebuilt: 33 questions in six groups from Ufuoma's answers, Search Console queries and Google's People also ask. Owner facts: results often within about 3 weeks of a proper setup and Search Console submission (published as "in our experience", never a promise); progress reported as calls/messages from Google and AI; invoices, 50/50 on big projects; no lock-in contracts; ads on request only | Ufuoma, 9 Nov 2026 |
 | 2026-11-09 | New pillar guide `/guides/how-to-get-recommended-by-chatgpt` (action intent). The existing `/guides/why-your-website-isnt-on-google` keeps the "why" intent; they link to each other | The existing guide already ranks (best #11) for "why isn't my website in ChatGPT or Google"; a second "why" page would compete with it |
 | 2026-11-09 | Two November enquiries via ChatGPT described anonymously ("one told us ChatGPT suggested us") | Ufuoma allowed anonymous mention |
+
+## 2026-11-09 (later): consolidation and near-page-1 upgrades (Search Console, 16 months to 9 Nov)
+
+| Date | Decision | Why |
+|---|---|---|
+| 2026-11-09 | `/blog/local-seo-nigerian-businesses` retired with a 301 to `/locations/nigeria`; its how-to steps now live on that page, retitled "SEO Company & Web Design in Nigeria". `/blog/seo-for-nigerian-businesses-2026` now 301s straight there (no chain) | Three pages competed for "SEO company in Nigeria" (260/mo): `/locations/nigeria` #76, the post #55, `/services/local-seo` #58. The service page stays Abuja-focused |
+| 2026-11-09 | WhatsApp post extended: short answer, a types comparison table, "How to grow a WhatsApp Channel in Nigeria", an honest "Should you pay for a WhatsApp marketing service?" (we don't sell it; websites feed WhatsApp; ads on request), FAQ | Biggest page: 1,283 impressions at #10.3; "whatsapp growth services nigeria" #13, "whatsapp marketing service nigeria" #23, "how to grow whatsapp channel nigeria" #25 |
+| 2026-11-09 | Lovable/Wix/Squarespace guide: short answer and a table of our own 5–6 Oct 2026 audit (six single-page apps sent 0–8 words; the pre-rendered one about 700) | #13.9; first-party data is the information gain |
+| 2026-11-09 | Maintenance checklist refocused on small businesses, with a one-table summary and a monthly ChatGPT check | 285 impressions at #91 for a worldwide query; aim at reachable small-business searches and link to care plans and the ChatGPT guide |
+| 2026-11-09 | Lagos page corrected: SOCASEMP's donation platform is a Lagos client (no Lagos SEO case study yet) | The Nigeria page already listed it; the earlier Lagos copy said there was no Lagos work |
+| 2026-11-09 | Blog posts and guides render markdown tables (`| a | b |`), with a 34rem minimum width that scrolls inside its box on phones | Comparison tables help readers and AI summaries |

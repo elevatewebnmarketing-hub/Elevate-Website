@@ -474,11 +474,11 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
         'We work with Lagos businesses remotely, over WhatsApp and video calls. We don’t have a Lagos office.',
         'Lagos is Nigeria’s busiest search market: about 1,600 searches a month for “SEO company in Lagos” and 480 for “web design in Lagos”.',
         'That also makes the broad searches crowded, so we aim your pages at the service and area you actually serve.',
-        'Our proof so far is from Abuja and Asaba clients, shown on our Abuja and Asaba pages.',
+        'Our Lagos client so far is SOCASEMP Initiative, a Lagos non-profit we built a donation platform for. Our search results proof is from Abuja and Asaba clients.',
       ],
       intro: [
         'Lagos has more people searching for local services than anywhere else in Nigeria, and more businesses competing for each search. A clinic in Lekki or a caterer in Ikeja is up against hundreds of others for the broad searches.',
-        'We work with Lagos clients remotely. We don’t have Lagos case studies yet, so we won’t pretend to: our results so far are with an Abuja real estate agency and an Asaba building-materials supplier, and the method is the same.',
+        'We work with Lagos clients remotely. In Lagos we built the donation platform for SOCASEMP Initiative, a non-profit. Our search results so far are with an Abuja real estate agency and an Asaba building-materials supplier, and the method is the same in Lagos.',
       ],
       problems: [
         'You run a service business in Lagos and depend on Instagram or referrals for new customers.',
@@ -508,6 +508,11 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
       pricing: PRICING_POINTER,
       proof: [
         {
+          name: 'SOCASEMP Donation Platform, Lagos',
+          url: 'https://donate.socasemp.org',
+          detail: 'A donation platform for SOCASEMP Initiative, a Lagos-based non-profit, with supporter accounts, an admin area and an ambassador programme.',
+        },
+        {
           name: 'Mansa Luxe Realty, Abuja',
           url: 'https://mansaluxerealty.mrdgngroup.com',
           detail: 'Google impressions grew from 46 a month to 843 a month between May and October 2026. Details on our Abuja page.',
@@ -524,7 +529,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
         'Searches that name a service and a part of Lagos, such as “physiotherapy clinic in Yaba”, have fewer competitors and people closer to buying. That’s where we start.',
       ],
       whyUs: [
-        'Honest about what we have and haven’t done in Lagos.',
+        'Honest about what we have done in Lagos so far: one non-profit platform, no SEO case study yet.',
         'Fixed prices, WhatsApp-first communication and no long contracts.',
       ],
       faqs: [

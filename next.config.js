@@ -23,7 +23,9 @@ const nextConfig = {
       { source: '/blog/meta-ads-vs-google-ads-2026', destination: '/how-to-get-more-customers', permanent: true },
       { source: '/blog/facebook-instagram-meta-ads-growth-engine', destination: '/how-to-get-more-customers', permanent: true },
       { source: '/blog/website-maintenance-guide-nigeria', destination: '/blog/website-maintenance-checklist', permanent: true },
-      { source: '/blog/seo-for-nigerian-businesses-2026', destination: '/blog/local-seo-nigerian-businesses', permanent: true },
+      { source: '/blog/seo-for-nigerian-businesses-2026', destination: '/locations/nigeria', permanent: true },
+      // 9 Nov 2026: three pages competed for "SEO company in Nigeria"; the post's steps now live on /locations/nigeria.
+      { source: '/blog/local-seo-nigerian-businesses', destination: '/locations/nigeria', permanent: true },
       { source: '/blog/why-your-business-needs-a-modern-website', destination: '/blog/your-website-is-costing-you-customers', permanent: true },
       { source: '/blog/why-invest-in-professional-web-design', destination: '/blog/your-website-is-costing-you-customers', permanent: true },
       { source: '/blog/conversion-rate-optimization-tips', destination: '/blog/your-website-is-costing-you-customers', permanent: true },

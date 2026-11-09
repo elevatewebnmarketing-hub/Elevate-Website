@@ -169,6 +169,13 @@ const builders: Guide = {
   description:
     'Why Lovable, Wix and Squarespace sites often don’t show up on Google or ChatGPT, what changed in 2026, how to check yours, and when you need a rebuild.',
   published: '2026-10-18',
+  updated: '2026-11-09',
+  keyTakeaways: [
+    'When we checked seven single-page-app sites on 5 and 6 October 2026, six sent crawlers an empty page: 0 to 8 words where we counted. The one that was pre-rendered sent about 700.',
+    'Lovable projects created from 13 May 2026 are server-rendered; older ones need upgrading or pre-rendering before Google and AI crawlers can read them properly.',
+    'Wix and Squarespace usually render fine. Their problems are settings, hidden pages and thin structure.',
+    'You can check your own site in five minutes with the steps below, or with our free AI visibility check.',
+  ],
   image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
   intro: [
     'Website builders make it easy to get a good-looking site online in a day. Getting that site found is a different job, and each builder has its own usual problems. Lovable is the one I’ve had to fix most often.',
@@ -184,6 +191,24 @@ const builders: Guide = {
         '**Built before May 2026 and hosted on Lovable:** verified crawlers get a pre-rendered copy. Third-party checkers (ours included) aren’t verified, so they may show your page as empty even when Google sees it. Use the URL Inspection tool in Google Search Console to see what Google gets.',
         '**Built before May 2026 and exported to Vercel, Netlify or elsewhere:** you don’t get Lovable’s pre-rendering. Most crawlers will see an empty page until the site is upgraded or rebuilt.',
         '**Built after May 2026:** rendering is handled, but the rest still isn’t. Lovable says it doesn’t always create a sitemap, and the starting titles and descriptions are generic.',
+      ],
+    },
+    {
+      h2: 'What we found when we checked real sites',
+      paragraphs: [
+        'On 5 and 6 October 2026 we fetched the homepages of client and partner sites the way crawlers do, without running JavaScript, and counted what came back.',
+      ],
+      table: {
+        head: ['How the site was built', 'Sites checked', 'What crawlers received'],
+        rows: [
+          ['Single-page app (React/Vite, the way Lovable used to build)', '6', 'An empty shell: 0 to 8 words where we counted, often no H1 and no links'],
+          ['Single-page app, pre-rendered', '1', 'About 700 words, with structured data'],
+          ['Next.js, server-rendered (this site)', '1', 'About 1,400 words on the homepage'],
+          ['WordPress', '1', 'The full page'],
+        ],
+      },
+      after: [
+        'One of the empty sites was the MR DGN Group website. After we rebuilt it so the text is in the HTML, its pages became readable to Google and AI tools on the first request.',
       ],
     },
     {

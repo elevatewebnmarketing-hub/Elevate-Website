@@ -141,3 +141,36 @@ body {
   margin-bottom: 0.375rem;
   line-height: 1.6;
 }
+
+.blog-prose-table {
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+  border: 1px solid rgb(229 231 235);
+  border-radius: 0.75rem;
+}
+.dark .blog-prose-table {
+  border-color: rgb(255 255 255 / 0.1);
+}
+.blog-prose-table table {
+  min-width: 34rem;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+.blog-prose-table th {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  background: rgb(249 250 251);
+}
+.dark .blog-prose-table th {
+  background: rgb(30 41 59);
+}
+.blog-prose-table td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgb(243 244 246);
+  vertical-align: top;
+}
+.dark .blog-prose-table td {
+  border-top-color: rgb(255 255 255 / 0.05);
+}

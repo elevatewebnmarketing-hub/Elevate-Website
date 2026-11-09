@@ -63,7 +63,31 @@ function formatContent(content: string): string {
   const parts: string[] = [];
   let inList = false;
 
+  // Markdown tables: consecutive lines starting with "|"; the first row is the header, the second the separator.
+  let table: string[][] = [];
+  const flushTable = () => {
+    if (!table.length) return;
+    const [head, ...rows] = table.filter((r) => !r.every((c) => /^:?-{3,}:?$/.test(c)));
+    parts.push(
+      '<div class="blog-prose-table"><table><thead><tr>' +
+        head.map((c) => `<th scope="col">${formatInline(c)}</th>`).join('') +
+        '</tr></thead><tbody>' +
+        rows.map((r) => '<tr>' + r.map((c) => `<td>${formatInline(c)}</td>`).join('') + '</tr>').join('') +
+        '</tbody></table></div>'
+    );
+    table = [];
+  };
+
   cleaned.split('\n').forEach((line) => {
+    if (line.trim().startsWith('|')) {
+      if (inList) {
+        parts.push('</ul>');
+        inList = false;
+      }
+      table.push(line.trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim()));
+      return;
+    }
+    flushTable();
     if (line.startsWith('### ')) {
       if (inList) {
         parts.push('</ul>');
@@ -97,6 +121,7 @@ function formatContent(content: string): string {
     }
   });
 
+  flushTable();
   if (inList) parts.push('</ul>');
   return parts.join('\n');
 }

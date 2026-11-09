@@ -4,7 +4,7 @@ import { abujaLocationPages } from '@/lib/location-pages-abuja';
 /**
  * Location pages passed through the rank-ready-website location decision tree (see seo/decisions.md).
  * Abuja, its districts and Lagos live in location-pages-abuja.ts (added 9 Nov 2026 at Ufuoma's request; Lagos is
- * written honestly as remote work with no Lagos case study yet). Port Harcourt waits for real work there.
+ * written honestly as remote work: one Lagos client, SOCASEMP, and no Lagos SEO case study yet). Port Harcourt waits for real work there.
  */
 export const locationPages: Record<string, ServicePageConfig> = {
   asaba: {
@@ -126,15 +126,22 @@ export const locationPages: Record<string, ServicePageConfig> = {
   nigeria: {
     slug: 'nigeria',
     type: 'service',
-    title: 'SEO Websites for Nigerian Businesses',
+    title: 'SEO Company & Web Design in Nigeria',
     subtitle: 'For businesses anywhere in Nigeria, delivered remotely',
     description:
       'SEO-ready websites, Google Business Profile optimisation, landing pages and care plans for businesses across Nigeria, delivered remotely with fixed naira prices.',
     detail: {
-      metaTitle: 'SEO Websites Across Nigeria',
+      metaTitle: 'SEO Company & Web Design in Nigeria',
       metaDescription:
-        'SEO-ready websites for Nigerian businesses: service pages, Google Business Profile setup and fast sites built for mobile data. Fixed naira prices.',
-      h1: 'SEO website design for businesses in Nigeria',
+        'SEO and web design for businesses anywhere in Nigeria: websites Google and ChatGPT can read, Google Business Profile setup, and the local SEO steps that bring calls.',
+      h1: 'SEO company and web design for businesses in Nigeria',
+      updated: '2026-11-09',
+      keyTakeaways: [
+        'We build websites and do local SEO for businesses anywhere in Nigeria, remotely, at fixed naira prices.',
+        'Google ranks local businesses on relevance, distance and prominence. We work on the two you can change: relevance and prominence.',
+        'That means a complete Google Business Profile, a page for each service with your city in it, the same details everywhere, and genuine reviews.',
+        'Proof: a real estate client’s Google impressions grew from 46 a month to 843 a month in six months (chart below).',
+      ],
       intro: [
         'Wherever your business is in Nigeria, we can build you a website that Google and AI assistants can read, with a page for each service and a Google Business Profile to match.',
         'Everything runs remotely: a short WhatsApp chat, an intake form, a design you approve, then launch. We’re based in Abuja, and our client work so far covers Abuja, Asaba, Okpanam, Lagos and the UK.',
@@ -202,12 +209,16 @@ export const locationPages: Record<string, ServicePageConfig> = {
           detail: 'A donation app for a Lagos-based non-profit, with supporter accounts, an admin area and an ambassador programme.',
         },
       ],
-      localHeading: 'Building websites for how Nigerians search and buy',
+      localHeading: 'How local SEO works in Nigeria',
       localContext: [
+        'Google says local results depend on three things: relevance (how well you match the search), distance (how close you are to the searcher or the place they named) and prominence (how well known you are, from reviews, links and mentions). You can’t move closer to every customer, so the work goes into the other two.',
+        'Start with a complete Google Business Profile: the primary category that describes what your business is, every service you offer named the same way as on your website, your real address or a hidden service area, real photos added monthly, and an honest review from every customer. Never put keywords in your business name, use a fake address or buy reviews; Google suspends profiles for it.',
+        'Then a website Google can read, with a page per service and your city in the title. When we first checked the MR DGN Group site, crawlers received 0 readable words because the text only appeared after JavaScript ran.',
+        'Keep your name, phone number and address identical on your website, Google, Facebook, Bing Places, Apple Business and Nigerian directories such as VConnect, BusinessList, Finelib and ConnectNigeria. Submit to Bing Webmaster Tools too: Bing feeds Microsoft Copilot and other AI search tools.',
+        'Lagos, Abuja and Port Harcourt get the most searches, so everyone fights over them. Smaller cities get fewer searches and much less competition, so a business with a complete profile and a clear website can win them first.',
         'Most Nigerians browse on phones using paid data, so every page we build is light, compressed and tested on a mid-range Android phone.',
-        'Customers are cautious about online scams. We add trust details that are easy to check: your real address with a landmark, your CAC number, named staff, real photos, and payment details only on official pages.',
-        'Outside Lagos and Abuja, many trades have very little online competition. A business in a state capital that gets its website and profile right can reach the top of local results faster than a similar business in Lagos.',
         'People search the way they speak: by district, estate or landmark. We use the place names your customers actually use, but only for places you really serve.',
+        'Customers are cautious about online scams. We add trust details that are easy to check: your real address with a landmark, your CAC number, named staff, real photos, and payment details only on official pages.',
       ],
       whyUs: [
         'One fixed naira price list for every state.',
@@ -232,6 +243,12 @@ export const locationPages: Record<string, ServicePageConfig> = {
           q: 'What makes a website “SEO-ready”?',
           a: 'Search engines and AI tools can read every page without JavaScript, each service has its own page with your city in the title, your business details match your Google profile, and the site loads quickly on a phone.',
         },
+      ],
+      evidenceIds: ['real-estate-abuja-asaba'],
+      nearby: [
+        { label: 'Abuja', href: '/locations/abuja' },
+        { label: 'Asaba', href: '/locations/asaba' },
+        { label: 'Lagos', href: '/locations/lagos' },
       ],
       related: ['website-design', 'local-seo', 'landing-pages', 'website-maintenance'],
     },

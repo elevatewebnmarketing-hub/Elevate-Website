@@ -134,7 +134,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               )}
               {s.table && (
                 <div className="overflow-x-auto mb-6 rounded-card-lg border border-gray-200 dark:border-white/10">
-                  <table className="w-full text-left text-sm sm:text-base">
+                  <table className="w-full min-w-[34rem] text-left text-sm sm:text-base">
                     <thead className="bg-gray-50 dark:bg-slate-800">
                       <tr>
                         {s.table.head.map((h) => (
