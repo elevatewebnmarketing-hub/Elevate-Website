@@ -63,10 +63,12 @@ const organizationSchema = {
   ],
   description:
     'SEO-ready websites, local SEO and Google Business Profile optimisation, landing pages and care plans for businesses in Abuja and across Nigeria.',
+  // Office address = MR DGN's office in Asaba (Ufuoma, 9 Nov 2026); Abuja is served as a service area.
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Abuja',
-    addressRegion: 'Federal Capital Territory',
+    streetAddress: 'Jossie Excel School, after Okpanam City Gate by the Express',
+    addressLocality: 'Asaba',
+    addressRegion: 'Delta State',
     addressCountry: 'NG',
   },
   contactPoint: {
@@ -77,7 +79,7 @@ const organizationSchema = {
     areaServed: 'Nigeria',
     availableLanguage: 'English',
   },
-  areaServed: ['Abuja', 'Federal Capital Territory', 'Nigeria'],
+  areaServed: ['Abuja', 'Federal Capital Territory', 'Asaba', 'Delta State', 'Nigeria'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Web Design & Digital Marketing Services',

@@ -33,7 +33,6 @@ const nextConfig = {
       { source: '/services/construction', destination: '/services/website-design', permanent: true },
       { source: '/services/real-estate', destination: '/services/website-design', permanent: true },
       { source: '/services/education', destination: '/services/website-design', permanent: true },
-      { source: '/services/ecommerce', destination: '/services/website-design', permanent: true },
       { source: '/blog/why-your-business-isnt-showing-up-on-google-2026', destination: '/guides/why-your-website-isnt-on-google', permanent: true },
     ];
   },

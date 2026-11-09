@@ -12,8 +12,17 @@ export const localSeo: ServicePageConfig = {
     metaDescription:
       'Local SEO in Abuja: Google Business Profile setup, service pages, listings and reviews so customers find you on Google Maps and ChatGPT. WhatsApp us.',
     h1: 'Local SEO and Google Business Profile in Abuja',
+    updated: '2026-11-09',
+    keyTakeaways: [
+      'Local SEO gets your business onto the map and the first page when people nearby search for what you sell.',
+      'The work: your Google Business Profile, a website page for every service on it, the same name, address and phone number everywhere, and a steady flow of honest reviews.',
+      'In our experience the first calls often come about three weeks after a properly built site is submitted to Google Search Console.',
+      'Proof: a real estate client’s Google impressions grew from 46 a month to 843 a month in six months (chart below).',
+      'We report on calls and messages, not just clicks.',
+    ],
+    evidenceIds: ['real-estate-abuja-asaba'],
     intro: [
-      'When someone in Abuja types “estate agent near me” or asks ChatGPT for “a good caterer in Wuse”, a short list of businesses appears. Local SEO is the work that gets your business onto that list and keeps it there.',
+      'When someone in Abuja types “estate agent near me” or asks ChatGPT for “a good caterer in Wuse”, a short list of businesses appears. Local SEO is the work that gets your business onto that list and keeps it there. For the ChatGPT side, see [how to get your business recommended by ChatGPT](/guides/how-to-get-recommended-by-chatgpt).',
       'Google ranks local businesses on three things it names itself: relevance (do you clearly offer what was searched), distance (how close you are), and prominence (how well known and well reviewed you are). We work on all three: your Google Business Profile, a website that mirrors it page for page, consistent listings across the web, and a steady flow of genuine reviews.',
       'We don’t buy links, invent reviews or stuff keywords into your business name. Those shortcuts get profiles suspended, and an appeal can take a month or more.',
     ],
@@ -131,8 +140,20 @@ export const localSeo: ServicePageConfig = {
     ],
     faqs: [
       {
+        q: 'How do I get more clients from Google?',
+        a: 'Set up your Google Business Profile properly so people nearby can find you and drive to you, keep your name, address and phone number the same everywhere, and give each service its own page so you can win the easy “near me” and “in [area]” searches. That is most of local SEO.',
+      },
+      {
+        q: 'How do you show me it’s working?',
+        a: 'Each month we show you clicks and visitors, and above all how many people called, messaged on WhatsApp or filled in a form after finding you on Google, ChatGPT or Bing.',
+      },
+      {
+        q: 'How do I pay, and is there a contract?',
+        a: 'Most projects are invoiced. Big projects that run for months are paid 50% upfront and 50% on delivery. We don’t lock you into a long contract.',
+      },
+      {
         q: 'How long does local SEO take to work in Abuja?',
-        a: 'Profile fixes can show up in a few weeks, especially if your categories or services were wrong. Steady map positions usually take 2 to 6 months. It depends on how close you are to the searcher, how many reviews competitors have, and how quickly you collect your own.',
+        a: 'In our experience, once the website and profile are set up properly and the site is submitted to Google Search Console, the first results and calls often start within about three weeks. Steady map positions in a competitive area can take a few months. It depends on how close you are to the searcher, how many reviews competitors have, and how quickly you collect your own.',
       },
       {
         q: 'Can you guarantee the number 1 spot on Google Maps?',
@@ -154,6 +175,14 @@ export const localSeo: ServicePageConfig = {
         q: 'Can you help if my Google profile is suspended or unverified?',
         a: 'Yes. We check what triggered it, fix the cause on the profile and website, and guide you through Google’s reinstatement or video verification steps.',
       },
+    ],
+    nearby: [
+      { label: 'Abuja', href: '/locations/abuja' },
+      { label: 'Katampe Extension', href: '/locations/katampe-extension' },
+      { label: 'Guzape', href: '/locations/guzape' },
+      { label: 'Asaba', href: '/locations/asaba' },
+      { label: 'Okpanam', href: '/locations/okpanam' },
+      { label: 'Lagos', href: '/locations/lagos' },
     ],
     related: ['website-design', 'website-redesign', 'landing-pages', 'website-maintenance'],
   },

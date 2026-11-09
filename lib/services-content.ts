@@ -3,6 +3,7 @@ import { websiteDesign } from '@/lib/service-pages/website-design';
 import { websiteRedesign } from '@/lib/service-pages/website-redesign';
 import { landingPages } from '@/lib/service-pages/landing-pages';
 import { websiteMaintenance } from '@/lib/service-pages/website-maintenance';
+import { ecommerce } from '@/lib/service-pages/ecommerce';
 
 export type PageType = 'service' | 'industry';
 
@@ -25,6 +26,14 @@ export interface ServiceDetail {
   trust?: string[];
   whyUs: string[];
   faqs: { q: string; a: string }[];
+  /** 3–5 bullet answers shown at the top ("The short answer"), for readers and AI summaries. */
+  keyTakeaways?: string[];
+  /** Anonymised Search Console charts (ids from lib/evidence.ts) shown under Recent work. */
+  evidenceIds?: string[];
+  /** Links to related location pages, shown near the end. */
+  nearby?: { label: string; href: string }[];
+  /** Date the copy was last reviewed (YYYY-MM-DD), shown in the byline. */
+  updated?: string;
   /** Slugs of related service pages. */
   related: string[];
 }
@@ -50,6 +59,7 @@ export const servicePages: Record<string, ServicePageConfig> = {
   'website-redesign': websiteRedesign,
   'landing-pages': landingPages,
   'website-maintenance': websiteMaintenance,
+  ecommerce,
 };
 
 export const serviceSlugs = Object.keys(servicePages);

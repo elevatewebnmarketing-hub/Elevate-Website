@@ -12,6 +12,14 @@ export const websiteRedesign: ServicePageConfig = {
     metaDescription:
       'Website redesign in Abuja: we rebuild slow, outdated or JavaScript-only sites so Google and ChatGPT can read them, without losing your rankings. Free audit.',
     h1: 'Website redesign in Abuja',
+    updated: '2026-11-09',
+    keyTakeaways: [
+      'A redesign should fix why the site isn’t bringing enquiries, not only how it looks.',
+      'We keep the pages Google already shows, redirect the ones that change, and rebuild the rest as clear service pages.',
+      'Sites built with JavaScript-only builders often send search engines an empty page; we rebuild them so every page is readable.',
+      'Before and after, we check what Google and ChatGPT can see.',
+    ],
+    evidenceIds: ['real-estate-abuja-asaba'],
     intro: [
       'A redesign is worth doing when your site is costing you customers: it’s slow, it looks dated, it hides your contact details, or search engines can’t read it at all.',
       'That last problem is more common than most owners realise. Many sites built with quick website builders or AI app generators send search engines an empty page, and the content only appears after JavaScript runs in a browser. Google can sometimes read it later; ChatGPT, Claude and Perplexity usually can’t. A redesign with us fixes the foundations first, then the look.',
@@ -111,6 +119,14 @@ export const websiteRedesign: ServicePageConfig = {
     ],
     faqs: [
       {
+        q: 'How soon will I see results?',
+        a: 'In our experience, once the site is built properly and submitted to Google Search Console, it takes about three weeks for Google to build up its picture of the site, and that’s often when the first calls come. Competitive searches take longer, and we don’t promise dates or positions.',
+      },
+      {
+        q: 'How do I pay, and is there a contract?',
+        a: 'Most projects are invoiced. Big projects that run for months are paid 50% upfront and 50% on delivery. We don’t lock you into a long contract.',
+      },
+      {
         q: 'Will I lose my Google rankings if I redesign my website?',
         a: 'Not if the move is planned. We keep the content of pages that already rank and set up 301 redirects from every old address that changes. Rankings can wobble for a few weeks after any relaunch, so we watch Search Console closely.',
       },
@@ -126,6 +142,14 @@ export const websiteRedesign: ServicePageConfig = {
         q: 'Can you redesign the site without changing my domain or email?',
         a: 'Yes. Your domain and your business email stay the same. We only change where the domain points for the website.',
       },
+    ],
+    nearby: [
+      { label: 'Abuja', href: '/locations/abuja' },
+      { label: 'Katampe Extension', href: '/locations/katampe-extension' },
+      { label: 'Guzape', href: '/locations/guzape' },
+      { label: 'Asaba', href: '/locations/asaba' },
+      { label: 'Okpanam', href: '/locations/okpanam' },
+      { label: 'Lagos', href: '/locations/lagos' },
     ],
     related: ['website-design', 'local-seo', 'website-maintenance', 'landing-pages'],
   },

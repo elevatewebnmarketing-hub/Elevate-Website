@@ -9,57 +9,7 @@ import FaqJsonLd from '@/components/seo/FaqJsonLd';
 import { useLocationPricing } from '@/hooks/useLocationPricing';
 import { formatPrice } from '@/lib/pricing-config';
 import type { PackageKey } from '@/lib/pricing-config';
-
-const STATIC_FAQS = [
-  {
-    q: 'How much does it cost to build a website?',
-    a: '',
-  },
-  {
-    q: 'Why are your prices lower than many agencies?',
-    a: 'We keep our public packages focused, lean, and conversion-oriented. You are not paying for large-agency overhead or bloated process. That lets us stay just below many traditional agency price points while still delivering custom, professional work.',
-  },
-  {
-    q: 'How long does it take to build a website?',
-    a: 'Starter websites usually take 7 to 10 business days. Multi-page business websites typically take 2 to 4 weeks. E-commerce or more complex builds often take 3 to 5 weeks depending on scope, content readiness, and revisions.',
-  },
-  {
-    q: 'What is included in your website packages?',
-    a: 'Every build includes mobile-first design, conversion-focused structure, core technical SEO foundations, and a clear lead capture path. Our Starter Website package at ₦250,000 includes a 4-page website, Google Business Profile setup, 1 year of domain registration, mobile optimization, and core search-engine optimization.',
-  },
-  {
-    q: 'What exactly is included in the ₦250,000 Starter Website package?',
-    a: 'The ₦250,000 Starter Website package includes a 4-page business website, 1 year of domain registration, Google Business Profile setup or cleanup, mobile optimization, core on-page SEO, indexation setup, and conversion-focused contact options such as WhatsApp, click-to-call, and contact form sections.',
-  },
-  {
-    q: 'Do you only work with clients in Nigeria?',
-    a: 'No. We are based in Abuja and work with businesses across Nigeria, the UK and beyond. Prices show in naira, pounds or dollars depending on where you are.',
-  },
-  {
-    q: 'Do I need to provide content and images?',
-    a: 'Yes, although we guide you on what is needed. If your content is not ready yet, we can help shape the page structure, suggest what to write, and recommend stock imagery where appropriate.',
-  },
-  {
-    q: 'Can you redesign my existing website?',
-    a: 'Yes. Website redesigns are one of our core offers. We review what is not working, improve the structure and messaging, and rebuild around clearer trust and conversion goals.',
-  },
-  {
-    q: 'Do you offer monthly support after launch?',
-    a: 'Yes. We offer monthly retainers for website care, SEO, Google Business Profile management, and monthly reporting. Those plans are designed to create ongoing momentum after launch.',
-  },
-  {
-    q: 'Do I need a blog to rank on Google?',
-    a: 'Not always. For many local and service businesses, strong service pages, clear site structure, reviews, Google Business Profile work, and fast page speed matter more than publishing constant blog posts. We only recommend a blog when it genuinely supports the business.',
-  },
-  {
-    q: 'Are your websites mobile-friendly?',
-    a: 'Yes. Every website is designed to work well on phones, tablets, and desktops.',
-  },
-  {
-    q: 'How do I get started?',
-    a: "Book a strategy call or send a quote request. We will review your goals, recommend the best-fit package, and outline the next steps.",
-  },
-];
+import { faqGroups, PRICING_QUESTION } from '@/lib/faq-content';
 
 const PRICING_KEYS: PackageKey[] = ['starter', 'business', 'ecommerce', 'growth_suite'];
 const PRICING_LABELS: Record<PackageKey, string> = {
@@ -72,7 +22,7 @@ const PRICING_LABELS: Record<PackageKey, string> = {
 };
 
 export default function FaqPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openQ, setOpenQ] = useState<string | null>(null);
   const { packages, isLoading } = useLocationPricing();
 
   const priceMap = new Map(packages.map((pkg) => [pkg.packageKey, pkg]));
@@ -90,10 +40,15 @@ export default function FaqPage() {
     return `${parts.join(', ')}. Retainers and custom work are quoted separately when needed.`;
   }, [isLoading, packages, priceMap]);
 
-  const faqs = useMemo(
-    () => STATIC_FAQS.map((faq, index) => (index === 0 ? { ...faq, a: pricingAnswer } : faq)),
+  const groups = useMemo(
+    () =>
+      faqGroups.map((g) => ({
+        ...g,
+        items: g.items.map((f) => (f.q === PRICING_QUESTION ? { ...f, a: pricingAnswer } : f)),
+      })),
     [pricingAnswer]
   );
+  const faqs = groups.flatMap((g) => g.items);
 
   return (
     <>
@@ -110,45 +65,67 @@ export default function FaqPage() {
               <HelpCircle className="text-accent" size={28} />
             </div>
             <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-4">
-              Frequently Asked Questions
+              Frequently asked questions
             </h1>
             <p className="text-text/80 dark:text-gray-300 text-lg">
-              Straight answers about pricing, process, and how we approach website projects.
+              Straight answers to what business owners ask us about getting found on Google and ChatGPT, websites, SEO and prices.
             </p>
           </motion.div>
 
-          <div className="space-y-3">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={faq.q}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.03 }}
-                className="rounded-card-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 overflow-hidden"
+          <nav aria-label="FAQ topics" className="mb-10 flex flex-wrap justify-center gap-2">
+            {groups.map((g) => (
+              <a
+                key={g.id}
+                href={`#${g.id}`}
+                className="px-3 py-1.5 rounded-full border border-gray-200 dark:border-white/15 text-sm text-primary dark:text-white hover:border-accent hover:text-accent transition-colors"
               >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
-                  aria-expanded={openIndex === index}
-                >
-                  <span className="font-heading font-semibold text-primary dark:text-white">
-                    {faq.q}
-                  </span>
-                  <ChevronDown
-                    className={`flex-shrink-0 text-accent transition-transform ${
-                      openIndex === index ? 'rotate-180' : ''
-                    }`}
-                    size={20}
-                  />
-                </button>
-                {/* Always in the HTML (hidden when closed) so search engines and AI tools can read every answer. */}
-                <div
-                  hidden={openIndex !== index}
-                  className="px-6 pb-5 pt-0 text-text/80 dark:text-gray-300 border-t border-gray-100 dark:border-white/5"
-                >
-                  {faq.a}
+                {g.heading}
+              </a>
+            ))}
+          </nav>
+
+          <div className="space-y-12">
+            {groups.map((g) => (
+              <section key={g.id} id={g.id} className="scroll-mt-28">
+                <h2 className="font-heading font-bold text-2xl text-primary dark:text-white mb-4">{g.heading}</h2>
+                <div className="space-y-3">
+                  {g.items.map((faq) => {
+                    const open = openQ === faq.q;
+                    return (
+                      <div
+                        key={faq.q}
+                        className="rounded-card-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 overflow-hidden"
+                      >
+                        <h3>
+                          <button
+                            onClick={() => setOpenQ(open ? null : faq.q)}
+                            className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
+                            aria-expanded={open}
+                          >
+                            <span className="font-heading font-semibold text-primary dark:text-white">{faq.q}</span>
+                            <ChevronDown
+                              className={`flex-shrink-0 text-accent transition-transform ${open ? 'rotate-180' : ''}`}
+                              size={20}
+                            />
+                          </button>
+                        </h3>
+                        {/* Always in the HTML (hidden when closed) so search engines and AI tools can read every answer. */}
+                        <div
+                          hidden={!open}
+                          className="px-6 pb-5 pt-0 text-text/80 dark:text-gray-300 border-t border-gray-100 dark:border-white/5"
+                        >
+                          <p className="pt-4">{faq.a}</p>
+                          {faq.link && (
+                            <a href={faq.link.href} className="inline-block mt-3 text-accent font-medium hover:underline">
+                              {faq.link.label}
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              </motion.div>
+              </section>
             ))}
           </div>
 

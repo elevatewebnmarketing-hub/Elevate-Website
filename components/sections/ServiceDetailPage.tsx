@@ -6,6 +6,11 @@ import TikTokViewContent from '@/components/analytics/TikTokViewContent';
 import { getServiceBySlug, type ServicePageConfig, type ServiceDetail } from '@/lib/services-content';
 import { siteConfig } from '@/lib/site-config';
 import { formatInline } from '@/lib/blog-utils';
+import SearchConsoleEvidence from '@/components/sections/SearchConsoleEvidence';
+import AuthorBio from '@/components/sections/AuthorBio';
+
+const fmtDate = (d: string) =>
+  new Date(`${d}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
 interface Props {
   config: ServicePageConfig;
@@ -76,12 +81,29 @@ export default function ServiceDetailPage({
             <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-4">
               {detail.h1}
             </h1>
-            <p className="text-accent font-heading font-semibold text-lg mb-6">{config.subtitle}</p>
+            <p className="text-accent font-heading font-semibold text-lg mb-3">{config.subtitle}</p>
+            <p className="text-sm text-text/60 dark:text-gray-400 mb-6">
+              By <Link href="/about" className="hover:text-accent">Ufuoma Onakpoyan</Link>, founder
+              {detail.updated && <> · Updated {fmtDate(detail.updated)}</>}
+            </p>
             <div className="space-y-4 mb-8">
               {detail.intro.map((p) => (
                 <p key={p} className={body} dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
               ))}
             </div>
+            {detail.keyTakeaways && (
+              <div className="mb-8 p-5 rounded-card-lg bg-accent/10 border border-accent/30">
+                <p className="font-heading font-semibold text-primary dark:text-white mb-3">The short answer</p>
+                <ul className="space-y-2">
+                  {detail.keyTakeaways.map((t) => (
+                    <li key={t} className="flex items-start gap-2 text-text/90 dark:text-gray-200 leading-relaxed">
+                      <Check size={18} className="text-accent mt-1 flex-shrink-0" aria-hidden />
+                      <span dangerouslySetInnerHTML={{ __html: formatInline(t) }} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <ContactButtons service={config.title} />
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-text/70 dark:text-gray-400">
               {(detail.trust ?? DEFAULT_TRUST).map((t) => (
@@ -167,7 +189,15 @@ export default function ServiceDetailPage({
                   <p className="text-text/80 dark:text-gray-300 leading-relaxed">{p.detail}</p>
                 </div>
               ))}
+              {detail.evidenceIds?.map((id) => <SearchConsoleEvidence key={id} id={id} />)}
             </div>
+            <p className="mt-6 text-text/80 dark:text-gray-300">
+              Want to know where your business stands?{' '}
+              <Link href="/ai-visibility-check" className="text-accent font-semibold hover:underline">
+                Run the free AI visibility check
+              </Link>{' '}
+              or send your business name on WhatsApp and we’ll look for you.
+            </p>
           </section>
 
           <section>
@@ -226,6 +256,21 @@ export default function ServiceDetailPage({
             </section>
           )}
 
+          {detail.nearby && detail.nearby.length > 0 && (
+            <section>
+              <h2 className={h2}>Areas we cover</h2>
+              <ul className="flex flex-wrap gap-3">
+                {detail.nearby.map((n) => (
+                  <li key={n.href}>
+                    <Link href={n.href} className="inline-block px-4 py-2 rounded-xl border border-gray-200 dark:border-white/20 text-primary dark:text-white hover:border-accent hover:text-accent transition-colors">
+                      {n.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <section className="p-8 bg-primary rounded-card-lg">
             <h2 className="font-heading font-bold text-2xl text-white mb-3">Talk to us about {config.title.toLowerCase()}</h2>
             <p className="text-white/80 mb-6">
@@ -237,6 +282,7 @@ export default function ServiceDetailPage({
             </p>
             <ContactButtons service={config.title} onDark />
           </section>
+          <AuthorBio />
         </article>
       </main>
       <Footer />

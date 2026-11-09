@@ -182,7 +182,10 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
   const Heading = isStandalone ? 'h1' : 'h2';
   const SubHeading = isStandalone ? 'h2' : 'h3';
   const MinorHeading = isStandalone ? 'h3' : 'h4';
-  const currencyName = { NG: 'Nigerian naira', GB: 'British pounds' }[locationCode as 'NG' | 'GB'] ?? 'US dollars';
+  const currencyName =
+    { NG: 'Nigerian naira', GB: 'British pounds', CA: 'Canadian dollars', AU: 'Australian dollars' }[
+      locationCode as 'NG' | 'GB' | 'CA' | 'AU'
+    ] ?? 'US dollars';
 
   const wrapperClass = isStandalone
     ? 'py-24 bg-background dark:bg-slate-900'
@@ -234,7 +237,7 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
             </p>
             <p className="text-sm text-text/60 dark:text-gray-400 mt-3">
               Prices shown in {currencyName}
-              {locationCode === 'US' ? ' for clients outside Nigeria and the UK' : ` for clients in ${countryName}`}.
+              {locationCode === 'US' ? ' for clients outside Nigeria, the UK, Canada and Australia' : ` for clients in ${countryName}`}.
             </p>
           </div>
           {!isStandalone && (

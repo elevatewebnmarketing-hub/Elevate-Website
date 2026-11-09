@@ -18,15 +18,23 @@ export interface ResolvedPricing {
 
 /**
  * Picks the price list from the browser's time zone: no permission prompt, no IP lookup.
- * Nigeria sees naira, the UK sees pounds, everyone else sees dollars.
+ * Nigeria sees naira, the UK pounds, Canada and Australia their own dollars, everyone else US dollars.
  * shortcut: a VPN or travel changes nothing (time zone follows the device); upgrade to a CDN
  * country header (cf-ipcountry) if that matters.
  */
+const CANADA_ZONES = new Set([
+  'America/Toronto', 'America/Vancouver', 'America/Edmonton', 'America/Winnipeg', 'America/Halifax',
+  'America/St_Johns', 'America/Regina', 'America/Moncton', 'America/Whitehorse', 'America/Yellowknife',
+  'America/Iqaluit', 'America/Glace_Bay', 'America/Goose_Bay', 'America/Dawson_Creek', 'America/Swift_Current',
+]);
+
 export function detectLocation(): LocationCode {
   try {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone ?? '';
     if (tz === 'Africa/Lagos') return 'NG';
     if (tz === 'Europe/London' || tz === 'Europe/Belfast') return 'GB';
+    if (tz.startsWith('Australia/')) return 'AU';
+    if (CANADA_ZONES.has(tz)) return 'CA';
     return 'US';
   } catch {
     return DEFAULT_LOCATION;
