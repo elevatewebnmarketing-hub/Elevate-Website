@@ -1,8 +1,10 @@
 import type { ServicePageConfig } from '@/lib/services-content';
+import { abujaLocationPages } from '@/lib/location-pages-abuja';
 
 /**
  * Location pages passed through the rank-ready-website location decision tree (see seo/decisions.md).
- * Lagos and Port Harcourt get pages only once there is real work there.
+ * Abuja, its districts and Lagos live in location-pages-abuja.ts (added 9 Nov 2026 at Ufuoma's request; Lagos is
+ * written honestly as remote work with no Lagos case study yet). Port Harcourt waits for real work there.
  */
 export const locationPages: Record<string, ServicePageConfig> = {
   asaba: {
@@ -17,9 +19,16 @@ export const locationPages: Record<string, ServicePageConfig> = {
       metaDescription:
         'Web design and local SEO in Asaba and Okpanam from the team behind MR DGN Construction’s site, found by buyers on ChatGPT. From ₦250,000.',
       h1: 'Web design and SEO in Asaba',
+      updated: '2026-11-09',
+      keyTakeaways: [
+        'Our office address is in Asaba, by Okpanam City Gate, and most of our client work so far is for Asaba businesses.',
+        'ChatGPT listed MR DGN Construction, our client, first when asked where to buy cement blocks in Asaba with delivery (our test, 6 November 2026).',
+        'Asaba search results are thin: on 9 November 2026, page 1 for “web design in Asaba” was mostly a listicle, course pages and blog posts.',
+        'A business that does the basics properly can show up here faster than in Abuja or Lagos.',
+      ],
       intro: [
         'Much of our work so far has been in Asaba and Okpanam. We build and optimise the websites for MR DGN Group, MR DGN Construction & Developers and MansaLuxe Realty, all based in Asaba.',
-        'We’re based in Abuja and work with Asaba businesses over WhatsApp and video calls. If you’d like to meet in person, we can meet by appointment at MR DGN’s office: Jossie Excel School, after Okpanam City Gate by the Express, Asaba.',
+        'Our office address is MR DGN’s office: Jossie Excel School, after Okpanam City Gate by the Express, Asaba. You can meet us there by appointment; most projects run over WhatsApp and video calls.',
       ],
       problems: [
         'You run a business in Asaba, Okpanam or Ibusa and want customers to find you when they search Google or ask ChatGPT.',
@@ -63,7 +72,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
           name: 'MR DGN Construction & Developers, Okpanam',
           url: 'https://construction.mrdgngroup.com',
           detail:
-            'A building materials supplier selling cement, blocks and sand. In September 2026 a buyer found the company through ChatGPT and enquired about concrete blocks. Asking ChatGPT “I want to buy concrete blocks for my project in Asaba” listed MR DGN first on 29 September 2026, and it was still listed on 17 October 2026.',
+            'A building materials supplier selling cement, blocks and sand. In September 2026 a buyer found the company through ChatGPT and enquired about concrete blocks. Asking ChatGPT “I want to buy concrete blocks for my project in Asaba” listed MR DGN first on 29 September 2026, and it was still listed on 17 October 2026. On 6 November 2026 it was the first answer to “Where can I buy cement blocks in Asaba with delivery?”',
         },
         {
           name: 'MansaLuxe Realty',
@@ -90,7 +99,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
       faqs: [
         {
           q: 'Do you have an office in Asaba?',
-          a: 'We’re based in Abuja. For Asaba clients who want to meet in person, we meet by appointment at MR DGN’s office near Okpanam City Gate. Most projects run fully over WhatsApp and video calls.',
+          a: 'Yes. Our office address is MR DGN’s office: Jossie Excel School, after Okpanam City Gate by the Express. Meetings there are by appointment, and most projects run over WhatsApp and video calls.',
         },
         {
           q: 'Can my Asaba business show up in ChatGPT?',
@@ -104,6 +113,11 @@ export const locationPages: Record<string, ServicePageConfig> = {
           q: 'I live abroad and I’m building in Asaba. Can you help my business there?',
           a: 'Yes. Everything runs remotely, so you can manage the project from wherever you are while local customers in Asaba find your business.',
         },
+      ],
+      nearby: [
+        { label: 'Okpanam', href: '/locations/okpanam' },
+        { label: 'Abuja', href: '/locations/abuja' },
+        { label: 'All of Nigeria', href: '/locations/nigeria' },
       ],
       related: ['local-seo', 'website-design', 'website-redesign', 'website-maintenance'],
     },
@@ -212,7 +226,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
         },
         {
           q: 'Do you build websites for businesses in Lagos and Port Harcourt?',
-          a: 'Yes, remotely, with the same packages and prices. We’ll add city-specific examples here as we complete projects there.',
+          a: 'Yes, remotely, with the same packages and prices. Our Lagos page explains how we approach Lagos searches; we’ll add Port Harcourt examples once we complete projects there.',
         },
         {
           q: 'What makes a website “SEO-ready”?',
@@ -223,5 +237,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
     },
   },
 };
+
+Object.assign(locationPages, abujaLocationPages);
 
 export const locationSlugs = Object.keys(locationPages);

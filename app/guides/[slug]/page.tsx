@@ -5,6 +5,7 @@ import { ArrowRight, Check, MessageCircle } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import AuthorBio from '@/components/sections/AuthorBio';
+import SearchConsoleEvidence from '@/components/sections/SearchConsoleEvidence';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
 import { formatInline } from '@/lib/blog-utils';
 import { getGuide, guides } from '@/lib/guides';
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 const h2 = 'font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mt-12 mb-4';
 const p = 'text-text/80 dark:text-gray-300 text-lg leading-relaxed mb-4';
 const html = (text: string) => ({ __html: formatInline(text) });
+const fmt = (d: string) => new Date(`${d}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
 export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
   const guide = getGuide((await params).slug);
@@ -49,7 +51,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       description: guide.description,
       url,
       datePublished: guide.published,
-      dateModified: guide.published,
+      dateModified: guide.updated ?? guide.published,
       image: `${SITE_URL}/opengraph-image`,
       author: {
         '@type': 'Person',
@@ -91,7 +93,24 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             <span aria-current="page">{guide.title}</span>
           </nav>
           <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-6">{guide.h1}</h1>
-          <p className="text-sm text-text/60 dark:text-gray-400 mb-8">By Ufuoma Onakpoyan · Published {published}</p>
+          <p className="text-sm text-text/60 dark:text-gray-400 mb-8">
+            By <Link href="/about" className="hover:text-accent">Ufuoma Onakpoyan</Link> · Published {published}
+            {guide.updated && <> · Updated {fmt(guide.updated)}</>}
+          </p>
+
+          {guide.keyTakeaways && (
+            <div className="mb-8 p-5 rounded-card-lg bg-accent/10 border border-accent/30">
+              <p className="font-heading font-semibold text-primary dark:text-white mb-3">The short answer</p>
+              <ul className="space-y-2">
+                {guide.keyTakeaways.map((t) => (
+                  <li key={t} className="flex items-start gap-2 text-text/90 dark:text-gray-200 leading-relaxed">
+                    <Check size={18} className="text-accent mt-1 flex-shrink-0" aria-hidden />
+                    <span dangerouslySetInnerHTML={html(t)} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {guide.intro.map((t) => (
             <p key={t} className={p} dangerouslySetInnerHTML={html(t)} />
@@ -113,6 +132,33 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                   ))}
                 </ul>
               )}
+              {s.table && (
+                <div className="overflow-x-auto mb-6 rounded-card-lg border border-gray-200 dark:border-white/10">
+                  <table className="w-full text-left text-sm sm:text-base">
+                    <thead className="bg-gray-50 dark:bg-slate-800">
+                      <tr>
+                        {s.table.head.map((h) => (
+                          <th key={h} scope="col" className="px-4 py-3 font-heading font-semibold text-primary dark:text-white">{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {s.table.rows.map((row) => (
+                        <tr key={row.join('|')} className="border-t border-gray-100 dark:border-white/5 align-top">
+                          {row.map((c, i) => (
+                            <td key={i} className="px-4 py-3 text-text/80 dark:text-gray-300" dangerouslySetInnerHTML={html(c)} />
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {s.evidenceIds?.map((id) => (
+                <div key={id} className="mb-6">
+                  <SearchConsoleEvidence id={id} />
+                </div>
+              ))}
               {s.after?.map((t) => (
                 <p key={t} className={p} dangerouslySetInnerHTML={html(t)} />
               ))}

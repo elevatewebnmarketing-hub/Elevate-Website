@@ -8,6 +8,18 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 const AREA: Record<string, object> = {
   asaba: { '@type': 'City', name: 'Asaba' },
   nigeria: { '@type': 'Country', name: 'Nigeria' },
+  abuja: { '@type': 'City', name: 'Abuja' },
+  lagos: { '@type': 'City', name: 'Lagos' },
+  'katampe-extension': { '@type': 'Place', name: 'Katampe Extension, Abuja' },
+  guzape: { '@type': 'Place', name: 'Guzape, Abuja' },
+  okpanam: { '@type': 'Place', name: 'Okpanam, Asaba' },
+};
+
+/** District pages sit under their city in the breadcrumb. */
+const PARENT: Record<string, { name: string; href: string }> = {
+  'katampe-extension': { name: 'Abuja', href: '/locations/abuja' },
+  guzape: { name: 'Abuja', href: '/locations/abuja' },
+  okpanam: { name: 'Asaba', href: '/locations/asaba' },
 };
 
 interface Props {
@@ -63,7 +75,10 @@ export default async function LocationPage({ params }: Props) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-        { '@type': 'ListItem', position: 2, name: config.title, item: url },
+        ...(PARENT[slug]
+          ? [{ '@type': 'ListItem', position: 2, name: PARENT[slug].name, item: `${SITE_URL}${PARENT[slug].href}` }]
+          : []),
+        { '@type': 'ListItem', position: PARENT[slug] ? 3 : 2, name: config.title, item: url },
       ],
     },
     {
@@ -80,7 +95,7 @@ export default async function LocationPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
-      <ServiceDetailPage config={config} detail={detail} parent={null} />
+      <ServiceDetailPage config={config} detail={detail} parent={PARENT[slug] ?? null} />
     </>
   );
 }

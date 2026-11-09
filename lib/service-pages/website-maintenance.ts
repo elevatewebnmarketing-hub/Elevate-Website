@@ -12,6 +12,12 @@ export const websiteMaintenance: ServicePageConfig = {
     metaDescription:
       'Website maintenance in Abuja: hosting, renewals, updates, uptime checks, content changes and a monthly Google report for one fixed monthly fee.',
     h1: 'Website maintenance and care plans in Abuja',
+    updated: '2026-11-09',
+    keyTakeaways: [
+      'A care plan keeps your website online, secure, backed up and up to date every month.',
+      'The SEO Care Plan adds a new page or post each month, profile updates and a monthly report.',
+      'Plans run month to month, with no long contract.',
+    ],
     intro: [
       'A website isn’t finished at launch. Domains expire, forms stop sending, prices change, and Google keeps changing what it rewards. A care plan means someone is responsible for all of that every month.',
       'Our care plans cover the technical upkeep and the small improvements that keep a site bringing in enquiries: content updates, tracking checks, and a short monthly report on how people find you.',
@@ -88,6 +94,10 @@ export const websiteMaintenance: ServicePageConfig = {
       'Monthly reports in plain language, not a wall of charts.',
     ],
     faqs: [
+      {
+        q: 'How do you show me it’s working?',
+        a: 'Each month we show you clicks and visitors, and above all how many people called, messaged on WhatsApp or filled in a form after finding you on Google, ChatGPT or Bing.',
+      },
       {
         q: 'Do I need a website maintenance plan?',
         a: 'If your site brings in customers, yes. Without one, renewals, broken forms and outdated prices are easy to miss. If you have the time and skills to handle updates, hosting and tracking yourself, you may not need one.',

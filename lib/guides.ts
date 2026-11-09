@@ -1,4 +1,5 @@
 import { STATIC_PRICING_FALLBACK } from '@/lib/pricing-config';
+import { recommendedByChatgpt } from '@/lib/guides-ai';
 
 /** Long-form guides at /guides/[slug]. Paragraphs and list items accept **bold** and [text](/path) links. */
 export interface Guide {
@@ -9,8 +10,21 @@ export interface Guide {
   published: string;
   /** Card image on the blog listing (Unsplash, free to use). */
   image: string;
+  /** YYYY-MM-DD, shown in the byline when the guide was revised after publishing. */
+  updated?: string;
+  /** 3–5 bullet answers under the intro ("The short answer"). */
+  keyTakeaways?: string[];
   intro: string[];
-  sections: { h2: string; paragraphs?: string[]; list?: string[]; after?: string[] }[];
+  sections: {
+    h2: string;
+    paragraphs?: string[];
+    list?: string[];
+    /** A simple comparison table; cells accept **bold** and links. */
+    table?: { head: string[]; rows: string[][] };
+    /** Anonymised Search Console chart ids (lib/evidence.ts). */
+    evidenceIds?: string[];
+    after?: string[];
+  }[];
   faqs: { q: string; a: string }[];
   cta: { heading: string; text: string; href: string; label: string };
   sources: { label: string; url: string }[];
@@ -37,7 +51,7 @@ const whyNotOnGoogle: Guide = {
       list: [
         'Type **site:yourdomain.com** into Google. If nothing comes up, Google hasn’t indexed your site at all.',
         'Search for your main service and your town. Are you on the map or on page one?',
-        'Ask ChatGPT for “the best [your service] in [your town]”. Are you mentioned?',
+        'Ask ChatGPT for “the best [your service] in [your town]”. Are you mentioned? If not, read [how to get your business recommended by ChatGPT](/guides/how-to-get-recommended-by-chatgpt).',
         'Run our [free AI visibility check](/ai-visibility-check) to see what Google and AI crawlers actually receive from your homepage.',
       ],
     },
@@ -110,7 +124,7 @@ const whyNotOnGoogle: Guide = {
     {
       h2: 'What fixing it looks like in practice',
       paragraphs: [
-        'MR DGN Construction, a building materials supplier in Asaba, had a site that wasn’t readable by search engines, had no service or product pages, and wasn’t in Google Search Console. We fixed all of that, added structured data and connected it to Bing. On 28 September 2026 the owner received an enquiry from a buyer who had found the company through ChatGPT.',
+        'MR DGN Construction, a building materials supplier in Asaba, had a site that wasn’t readable by search engines, had no service or product pages, and wasn’t in Google Search Console. We fixed all of that, added structured data and connected it to Bing. On 28 September 2026 the owner received an enquiry from a buyer who had found the company through ChatGPT. Our [Okpanam page](/locations/okpanam) has the latest result.',
       ],
     },
   ],
@@ -355,7 +369,7 @@ const ukCost: Guide = {
   ],
 };
 
-export const guides: Guide[] = [whyNotOnGoogle, builders, ukCost];
+export const guides: Guide[] = [recommendedByChatgpt, whyNotOnGoogle, builders, ukCost];
 
 export function getGuide(slug: string): Guide | undefined {
   return guides.find((g) => g.slug === slug);

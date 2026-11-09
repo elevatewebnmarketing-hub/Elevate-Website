@@ -16,6 +16,7 @@ import {
   MapPin,
   RefreshCw,
   Wrench,
+  ShoppingCart,
 } from 'lucide-react';
 
 const coreServices = [
@@ -56,6 +57,19 @@ const coreServices = [
       'Lead capture and tracking setup',
       'Campaign-specific CTA sections',
       'Ready for your own promotions, launches or outreach',
+    ],
+  },
+  {
+    icon: ShoppingCart,
+    title: 'E-commerce Websites',
+    href: '/services/ecommerce',
+    description:
+      'Online shops with a product page for every item, a checkout that works on a phone, and payment and order alerts.',
+    details: [
+      'Catalogue, cart, checkout and payment setup',
+      'A readable page and sitemap entry for every product',
+      'Order notifications for you and your customer',
+      'Typical delivery: 3 to 5 weeks',
     ],
   },
 ];
@@ -142,7 +156,7 @@ export default function ServicesPage() {
               </Link>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 gap-8">
               {coreServices.map((service, index) => (
                 <motion.article
                   key={service.title}

@@ -1,0 +1,305 @@
+{
+    "version": "0.1.20261103",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.3826 sec.",
+    "cost": 0.01212,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "11091329-3090-0381-0000-f69ede87a920",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.3106 sec.",
+            "cost": 0.01212,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "ranked_keywords",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "ranked_keywords",
+                "se_type": "google",
+                "target": "mansaluxerealty.mrdgngroup.com",
+                "location_code": 2566,
+                "language_code": "en",
+                "limit": 200
+            },
+            "result": [
+                {
+                    "se_type": "google",
+                    "target": "mansaluxerealty.mrdgngroup.com",
+                    "location_code": 2566,
+                    "language_code": "en",
+                    "total_count": 1,
+                    "items_count": 1,
+                    "metrics": {
+                        "organic": {
+                            "pos_1": 0,
+                            "pos_2_3": 0,
+                            "pos_4_10": 0,
+                            "pos_11_20": 0,
+                            "pos_21_30": 0,
+                            "pos_31_40": 0,
+                            "pos_41_50": 0,
+                            "pos_51_60": 1,
+                            "pos_61_70": 0,
+                            "pos_71_80": 0,
+                            "pos_81_90": 0,
+                            "pos_91_100": 0,
+                            "etv": 0,
+                            "count": 1,
+                            "estimated_paid_traffic_cost": 0,
+                            "is_new": 1,
+                            "is_up": 0,
+                            "is_down": 0,
+                            "is_lost": 0,
+                            "clickstream_etv": null,
+                            "clickstream_gender_distribution": null,
+                            "clickstream_age_distribution": null
+                        },
+                        "paid": {
+                            "pos_1": 0,
+                            "pos_2_3": 0,
+                            "pos_4_10": 0,
+                            "pos_11_20": 0,
+                            "pos_21_30": 0,
+                            "pos_31_40": 0,
+                            "pos_41_50": 0,
+                            "pos_51_60": 0,
+                            "pos_61_70": 0,
+                            "pos_71_80": 0,
+                            "pos_81_90": 0,
+                            "pos_91_100": 0,
+                            "etv": 0,
+                            "count": 0,
+                            "estimated_paid_traffic_cost": 0,
+                            "is_new": 0,
+                            "is_up": 0,
+                            "is_down": 0,
+                            "is_lost": 0,
+                            "clickstream_etv": null,
+                            "clickstream_gender_distribution": null,
+                            "clickstream_age_distribution": null
+                        },
+                        "featured_snippet": null,
+                        "local_pack": null,
+                        "ai_overview_reference": null
+                    },
+                    "metrics_absolute": null,
+                    "items": [
+                        {
+                            "se_type": "google",
+                            "keyword_data": {
+                                "se_type": "google",
+                                "keyword": "real estate abuja nigeria",
+                                "location_code": 2566,
+                                "language_code": "en",
+                                "keyword_info": {
+                                    "se_type": "google",
+                                    "last_updated_time": "2026-10-16 01:00:08 +00:00",
+                                    "competition": 0.11999999731779099,
+                                    "competition_level": "LOW",
+                                    "cpc": 0.11999999731779099,
+                                    "search_volume": 880,
+                                    "low_top_of_page_bid": 0.05000000074505806,
+                                    "high_top_of_page_bid": 0.3400000035762787,
+                                    "categories": [
+                                        10003,
+                                        10040
+                                    ],
+                                    "monthly_searches": [
+                                        {
+                                            "year": 2026,
+                                            "month": 9,
+                                            "search_volume": 880
+                                        },
+                                        {
+                                            "year": 2026,
+                                            "month": 8,
+                                            "search_volume": 1000
+                                        },
+                                        {
+                                            "year": 2026,
+                                            "month": 7,
+                                            "search_volume": 1300
+                                        },
+                                        {
+                                            "year": 2026,
+                                            "month": 6,
+                                            "search_volume": 1300
+                                        },
+                                        {
+                                            "year": 2026,
+                                            "month": 5,
+                                            "search_volume": 1000
+                                        },
+                                        {
+                                            "year": 2026,
+                                            "month": 4,
+                                            "search_volume": 1000
+                                        },
+                                        {
+                                            "year": 2026,
+                                            "month": 3,
+                                            "search_volume": 720
+                                        },
+                                        {
+                                            "year": 2026,
+                                            "month": 2,
+                                            "search_volume": 880
+                                        },
+                                        {
+                                            "year": 2026,
+                                            "month": 1,
+                                            "search_volume": 720
+                                        },
+                                        {
+                                            "year": 2025,
+                                            "month": 12,
+                                            "search_volume": 480
+                                        },
+                                        {
+                                            "year": 2025,
+                                            "month": 11,
+                                            "search_volume": 720
+                                        },
+                                        {
+                                            "year": 2025,
+                                            "month": 10,
+                                            "search_volume": 880
+                                        }
+                                    ],
+                                    "search_volume_trend": {
+                                        "monthly": -12,
+                                        "quarterly": -32,
+                                        "yearly": -12
+                                    }
+                                },
+                                "keyword_info_normalized_with_bing": null,
+                                "keyword_info_normalized_with_clickstream": null,
+                                "clickstream_keyword_info": null,
+                                "keyword_properties": {
+                                    "se_type": "google",
+                                    "core_keyword": "real estate in abuja nigeria",
+                                    "synonym_clustering_algorithm": "text_processing",
+                                    "keyword_difficulty": 0,
+                                    "detected_language": "en",
+                                    "is_another_language": false
+                                },
+                                "serp_info": {
+                                    "se_type": "google",
+                                    "check_url": "https:\/\/www.google.com\/search?q=real%20estate%20abuja%20nigeria&hl=en&gl=NG&ie=UTF-8&uule=w+CAIQIFISCQ2NpH2vC04QEcgLxWhB_qiZ",
+                                    "serp_item_types": [
+                                        "ai_overview",
+                                        "local_pack",
+                                        "organic",
+                                        "people_also_ask",
+                                        "video",
+                                        "related_searches",
+                                        "images"
+                                    ],
+                                    "se_results_count": 137,
+                                    "last_updated_time": "2026-09-22 22:24:55 +00:00",
+                                    "previous_updated_time": "2026-05-12 19:41:55 +00:00"
+                                },
+                                "avg_backlinks_info": {
+                                    "se_type": "google",
+                                    "backlinks": 22.700000762939453,
+                                    "dofollow": 15.800000190734863,
+                                    "referring_pages": 21,
+                                    "referring_domains": 11.899999618530273,
+                                    "referring_main_domains": 11.399999618530273,
+                                    "rank": 71.4000015258789,
+                                    "main_domain_rank": 315.6000061035156,
+                                    "last_updated_time": "2026-09-22 22:26:04 +00:00"
+                                },
+                                "search_intent_info": {
+                                    "se_type": "google",
+                                    "main_intent": "commercial",
+                                    "foreign_intent": null,
+                                    "last_updated_time": "2026-04-29 21:09:45 +00:00"
+                                }
+                            },
+                            "ranked_serp_element": {
+                                "se_type": "google",
+                                "serp_item": {
+                                    "se_type": "google",
+                                    "type": "organic",
+                                    "rank_group": 57,
+                                    "rank_absolute": 72,
+                                    "position": "left",
+                                    "xpath": "\/html[1]\/body[1]\/div[3]\/div[1]\/div[13]\/div[1]\/div[2]\/div[2]\/div[1]\/div[1]\/div[2]\/div[1]\/div[1]",
+                                    "domain": "mansaluxerealty.mrdgngroup.com",
+                                    "title": "Property for Sale in Abuja | Mansa Luxe Realty Limited",
+                                    "url": "https:\/\/mansaluxerealty.mrdgngroup.com\/property-for-sale-abuja",
+                                    "breadcrumb": "https:\/\/mansaluxerealty.mrdgngroup.com › property-for-...",
+                                    "website_name": "mrdgngroup.com",
+                                    "is_image": false,
+                                    "is_video": false,
+                                    "is_featured_snippet": false,
+                                    "is_malicious": false,
+                                    "checks": null,
+                                    "description": "Abuja property buyers usually want security, title clarity, good access and strong long-term demand. Mansa Luxe Realty helps buyers inspect and verify selected ... Read more",
+                                    "pre_snippet": null,
+                                    "extended_snippet": null,
+                                    "amp_version": false,
+                                    "rating": null,
+                                    "highlighted": [
+                                        "Abuja property",
+                                        "Realty"
+                                    ],
+                                    "links": [
+                                        {
+                                            "type": "link_element",
+                                            "title": "Read more",
+                                            "description": null,
+                                            "url": "https:\/\/mansaluxerealty.mrdgngroup.com\/property-for-sale-abuja#:~:text=Abuja%20property%20buyers%20usually%20want,selected%20Abuja%20opportunities%20before%20payment."
+                                        }
+                                    ],
+                                    "about_this_result": null,
+                                    "main_domain": "mrdgngroup.com",
+                                    "relative_url": "\/property-for-sale-abuja",
+                                    "etv": null,
+                                    "estimated_paid_traffic_cost": null,
+                                    "clickstream_etv": null,
+                                    "rank_changes": {
+                                        "previous_rank_absolute": null,
+                                        "is_new": true,
+                                        "is_up": false,
+                                        "is_down": false
+                                    },
+                                    "backlinks_info": null,
+                                    "rank_info": {
+                                        "page_rank": 0,
+                                        "main_domain_rank": 0
+                                    }
+                                },
+                                "check_url": "https:\/\/www.google.com\/search?q=real%20estate%20abuja%20nigeria&hl=en&gl=NG&ie=UTF-8&uule=w+CAIQIFISCQ2NpH2vC04QEcgLxWhB_qiZ",
+                                "serp_item_types": [
+                                    "ai_overview",
+                                    "local_pack",
+                                    "organic",
+                                    "people_also_ask",
+                                    "video",
+                                    "related_searches",
+                                    "images"
+                                ],
+                                "se_results_count": 137,
+                                "keyword_difficulty": 0,
+                                "is_lost": false,
+                                "last_updated_time": "2026-09-22 22:24:55 +00:00",
+                                "previous_updated_time": "2026-05-12 19:41:55 +00:00"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -4,9 +4,9 @@ import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
-  title: 'Website, SEO & Pricing FAQs',
+  title: 'FAQ: Getting Found on Google & ChatGPT, Websites, SEO and Prices',
   description:
-    'Frequently asked questions about web design, pricing, timelines, and digital marketing in Nigeria. Elevate Web & Marketing answers your questions.',
+    'How to get more clients, why your business isn’t on Google or ChatGPT, how long SEO takes, what a website costs and how payment works. Straight answers.',
   keywords: [
     'web design FAQ Nigeria',
     'how much does a website cost Nigeria',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: ['/opengraph-image'],
     title: 'FAQ | Elevate Web & Marketing',
-    description: 'Common questions about web design, pricing, and marketing services in Nigeria.',
+    description: 'How to get more clients, show up on Google and ChatGPT, and what websites and SEO cost.',
     url: `${SITE_URL}/faq`,
   },
   alternates: { canonical: '/faq' },

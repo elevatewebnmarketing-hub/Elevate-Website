@@ -12,6 +12,13 @@ export const websiteDesign: ServicePageConfig = {
     metaDescription:
       'Website design in Abuja from ₦250,000: fast, mobile-first business sites with WhatsApp buttons, service pages and SEO built in. Live in 7 to 10 days.',
     h1: 'Website design in Abuja',
+    updated: '2026-11-09',
+    keyTakeaways: [
+      'We design and build business websites with a page for every service, so Google can match each search to a page.',
+      'Every site is server-rendered, which means Google and AI tools like ChatGPT can read the text without running JavaScript.',
+      'Starter sites usually launch in 7 to 10 business days; Business sites take 2 to 4 weeks.',
+      'Each build includes Google Business Profile setup and a sitemap submitted to Google Search Console on launch day.',
+    ],
     intro: [
       'We design and build websites for businesses in Abuja and across Nigeria that want the site to do a job: bring in calls, WhatsApp messages and quote requests.',
       'Design and development are one service here. The same team plans the pages, writes the structure, designs the layout and builds it in Next.js, a modern framework that sends complete pages to Google and AI tools rather than an empty shell that only fills in after JavaScript runs.',
@@ -120,6 +127,18 @@ export const websiteDesign: ServicePageConfig = {
     ],
     faqs: [
       {
+        q: 'How soon will I see results?',
+        a: 'In our experience, once the site is built properly and submitted to Google Search Console, it takes about three weeks for Google to build up its picture of the site, and that’s often when the first calls come. Competitive searches take longer, and we don’t promise dates or positions.',
+      },
+      {
+        q: 'How do you show me it’s working?',
+        a: 'Each month we show you clicks and visitors, and above all how many people called, messaged on WhatsApp or filled in a form after finding you on Google, ChatGPT or Bing.',
+      },
+      {
+        q: 'How do I pay, and is there a contract?',
+        a: 'Most projects are invoiced. Big projects that run for months are paid 50% upfront and 50% on delivery. We don’t lock you into a long contract.',
+      },
+      {
         q: 'How much does a business website cost in Abuja?',
         a: 'Our Starter Website is ₦250,000 for 4 pages, domain, Google Business Profile setup and SEO foundations. The Business Website is ₦450,000 for up to 6 pages plus a landing page and launch ad management. E-commerce is quoted separately.',
       },
@@ -139,6 +158,14 @@ export const websiteDesign: ServicePageConfig = {
         q: 'Can I update the website myself?',
         a: 'Yes, for the parts we agree on. Where it helps, we give you an admin portal to update things like resources (PDFs and videos), reviews and listings, and to see sign-ups or payments. Enquiries from your forms go straight to your email. Bigger changes go through a care plan.',
       },
+    ],
+    nearby: [
+      { label: 'Abuja', href: '/locations/abuja' },
+      { label: 'Katampe Extension', href: '/locations/katampe-extension' },
+      { label: 'Guzape', href: '/locations/guzape' },
+      { label: 'Asaba', href: '/locations/asaba' },
+      { label: 'Okpanam', href: '/locations/okpanam' },
+      { label: 'Lagos', href: '/locations/lagos' },
     ],
     related: ['local-seo', 'landing-pages', 'website-redesign', 'website-maintenance'],
   },

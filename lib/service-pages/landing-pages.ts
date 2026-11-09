@@ -12,6 +12,12 @@ export const landingPages: ServicePageConfig = {
     metaDescription:
       'Landing page design in Abuja: one offer, one page, built to turn visitors from your ads, posts or outreach into WhatsApp enquiries. Tracking included.',
     h1: 'Landing page design in Abuja',
+    updated: '2026-11-09',
+    keyTakeaways: [
+      'A landing page is one page with one offer and one action: call, WhatsApp or fill in a form.',
+      'We build them for promotions, launches and ads, with click and enquiry tracking.',
+      'The page loads fast on a phone and says the same thing as the ad that sent people there.',
+    ],
     intro: [
       'A landing page is a single page built for one offer and one action. It’s where your own ads, social posts, flyers or WhatsApp broadcasts send people, and its only job is to turn that click into a WhatsApp message, call or form enquiry.',
       'Sending ad traffic to your homepage usually wastes money: visitors land on a general page, can’t see the offer they clicked, and leave. A focused landing page keeps the promise of the ad and gives one clear next step.',
@@ -102,6 +108,14 @@ export const landingPages: ServicePageConfig = {
       'Pages are light and fast on mobile data.',
     ],
     faqs: [
+      {
+        q: 'Do you run the ads too?',
+        a: 'Only on request. Most clients run their own promotions or outreach and send people to the page; we build the page and the tracking.',
+      },
+      {
+        q: 'How do I pay, and is there a contract?',
+        a: 'Most projects are invoiced. Big projects that run for months are paid 50% upfront and 50% on delivery. We don’t lock you into a long contract.',
+      },
       {
         q: 'What is the difference between a landing page and a website?',
         a: 'A website has many pages for people who are exploring. A landing page is one page for one offer, built for people who just clicked an ad. It removes menus and distractions so visitors take one action.',
