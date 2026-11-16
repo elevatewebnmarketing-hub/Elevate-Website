@@ -4,7 +4,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip, not hidden: hidden makes body a scroll container and breaks position: sticky */
 }
 
 :root {
@@ -24,7 +24,7 @@ html {
 body {
   color: var(--text);
   background: var(--background);
-  overflow-x: hidden;
+  overflow-x: clip;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 

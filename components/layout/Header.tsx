@@ -157,7 +157,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-gray-200/50 dark:border-white/10">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main">
+      <nav className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main">
         <div className="flex items-center justify-between h-16 md:h-20">
           <a
             href="/"
@@ -232,7 +232,7 @@ export default function Header() {
             transition={{ duration: 0.2 }}
             className="lg:hidden absolute left-0 right-0 top-full bg-background dark:bg-slate-900 shadow-lg border-t border-gray-200/50 dark:border-white/10 max-h-[calc(100vh-4rem)] overflow-y-auto"
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-2">
+            <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-2">
               {siteConfig.navMenu.map((item) =>
                 item.children ? (
                   <MobileSection key={item.label} item={item} onNavigate={() => setMobileMenuOpen(false)} />

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import FaqJsonLd from '@/components/seo/FaqJsonLd';
@@ -58,15 +58,12 @@ export default function FaqPage() {
       <FaqJsonLd faqs={faqs} />
       <Header />
       <main className="pt-32 sm:pt-36 md:pt-40 pb-20 min-h-screen bg-background dark:bg-slate-900">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
+            className="mb-10 max-w-3xl"
           >
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent/10 mb-6">
-              <HelpCircle className="text-accent" size={28} />
-            </div>
             <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-4">
               Frequently asked questions
             </h1>
@@ -75,7 +72,8 @@ export default function FaqPage() {
             </p>
           </motion.div>
 
-          <nav aria-label="FAQ topics" className="mb-10 flex flex-wrap justify-center gap-2">
+          <div className="lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12">
+          <nav aria-label="FAQ topics" className="mb-10 flex flex-wrap gap-2 lg:hidden">
             {groups.map((g) => (
               <a
                 key={g.id}
@@ -87,7 +85,21 @@ export default function FaqPage() {
             ))}
           </nav>
 
-          <div className="space-y-12">
+          <aside className="hidden lg:block">
+            <nav aria-label="FAQ topics (sidebar)" className="sticky top-28">
+              <p className="font-heading font-semibold text-sm text-primary dark:text-white mb-3">Topics</p>
+              <ul className="space-y-2 text-sm border-l border-gray-200 dark:border-white/10">
+                {groups.map((g) => (
+                  <li key={g.id}>
+                    <a href={`#${g.id}`} className="block -ml-px pl-3 border-l border-transparent text-text/70 dark:text-gray-400 hover:text-accent hover:border-accent">
+                      {g.heading}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
+          <div className="space-y-12 min-w-0">
             {groups.map((g) => (
               <section key={g.id} id={g.id} className="scroll-mt-28">
                 <h2 className="font-heading font-bold text-2xl text-primary dark:text-white mb-4">{g.heading}</h2>
@@ -130,6 +142,7 @@ export default function FaqPage() {
                 </div>
               </section>
             ))}
+          </div>
           </div>
 
           <motion.div

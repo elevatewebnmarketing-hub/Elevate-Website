@@ -249,8 +249,8 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
     ] ?? 'US dollars';
 
   const wrapperClass = isStandalone
-    ? 'py-24 bg-background dark:bg-slate-900'
-    : 'py-24 bg-white dark:bg-slate-900';
+    ? 'py-16 lg:py-20 bg-background dark:bg-slate-900'
+    : 'py-16 lg:py-20 bg-white dark:bg-slate-900';
   const Wrapper = isStandalone ? 'div' : SectionWrapper;
   const wrapperProps = isStandalone
     ? { className: wrapperClass }
@@ -279,17 +279,18 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
     return pkg ? `From ${formatPrice(pkg)}` : 'Custom';
   }
 
-  const buildPackages = PACKAGE_META.filter((pkg) => pkg.category === 'build');
+  const buildPackages = PACKAGE_META.filter((pkg) => pkg.category === 'build' && pkg.key !== 'custom');
+  const customBuild = PACKAGE_META.find((pkg) => pkg.category === 'build' && pkg.key === 'custom');
   const retainers = PACKAGE_META.filter((pkg) => pkg.category === 'retainer');
 
   return (
     <Wrapper {...wrapperProps}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16"
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12"
         >
           <div className="text-center sm:text-left">
             <Heading className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary dark:text-white mb-4">
@@ -392,6 +393,26 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
               </motion.div>
             ))}
           </div>
+          {customBuild && (
+            <div className="mt-8 rounded-card-lg border border-gray-200 dark:border-white/10 bg-background dark:bg-slate-800 p-6 lg:p-8 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_auto] gap-6 lg:gap-10 items-center">
+              <div>
+                <SubHeading className="font-heading font-bold text-2xl text-primary dark:text-white mb-1">{customBuild.name}</SubHeading>
+                <p className="text-xl font-bold text-primary dark:text-white mb-2">Custom quote</p>
+                <p className="text-sm text-text/80 dark:text-gray-300">{customBuild.description}</p>
+              </div>
+              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                {customBuild.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-sm text-text dark:text-gray-200">
+                    <Check className="flex-shrink-0 text-accent mt-0.5" size={18} />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button variant="outline" size="md" onClick={openCalendly} className="w-full lg:w-auto min-h-[44px] whitespace-nowrap">
+                Book a call for a quote
+              </Button>
+            </div>
+          )}
         </div>
 
         <motion.div

@@ -43,6 +43,7 @@ type ContactBody = {
   name?: string;
   email?: string;
   website?: string;
+  phone?: string;
   service?: string;
   timeline?: string;
   budget?: string;
@@ -63,6 +64,7 @@ function businessEmailHtml(data: Required<Pick<ContactBody, 'name' | 'email' | '
   return `
     <h2>${isQuote ? 'Quote request' : 'New inquiry'} from ${e(data.name)}</h2>
     <p><strong>Email:</strong> ${e(data.email)}</p>
+    ${data.phone ? `<p><strong>WhatsApp/phone:</strong> ${e(data.phone)}</p>` : ''}
     ${data.website ? `<p><strong>Website:</strong> ${e(data.website)}</p>` : ''}
     ${data.projectType ? `<p><strong>Project type:</strong> ${e(data.projectType)}</p>` : ''}
     ${data.industry ? `<p><strong>Industry/Business:</strong> ${e(data.industry)}</p>` : ''}
@@ -122,6 +124,7 @@ export async function POST(request: Request) {
   }
 
   const website = typeof body.website === 'string' ? body.website.trim().slice(0, 200) : undefined;
+  const phone = typeof body.phone === 'string' ? body.phone.trim().slice(0, 30) : undefined;
   const service = typeof body.service === 'string' ? body.service.slice(0, 100) : undefined;
   const timeline = typeof body.timeline === 'string' ? body.timeline.slice(0, 100) : undefined;
   const budget = typeof body.budget === 'string' ? body.budget.slice(0, 100) : undefined;
@@ -149,7 +152,7 @@ export async function POST(request: Request) {
         from: FROM_EMAIL,
         to: BUSINESS_EMAIL,
         subject: source === 'quote' ? `Quote request from ${name}` : `New inquiry from ${name}`,
-        html: businessEmailHtml({ name, email, website, service, timeline, budget, message, source, projectType, industry }),
+        html: businessEmailHtml({ name, email, phone, website, service, timeline, budget, message, source, projectType, industry }),
       }),
       resend.emails.send({
         from: FROM_EMAIL,

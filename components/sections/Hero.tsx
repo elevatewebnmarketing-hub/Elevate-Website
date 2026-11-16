@@ -63,7 +63,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10" />
       <div className="absolute inset-0 opacity-30 hero-radial" />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center text-center w-full max-w-3xl mx-auto">
           <motion.div
             variants={containerVariants}

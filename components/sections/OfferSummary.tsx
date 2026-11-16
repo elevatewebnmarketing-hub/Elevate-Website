@@ -58,8 +58,8 @@ const offerLinks: { title: string; href: string; summary: ReactNode }[] = [
 
 export default function OfferSummary() {
   return (
-    <SectionWrapper className="py-16 bg-background dark:bg-slate-900">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionWrapper className="py-16 lg:py-20 bg-background dark:bg-slate-900">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <h2 className="font-heading font-bold text-3xl sm:text-4xl text-primary dark:text-white mb-4">
             Clear Offer Summary
@@ -70,11 +70,11 @@ export default function OfferSummary() {
           </p>
         </div>
 
-        <div className="grid gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {offerLinks.map((offer) => (
             <article
               key={offer.title}
-              className="rounded-card-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 p-6 shadow-soft"
+              className="rounded-card-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 p-6"
             >
               <h3 className="font-heading font-semibold text-xl text-primary dark:text-white mb-2">
                 <Link href={offer.href} className="hover:underline underline-offset-4">

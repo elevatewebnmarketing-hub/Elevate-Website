@@ -38,8 +38,8 @@ export default function Blog({ initialPosts = [] }: BlogProps) {
   }, [initialPosts.length]);
 
   return (
-    <SectionWrapper id="blog" className="py-24 bg-white dark:bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionWrapper id="blog" className="py-16 lg:py-20 bg-white dark:bg-slate-900">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

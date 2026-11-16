@@ -41,8 +41,8 @@ export default function Process({ showHeading = true }: ProcessProps) {
   // Without the section heading, the page's own h1 sits directly above the steps.
   const StepHeading = showHeading ? 'h3' : 'h2';
   return (
-    <SectionWrapper id="process" className="py-24 bg-white dark:bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionWrapper id="process" className="py-16 lg:py-20 bg-white dark:bg-slate-900">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
         {showHeading && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}

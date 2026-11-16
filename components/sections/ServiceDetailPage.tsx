@@ -22,7 +22,8 @@ interface Props {
 
 const DEFAULT_TRUST = ['Office in Asaba, serving Abuja and all of Nigeria', 'Working since 2023', '50+ websites built', 'Replies within 48 hours'];
 const h2 ='font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mb-5';
-const body = 'text-text/80 dark:text-gray-300 text-base sm:text-lg leading-relaxed';
+const body = 'text-text/80 dark:text-gray-300 text-base sm:text-lg leading-relaxed max-w-[68ch]';
+const sectionCls = 'scroll-mt-32';
 const card = 'bg-white dark:bg-slate-800 rounded-card-lg border border-gray-200 dark:border-white/10 p-6';
 
 function ContactButtons({ service, onDark = false }: { service: string; onDark?: boolean }) {
@@ -80,8 +81,9 @@ export default function ServiceDetailPage({
       <TikTokViewContent contentName={config.title} />
       <Header />
       <main className="pt-32 sm:pt-36 md:pt-40 pb-20 min-h-screen bg-background dark:bg-slate-900">
-        <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          <header>
+        <article className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
+          <header className={`grid ${detail.keyTakeaways ? 'lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)]' : ''} gap-10 lg:gap-14 items-start pb-14 lg:pb-16 border-b border-gray-200 dark:border-white/10`}>
+            <div>
             <nav aria-label="Breadcrumb" className="text-sm text-text/60 dark:text-gray-400 mb-6">
               <Link href="/" className="hover:text-accent">Home</Link>
               <span className="mx-2">/</span>
@@ -106,12 +108,19 @@ export default function ServiceDetailPage({
                 <p key={p} className={body} dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
               ))}
             </div>
+            <ContactButtons service={config.title} />
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-text/70 dark:text-gray-400">
+              {(detail.trust ?? DEFAULT_TRUST).map((t) => (
+                <li key={t} className="flex items-center gap-1.5"><Check size={14} className="text-accent" aria-hidden />{t}</li>
+              ))}
+            </ul>
+            </div>
             {detail.keyTakeaways && (
-              <div className="mb-8 p-5 rounded-card-lg bg-accent/10 border border-accent/30">
-                <p className="font-heading font-semibold text-primary dark:text-white mb-3">The short answer</p>
-                <ul className="space-y-2">
+              <div className="p-6 lg:p-7 rounded-card-lg bg-primary text-white lg:mt-12 shadow-soft-lg">
+                <p className="font-heading font-semibold text-xl text-white mb-4">The short answer</p>
+                <ul className="space-y-3 [&_a]:text-accent">
                   {detail.keyTakeaways.map((t) => (
-                    <li key={t} className="flex items-start gap-2 text-text/90 dark:text-gray-200 leading-relaxed">
+                    <li key={t} className="flex items-start gap-2.5 text-white/90 leading-relaxed">
                       <Check size={18} className="text-accent mt-1 flex-shrink-0" aria-hidden />
                       <span dangerouslySetInnerHTML={{ __html: formatInline(t) }} />
                     </li>
@@ -119,22 +128,19 @@ export default function ServiceDetailPage({
                 </ul>
               </div>
             )}
-            <ContactButtons service={config.title} />
-            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-text/70 dark:text-gray-400">
-              {(detail.trust ?? DEFAULT_TRUST).map((t) => (
-                <li key={t}>{t}</li>
-              ))}
-            </ul>
           </header>
 
+          <div className="grid lg:grid-cols-[minmax(0,1fr)_18rem] xl:grid-cols-[minmax(0,1fr)_20rem] gap-12 xl:gap-16 pt-14 lg:pt-16">
+          <div className="min-w-0 space-y-16">
+
           {detail.problems.length > 0 && (
-          <section>
+          <section id="who" className={sectionCls}>
               <H2 text={heading('problems', 'Who this is for')} />
               {intro('problems')}
-              <ul className="space-y-3">
+              <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4">
                 {detail.problems.map((p) => (
-                  <li key={p} className={`flex items-start gap-3 ${body}`}>
-                    <span className="text-accent mt-1">•</span>
+                  <li key={p} className="flex items-start gap-3 text-text/80 dark:text-gray-300 leading-relaxed">
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" aria-hidden />
                     <span dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
                   </li>
                 ))}
@@ -142,10 +148,10 @@ export default function ServiceDetailPage({
             </section>
           )}
 
-          <section>
+          <section id="included" className={sectionCls}>
             <H2 text={heading('included', "What's included")} />
             {intro('included')}
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className={`grid sm:grid-cols-2 ${detail.included.length % 3 === 0 ? 'xl:grid-cols-3' : 'sm:[&>*:last-child:nth-child(odd)]:col-span-2'} gap-4`}>
               {detail.included.map((item) => (
                 <div key={item.title} className={card}>
                   <h3 className="font-heading font-semibold text-primary dark:text-white mb-2 flex items-start gap-2">
@@ -185,10 +191,10 @@ export default function ServiceDetailPage({
             </section>
           )}
 
-          <section>
+          <section id="process" className={sectionCls}>
             <H2 text={heading('process', 'How it works')} />
             {intro('process')}
-            <ol className="space-y-5">
+            <ol className="grid md:grid-cols-2 gap-x-10 gap-y-6">
               {detail.process.map((step, i) => (
                 <li key={step.title} className="flex gap-4">
                   <span className="flex-shrink-0 w-9 h-9 rounded-full bg-accent text-white font-heading font-bold flex items-center justify-center">
@@ -203,7 +209,7 @@ export default function ServiceDetailPage({
             </ol>
           </section>
 
-          <section className={heading('pricing', 'Pricing') ? undefined : '!mt-8'}>
+          <section id="pricing" className={`${sectionCls} ${heading('pricing', 'Pricing') ? '' : '!mt-8'}`}>
             <H2 text={heading('pricing', 'Pricing')} />
             {intro('pricing')}
             <p className={`${body} mb-4`}>{detail.pricing.summary}</p>
@@ -257,10 +263,10 @@ export default function ServiceDetailPage({
             </Link>
           </section>
 
-          <section>
+          <section id="proof" className={sectionCls}>
             <H2 text={heading('proof', 'Recent work')} />
             {intro('proof')}
-            <div className="space-y-4">
+            <div className={`grid ${detail.proof.length > 1 ? 'md:grid-cols-2 md:[&>*:last-child:nth-child(odd)]:col-span-2' : ''} gap-4`}>
               {detail.proof.map((p) => (
                 <div key={p.name} className={card}>
                   <h3 className="font-heading font-semibold text-primary dark:text-white mb-2">
@@ -275,8 +281,8 @@ export default function ServiceDetailPage({
                   <p className="text-text/80 dark:text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: formatInline(p.detail) }} />
                 </div>
               ))}
-              {detail.evidenceIds?.map((id) => <SearchConsoleEvidence key={id} id={id} />)}
             </div>
+            {detail.evidenceIds?.map((id) => <div key={id} className="mt-4"><SearchConsoleEvidence id={id} /></div>)}
             {outro('proof')}
             <p className="mt-6 text-text/80 dark:text-gray-300">
               Want to know where your business stands?{' '}
@@ -288,7 +294,7 @@ export default function ServiceDetailPage({
           </section>
 
           {detail.localContext.length > 0 && (
-          <section>
+          <section id="local" className={sectionCls}>
               <H2 text={detail.localHeading ?? heading('local', 'Working with businesses in Abuja')} />
               {intro('local')}
               <div className="space-y-4">
@@ -300,12 +306,12 @@ export default function ServiceDetailPage({
             </section>
           )}
 
-          <section>
+          <section id="why" className={sectionCls}>
             <H2 text={heading('whyUs', 'Why work with us')} />
             {intro('whyUs')}
-            <ul className="space-y-3">
+            <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4">
               {detail.whyUs.map((p) => (
-                <li key={p} className={`flex items-start gap-3 ${body}`}>
+                <li key={p} className="flex items-start gap-3 text-text/80 dark:text-gray-300 leading-relaxed">
                   <Check className="text-accent flex-shrink-0 mt-1.5" size={18} />
                   <span dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
                 </li>
@@ -314,7 +320,7 @@ export default function ServiceDetailPage({
             {outro('whyUs')}
           </section>
 
-          <section>
+          <section id="faq" className={sectionCls}>
             <H2 text={heading('faqs', 'Frequently asked questions')} />
             {intro('faqs')}
             <div className="space-y-3">
@@ -332,7 +338,7 @@ export default function ServiceDetailPage({
           {related.length > 0 && (
             <section>
               <h2 className={h2}>Related services</h2>
-              <ul className="grid sm:grid-cols-2 gap-3">
+              <ul className={`grid sm:grid-cols-2 ${related.length % 3 === 0 ? 'xl:grid-cols-3' : 'sm:[&>*:last-child:nth-child(odd)]:col-span-2'} gap-3`}>
                 {related.map((r) => (
                   <li key={r.slug}>
                     <Link
@@ -378,6 +384,56 @@ export default function ServiceDetailPage({
             <ContactButtons service={config.title} onDark />
           </section>
           <AuthorBio />
+          </div>
+          <aside className="hidden lg:block" aria-label="Contact and page sections">
+            <div className="sticky top-28 space-y-6">
+              <div className={card}>
+                <p className="font-heading font-semibold text-lg text-primary dark:text-white mb-1">Talk to us</p>
+                <p className="text-sm text-text/70 dark:text-gray-400 mb-4">We reply within 48 hours, usually the same day on WhatsApp.</p>
+                <div className="flex flex-col gap-2.5">
+                  <a
+                    href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(`Hi Elevate, I'd like to ask about ${config.title}.`)}`}
+                    className="inline-flex items-center justify-center gap-2 min-h-[44px] px-4 bg-accent text-white font-heading font-semibold rounded-xl hover:bg-accent/90 transition-colors"
+                  >
+                    <MessageCircle size={18} aria-hidden /> WhatsApp us
+                  </a>
+                  <a
+                    href={`tel:+${siteConfig.whatsappNumber}`}
+                    className="inline-flex items-center justify-center gap-2 min-h-[44px] px-4 border border-gray-200 dark:border-white/20 text-primary dark:text-white font-heading font-semibold rounded-xl hover:border-accent hover:text-accent transition-colors"
+                  >
+                    <Phone size={18} aria-hidden /> {siteConfig.phone}
+                  </a>
+                  <Link href="/get-quote" className="inline-flex items-center justify-center gap-1.5 min-h-[44px] text-sm font-semibold text-primary dark:text-white hover:text-accent">
+                    Request a quote <ArrowRight size={16} aria-hidden />
+                  </Link>
+                </div>
+              </div>
+              <nav aria-label="On this page" className="px-1">
+                <p className="font-heading font-semibold text-sm text-primary dark:text-white mb-3">On this page</p>
+                <ul className="space-y-2 text-sm border-l border-gray-200 dark:border-white/10">
+                  {[
+                    detail.problems.length > 0 && ['who', heading('problems', 'Who this is for')],
+                    ['included', heading('included', "What's included")],
+                    ['process', heading('process', 'How it works')],
+                    heading('pricing', 'Pricing') && ['pricing', heading('pricing', 'Pricing')],
+                    ['proof', heading('proof', 'Recent work')],
+                    detail.localContext.length > 0 && ['local', detail.localHeading ?? heading('local', 'Working with businesses in Abuja')],
+                    ['why', heading('whyUs', 'Why work with us')],
+                    ['faq', heading('faqs', 'Frequently asked questions')],
+                  ]
+                    .filter((x): x is [string, string] => Array.isArray(x) && Boolean(x[1]))
+                    .map(([id, label]) => (
+                      <li key={id}>
+                        <a href={`#${id}`} className="block -ml-px pl-3 border-l border-transparent text-text/70 dark:text-gray-400 hover:text-accent hover:border-accent leading-snug">
+                          {label}
+                        </a>
+                      </li>
+                    ))}
+                </ul>
+              </nav>
+            </div>
+          </aside>
+          </div>
         </article>
       </main>
       <Footer />

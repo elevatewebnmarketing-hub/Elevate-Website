@@ -36,7 +36,7 @@ function LogoItem({ item }: { item: (typeof TECH_LOGOS)[0] }) {
           role="img"
           viewBox="0 0 24 24"
           aria-hidden="true"
-          className="max-h-10 max-w-[64px] w-auto h-auto fill-[#374151] dark:fill-[#94a3b8]"
+          width="36" height="36" className="h-9 w-9 fill-[#374151] dark:fill-[#94a3b8]"
         >
           <path d={item.icon.path} />
         </svg>
