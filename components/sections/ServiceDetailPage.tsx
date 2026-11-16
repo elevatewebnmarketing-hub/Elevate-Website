@@ -3,7 +3,7 @@ import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
 import { ArrowRight, Check, MessageCircle, Phone } from 'lucide-react';
 import TikTokViewContent from '@/components/analytics/TikTokViewContent';
-import { getServiceBySlug, type ServicePageConfig, type ServiceDetail } from '@/lib/services-content';
+import { getServiceBySlug, type ServicePageConfig, type ServiceDetail, type DetailSection } from '@/lib/services-content';
 import { siteConfig } from '@/lib/site-config';
 import { formatInline } from '@/lib/blog-utils';
 import SearchConsoleEvidence from '@/components/sections/SearchConsoleEvidence';
@@ -56,6 +56,18 @@ export default function ServiceDetailPage({
   detail,
   parent = { name: 'Services', href: '/services' },
 }: Props) {
+  const heading = (key: DetailSection, fallback: string) => detail.headings?.[key] ?? fallback;
+  const paras = (list?: string[], className = 'space-y-4 mb-6') =>
+    list && list.length > 0 ? (
+      <div className={className}>
+        {list.map((p) => (
+          <p key={p} className={body} dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
+        ))}
+      </div>
+    ) : null;
+  const intro = (key: DetailSection) => paras(detail.intros?.[key]);
+  const outro = (key: DetailSection) => paras(detail.outros?.[key], 'space-y-4 mt-6');
+
   const related = detail.related
     .map((slug) => getServiceBySlug(slug))
     .filter((s): s is ServicePageConfig => s !== null);
@@ -113,7 +125,8 @@ export default function ServiceDetailPage({
           </header>
 
           <section>
-            <h2 className={h2}>Who this is for</h2>
+            <h2 className={h2}>{heading('problems', 'Who this is for')}</h2>
+            {intro('problems')}
             <ul className="space-y-3">
               {detail.problems.map((p) => (
                 <li key={p} className={`flex items-start gap-3 ${body}`}>
@@ -125,7 +138,8 @@ export default function ServiceDetailPage({
           </section>
 
           <section>
-            <h2 className={h2}>What's included</h2>
+            <h2 className={h2}>{heading('included', "What's included")}</h2>
+            {intro('included')}
             <div className="grid sm:grid-cols-2 gap-4">
               {detail.included.map((item) => (
                 <div key={item.title} className={card}>
@@ -137,6 +151,7 @@ export default function ServiceDetailPage({
                 </div>
               ))}
             </div>
+            {outro('included')}
           </section>
 
           {detail.compare && (
@@ -166,7 +181,8 @@ export default function ServiceDetailPage({
           )}
 
           <section>
-            <h2 className={h2}>How it works</h2>
+            <h2 className={h2}>{heading('process', 'How it works')}</h2>
+            {intro('process')}
             <ol className="space-y-5">
               {detail.process.map((step, i) => (
                 <li key={step.title} className="flex gap-4">
@@ -183,9 +199,32 @@ export default function ServiceDetailPage({
           </section>
 
           <section>
-            <h2 className={h2}>Pricing</h2>
+            <h2 className={h2}>{heading('pricing', 'Pricing')}</h2>
+            {intro('pricing')}
             <p className={`${body} mb-4`}>{detail.pricing.summary}</p>
-            <ul className="space-y-2 mb-4">
+            {detail.pricing.table && (
+              <div className="overflow-x-auto rounded-card-lg border border-gray-200 dark:border-white/10 mb-4">
+                <table className="w-full text-left text-sm sm:text-base">
+                  <thead className="bg-gray-50 dark:bg-slate-800">
+                    <tr>
+                      {detail.pricing.table.head.map((h) => (
+                        <th key={h} scope="col" className="px-4 py-3 font-heading font-semibold text-primary dark:text-white">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {detail.pricing.table.rows.map((row) => (
+                      <tr key={row.join('|')} className="border-t border-gray-100 dark:border-white/5 align-top">
+                        {row.map((c, i) => (
+                          <td key={i} className={`px-4 py-3 ${i === 0 ? 'text-primary dark:text-white font-medium' : 'text-text/80 dark:text-gray-300'}`}>{c}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            <ul className={detail.pricing.points.length ? 'space-y-2 mb-4' : 'hidden'}>
               {detail.pricing.points.map((p) => (
                 <li key={p} className="flex items-start gap-2 text-text/80 dark:text-gray-300">
                   <Check className="text-accent flex-shrink-0 mt-1" size={16} />
@@ -193,13 +232,29 @@ export default function ServiceDetailPage({
                 </li>
               ))}
             </ul>
+            {outro('pricing')}
+            {detail.pricing.figure && (
+              <figure className="my-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={detail.pricing.figure.src}
+                  alt={detail.pricing.figure.alt}
+                  width={detail.pricing.figure.width}
+                  height={detail.pricing.figure.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto rounded-card-lg border border-gray-200 dark:border-white/10"
+                />
+              </figure>
+            )}
             <Link href="/pricing" className="text-accent font-medium hover:underline">
               See all packages and prices
             </Link>
           </section>
 
           <section>
-            <h2 className={h2}>Recent work</h2>
+            <h2 className={h2}>{heading('proof', 'Recent work')}</h2>
+            {intro('proof')}
             <div className="space-y-4">
               {detail.proof.map((p) => (
                 <div key={p.name} className={card}>
@@ -217,6 +272,7 @@ export default function ServiceDetailPage({
               ))}
               {detail.evidenceIds?.map((id) => <SearchConsoleEvidence key={id} id={id} />)}
             </div>
+            {outro('proof')}
             <p className="mt-6 text-text/80 dark:text-gray-300">
               Want to know where your business stands?{' '}
               <Link href="/ai-visibility-check" className="text-accent font-semibold hover:underline">
@@ -227,7 +283,8 @@ export default function ServiceDetailPage({
           </section>
 
           <section>
-            <h2 className={h2}>{detail.localHeading ?? 'Working with businesses in Abuja'}</h2>
+            <h2 className={h2}>{detail.localHeading ?? heading('local', 'Working with businesses in Abuja')}</h2>
+            {intro('local')}
             <div className="space-y-4">
               {detail.localContext.map((p) => (
                 <p key={p} className={body}>{p}</p>
@@ -236,7 +293,8 @@ export default function ServiceDetailPage({
           </section>
 
           <section>
-            <h2 className={h2}>Why work with us</h2>
+            <h2 className={h2}>{heading('whyUs', 'Why work with us')}</h2>
+            {intro('whyUs')}
             <ul className="space-y-3">
               {detail.whyUs.map((p) => (
                 <li key={p} className={`flex items-start gap-3 ${body}`}>
@@ -245,10 +303,12 @@ export default function ServiceDetailPage({
                 </li>
               ))}
             </ul>
+            {outro('whyUs')}
           </section>
 
           <section>
-            <h2 className={h2}>Frequently asked questions</h2>
+            <h2 className={h2}>{heading('faqs', 'Frequently asked questions')}</h2>
+            {intro('faqs')}
             <div className="space-y-3">
               {detail.faqs.map((f) => (
                 <details key={f.q} className={`${card} group`}>
@@ -298,7 +358,8 @@ export default function ServiceDetailPage({
           )}
 
           <section className="p-8 bg-primary rounded-card-lg">
-            <h2 className="font-heading font-bold text-2xl text-white mb-3">Talk to us about {config.title.toLowerCase()}</h2>
+            <h2 className="font-heading font-bold text-2xl text-white mb-3">{detail.cta?.heading ?? `Talk to us about ${config.title}`}</h2>
+            {detail.cta?.text && <p className="text-white/90 mb-3">{detail.cta.text}</p>}
             <p className="text-white/80 mb-6">
               {siteConfig.companyName}, Abuja, Nigeria. Phone and WhatsApp {siteConfig.phone}. Email{' '}
               <a href={`mailto:${siteConfig.contactEmail}`} className="text-accent hover:underline">

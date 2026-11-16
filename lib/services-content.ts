@@ -10,6 +10,8 @@ import { digitalMarketing } from '@/lib/service-pages/digital-marketing';
 
 export type PageType = 'service' | 'industry';
 
+export type DetailSection = 'problems' | 'included' | 'process' | 'pricing' | 'proof' | 'local' | 'whyUs' | 'faqs';
+
 /** Full service page, built to the rank-ready-website service page spec. */
 export interface ServiceDetail {
   /** Without the brand: the root layout's title template appends it. */
@@ -20,7 +22,14 @@ export interface ServiceDetail {
   problems: string[];
   included: { title: string; detail: string }[];
   process: { title: string; detail: string }[];
-  pricing: { summary: string; points: string[] };
+  pricing: {
+    summary: string;
+    points: string[];
+    /** Optional two-column table (What | Price) shown instead of / after the points. */
+    table?: { head: string[]; rows: string[][] };
+    /** Optional image shown at the end of the pricing section (self-hosted, in /public). */
+    figure?: { src: string; alt: string; width: number; height: number };
+  };
   proof: { name: string; detail: string; url?: string }[];
   localContext: string[];
   /** Heading over localContext; defaults to the Abuja heading. */
@@ -41,6 +50,14 @@ export interface ServiceDetail {
   updated?: string;
   /** Slugs of related service pages. */
   related: string[];
+  /** Optional closing call-to-action heading and line (default: "Talk to us about {title}"). */
+  cta?: { heading: string; text?: string };
+  /** Optional heading overrides per section (defaults: the template's generic headings). */
+  headings?: Partial<Record<DetailSection, string>>;
+  /** Optional paragraphs shown under a section heading. Inline markdown links allowed. */
+  intros?: Partial<Record<DetailSection, string[]>>;
+  /** Optional paragraphs shown at the end of a section. Inline markdown links allowed. */
+  outros?: Partial<Record<DetailSection, string[]>>;
 }
 
 export interface ServicePageConfig {

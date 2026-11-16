@@ -99,3 +99,12 @@ Research behind these: `seo/research-2026-11-09.md` (Search Console export and D
 | 2026-11-16 | "Custom & Enterprise" pricing card renamed **Software & Web Apps** (custom quote) | Ufuoma lists software design and applications as a service |
 | 2026-11-16 | GBP address: **Asaba (MR DGN office) stays shown** on the profile | Ufuoma's choice after being told Google only allows a shown address where staff are present during the listed hours. Risk recorded: suspension if Google checks. Revisit if Ufuoma gets a staffed Abuja address |
 | 2026-11-16 | Open: Canada and Australia Website Care Plan prices (CAD 349, AUD 399) look out of line with the US ($59) and UK (£49) | Spotted while adding new prices; not changed, Ufuoma to confirm |
+
+## 2026-11-16: `/locations/nigeria` rewritten from Ufuoma's copy
+
+| Date | Decision | Why |
+|---|---|---|
+| 2026-11-16 | `/locations/nigeria` uses Ufuoma's supplied copy: new headings, price table (with e-commerce and ads), process infographic self-hosted at `public/images/locations/nigeria-how-it-works-and-prices.webp`, FAQ answers with the target phrases | Ufuoma: "use this and update the website". The SERP claim ("directories and one Coming Soon page") is Ufuoma's own research |
+| 2026-11-16 | Kept the "How local SEO works in Nigeria" section | It holds the how-to steps consolidated from the retired `/blog/local-seo-nigerian-businesses` (301 to this page, 9 Nov) |
+| 2026-11-16 | The "0 readable words" fact stays attached to MR DGN Group, not the real estate client; the supplied proof infographic (which says the real estate site had 0 words) and the placeholders (review, Maps screenshot, team photos) are not published | Our audit (6 Oct) records 0 words for mrdgngroup.com only. The live Search Console chart already shows the same numbers |
+| 2026-11-16 | Service template: optional section headings, intro/outro paragraphs, pricing table, pricing figure and closing CTA; the default CTA no longer lowercases the page title | Needed for the Nigeria copy; other pages unchanged except the CTA case fix |
