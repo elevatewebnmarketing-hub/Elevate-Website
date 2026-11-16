@@ -132,8 +132,10 @@ export const locationPages: Record<string, ServicePageConfig> = {
       'SEO and web design for businesses anywhere in Nigeria: websites Google and ChatGPT can read, a Google Business Profile to match, and fixed naira prices from ₦250,000.',
     detail: {
       metaTitle: 'SEO Company & Web Design in Nigeria',
+      // Title and description from the ChatSEO article (sized to Google's ~580px title limit).
+      titleAbsolute: 'SEO Company in Nigeria | Web Design & Local SEO - Elevate',
       metaDescription:
-        'SEO company and web design in Nigeria: websites Google and ChatGPT can read, a matching Google Business Profile, fixed naira prices from ₦250,000.',
+        'SEO company in Nigeria with fixed naira prices: websites from ₦250,000, Google Business Profile setup and local SEO that took a client 46 to 843.',
       h1: 'SEO company and web design for businesses in Nigeria',
       updated: '2026-11-16',
       intro: [
@@ -147,15 +149,13 @@ export const locationPages: Record<string, ServicePageConfig> = {
         'Proof: a real estate client’s Google impressions grew from 46 a month to 843 a month in six months (chart below).',
       ],
       headings: {
-        problems: 'Is this for you?',
         included: 'What you get: SEO and web design for Nigerian businesses',
         process: 'How it works and what it costs',
-        pricing: 'Fixed naira prices',
+        pricing: '',
         proof: 'Proof: 50+ websites and a client from 46 to 843 Google impressions',
         whyUs: 'Why Nigerian businesses pick Elevate',
       },
       intros: {
-        problems: ['It fits you if:'],
         included: [
           'One team does both halves, because they only work together. Our SEO services in Nigeria and our web design in Nigeria are a single job: the site gives search engines something to read, and the profile gives them a business to trust. Treat us as your SEO company in Nigeria and your web team at the same time.',
         ],
@@ -167,7 +167,9 @@ export const locationPages: Record<string, ServicePageConfig> = {
         faqs: ['Short, direct answers to the questions Nigerian owners ask most about SEO in Nigeria.'],
       },
       outros: {
-        included: ['The build side lives on our [website design](/services/website-design) page.'],
+        included: [
+          'It fits you if you paid for a website that brings no enquiries, if you don’t appear when someone searches what you sell in your city, or if you’re outside Lagos and Abuja, where the competition is still thin. The build side lives on our [website design](/services/website-design) page.',
+        ],
         pricing: [
           'No hourly billing and no surprise line items. For what each package includes, read [what a website costs in Nigeria in 2026](/blog/website-cost-in-nigeria-2026).',
         ],
@@ -178,11 +180,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
           'We are based in Abuja and Asaba and work across Nigeria, including [Abuja](/locations/abuja), [Asaba](/locations/asaba), Okpanam and [Lagos](/locations/lagos), and we take on businesses in any other state, Port Harcourt included. Most of it happens remotely. If you want the profile side explained first, read our guide to [Google Business Profile setup in Nigeria](/guides/google-business-profile-setup-nigeria).',
         ],
       },
-      problems: [
-        'You paid for a website that brings no enquiries.',
-        'You don’t appear when someone searches for what you sell in your city.',
-        'You’re outside Lagos and Abuja, where the competition is still thin.',
-      ],
+      problems: [],
       included: [
         {
           title: 'Server-rendered website',
@@ -202,7 +200,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
         },
       ],
       compare: {
-        heading: 'What Google and AI search need, and what you get',
+        heading: '',
         head: ['What Google and AI search need', 'What you get'],
         rows: [
           ['Text a crawler can read without JavaScript', 'Server-rendered pages, every word in the HTML'],
@@ -262,16 +260,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
           detail: 'A donation app for a Lagos-based non-profit, with supporter accounts, an admin area and an ambassador programme.',
         },
       ],
-      localHeading: 'How local SEO works in Nigeria',
-      localContext: [
-        'Google says local results depend on three things: relevance (how well you match the search), distance (how close you are to the searcher or the place they named) and prominence (how well known you are, from reviews, links and mentions). You can’t move closer to every customer, so the work goes into the other two.',
-        'Start with a complete Google Business Profile: the primary category that describes what your business is, every service you offer named the same way as on your website, your real address or a hidden service area, real photos added monthly, and an honest review from every customer. Never put keywords in your business name, use a fake address or buy reviews; Google suspends profiles for it.',
-        'Then a website Google can read, with a page per service and your city in the title.',
-        'Keep your name, phone number and address identical on your website, Google, Facebook, Bing Places, Apple Business and Nigerian directories such as VConnect, BusinessList, Finelib and ConnectNigeria. Submit to Bing Webmaster Tools too: Bing feeds Microsoft Copilot and other AI search tools.',
-        'Lagos, Abuja and Port Harcourt get the most searches, so everyone fights over them. Smaller cities get fewer searches and much less competition, so a business with a complete profile and a clear website can win them first.',
-        'Most Nigerians browse on phones using paid data, so every page we build is light, compressed and tested on a mid-range Android phone.',
-        'Customers are cautious about online scams. We add trust details that are easy to check: your real address with a landmark, your CAC number, named staff, real photos, and payment details only on official pages.',
-      ],
+      localContext: [],
       whyUs: [
         'One published naira price list for every state, not a private quote.',
         'Every site passes our own crawler check before launch: if Google can’t read it, it doesn’t ship.',

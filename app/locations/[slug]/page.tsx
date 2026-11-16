@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const detail = locationPages[slug]?.detail;
   if (!detail) return {};
-  const fullTitle = `${detail.metaTitle} | Elevate Web & Marketing`;
+  const fullTitle = detail.titleAbsolute ?? `${detail.metaTitle} | Elevate Web & Marketing`;
   return {
     title: { absolute: fullTitle },
     description: detail.metaDescription,

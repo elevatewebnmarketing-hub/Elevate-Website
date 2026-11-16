@@ -57,6 +57,8 @@ export default function ServiceDetailPage({
   parent = { name: 'Services', href: '/services' },
 }: Props) {
   const heading = (key: DetailSection, fallback: string) => detail.headings?.[key] ?? fallback;
+  /** An empty heading override means "no heading": the section continues the one above it. */
+  const H2 = ({ text }: { text: string }) => (text ? <h2 className={h2}>{text}</h2> : null);
   const paras = (list?: string[], className = 'space-y-4 mb-6') =>
     list && list.length > 0 ? (
       <div className={className}>
@@ -124,21 +126,23 @@ export default function ServiceDetailPage({
             </ul>
           </header>
 
+          {detail.problems.length > 0 && (
           <section>
-            <h2 className={h2}>{heading('problems', 'Who this is for')}</h2>
-            {intro('problems')}
-            <ul className="space-y-3">
-              {detail.problems.map((p) => (
-                <li key={p} className={`flex items-start gap-3 ${body}`}>
-                  <span className="text-accent mt-1">•</span>
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </section>
+              <H2 text={heading('problems', 'Who this is for')} />
+              {intro('problems')}
+              <ul className="space-y-3">
+                {detail.problems.map((p) => (
+                  <li key={p} className={`flex items-start gap-3 ${body}`}>
+                    <span className="text-accent mt-1">•</span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           <section>
-            <h2 className={h2}>{heading('included', "What's included")}</h2>
+            <H2 text={heading('included', "What's included")} />
             {intro('included')}
             <div className="grid sm:grid-cols-2 gap-4">
               {detail.included.map((item) => (
@@ -155,8 +159,8 @@ export default function ServiceDetailPage({
           </section>
 
           {detail.compare && (
-            <section>
-              <h2 className={h2}>{detail.compare.heading}</h2>
+            <section className={detail.compare.heading ? undefined : '!mt-8'}>
+              <H2 text={detail.compare.heading} />
               <div className="overflow-x-auto rounded-card-lg border border-gray-200 dark:border-white/10">
                 <table className="w-full min-w-[34rem] text-left text-sm sm:text-base">
                   <thead className="bg-gray-50 dark:bg-slate-800">
@@ -181,7 +185,7 @@ export default function ServiceDetailPage({
           )}
 
           <section>
-            <h2 className={h2}>{heading('process', 'How it works')}</h2>
+            <H2 text={heading('process', 'How it works')} />
             {intro('process')}
             <ol className="space-y-5">
               {detail.process.map((step, i) => (
@@ -198,8 +202,8 @@ export default function ServiceDetailPage({
             </ol>
           </section>
 
-          <section>
-            <h2 className={h2}>{heading('pricing', 'Pricing')}</h2>
+          <section className={heading('pricing', 'Pricing') ? undefined : '!mt-8'}>
+            <H2 text={heading('pricing', 'Pricing')} />
             {intro('pricing')}
             <p className={`${body} mb-4`}>{detail.pricing.summary}</p>
             {detail.pricing.table && (
@@ -253,7 +257,7 @@ export default function ServiceDetailPage({
           </section>
 
           <section>
-            <h2 className={h2}>{heading('proof', 'Recent work')}</h2>
+            <H2 text={heading('proof', 'Recent work')} />
             {intro('proof')}
             <div className="space-y-4">
               {detail.proof.map((p) => (
@@ -282,18 +286,20 @@ export default function ServiceDetailPage({
             </p>
           </section>
 
+          {detail.localContext.length > 0 && (
           <section>
-            <h2 className={h2}>{detail.localHeading ?? heading('local', 'Working with businesses in Abuja')}</h2>
-            {intro('local')}
-            <div className="space-y-4">
-              {detail.localContext.map((p) => (
-                <p key={p} className={body}>{p}</p>
-              ))}
-            </div>
-          </section>
+              <H2 text={detail.localHeading ?? heading('local', 'Working with businesses in Abuja')} />
+              {intro('local')}
+              <div className="space-y-4">
+                {detail.localContext.map((p) => (
+                  <p key={p} className={body}>{p}</p>
+                ))}
+              </div>
+            </section>
+          )}
 
           <section>
-            <h2 className={h2}>{heading('whyUs', 'Why work with us')}</h2>
+            <H2 text={heading('whyUs', 'Why work with us')} />
             {intro('whyUs')}
             <ul className="space-y-3">
               {detail.whyUs.map((p) => (
@@ -307,7 +313,7 @@ export default function ServiceDetailPage({
           </section>
 
           <section>
-            <h2 className={h2}>{heading('faqs', 'Frequently asked questions')}</h2>
+            <H2 text={heading('faqs', 'Frequently asked questions')} />
             {intro('faqs')}
             <div className="space-y-3">
               {detail.faqs.map((f) => (
