@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import VisibilityChecker from '@/components/tools/VisibilityChecker';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
 import { AI_BOTS } from '@/lib/visibility-check';
+import { plainText } from '@/lib/blog-utils';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 const TITLE = 'Free AI Visibility Check';
@@ -50,7 +51,7 @@ export default function AiVisibilityCheckPage() {
     {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: plainText(f.a) } })),
     },
   ];
 

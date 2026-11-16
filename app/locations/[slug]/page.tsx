@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import ServiceDetailPage from '@/components/sections/ServiceDetailPage';
 import { locationPages, locationSlugs } from '@/lib/location-pages';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
+import { plainText } from '@/lib/blog-utils';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 const AREA: Record<string, object> = {
@@ -87,7 +88,7 @@ export default async function LocationPage({ params }: Props) {
       mainEntity: detail.faqs.map((f) => ({
         '@type': 'Question',
         name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
+        acceptedAnswer: { '@type': 'Answer', text: plainText(f.a) },
       })),
     },
   ];

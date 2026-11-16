@@ -79,7 +79,7 @@ const organizationSchema = {
     areaServed: 'Nigeria',
     availableLanguage: 'English',
   },
-  areaServed: ['Abuja', 'Federal Capital Territory', 'Asaba', 'Delta State', 'Nigeria'],
+  areaServed: ['Abuja', 'Federal Capital Territory', 'Asaba', 'Delta State', 'Lagos', 'Nigeria'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Web Design & Digital Marketing Services',
@@ -116,6 +116,30 @@ const organizationSchema = {
           '@type': 'Service',
           name: 'Landing Pages',
           url: `${SITE_URL}/services/landing-pages`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Google Ads Management',
+          url: `${SITE_URL}/services/google-ads`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Facebook & Instagram Ads Management',
+          url: `${SITE_URL}/services/facebook-instagram-ads`,
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Full Digital Marketing Suite',
+          url: `${SITE_URL}/services/digital-marketing`,
         },
       },
       {

@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer';
 import AuthorBio from '@/components/sections/AuthorBio';
 import SearchConsoleEvidence from '@/components/sections/SearchConsoleEvidence';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
-import { formatInline } from '@/lib/blog-utils';
+import { formatInline, plainText } from '@/lib/blog-utils';
 import { getGuide, guides } from '@/lib/guides';
 import { siteConfig } from '@/lib/site-config';
 
@@ -74,7 +74,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: guide.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      mainEntity: guide.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: plainText(f.a) } })),
     },
   ];
   const whatsapp = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(

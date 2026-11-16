@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
 import { siteConfig } from '@/lib/site-config';
 import AuthorBio from '@/components/sections/AuthorBio';
+import { plainText } from '@/lib/blog-utils';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 const PAGE_URL = `${SITE_URL}/how-to-get-more-customers`;
@@ -91,7 +92,7 @@ export default function HowToGetMoreCustomersPage() {
     {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: plainText(f.a) } })),
     },
   ];
   const whatsapp = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(

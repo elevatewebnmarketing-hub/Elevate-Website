@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import ServiceDetailPage from '@/components/sections/ServiceDetailPage';
 import { getServiceBySlug, serviceSlugs } from '@/lib/services-content';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
+import { plainText } from '@/lib/blog-utils';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -76,7 +77,7 @@ export default async function ServicePage({ params }: Props) {
       mainEntity: detail.faqs.map((f) => ({
         '@type': 'Question',
         name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
+        acceptedAnswer: { '@type': 'Answer', text: plainText(f.a) },
       })),
     });
   }
