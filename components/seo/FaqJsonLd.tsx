@@ -1,3 +1,5 @@
+import { plainText } from '@/lib/blog-utils';
+
 type FaqItem = { q: string; a: string };
 
 export default function FaqJsonLd({ faqs }: { faqs: FaqItem[] }) {
@@ -9,7 +11,7 @@ export default function FaqJsonLd({ faqs }: { faqs: FaqItem[] }) {
       name: f.q,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: f.a,
+        text: plainText(f.a),
       },
     })),
   };

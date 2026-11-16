@@ -134,7 +134,7 @@ export default function ServiceDetailPage({
                 {detail.problems.map((p) => (
                   <li key={p} className={`flex items-start gap-3 ${body}`}>
                     <span className="text-accent mt-1">•</span>
-                    {p}
+                    <span dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
                   </li>
                 ))}
               </ul>
@@ -151,7 +151,7 @@ export default function ServiceDetailPage({
                     <Check className="text-accent flex-shrink-0 mt-1" size={18} />
                     {item.title}
                   </h3>
-                  <p className="text-sm text-text/80 dark:text-gray-300 leading-relaxed">{item.detail}</p>
+                  <p className="text-sm text-text/80 dark:text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: formatInline(item.detail) }} />
                 </div>
               ))}
             </div>
@@ -195,7 +195,7 @@ export default function ServiceDetailPage({
                   </span>
                   <div>
                     <h3 className="font-heading font-semibold text-primary dark:text-white">{step.title}</h3>
-                    <p className="text-text/80 dark:text-gray-300 leading-relaxed">{step.detail}</p>
+                    <p className="text-text/80 dark:text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: formatInline(step.detail) }} />
                   </div>
                 </li>
               ))}
@@ -232,7 +232,7 @@ export default function ServiceDetailPage({
               {detail.pricing.points.map((p) => (
                 <li key={p} className="flex items-start gap-2 text-text/80 dark:text-gray-300">
                   <Check className="text-accent flex-shrink-0 mt-1" size={16} />
-                  {p}
+                  <span dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
                 </li>
               ))}
             </ul>
@@ -271,7 +271,7 @@ export default function ServiceDetailPage({
                       p.name
                     )}
                   </h3>
-                  <p className="text-text/80 dark:text-gray-300 leading-relaxed">{p.detail}</p>
+                  <p className="text-text/80 dark:text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: formatInline(p.detail) }} />
                 </div>
               ))}
               {detail.evidenceIds?.map((id) => <SearchConsoleEvidence key={id} id={id} />)}
@@ -292,7 +292,7 @@ export default function ServiceDetailPage({
               {intro('local')}
               <div className="space-y-4">
                 {detail.localContext.map((p) => (
-                  <p key={p} className={body}>{p}</p>
+                  <p key={p} className={body} dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
                 ))}
               </div>
             </section>
@@ -305,7 +305,7 @@ export default function ServiceDetailPage({
               {detail.whyUs.map((p) => (
                 <li key={p} className={`flex items-start gap-3 ${body}`}>
                   <Check className="text-accent flex-shrink-0 mt-1.5" size={18} />
-                  {p}
+                  <span dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
                 </li>
               ))}
             </ul>
@@ -321,7 +321,7 @@ export default function ServiceDetailPage({
                   <summary className="font-heading font-semibold text-primary dark:text-white cursor-pointer">
                     {f.q}
                   </summary>
-                  <p className="mt-3 text-text/80 dark:text-gray-300 leading-relaxed">{f.a}</p>
+                  <p className="mt-3 text-text/80 dark:text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: formatInline(f.a) }} />
                 </details>
               ))}
             </div>

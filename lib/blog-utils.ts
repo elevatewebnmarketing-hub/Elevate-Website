@@ -34,3 +34,8 @@ export function formatInline(raw: string): string {
 export function headingId(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
+
+/** Plain text for structured data: "[label](/path)" -> "label", "**bold**" -> "bold". */
+export function plainText(raw: string): string {
+  return raw.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1');
+}

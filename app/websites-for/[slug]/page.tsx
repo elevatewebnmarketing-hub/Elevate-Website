@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import ServiceDetailPage from '@/components/sections/ServiceDetailPage';
 import { nichePages, nicheSlugs } from '@/lib/niche-pages';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
+import { plainText } from '@/lib/blog-utils';
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -62,7 +63,7 @@ export default async function NichePage({ params }: Props) {
     {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
-      mainEntity: detail.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      mainEntity: detail.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: plainText(f.a) } })),
     },
   ];
   return (
