@@ -24,16 +24,9 @@ Ufuoma does these by hand once the code work is finished and pushed. Code change
 - [ ] **Search Console → Pages report:** find out why most of the 21 blog posts aren't indexed (on 17 Oct a `site:` search showed only 3 posts).
 - [ ] **Bing Webmaster Tools:** import from Search Console, then run `scripts/submit-indexnow.ts`.
 
-## Elevate's Google Business Profile (switch to an Abuja service area)
+## Elevate's Google Business Profile (updated 16 Nov 2026)
 
-- [ ] Edit profile → Business information → Location: turn off "Show business address", then remove the Asaba (MR DGN) address or replace it with your hidden Abuja address.
-- [ ] Service area: Abuja (FCT) areas you really serve, for example Abuja Municipal, Bwari and Gwagwalada. No Asaba or Lagos.
-- [ ] Categories: Website designer (primary) and Internet marketing service. Remove app development, software and advertising agency.
-- [ ] Services: Website design · Website redesign · Local SEO & Google Business Profile optimisation · Landing page design · Website maintenance & care plans.
-- [ ] Description: SEO-ready websites for Abuja businesses; no ads services.
-- [ ] Website link: `https://www.elevatewebandmarketing.com/?utm_source=google&utm_medium=gbp`
-- [ ] Be ready for video re-verification: show your work setup and live client sites.
-- [ ] Reply to any new reviews; ask MansaLuxe, TMM Scholars and the SOCASEMP team for reviews (ask everyone, don't steer the wording).
+- [ ] Paste the copy in `seo/gbp-profile-copy-2026-11-16.md` (Google, Bing, Apple, Facebook), one big edit at a time. It replaces the earlier "switch to an Abuja service area" list: Ufuoma chose to keep the Asaba address shown (risk in `decisions.md`).
 
 ## Elevate listings (with the same name, phone and Abuja service area)
 
