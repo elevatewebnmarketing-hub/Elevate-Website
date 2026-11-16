@@ -1,77 +1,17 @@
-import { config } from 'dotenv';
-config({ path: '.env.local' });
-
-import { createClient } from '@supabase/supabase-js';
-
 const KEY = 'elevatewebandmarketing2026indexnow';
 const HOST = 'www.elevatewebandmarketing.com';
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
+// Reads the live sitemap, so the list never goes stale (the old hard-coded list still had retired URLs).
+// Pass URLs as arguments to submit only those: npx tsx scripts/submit-indexnow.ts /services/google-ads /pricing
 async function getUrls(): Promise<string[]> {
-  const staticUrls = [
-    `${SITE_URL}/`,
-    `${SITE_URL}/about`,
-    `${SITE_URL}/services`,
-    `${SITE_URL}/services/website-design`,
-    `${SITE_URL}/services/website-redesign`,
-    `${SITE_URL}/services/local-seo`,
-    `${SITE_URL}/services/landing-pages`,
-    `${SITE_URL}/services/google-ads`,
-    `${SITE_URL}/services/facebook-instagram-ads`,
-    `${SITE_URL}/services/digital-marketing`,
-    `${SITE_URL}/locations/abuja`,
-    `${SITE_URL}/locations/asaba`,
-    `${SITE_URL}/locations/nigeria`,
-    `${SITE_URL}/how-to-get-more-customers`,
-    `${SITE_URL}/ai-visibility-check`,
-    `${SITE_URL}/uk`,
-    `${SITE_URL}/us`,
-    `${SITE_URL}/guides/why-your-website-isnt-on-google`,
-    `${SITE_URL}/guides/lovable-wix-squarespace-seo`,
-    `${SITE_URL}/guides/website-cost-uk`,
-    `${SITE_URL}/websites-for/coaches`,
-    `${SITE_URL}/websites-for/clinics`,
-    `${SITE_URL}/websites-for/diaspora-businesses`,
-    `${SITE_URL}/case-studies/runway-refined`,
-    `${SITE_URL}/services/website-maintenance`,
-    `${SITE_URL}/services/construction`,
-    `${SITE_URL}/services/real-estate`,
-    `${SITE_URL}/services/ecommerce`,
-    `${SITE_URL}/portfolio`,
-    `${SITE_URL}/blog`,
-    `${SITE_URL}/process`,
-    `${SITE_URL}/pricing`,
-    `${SITE_URL}/contact`,
-    `${SITE_URL}/faq`,
-    `${SITE_URL}/get-quote`,
-    `${SITE_URL}/team`,
-  ];
-
-  const dynamicUrls: string[] = [];
-
-  if (supabaseUrl && supabaseKey) {
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
-    const { data: posts } = await supabase
-      .from('blog_posts')
-      .select('slug')
-      .order('published_at', { ascending: false });
-    if (posts) {
-      dynamicUrls.push(...posts.map((p: { slug: string }) => `${SITE_URL}/blog/${p.slug}`));
-    }
-
-    const { data: items } = await supabase
-      .from('portfolio_items')
-      .select('id');
-    if (items) {
-      dynamicUrls.push(...items.map((p: { id: string }) => `${SITE_URL}/portfolio/${p.id}`));
-    }
-  }
-
-  return [...staticUrls, ...dynamicUrls];
+  const args = process.argv.slice(2);
+  if (args.length) return args.map((a) => (a.startsWith('http') ? a : `${SITE_URL}${a.startsWith('/') ? a : `/${a}`}`));
+  const res = await fetch(`${SITE_URL}/sitemap.xml`);
+  if (!res.ok) throw new Error(`sitemap.xml returned ${res.status}`);
+  const xml = await res.text();
+  return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
 }
 
 async function submit(urls: string[]) {

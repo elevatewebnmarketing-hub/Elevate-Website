@@ -2,6 +2,17 @@
 
 Ufuoma does these by hand once the code work is finished and pushed. Code changes (pricing, testimonials, portfolio, pages) are **not** listed here: they're done in code.
 
+## 16 Nov 2026: new ads pages are live (do these)
+
+- [ ] **Google Search Console → URL Inspection → Request indexing** (Google doesn't take IndexNow; one URL at a time, daily quota):
+  - https://www.elevatewebandmarketing.com/services/google-ads
+  - https://www.elevatewebandmarketing.com/services/facebook-instagram-ads
+  - https://www.elevatewebandmarketing.com/services/digital-marketing
+  - https://www.elevatewebandmarketing.com/services/local-seo (prices and scope changed)
+  - https://www.elevatewebandmarketing.com/pricing
+- [x] IndexNow (Bing, Yandex and partners): 14 changed URLs submitted 16 Nov 2026, all accepted. Re-run any time with `npx tsx scripts/submit-indexnow.ts` (whole sitemap) or pass paths.
+- [ ] Top up DataForSEO (balance was $0.001 on 16 Nov; minimum top-up $50) before using OpenSEO or map rank grids.
+
 ## After the site is deployed
 
 - [ ] **Google Search Console:** submit `sitemap.xml`, then request indexing for:
