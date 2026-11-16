@@ -13,7 +13,7 @@ export default function FinalCTA({ isCompact = false }: FinalCTAProps) {
   return (
     <section
       id="contact"
-      className={`bg-gradient-to-br from-primary to-primary/90 relative overflow-hidden ${isCompact ? 'py-16' : 'py-24'}`}
+      className={`bg-gradient-to-br from-primary to-primary/90 relative overflow-hidden ${isCompact ? 'py-14' : 'py-16 lg:py-20'}`}
     >
       {/* Background accent */}
       <div

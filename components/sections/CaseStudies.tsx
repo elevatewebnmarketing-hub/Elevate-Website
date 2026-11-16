@@ -83,12 +83,12 @@ export default function CaseStudies({ isStandalone = false, service = null }: Ca
 
   const Wrapper = isStandalone ? 'div' : SectionWrapper;
   const wrapperProps = isStandalone
-    ? { className: 'py-24 bg-background dark:bg-slate-900' }
-    : { id: 'case-studies', className: 'py-24 bg-background dark:bg-slate-900' };
+    ? { className: 'py-16 lg:py-20 bg-background dark:bg-slate-900' }
+    : { id: 'case-studies', className: 'py-16 lg:py-20 bg-background dark:bg-slate-900' };
 
   return (
     <Wrapper {...wrapperProps}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

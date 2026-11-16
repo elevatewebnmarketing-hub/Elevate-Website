@@ -4,26 +4,23 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Github, Linkedin, User } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 
 export default function TeamPage() {
   return (
     <>
       <Header />
       <main className="pt-32 sm:pt-36 md:pt-40 pb-20 min-h-screen bg-background dark:bg-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
+            className="mb-10 max-w-3xl"
           >
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent/10 mb-6">
-              <User className="text-accent" size={28} />
-            </div>
             <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-4">
               Meet Our Expert
             </h1>
-            <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+            <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl">
               Elevate Web & Marketing is built around a founder who combines technical skill with strategic thinking.
             </p>
           </motion.div>
@@ -34,24 +31,22 @@ export default function TeamPage() {
             transition={{ delay: 0.1 }}
             className="bg-white dark:bg-slate-800 rounded-card-lg border border-gray-200 dark:border-white/10 shadow-soft-xl overflow-hidden"
           >
-            <div className="grid md:grid-cols-[300px_1fr] gap-0">
+            <div className="grid md:grid-cols-[minmax(0,22rem)_1fr] lg:grid-cols-[minmax(0,26rem)_1fr] gap-0">
               <div className="relative aspect-[4/5] md:aspect-square min-h-[320px]">
                 <Image
                   src="/images/founder-ufuoma-onakpoyan.png"
                   alt="Ufuoma Onakpoyan - Founder of Elevate Web & Marketing"
                   fill
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                  sizes="(max-width: 768px) 100vw, 300px"
+                  sizes="(max-width: 768px) 100vw, 416px"
                   priority
                 />
               </div>
-              <div className="p-8 md:p-10 flex flex-col justify-center">
-                <p className="text-accent font-heading font-bold text-sm uppercase tracking-wide mb-2">
-                  Founder & Lead Strategist
-                </p>
-                <h2 className="font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mb-4">
+              <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center max-w-[68ch]">
+                <h2 className="font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mb-1">
                   Ufuoma Onakpoyan
                 </h2>
+                <p className="text-accent font-heading font-semibold mb-5">Founder and lead strategist</p>
                 <p className="text-text/80 dark:text-gray-300 font-body leading-relaxed mb-4">
                   Ufuoma founded Elevate Web & Marketing to help businesses grow online. A self-taught web developer and digital strategist with a Civil Engineering background from UNIBEN, he is passionate about using technology to solve real business problems.
                 </p>

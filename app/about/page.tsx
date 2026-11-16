@@ -51,7 +51,7 @@ export default function AboutPage() {
     <>
       <Header />
       <main className="pt-32 sm:pt-36 md:pt-40 pb-20 min-h-screen bg-background dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero / lead spacing */}
           <div className="h-4 sm:h-6 md:h-8" aria-hidden />
           {/* About Elevate Web & Marketing */}

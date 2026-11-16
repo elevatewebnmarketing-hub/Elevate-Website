@@ -160,7 +160,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
             className="absolute inset-0 bg-[linear-gradient(135deg,rgba(79,156,249,0.14),transparent_40%,rgba(11,31,58,0.08))]"
             aria-hidden
           />
-          <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
+          <div className="relative mx-auto grid max-w-7xl 2xl:max-w-[88rem] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
             <div className="max-w-3xl">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm font-semibold text-accent">
                 Website + Google Business Profile Offer
@@ -257,7 +257,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
         </section>
 
         <section id="watch-video" className="py-12 sm:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl 2xl:max-w-[88rem] px-4 sm:px-6 lg:px-8">
             <div className="mb-8 max-w-3xl">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
                 Watch the explanation
@@ -294,7 +294,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
         </section>
 
         <section className="bg-white/70 py-12 sm:py-16 dark:bg-slate-800/40">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl 2xl:max-w-[88rem] px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
                 Why this works
@@ -324,7 +324,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
         </section>
 
         <section className="py-12 sm:py-16">
-          <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+          <div className="mx-auto grid max-w-7xl 2xl:max-w-[88rem] gap-8 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
             <div className="rounded-[28px] border border-primary/10 bg-primary p-8 text-white">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/65">
                 What you are paying for
@@ -365,7 +365,7 @@ export default function GoogleBusinessProfileWebsiteOfferPage() {
         </section>
 
         <section className="bg-white/70 py-12 sm:py-16 dark:bg-slate-800/40">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl 2xl:max-w-[88rem] px-4 sm:px-6 lg:px-8">
             <div className="mb-10 max-w-3xl">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
                 Frequently asked questions

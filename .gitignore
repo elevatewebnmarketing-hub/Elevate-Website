@@ -48,3 +48,4 @@ next-env.d.ts
 /scripts/generate_business_playbook_docx.py
 /scripts/generate_target_towns_docx.py
 /tmp_ad_review/
+.ui-check/

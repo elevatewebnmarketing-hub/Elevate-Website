@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer';
 import AuthorBio from '@/components/sections/AuthorBio';
 import SearchConsoleEvidence from '@/components/sections/SearchConsoleEvidence';
 import { ORGANIZATION_ID } from '@/components/seo/JsonLd';
-import { formatInline, plainText } from '@/lib/blog-utils';
+import { formatInline, plainText, headingId } from '@/lib/blog-utils';
 import { getGuide, guides } from '@/lib/guides';
 import { siteConfig } from '@/lib/site-config';
 
@@ -86,7 +86,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       <Header />
       <main className="pt-32 sm:pt-36 md:pt-40 pb-20 bg-background dark:bg-slate-900">
-        <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 xl:grid xl:grid-cols-[minmax(0,48rem)_17rem] xl:justify-center xl:gap-16">
+        <article className="max-w-3xl mx-auto xl:mx-0 min-w-0">
           <nav aria-label="Breadcrumb" className="text-sm text-text/60 dark:text-gray-400 mb-6">
             <Link href="/" className="hover:text-accent">Home</Link>
             <span className="mx-2">/</span>
@@ -117,7 +118,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           ))}
 
           {guide.sections.map((s) => (
-            <section key={s.h2}>
+            <section key={s.h2} id={headingId(s.h2)} className="scroll-mt-32">
               <h2 className={h2}>{s.h2}</h2>
               {s.paragraphs?.map((t) => (
                 <p key={t} className={p} dangerouslySetInnerHTML={html(t)} />
@@ -225,6 +226,30 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             .
           </p>
         </article>
+        <aside className="hidden xl:block" aria-label="Contents">
+          <div className="sticky top-28 space-y-6">
+            <nav aria-label="In this guide">
+              <p className="font-heading font-semibold text-sm text-primary dark:text-white mb-3">In this guide</p>
+              <ul className="space-y-2 text-sm border-l border-gray-200 dark:border-white/10">
+                {guide.sections.map((s) => (
+                  <li key={s.h2}>
+                    <a href={`#${headingId(s.h2)}`} className="block -ml-px pl-3 border-l border-transparent text-text/70 dark:text-gray-400 hover:text-accent hover:border-accent leading-snug">
+                      {s.h2}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div className="rounded-card-lg bg-primary p-5 text-white">
+              <p className="font-heading font-semibold mb-2">Want us to check your site?</p>
+              <p className="text-sm text-white/80 mb-4">Send your website on WhatsApp and we’ll tell you what to fix first.</p>
+              <a href={whatsapp} className="inline-flex items-center justify-center gap-2 w-full min-h-[44px] bg-accent text-white font-heading font-semibold rounded-xl hover:bg-accent/90 transition-colors">
+                <MessageCircle size={18} aria-hidden /> WhatsApp us
+              </a>
+            </div>
+          </div>
+        </aside>
+        </div>
       </main>
       <Footer />
     </>

@@ -235,9 +235,10 @@ export default async function BlogPostPage({
           )}
 
           {/* Prose content */}
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 xl:grid xl:grid-cols-[minmax(0,48rem)_17rem] xl:justify-center xl:gap-16">
+          <div className="max-w-3xl mx-auto xl:mx-0 min-w-0">
             {toc.length >= 3 && (
-              <nav aria-label="In this article" className="mb-10 p-6 rounded-2xl bg-white dark:bg-slate-800 border border-gray-100 dark:border-white/10">
+              <nav aria-label="In this article" className="xl:hidden mb-10 p-6 rounded-2xl bg-white dark:bg-slate-800 border border-gray-100 dark:border-white/10">
                 <p className="font-heading font-semibold text-primary dark:text-white mb-3">In this article</p>
                 <ul className="space-y-2">
                   {toc.map((h) => (
@@ -276,11 +277,35 @@ export default async function BlogPostPage({
 
             {post.author === 'Ufuoma Onakpoyan' && <AuthorBio />}
           </div>
+          <aside className="hidden xl:block" aria-label="Contents">
+            <div className="sticky top-28 space-y-6">
+              {toc.length >= 3 && (
+                <nav aria-label="In this article (sidebar)">
+                  <p className="font-heading font-semibold text-sm text-primary dark:text-white mb-3">In this article</p>
+                  <ul className="space-y-2 text-sm border-l border-gray-200 dark:border-white/10">
+                    {toc.map((h) => (
+                      <li key={h}>
+                        <a href={`#${headingId(h)}`} className="block -ml-px pl-3 border-l border-transparent text-text/70 dark:text-gray-400 hover:text-accent hover:border-accent leading-snug">{h}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              )}
+              <div className="rounded-card-lg bg-primary p-5 text-white">
+                <p className="font-heading font-semibold mb-2">Free website check</p>
+                <p className="text-sm text-white/80 mb-4">See what Google and ChatGPT can read on your site.</p>
+                <Link href="/ai-visibility-check" className="inline-flex items-center justify-center w-full min-h-[44px] bg-accent text-white font-heading font-semibold rounded-xl hover:bg-accent/90 transition-colors">
+                  Run the check
+                </Link>
+              </div>
+            </div>
+          </aside>
+          </div>
 
           {/* Related posts */}
           {relatedPosts.length > 0 && (
             <aside className="mt-20 pt-16 border-t border-gray-200 dark:border-white/10">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 className="font-heading font-bold text-2xl text-primary dark:text-white mb-8">
                   More from the blog
                 </h2>

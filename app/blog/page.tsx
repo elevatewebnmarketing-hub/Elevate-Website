@@ -53,7 +53,7 @@ export default async function BlogPage({
       <main className="min-h-screen bg-background dark:bg-slate-900">
         <section className="relative pt-28 pb-16 overflow-hidden">
           <div className="absolute inset-0 hero-radial opacity-60" aria-hidden />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
               <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl text-primary dark:text-white mb-4 tracking-tight">
                 Blog
@@ -65,7 +65,7 @@ export default async function BlogPage({
           </div>
         </section>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <BlogPostList posts={posts} initialPage={initialPage} />
         </div>
       </main>

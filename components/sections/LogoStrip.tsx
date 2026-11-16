@@ -17,7 +17,7 @@ export default function LogoStrip() {
 
   return (
     <section className="py-10 border-y border-gray-100 dark:border-white/10 bg-white/50 dark:bg-slate-800/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

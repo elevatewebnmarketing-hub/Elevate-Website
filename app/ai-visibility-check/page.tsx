@@ -60,7 +60,8 @@ export default function AiVisibilityCheckPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       <Header />
       <main className="pt-32 sm:pt-36 md:pt-40 pb-20 bg-background dark:bg-slate-900">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12 xl:gap-16">
+          <div className="min-w-0 max-w-3xl">
           <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-4">
             Free AI visibility check
           </h1>
@@ -71,15 +72,6 @@ export default function AiVisibilityCheckPage() {
 
           <VisibilityChecker />
 
-          <h2 className="font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mt-14 mb-4">What the check looks at</h2>
-          <ul className="space-y-4">
-            {checks.map(([title, body]) => (
-              <li key={title}>
-                <p className="font-heading font-semibold text-primary dark:text-white">{title}</p>
-                <p className="text-text/80 dark:text-gray-300 leading-relaxed">{body}</p>
-              </li>
-            ))}
-          </ul>
 
           <h2 className="font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mt-14 mb-4">Why it matters</h2>
           <p className="text-text/80 dark:text-gray-300 text-lg leading-relaxed mb-4">
@@ -104,6 +96,20 @@ export default function AiVisibilityCheckPage() {
               </details>
             ))}
           </div>
+          </div>
+          <aside className="mt-14 lg:mt-0">
+            <div className="lg:sticky lg:top-28 rounded-card-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-800 p-6">
+              <h2 className="font-heading font-bold text-xl text-primary dark:text-white mb-4">What the check looks at</h2>
+              <ul className="space-y-4">
+                {checks.map(([title, body]) => (
+                  <li key={title}>
+                    <p className="font-heading font-semibold text-primary dark:text-white">{title}</p>
+                    <p className="text-sm text-text/80 dark:text-gray-300 leading-relaxed">{body}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
         </div>
       </main>
       <Footer />

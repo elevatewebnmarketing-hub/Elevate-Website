@@ -57,6 +57,19 @@ const checklist = [
   'Look at your website on your phone. Can a customer call or WhatsApp you from the first screen?',
 ];
 
+const TOC: [string, string][] = [
+  ['the-short-answer', 'The short answer'],
+  ['what-google-wants', 'What Google wants'],
+  ['step-1-a-website-search-engines-can-actually-read', 'Step 1: a website search engines can actually read'],
+  ['step-2-a-complete-google-business-profile', 'Step 2: a complete Google Business Profile'],
+  ['step-3-the-same-details-everywhere', 'Step 3: the same details everywhere'],
+  ['step-4-reviews-from-real-customers', 'Step 4: reviews from real customers'],
+  ['step-5-keep-adding-useful-content', 'Step 5: keep adding useful content'],
+  ['step-6-show-up-in-chatgpt-and-ai-answers', 'Step 6: show up in ChatGPT and AI answers'],
+  ['what-to-avoid', 'What to avoid'],
+  ['a-10-minute-checklist-for-today', 'A 10-minute checklist for today'],
+  ['frequently-asked-questions', 'Frequently asked questions'],
+];
 const h2 = 'font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mt-12 mb-4';
 const p = 'text-text/80 dark:text-gray-300 text-lg leading-relaxed mb-4';
 
@@ -104,7 +117,8 @@ export default function HowToGetMoreCustomersPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       <Header />
       <main className="pt-32 sm:pt-36 md:pt-40 pb-20 bg-background dark:bg-slate-900">
-        <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 xl:grid xl:grid-cols-[minmax(0,48rem)_17rem] xl:justify-center xl:gap-16">
+        <article className="max-w-3xl mx-auto xl:mx-0 min-w-0">
           <nav aria-label="Breadcrumb" className="text-sm text-text/60 dark:text-gray-400 mb-6">
             <Link href="/" className="hover:text-accent">Home</Link>
             <span className="mx-2">/</span>
@@ -127,7 +141,7 @@ export default function HowToGetMoreCustomersPage() {
             and Google, not about Instagram, Facebook or paid ads.
           </p>
 
-          <h2 className={h2}>The short answer</h2>
+          <h2 id="the-short-answer" className={`${h2} scroll-mt-32`}>The short answer</h2>
           <p className={p}>
             People already search for what you sell. They type it into Google, look at Google Maps, or ask ChatGPT.
             These people are different from your social media followers: they already have the problem, and they’re
@@ -135,7 +149,7 @@ export default function HowToGetMoreCustomersPage() {
             they find you.
           </p>
 
-          <h2 className={h2}>What Google wants</h2>
+          <h2 id="what-google-wants" className={`${h2} scroll-mt-32`}>What Google wants</h2>
           <p className={p}>
             Google wants to send each person to the page that best answers what they searched. Google says its local
             results are based on three things: <strong>relevance</strong> (how well you match the search),{' '}
@@ -149,7 +163,7 @@ export default function HowToGetMoreCustomersPage() {
             likely to show it. The person reads your answer, sees you can help, and calls or WhatsApps you.
           </p>
 
-          <h2 className={h2}>Step 1: a website search engines can actually read</h2>
+          <h2 id="step-1-a-website-search-engines-can-actually-read" className={`${h2} scroll-mt-32`}>Step 1: a website search engines can actually read</h2>
           <p className={p}>
             Many websites look fine to a person but are almost empty to Google and AI tools, because the text only
             appears after code runs in the browser. When we first checked the MR DGN Group website, search engines
@@ -166,21 +180,21 @@ export default function HowToGetMoreCustomersPage() {
             .
           </p>
 
-          <h2 className={h2}>Step 2: a complete Google Business Profile</h2>
+          <h2 id="step-2-a-complete-google-business-profile" className={`${h2} scroll-mt-32`}>Step 2: a complete Google Business Profile</h2>
           <p className={p}>
             Your Google Business Profile is what appears on Google Maps. Google’s own advice is simple: verify it, keep
             your details complete and accurate (category, hours, phone, address), add real photos, and reply to reviews.
             The services on your profile should match the service pages on your website, word for word.
           </p>
 
-          <h2 className={h2}>Step 3: the same details everywhere</h2>
+          <h2 id="step-3-the-same-details-everywhere" className={`${h2} scroll-mt-32`}>Step 3: the same details everywhere</h2>
           <p className={p}>
             Your business name, phone number and address should be written the same way on your website, your Google
             profile, Facebook and business directories. When they differ, Google and AI tools are less sure the
             information is right.
           </p>
 
-          <h2 className={h2}>Step 4: reviews from real customers</h2>
+          <h2 id="step-4-reviews-from-real-customers" className={`${h2} scroll-mt-32`}>Step 4: reviews from real customers</h2>
           <p className={p}>
             In BrightLocal’s 2026 survey of US consumers, 97% said they read online reviews, and 74% look for reviews
             from the last three months. Nigerian buyers check reviews too, especially before paying someone they’ve never
@@ -188,7 +202,7 @@ export default function HowToGetMoreCustomersPage() {
             to write: it breaks Google’s rules and can get your profile suspended.
           </p>
 
-          <h2 className={h2}>Step 5: keep adding useful content</h2>
+          <h2 id="step-5-keep-adding-useful-content" className={`${h2} scroll-mt-32`}>Step 5: keep adding useful content</h2>
           <p className={p}>
             The biggest mistake I see Nigerian businesses make is not taking marketing seriously, at a time when you can
             market from your phone and reach anyone. Content is key, and that includes your website. Every post that
@@ -196,7 +210,7 @@ export default function HowToGetMoreCustomersPage() {
             updates to your Google profile as well. A few good, specific posts beat many empty ones.
           </p>
 
-          <h2 className={h2}>Step 6: show up in ChatGPT and AI answers</h2>
+          <h2 id="step-6-show-up-in-chatgpt-and-ai-answers" className={`${h2} scroll-mt-32`}>Step 6: show up in ChatGPT and AI answers</h2>
           <p className={p}>
             More people now ask AI tools instead of searching. When AI gives an answer, the businesses it mentions get
             the enquiry. MR DGN Construction, a building materials supplier in Asaba we work with, had a site that wasn’t
@@ -206,7 +220,7 @@ export default function HowToGetMoreCustomersPage() {
             Asaba” listed MR DGN first.
           </p>
 
-          <h2 className={h2}>What to avoid</h2>
+          <h2 id="what-to-avoid" className={`${h2} scroll-mt-32`}>What to avoid</h2>
           <ul className="space-y-2 mb-4">
             {[
               'Anyone who guarantees the number 1 spot on Google.',
@@ -225,7 +239,7 @@ export default function HowToGetMoreCustomersPage() {
             what Google and ChatGPT can read on your website.
           </p>
 
-          <h2 className={h2}>A 10-minute checklist for today</h2>
+          <h2 id="a-10-minute-checklist-for-today" className={`${h2} scroll-mt-32`}>A 10-minute checklist for today</h2>
           <ul className="space-y-3 mb-4">
             {checklist.map((item) => (
               <li key={item} className="flex items-start gap-3 text-text/80 dark:text-gray-300 text-lg">
@@ -257,7 +271,7 @@ export default function HowToGetMoreCustomersPage() {
             </div>
           </section>
 
-          <h2 className={h2}>Frequently asked questions</h2>
+          <h2 id="frequently-asked-questions" className={`${h2} scroll-mt-32`}>Frequently asked questions</h2>
           <div className="space-y-3">
             {faqs.map((f) => (
               <details key={f.q} className="bg-white dark:bg-slate-800 rounded-card-lg border border-gray-200 dark:border-white/10 p-6">
@@ -281,6 +295,19 @@ export default function HowToGetMoreCustomersPage() {
             .
           </p>
         </article>
+        <aside className="hidden xl:block" aria-label="Contents">
+          <nav aria-label="In this guide" className="sticky top-28">
+            <p className="font-heading font-semibold text-sm text-primary dark:text-white mb-3">In this guide</p>
+            <ul className="space-y-2 text-sm border-l border-gray-200 dark:border-white/10">
+              {TOC.map(([id, label]) => (
+                <li key={id}>
+                  <a href={`#${id}`} className="block -ml-px pl-3 border-l border-transparent text-text/70 dark:text-gray-400 hover:text-accent hover:border-accent leading-snug">{label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+        </div>
       </main>
       <Footer />
     </>

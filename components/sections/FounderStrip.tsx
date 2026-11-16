@@ -11,30 +11,32 @@ export default function FounderStrip() {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="py-24 bg-white dark:bg-slate-900"
+      className="py-16 lg:py-20 bg-white dark:bg-slate-900"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center gap-8 p-8 rounded-card-lg bg-gradient-to-br from-primary/5 to-accent/10 dark:from-primary/20 dark:to-accent/20 border border-gray-100 dark:border-white/10 shadow-soft">
-          <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shrink-0 ring-4 ring-white dark:ring-slate-800 shadow-lg">
+      <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-[minmax(0,20rem)_1fr] lg:grid-cols-[minmax(0,24rem)_1fr] gap-8 lg:gap-14 items-center">
+          <div className="relative aspect-[4/5] w-full max-w-sm mx-auto md:mx-0 rounded-card-lg overflow-hidden bg-primary/5 shadow-soft-lg">
             <Image
               src="/images/founder-ufuoma-onakpoyan.png"
-              alt="Ufuoma Onakpoyan - Founder of Elevate Web & Marketing"
+              alt="Ufuoma Onakpoyan, founder of Elevate Web & Marketing"
               fill
               className="object-cover"
-              sizes="112px"
+              sizes="(max-width: 768px) 384px, 384px"
             />
           </div>
-          <div className="flex-1 text-center sm:text-left">
-            <p className="text-accent font-heading font-bold text-sm uppercase tracking-wide mb-1">
-              Meet the Founder
-            </p>
-            <h2 className="font-heading font-bold text-xl sm:text-2xl text-primary dark:text-white mb-2">
-              Ufuoma Onakpoyan
+          <div className="text-center md:text-left">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl text-primary dark:text-white mb-2">
+              Work with the founder, not an account manager
             </h2>
-            <p className="text-text/80 dark:text-gray-300 text-sm sm:text-base mb-4">
-              Self-taught web developer and digital strategist. Building modern websites and marketing systems for businesses worldwide—from MR DGN Group to TMM Scholars.
+            <p className="font-heading font-semibold text-accent mb-5">Ufuoma Onakpoyan, founder</p>
+            <p className="text-text/80 dark:text-gray-300 text-lg leading-relaxed mb-4 max-w-[62ch] md:mx-0 mx-auto">
+              Self-taught web developer and digital strategist. I build the websites, set up the Google profiles and
+              run the ads myself, for businesses from MR DGN Group in Asaba to TMM Scholars and Runway Refined in the UK.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+            <p className="text-text/80 dark:text-gray-300 text-lg leading-relaxed mb-6 max-w-[62ch] md:mx-0 mx-auto">
+              You get one person who knows your project from the first WhatsApp message to launch and after.
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               <a
                 href="https://github.com/Ufuoma-Onakpoyan"
                 target="_blank"
