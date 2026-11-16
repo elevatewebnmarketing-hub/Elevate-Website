@@ -93,7 +93,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-base text-text/60 dark:text-gray-400"
             >
-              Based in Abuja, and trusted by growing brands that want clear
+              Office in Asaba, serving Abuja and all of Nigeria, and trusted by growing brands that want clear
               communication, reliable delivery, and websites built to convert.
             </motion.p>
 

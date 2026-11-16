@@ -10,6 +10,7 @@ import FinalCTASection from '@/components/sections/FinalCTA';
 import { openCalendly } from '@/lib/calendly';
 import { siteConfig } from '@/lib/site-config';
 import TikTokViewContent from '@/components/analytics/TikTokViewContent';
+import GoogleMapEmbed from '@/components/sections/GoogleMapEmbed';
 import {
   createTikTokEventId,
   getTikTokAttribution,
@@ -165,10 +166,18 @@ export default function ContactPage() {
                     <p className="font-heading font-semibold text-primary dark:text-gray-300 text-sm uppercase tracking-wide text-text/70 dark:text-gray-400">
                       Base
                     </p>
-                    <p className="text-primary dark:text-white font-medium mt-0.5">Abuja, Nigeria (Asaba meetings by appointment)</p>
+                    <p className="text-primary dark:text-white font-medium mt-0.5">Jossie Excel School, after Okpanam City Gate, Asaba, Delta State</p>
                     <p className="text-text/70 dark:text-gray-400 text-sm mt-0.5">
-                      Working with businesses across Nigeria
+                      Meetings by appointment. Our founder works from Abuja, our main service area, and we work with businesses across Nigeria.
                     </p>
+                    <a
+                      href={siteConfig.googleProfileUrl}
+                      target="_blank"
+                      rel="noopener"
+                      className="inline-block mt-2 text-sm text-accent font-semibold hover:underline"
+                    >
+                      See us on Google (reviews and directions)
+                    </a>
                   </div>
                 </div>
               </div>
@@ -185,13 +194,15 @@ export default function ContactPage() {
                 </div>
                 <div className="p-4">
                   <p className="font-heading font-bold text-sm text-primary dark:text-white mb-1">
-                    Abuja-based, reliable delivery
+                    Founder-led, reliable delivery
                   </p>
                   <p className="text-sm text-text/80 dark:text-gray-300 font-body">
                     We keep the process clear, the scope focused, and the communication reliable.
                   </p>
                 </div>
               </div>
+
+              <GoogleMapEmbed />
             </motion.div>
 
             <motion.div

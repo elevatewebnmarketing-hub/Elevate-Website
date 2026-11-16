@@ -13,7 +13,10 @@ export const siteConfig = {
     'SEO-ready websites, landing pages and care plans for businesses in Abuja and across Nigeria that want to be found on Google and ChatGPT.',
   contactEmail: 'hello@elevatewebandmarketing.com',
   phone: '+234 708 603 9012',
-  location: 'Abuja, Nigeria · Serving clients across Nigeria and the UK',
+  /** Elevate's Google Business Profile: share link (opens the listing) and the Maps place ID URL. */
+  googleProfileUrl: 'https://share.google/jDF7bDOlrojDWs3B5',
+  googleMapsUrl: 'https://maps.google.com/?cid=6941066558127702684',
+  location: 'Office in Asaba · Serving Abuja, all of Nigeria and the UK',
 
   whatsappNumber: PHONE_E164,
   whatsappMessage: "Hi! I'm visiting from the Elevate Web & Marketing website and would like to learn more about your services.",

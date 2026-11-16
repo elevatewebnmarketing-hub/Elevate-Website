@@ -19,6 +19,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
       metaDescription:
         'Web design and local SEO in Asaba and Okpanam from the team behind MR DGN Construction’s site, found by buyers on ChatGPT. From ₦250,000.',
       h1: 'Web design and SEO in Asaba',
+      showMap: true,
       updated: '2026-11-09',
       keyTakeaways: [
         'Our office address is in Asaba, by Okpanam City Gate, and most of our client work so far is for Asaba businesses.',
@@ -135,7 +136,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
       // Title and description from the ChatSEO article (sized to Google's ~580px title limit).
       titleAbsolute: 'SEO Company in Nigeria | Web Design & Local SEO - Elevate',
       metaDescription:
-        'SEO company in Nigeria with fixed naira prices: websites from ₦250,000, Google Business Profile setup and local SEO that took a client 46 to 843.',
+        'SEO company in Nigeria: web design from ₦250,000, local SEO and Google Business Profile setup, with fixed prices and a 48-hour reply.',
       h1: 'SEO company and web design for businesses in Nigeria',
       updated: '2026-11-16',
       intro: [
@@ -162,7 +163,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
         process: ['Three steps, and the price is settled before we start.'],
         proof: [
           'We have built more than 50 websites since 2023. Named clients include MR DGN Group and MR DGN Construction in Asaba, MansaLuxe Realty in Asaba and Abuja, and SOCASEMP, the Lagos non-profit whose donation platform we built.',
-          'The clearest result is search, not design. One real estate client went from 46 Google impressions a month in May 2026 to 843 in October 2026, with 363 AI Overview appearances over the same six months.',
+          'The clearest result is search, not design. One real estate client went from 46 Google impressions a month in May 2026 to 843 in October 2026, with 363 AI Overview appearances over the same six months. And when we asked ChatGPT where to buy cement blocks in Asaba with delivery (6 November 2026), it named our client MR DGN Construction first.',
         ],
         faqs: ['Short, direct answers to the questions Nigerian owners ask most about SEO in Nigeria.'],
       },
@@ -171,13 +172,13 @@ export const locationPages: Record<string, ServicePageConfig> = {
           'It fits you if you paid for a website that brings no enquiries, if you don’t appear when someone searches what you sell in your city, or if you’re outside Lagos and Abuja, where the competition is still thin. The build side lives on our [website design](/services/website-design) page.',
         ],
         pricing: [
-          'No hourly billing and no surprise line items. For what each package includes, read [what a website costs in Nigeria in 2026](/blog/website-cost-in-nigeria-2026).',
+          'No hourly billing and no surprise line items. For what each package includes, read [what a website costs in Nigeria in 2026](/blog/website-cost-in-nigeria-2026), or run our [free AI visibility check](/ai-visibility-check) to see what to fix first.',
         ],
         proof: [
           'Why it moved: Google’s local results rest on relevance, distance and prominence. You cannot move closer to every customer, so the work goes into the other two. We rebuilt the site so crawlers could read every page, gave each area and listing its own page, added buyer guides, and matched the Google Business Profile to the site. If you are judging the best SEO company in Nigeria on what it has actually moved, compare it against those numbers.',
         ],
         whyUs: [
-          'We are based in Abuja and Asaba and work across Nigeria, including [Abuja](/locations/abuja), [Asaba](/locations/asaba), Okpanam and [Lagos](/locations/lagos), and we take on businesses in any other state, Port Harcourt included. Most of it happens remotely. If you want the profile side explained first, read our guide to [Google Business Profile setup in Nigeria](/guides/google-business-profile-setup-nigeria).',
+          'Our office is in Asaba and our founder works from Abuja; we work across Nigeria, including [Abuja](/locations/abuja), [Asaba](/locations/asaba), Okpanam and [Lagos](/locations/lagos), and we take on businesses in any other state, Port Harcourt included. Most of it happens remotely. If you want the profile side explained first, read our guide to [Google Business Profile setup in Nigeria](/guides/google-business-profile-setup-nigeria).',
         ],
       },
       problems: [],
@@ -197,6 +198,14 @@ export const locationPages: Record<string, ServicePageConfig> = {
         {
           title: 'Listings that agree with each other',
           detail: 'VConnect, BusinessList.com.ng, Finelib and ConnectNigeria, plus Bing Places, Apple Business and Foursquare.',
+        },
+        {
+          title: 'Local SEO, month after month',
+          detail: 'Profiles kept in step, review help and a monthly map report: our [local SEO](/services/local-seo) plan, ₦70,000 setup then ₦30,000 a month. In Abuja, see [local SEO in Abuja](/services/local-seo).',
+        },
+        {
+          title: 'Google and Facebook ads when you need calls now',
+          detail: '[Google Ads](/services/google-ads) and [Facebook & Instagram ads](/services/facebook-instagram-ads) managed for ₦100,000 a month per platform, plus your ad spend.',
         },
       ],
       compare: {

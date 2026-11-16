@@ -57,10 +57,18 @@ export default function Footer() {
               <Logo variant="white" width={326} height={109} className="w-full h-auto max-h-14" />
             </a>
             <p className="text-white/80 text-sm max-w-xs mb-4">{siteConfig.tagline}</p>
-            <p className="flex items-center gap-2 text-white/70 text-sm mb-4">
+            <p className="flex items-center gap-2 text-white/70 text-sm mb-2">
               <MapPin size={14} aria-hidden />
               {siteConfig.location}
             </p>
+            <a
+              href={siteConfig.googleProfileUrl}
+              target="_blank"
+              rel="noopener"
+              className="inline-block text-sm text-white/80 underline underline-offset-2 hover:text-white mb-4"
+            >
+              Find us on Google: reviews and directions
+            </a>
             <button
               type="button"
               onClick={openCalendly}

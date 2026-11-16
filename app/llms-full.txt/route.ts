@@ -6,7 +6,7 @@ const n = (x: number) => x.toLocaleString('en-GB');
 
 const content = `# Elevate Web & Marketing
 
-Elevate Web & Marketing is a web design and SEO business based in Abuja, Nigeria. The website is public and intended to be crawlable by traditional search engines and AI systems that can read public web pages.
+Elevate Web & Marketing is a web design and SEO business with its office in Asaba, Nigeria, serving Abuja and all of Nigeria. The website is public and intended to be crawlable by traditional search engines and AI systems that can read public web pages.
 
 ## Core Website Purpose
 
@@ -87,7 +87,7 @@ Main public service categories include:
 
 - Business name: Elevate Web & Marketing
 - Website: ${SITE_URL}
-- Location: Abuja, Nigeria (service-area business; meetings in Asaba by appointment)
+- Location: office at MR DGN's office, Jossie Excel School, after Okpanam City Gate, Asaba, Delta State; founder works from Abuja, the main service area; serving all of Nigeria and the UK
 - Email: hello@elevatewebandmarketing.com
 - Phone: +234 708 603 9012
 

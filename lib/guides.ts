@@ -20,6 +20,8 @@ export interface Guide {
     h2: string;
     paragraphs?: string[];
     list?: string[];
+    /** H3 sub-answers inside the section (rendered after the list). */
+    subsections?: { h3: string; paragraphs?: string[]; list?: string[] }[];
     /** A simple comparison table; cells accept **bold** and links. */
     table?: { head: string[]; rows: string[][] };
     /** Anonymised Search Console chart ids (lib/evidence.ts). */
@@ -41,12 +43,45 @@ const whyNotOnGoogle: Guide = {
   description:
     'Why a website doesn’t show up on Google or ChatGPT: no Search Console, no sitemap, pages crawlers can’t read, no Bing or schema, and how to fix each one.',
   published: '2026-10-18',
+  updated: '2026-11-16',
   image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80',
+  keyTakeaways: [
+    'Google, Bing and ChatGPT find websites in different ways, so a site can show on one and be missing from the others.',
+    'ChatGPT mostly reads pages without running JavaScript and leans on Bing and other sites that mention you. If your text only appears after JavaScript runs, it sees an empty page.',
+    'The fixes: submit to Google Search Console and Bing Webmaster Tools, serve readable HTML, add structured data, give each service its own page, and keep a complete Google Business Profile.',
+    'Proof: ChatGPT named our client MR DGN Construction first for cement blocks in Asaba (our test, 6 November 2026), and its site appeared in Google’s AI Overviews 279 times from May to October 2026 (Search Console).',
+  ],
   intro: [
-    'The most common complaint I hear from business owners is this: “My website is fine. It looks nice. But nobody is reaching out.” The site is online, but it isn’t useful, because the people searching for what the business sells never see it.',
-    'A website should be a reliable source of customers. Here are the reasons it usually isn’t, in the order I check them, and what to do about each one.',
+    'Short answer: your website isn’t showing up in ChatGPT or Google because one of them can’t read it, hasn’t been told it exists, or can’t match it to what people search. Each has its own fix, below.',
+    'The most common complaint I hear from business owners is this: “My website is fine. It looks nice. But nobody is reaching out.” The site is online, but the people searching for what the business sells never see it. If you’d rather test first, [check your AI visibility](/ai-visibility-check) in a few seconds.',
   ],
   sections: [
+    {
+      h2: 'Google, Bing and ChatGPT each need something different',
+      subsections: [
+        {
+          h3: 'Why you’re not on Google',
+          paragraphs: [
+            'Google has to know your pages exist, be able to read them, and find a page that matches the search. The usual gaps: the site was never added to Google Search Console, no sitemap was submitted, or all your services sit on one page.',
+            '**Fix:** add the site to Search Console, submit the sitemap, request indexing for your main pages, and give every service its own page with your town in the title (reasons 1, 2 and 7 below).',
+          ],
+        },
+        {
+          h3: 'Why you’re not on Bing',
+          paragraphs: [
+            'Bing doesn’t copy Google’s index. If you never submitted your site to Bing Webmaster Tools, Bing may know little about it, and Bing feeds Microsoft Copilot and other AI search tools.',
+            '**Fix:** import your site from Search Console into Bing Webmaster Tools and use IndexNow so Bing hears about new pages straight away (reason 4).',
+          ],
+        },
+        {
+          h3: 'Why you’re not in ChatGPT',
+          paragraphs: [
+            'ChatGPT’s crawlers mostly read the raw page without running JavaScript, and its search draws on Bing and on other websites that mention you. A site that looks fine in a browser can arrive empty.',
+            '**Fix:** serve your text in the HTML (server-side rendering), get onto Bing, add structured data, and get mentioned on directories and local sites. Our guide on [how to get recommended by ChatGPT](/guides/how-to-get-recommended-by-chatgpt) goes further (reasons 3, 4 and 5).',
+          ],
+        },
+      ],
+    },
     {
       h2: 'First, a two-minute test',
       list: [
@@ -125,7 +160,8 @@ const whyNotOnGoogle: Guide = {
     {
       h2: 'What fixing it looks like in practice',
       paragraphs: [
-        'MR DGN Construction, a building materials supplier in Asaba, had a site that wasn’t readable by search engines, had no service or product pages, and wasn’t in Google Search Console. We fixed all of that, added structured data and connected it to Bing. On 28 September 2026 the owner received an enquiry from a buyer who had found the company through ChatGPT. Our [Okpanam page](/locations/okpanam) has the latest result.',
+        'MR DGN Construction, a building materials supplier in Asaba, had a site that wasn’t readable by search engines, had no service or product pages, and wasn’t in Google Search Console. We fixed all of that, added structured data and connected it to Bing. On 28 September 2026 the owner received an enquiry from a buyer who had found the company through ChatGPT. When we asked ChatGPT where to buy cement blocks in Asaba with delivery on 6 November 2026, it listed MR DGN Construction first, and the site appeared in Google’s AI Overviews 279 times between May and October 2026 (Search Console). Our [Okpanam page](/locations/okpanam) has the details.',
+        'If you’d rather hand this to someone, we’re an [SEO company in Nigeria](/locations/nigeria) that fixes all nine of these for a fixed price.',
       ],
     },
   ],
@@ -170,7 +206,7 @@ const builders: Guide = {
   description:
     'Why Lovable, Wix and Squarespace sites often don’t show up on Google or ChatGPT, what changed in 2026, how to check yours, and when you need a rebuild.',
   published: '2026-10-18',
-  updated: '2026-11-09',
+  updated: '2026-11-16',
   keyTakeaways: [
     'When we checked seven single-page-app sites on 5 and 6 October 2026, six sent crawlers an empty page: 0 to 8 words where we counted. The one that was pre-rendered sent about 700.',
     'Lovable projects created from 13 May 2026 are server-rendered; older ones need upgrading or pre-rendering before Google and AI crawlers can read them properly.',
@@ -188,10 +224,48 @@ const builders: Guide = {
         'Lovable used to build every site as a client-side React app. The page arrived almost empty, and the text only appeared after JavaScript ran in the browser. From my own work: even after submitting these sites to Google Search Console, they still had to be restructured with server-side rendering before Google and AI crawlers could properly read them.',
         'This has changed. According to Lovable’s own documentation, projects created from 13 May 2026 use server-side rendering (TanStack Start), so crawlers get the full page on the first request. Older projects get pre-rendered pages served only to verified crawlers such as Googlebot and Bingbot, and they can be upgraded to the new setup, which uses Lovable credits.',
       ],
-      list: [
-        '**Built before May 2026 and hosted on Lovable:** verified crawlers get a pre-rendered copy. Third-party checkers (ours included) aren’t verified, so they may show your page as empty even when Google sees it. Use the URL Inspection tool in Google Search Console to see what Google gets.',
-        '**Built before May 2026 and exported to Vercel, Netlify or elsewhere:** you don’t get Lovable’s pre-rendering. Most crawlers will see an empty page until the site is upgraded or rebuilt.',
-        '**Built after May 2026:** rendering is handled, but the rest still isn’t. Lovable says it doesn’t always create a sitemap, and the starting titles and descriptions are generic.',
+      subsections: [
+        {
+          h3: 'Built before May 2026 and hosted on Lovable',
+          paragraphs: [
+            'Verified crawlers get a pre-rendered copy. Third-party checkers (ours included) aren’t verified, so they may show your page as empty even when Google sees it. Use the URL Inspection tool in Google Search Console to see what Google gets.',
+          ],
+        },
+        {
+          h3: 'Built before May 2026 and exported to Vercel, Netlify or elsewhere',
+          paragraphs: [
+            'You don’t get Lovable’s pre-rendering. Most crawlers will see an empty page until the site is upgraded or rebuilt.',
+          ],
+        },
+        {
+          h3: 'Built after May 2026',
+          paragraphs: [
+            'Rendering is handled, but the rest still isn’t. Lovable says it doesn’t always create a sitemap, and the starting titles and descriptions are generic.',
+          ],
+        },
+      ],
+    },
+    {
+      h2: 'Can you connect a Lovable site to Wix?',
+      paragraphs: [
+        'Yes. Lovable has an official Wix connector. It lets your Lovable app talk to Wix’s services, for example a Wix store or bookings, through a Wix API key. It doesn’t move your Lovable site onto Wix, and it doesn’t change how Google sees your pages.',
+      ],
+      subsections: [
+        {
+          h3: 'How to connect them',
+          list: [
+            'In Wix, open the API Keys Manager and create a key just for this, named something like “Lovable integration”. Note the Wix account ID it belongs to.',
+            'In Lovable, a workspace owner or admin adds the Wix connector and enters the key and account ID.',
+            'In your project chat, ask Lovable to link the project to Wix. Wix usage, quotas and billing stay with Wix.',
+            'To change keys later, create a new one in Wix and update the connection; Lovable can’t create or rotate Wix keys for you.',
+          ],
+        },
+        {
+          h3: 'What it means for SEO',
+          paragraphs: [
+            'Google still reads the Lovable front end, not Wix. So the rendering rules above apply: a project from before May 2026, especially one hosted outside Lovable, still needs upgrading or pre-rendering before crawlers can read it.',
+          ],
+        },
       ],
     },
     {
@@ -272,6 +346,10 @@ const builders: Guide = {
       a: 'Yes, if it’s rendered properly and built well. New Lovable projects are server-rendered. Older ones should be upgraded, especially if they’re hosted outside Lovable.',
     },
     {
+      q: 'Can I connect Lovable to Wix?',
+      a: 'Yes. Lovable’s official Wix connector links your app to Wix services such as stores or bookings using a Wix API key and account ID. Google still reads your Lovable pages, so they still need to be server-rendered or pre-rendered.',
+    },
+    {
       q: 'Will moving my site to a new platform lose my rankings?',
       a: 'It can, if old page addresses stop working. A careful move keeps the same addresses where possible and redirects the rest, so Google carries your rankings across.',
     },
@@ -285,6 +363,8 @@ const builders: Guide = {
   sources: [
     { label: 'Lovable: Optimize your app for SEO and AI search', url: 'https://docs.lovable.dev/features/seo-aeo' },
     { label: 'Lovable: Upgrade a project to TanStack Start', url: 'https://docs.lovable.dev/features/upgrade-to-tanstack-start' },
+    { label: 'Lovable: Wix integration', url: 'https://docs.lovable.dev/integrations/wix' },
+    { label: 'Wix: Build with a vibe coding platform', url: 'https://dev.wix.com/docs/go-headless/self-managed-headless/get-started/build-with-a-vibe-coding-platform' },
     { label: 'Wix: Site not appearing in search engine results', url: 'https://support.wix.com/en/article/site-not-appearing-in-search-engine-results' },
     { label: 'Squarespace: Hiding your site from search results', url: 'https://support.squarespace.com/hc/en-us/articles/21829426828045-Hiding-your-site-from-search-results' },
     { label: 'Squarespace: Why doesn’t my site appear in Google search results?', url: 'https://support.squarespace.com/hc/en-us/articles/205813898-Why-doesn-t-my-site-appear-in-Google-search-results' },

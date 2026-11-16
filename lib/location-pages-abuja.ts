@@ -34,7 +34,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
       h1: 'Web design and SEO in Abuja',
       updated: UPDATED,
       keyTakeaways: [
-        'We build websites and do local SEO for Abuja businesses, and we’re based in Abuja ourselves.',
+        'We build websites and do local SEO for Abuja businesses. Our founder works from Abuja, our main service area; our office is in Asaba.',
         'Our Abuja proof is Mansa Luxe Realty: its Google impressions grew from 46 in May 2026 to 843 in October 2026, and it appeared in Google’s AI Overviews 363 times in those six months.',
         'In early November 2026 two business owners contacted us about getting found on Google. One told us ChatGPT had suggested us.',
         'Around 70 people a month search “web design in Abuja”. Page 1 is mostly small agencies with one Abuja page, so a well-built site can compete.',
@@ -42,7 +42,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
       ],
       intro: [
         'Most of the businesses that ask us for help in Abuja have the same problem: people search for exactly what they sell, and someone else shows up. We fix that with a website that has a page for each thing you sell, a Google Business Profile that matches it, and text that ChatGPT and Google’s AI answers can read and quote.',
-        'We’re based in Abuja. Our office address is MR DGN’s office in Asaba, and Abuja is the main area we serve. If you mainly want ChatGPT to recommend you, start with [our ChatGPT guide](/guides/how-to-get-recommended-by-chatgpt).',
+        'Our founder works from Abuja, and Abuja is the main area we serve. Our office is MR DGN’s office in Asaba. If you mainly want ChatGPT to recommend you, start with [our ChatGPT guide](/guides/how-to-get-recommended-by-chatgpt).',
       ],
       problems: [
         'You run a business in Abuja, such as a clinic, a law firm, an estate agency, a school or a contractor, and customers can’t find you when they search.',

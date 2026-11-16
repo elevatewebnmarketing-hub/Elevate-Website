@@ -8,6 +8,7 @@ import { siteConfig } from '@/lib/site-config';
 import { formatInline } from '@/lib/blog-utils';
 import SearchConsoleEvidence from '@/components/sections/SearchConsoleEvidence';
 import AuthorBio from '@/components/sections/AuthorBio';
+import GoogleMapEmbed from '@/components/sections/GoogleMapEmbed';
 
 const fmtDate = (d: string) =>
   new Date(`${d}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -19,7 +20,7 @@ interface Props {
   parent?: { name: string; href: string } | null;
 }
 
-const DEFAULT_TRUST = ['Based in Abuja, serving all of Nigeria', 'Working since 2023', '50+ websites built', 'Replies within 48 hours'];
+const DEFAULT_TRUST = ['Office in Asaba, serving Abuja and all of Nigeria', 'Working since 2023', '50+ websites built', 'Replies within 48 hours'];
 const h2 ='font-heading font-bold text-2xl sm:text-3xl text-primary dark:text-white mb-5';
 const body = 'text-text/80 dark:text-gray-300 text-base sm:text-lg leading-relaxed';
 const card = 'bg-white dark:bg-slate-800 rounded-card-lg border border-gray-200 dark:border-white/10 p-6';
@@ -295,6 +296,7 @@ export default function ServiceDetailPage({
                   <p key={p} className={body} dangerouslySetInnerHTML={{ __html: formatInline(p) }} />
                 ))}
               </div>
+              {detail.showMap && <GoogleMapEmbed className="mt-6" />}
             </section>
           )}
 
@@ -338,7 +340,7 @@ export default function ServiceDetailPage({
                       className={`${card} flex items-center justify-between hover:border-accent transition-colors`}
                     >
                       <span className="font-heading font-semibold text-primary dark:text-white">
-                        {r.detail?.h1 ?? r.title}
+                        {parent === null ? r.title : r.detail?.h1 ?? r.title}
                       </span>
                       <ArrowRight className="text-accent" size={18} />
                     </Link>
@@ -367,7 +369,7 @@ export default function ServiceDetailPage({
             <h2 className="font-heading font-bold text-2xl text-white mb-3">{detail.cta?.heading ?? `Talk to us about ${config.title}`}</h2>
             {detail.cta?.text && <p className="text-white/90 mb-3">{detail.cta.text}</p>}
             <p className="text-white/80 mb-6">
-              {siteConfig.companyName}, Abuja, Nigeria. Phone and WhatsApp {siteConfig.phone}. Email{' '}
+              {siteConfig.companyName}, office in Asaba, serving Abuja and all of Nigeria. Phone and WhatsApp {siteConfig.phone}. Email{' '}
               <a href={`mailto:${siteConfig.contactEmail}`} className="text-accent hover:underline">
                 {siteConfig.contactEmail}
               </a>

@@ -132,6 +132,24 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                   ))}
                 </ul>
               )}
+              {s.subsections?.map((sub) => (
+                <div key={sub.h3} className="mb-6">
+                  <h3 className="font-heading font-semibold text-xl text-primary dark:text-white mb-3">{sub.h3}</h3>
+                  {sub.paragraphs?.map((t) => (
+                    <p key={t} className={p} dangerouslySetInnerHTML={html(t)} />
+                  ))}
+                  {sub.list && (
+                    <ul className="space-y-3 mb-4">
+                      {sub.list.map((t) => (
+                        <li key={t} className="flex items-start gap-3 text-text/80 dark:text-gray-300 text-lg">
+                          <Check className="text-accent flex-shrink-0 mt-1.5" size={18} aria-hidden />
+                          <span dangerouslySetInnerHTML={html(t)} />
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
               {s.table && (
                 <div className="overflow-x-auto mb-6 rounded-card-lg border border-gray-200 dark:border-white/10">
                   <table className="w-full min-w-[34rem] text-left text-sm sm:text-base">

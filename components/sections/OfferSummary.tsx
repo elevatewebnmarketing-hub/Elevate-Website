@@ -29,9 +29,22 @@ const offerLinks: { title: string; href: string; summary: ReactNode }[] = [
     // Main-content links to the location pages (ChatSEO actions, 16 Nov 2026).
     summary: (
       <>
-        We offer <Link href="/locations/abuja" className={inline}>web design in Abuja</Link>, where our founder is
-        based, and <Link href="/locations/lagos" className={inline}>web design in Lagos</Link>, delivered remotely,
+        We are an <Link href="/locations/nigeria" className={inline}>SEO company in Nigeria</Link> with our office in
+        Asaba. We offer <Link href="/locations/abuja" className={inline}>web design in Abuja</Link>, where our founder
+        works, and <Link href="/locations/lagos" className={inline}>web design in Lagos</Link>, delivered remotely,
         with the same fixed prices for businesses anywhere in Nigeria.
+      </>
+    ),
+  },
+  {
+    title: 'Free Check and Guides',
+    href: '/ai-visibility-check',
+    summary: (
+      <>
+        Run our <Link href="/ai-visibility-check" className={inline}>free AI visibility check</Link> to see what Google
+        and ChatGPT can read on your site, then read{' '}
+        <Link href="/guides/why-your-website-isnt-on-google" className={inline}>why your site isn’t on Google or ChatGPT</Link>{' '}
+        for the fixes.
       </>
     ),
   },

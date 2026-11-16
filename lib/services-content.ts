@@ -52,6 +52,8 @@ export interface ServiceDetail {
   updated?: string;
   /** Slugs of related service pages. */
   related: string[];
+  /** Show the Google Maps embed of the Asaba office in the local section. */
+  showMap?: boolean;
   /** Optional closing call-to-action heading and line (default: "Talk to us about {title}"). */
   cta?: { heading: string; text?: string };
   /** Optional heading overrides per section (defaults: the template's generic headings). */
