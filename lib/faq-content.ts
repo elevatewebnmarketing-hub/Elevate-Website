@@ -186,7 +186,8 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         q: 'Do you run Google or Facebook ads?',
-        a: 'On request, for clients who already have a website that converts. Our main work is websites and SEO; we’d rather you get customers from search before you pay for ads.',
+        a: 'Yes. We set up and manage Google Ads and Facebook & Instagram ads: the campaigns, the ad copy and visuals, conversion tracking and monthly changes. In Nigeria our fee is ₦100,000 a month per platform, and you pay your ad budget to Google or Meta directly. Ads work best sending people to a page built to convert, so we check your website or landing page first.',
+        link: { label: 'Google Ads management', href: '/services/google-ads' },
       },
       {
         q: 'How do I get started?',

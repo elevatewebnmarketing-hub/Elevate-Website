@@ -5,10 +5,14 @@ export type PackageKey =
   | 'business'
   | 'ecommerce'
   | 'growth_suite'
-  // Retired ads plans, reused for care plans so stored prices and the admin panel keep working:
-  // google_growth = Website Care Plan, meta_growth = SEO Care Plan.
+  // Old ads-plan keys reused for care plans so stored prices keep working:
+  // google_growth = Website Care Plan; meta_growth = Local SEO monthly retainer (was the SEO Care Plan).
   | 'google_growth'
-  | 'meta_growth';
+  | 'meta_growth'
+  // Added 2026-11-16: local SEO setup fee and ads management (fee only; ad spend is paid to Google/Meta).
+  | 'local_seo_setup'
+  | 'google_ads'
+  | 'meta_ads';
 
 export const ALL_PACKAGE_KEYS: PackageKey[] = [
   'starter',
@@ -17,6 +21,9 @@ export const ALL_PACKAGE_KEYS: PackageKey[] = [
   'growth_suite',
   'google_growth',
   'meta_growth',
+  'local_seo_setup',
+  'google_ads',
+  'meta_ads',
 ];
 
 export const ALL_LOCATION_CODES: LocationCode[] = ['NG', 'GB', 'US', 'CA', 'AU'];
@@ -65,7 +72,10 @@ export const STATIC_PRICING_FALLBACK: Record<
     ecommerce: { amount: 600000, isMonthly: false },
     growth_suite: { amount: 1000000, isMonthly: false },
     google_growth: { amount: 30000, isMonthly: true },
-    meta_growth: { amount: 80000, isMonthly: true },
+    meta_growth: { amount: 30000, isMonthly: true },
+    local_seo_setup: { amount: 70000, isMonthly: false },
+    google_ads: { amount: 100000, isMonthly: true },
+    meta_ads: { amount: 100000, isMonthly: true },
   },
   GB: {
     starter: { amount: 600, isMonthly: false },
@@ -73,7 +83,10 @@ export const STATIC_PRICING_FALLBACK: Record<
     ecommerce: { amount: 2995, isMonthly: false },
     growth_suite: { amount: 3995, isMonthly: false },
     google_growth: { amount: 49, isMonthly: true },
-    meta_growth: { amount: 149, isMonthly: true },
+    meta_growth: { amount: 79, isMonthly: true },
+    local_seo_setup: { amount: 199, isMonthly: false },
+    google_ads: { amount: 299, isMonthly: true },
+    meta_ads: { amount: 299, isMonthly: true },
   },
   US: {
     starter: { amount: 750, isMonthly: false },
@@ -81,7 +94,10 @@ export const STATIC_PRICING_FALLBACK: Record<
     ecommerce: { amount: 3900, isMonthly: false },
     growth_suite: { amount: 5200, isMonthly: false },
     google_growth: { amount: 59, isMonthly: true },
-    meta_growth: { amount: 179, isMonthly: true },
+    meta_growth: { amount: 99, isMonthly: true },
+    local_seo_setup: { amount: 249, isMonthly: false },
+    google_ads: { amount: 349, isMonthly: true },
+    meta_ads: { amount: 349, isMonthly: true },
   },
   CA: {
     starter: { amount: 1695, isMonthly: false },
@@ -89,7 +105,10 @@ export const STATIC_PRICING_FALLBACK: Record<
     ecommerce: { amount: 5295, isMonthly: false },
     growth_suite: { amount: 6995, isMonthly: false },
     google_growth: { amount: 349, isMonthly: true },
-    meta_growth: { amount: 549, isMonthly: true },
+    meta_growth: { amount: 135, isMonthly: true },
+    local_seo_setup: { amount: 339, isMonthly: false },
+    google_ads: { amount: 479, isMonthly: true },
+    meta_ads: { amount: 479, isMonthly: true },
   },
   AU: {
     starter: { amount: 1895, isMonthly: false },
@@ -97,7 +116,10 @@ export const STATIC_PRICING_FALLBACK: Record<
     ecommerce: { amount: 5795, isMonthly: false },
     growth_suite: { amount: 7595, isMonthly: false },
     google_growth: { amount: 399, isMonthly: true },
-    meta_growth: { amount: 599, isMonthly: true },
+    meta_growth: { amount: 149, isMonthly: true },
+    local_seo_setup: { amount: 379, isMonthly: false },
+    google_ads: { amount: 529, isMonthly: true },
+    meta_ads: { amount: 529, isMonthly: true },
   },
 };
 

@@ -4,6 +4,9 @@ import { websiteRedesign } from '@/lib/service-pages/website-redesign';
 import { landingPages } from '@/lib/service-pages/landing-pages';
 import { websiteMaintenance } from '@/lib/service-pages/website-maintenance';
 import { ecommerce } from '@/lib/service-pages/ecommerce';
+import { googleAds } from '@/lib/service-pages/google-ads';
+import { facebookInstagramAds } from '@/lib/service-pages/facebook-instagram-ads';
+import { digitalMarketing } from '@/lib/service-pages/digital-marketing';
 
 export type PageType = 'service' | 'industry';
 
@@ -62,6 +65,9 @@ export const servicePages: Record<string, ServicePageConfig> = {
   'landing-pages': landingPages,
   'website-maintenance': websiteMaintenance,
   ecommerce,
+  'google-ads': googleAds,
+  'facebook-instagram-ads': facebookInstagramAds,
+  'digital-marketing': digitalMarketing,
 };
 
 export const serviceSlugs = Object.keys(servicePages);

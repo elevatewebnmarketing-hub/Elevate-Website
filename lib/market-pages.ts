@@ -60,7 +60,8 @@ export const ukPage: ServicePageConfig = {
       points: [
         `Starter Website: ${gbp(gb.starter.amount)}`,
         `Business Website: ${gbp(gb.business.amount)}`,
-        `Website Care Plan: ${gbp(gb.google_growth.amount)} per month; SEO Care Plan: ${gbp(gb.meta_growth.amount)} per month`,
+        `Website Care Plan: ${gbp(gb.google_growth.amount)} per month; Local SEO: ${gbp(gb.local_seo_setup.amount)} setup, then ${gbp(gb.meta_growth.amount)} per month`,
+        `Google Ads or Facebook & Instagram Ads management: ${gbp(gb.google_ads.amount)} per month per platform, plus your ad spend`,
       ],
     },
     proof: [
@@ -170,7 +171,8 @@ export const usPage: ServicePageConfig = {
       points: [
         `Starter Website: ${usd(us.starter.amount)}`,
         `Business Website: ${usd(us.business.amount)}`,
-        `Website Care Plan: ${usd(us.google_growth.amount)} per month; SEO Care Plan: ${usd(us.meta_growth.amount)} per month`,
+        `Website Care Plan: ${usd(us.google_growth.amount)} per month; Local SEO: ${usd(us.local_seo_setup.amount)} setup, then ${usd(us.meta_growth.amount)} per month`,
+        `Google Ads or Facebook & Instagram Ads management: ${usd(us.google_ads.amount)} per month per platform, plus your ad spend`,
       ],
     },
     proof: [

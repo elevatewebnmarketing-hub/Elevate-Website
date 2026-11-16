@@ -29,7 +29,10 @@ export const siteConfig = {
         { href: '/services/website-redesign', label: 'Website Redesign', note: 'Fix an old or invisible site' },
         { href: '/services/landing-pages', label: 'Landing Pages', note: 'One offer, one page, more enquiries' },
         { href: '/services/ecommerce', label: 'E-commerce Websites', note: 'Online shops that take orders and payments' },
-        { href: '/services/website-maintenance', label: 'Website Care Plans', note: 'Monthly upkeep and SEO' },
+        { href: '/services/google-ads', label: 'Google Ads Management', note: 'Top of Google when people search' },
+        { href: '/services/facebook-instagram-ads', label: 'Facebook & Instagram Ads', note: 'Ads, creative and tracking done for you' },
+        { href: '/services/digital-marketing', label: 'Full Digital Marketing Suite', note: 'Website, profiles and ads, one team' },
+        { href: '/services/website-maintenance', label: 'Website Care Plans', note: 'Monthly upkeep' },
       ],
     },
     {

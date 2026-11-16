@@ -8,7 +8,7 @@ const money = (n: number, sym: string) => `${sym}${n.toLocaleString('en-GB')}`;
 const PRICE_POINTS = [
   `Starter Website: ${money(gb.starter.amount, '£')} / ${money(us.starter.amount, '$')}`,
   `Business Website: ${money(gb.business.amount, '£')} / ${money(us.business.amount, '$')}`,
-  `SEO Care Plan: ${money(gb.meta_growth.amount, '£')} / ${money(us.meta_growth.amount, '$')} per month`,
+  `Local SEO: ${money(gb.local_seo_setup.amount, '£')} / ${money(us.local_seo_setup.amount, '$')} setup, then ${money(gb.meta_growth.amount, '£')} / ${money(us.meta_growth.amount, '$')} per month`,
 ];
 const PRICE_SUMMARY = 'Fixed prices in pounds or dollars, invoiced up front: a deposit before work starts and the balance at launch.';
 const TRUST = ['Based in Nigeria, serving the UK and US', 'Fixed prices in £ and $', 'You own your site', 'Replies within 48 hours'];

@@ -169,6 +169,11 @@ export default function GetQuotePage() {
                   <option value="website-redesign">Website Redesign</option>
                   <option value="landing-page">Landing Page</option>
                   <option value="ecommerce">E-commerce Website</option>
+                  <option value="local-seo">Local SEO</option>
+                  <option value="google-ads">Google Ads</option>
+                  <option value="facebook-instagram-ads">Facebook &amp; Instagram Ads</option>
+                  <option value="digital-marketing-suite">Full Digital Marketing Suite</option>
+                  <option value="software">Software or Web App</option>
                   <option value="ongoing-support">Ongoing Support</option>
                   <option value="other">Other</option>
                 </select>
@@ -201,7 +206,10 @@ export default function GetQuotePage() {
                   <option value="business-website">Business Website</option>
                   <option value="ecommerce-website">E-commerce Website</option>
                   <option value="website-redesign">Website Redesign</option>
-                  <option value="local-visibility">Local Visibility Support</option>
+                  <option value="local-visibility">Local SEO Plan</option>
+                  <option value="google-ads">Google Ads Management</option>
+                  <option value="meta-ads">Facebook &amp; Instagram Ads Management</option>
+                  <option value="digital-marketing-suite">Full Digital Marketing Suite</option>
                   <option value="landing-page">Landing Page</option>
                   <option value="website-care">Website Care Plan</option>
                 </select>

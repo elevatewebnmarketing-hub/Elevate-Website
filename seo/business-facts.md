@@ -14,12 +14,15 @@ The service pages only use facts listed here. Fill each TODO, then replace the m
 - **Prices:**
   - Starter Website ₦250,000: 4 pages, 1-year domain, GBP setup, 7 to 10 business days, one revision round
   - Business Website ₦450,000: up to 6 pages plus a landing page, 2 to 4 weeks, two revision rounds
-  - Ads management: retired on 17 Oct 2026. Elevate sells no ads services. Current prices live in `lib/pricing-config.ts`.
+  - Ads management (from 16 Nov 2026): ₦100,000 per month per platform (Google Ads; Facebook & Instagram), ad budget paid to Google/Meta by the client
+  - Local SEO (from 16 Nov 2026): ₦70,000 setup, then ₦30,000 per month (replaces the ₦80,000 SEO Care Plan)
+  - Full Digital Marketing Suite and Software & Web Apps: custom quote after a call
+  - All current prices, including UK/US/CA/AU: `lib/pricing-config.ts`
 - **Owner answers (9 Nov 2026), publish as "in our experience":**
   - Results: about 3 weeks after a proper setup and Search Console submission for Google to build up the site's presence; first calls often come then. Never a promise.
   - Reporting: clicks and visitors, but mainly calls, WhatsApp messages and forms from Google, ChatGPT, Bing and other AI tools.
   - Payment: invoices; big projects (e.g. a 6-month web app) 50% upfront, 50% on delivery. No lock-in contracts.
-  - Ads: on request only, case by case.
+  - Ads: on request only, case by case (superseded 16 Nov 2026: ads are a listed service).
   - Most common client question: "How can I get more clients?" Answer: Google Business Profile with the address and map, NAP consistency, win the easy "near me" searches.
   - Two enquiries in early Nov 2026 came via ChatGPT (one confirmed); describe anonymously.
 - **Proof sites:**

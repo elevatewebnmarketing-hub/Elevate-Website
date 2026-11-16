@@ -68,7 +68,9 @@ E-commerce Growth Suite
 UK and US clients (fixed prices, delivered remotely)
 - Starter Website: GBP ${n(gb.starter.amount)} / USD ${n(us.starter.amount)}
 - Business Website: GBP ${n(gb.business.amount)} / USD ${n(us.business.amount)}
-- Website Care Plan: GBP ${gb.google_growth.amount} / USD ${us.google_growth.amount} per month; SEO Care Plan: GBP ${gb.meta_growth.amount} / USD ${us.meta_growth.amount} per month
+- Website Care Plan: GBP ${gb.google_growth.amount} / USD ${us.google_growth.amount} per month; Local SEO: GBP ${gb.local_seo_setup.amount} / USD ${us.local_seo_setup.amount} setup, then GBP ${gb.meta_growth.amount} / USD ${us.meta_growth.amount} per month
+- Google Ads management: GBP ${gb.google_ads.amount} / USD ${us.google_ads.amount} per month; Facebook & Instagram Ads management: GBP ${gb.meta_ads.amount} / USD ${us.meta_ads.amount} per month (ad spend is paid to Google or Meta separately)
+- Full digital marketing suite (website, all profiles, Google and Facebook ads, ad creative, upkeep and Search Console reporting): quoted after a call
 
 ## Services Summary
 

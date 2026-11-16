@@ -20,6 +20,14 @@ type PackageMeta = {
   features: string[];
   highlighted: boolean;
   category: 'build' | 'retainer';
+  /** One-off setup fee shown before the monthly price ("₦70,000 setup + ₦30,000/mo"). */
+  setupKey?: PackageKey;
+  /** Small line under the price, e.g. ad spend. */
+  priceNote?: string;
+  /** Service page for "Learn more". */
+  href?: string;
+  /** Spans the full retainer row. */
+  wide?: boolean;
 };
 
 const PACKAGE_META: PackageMeta[] = [
@@ -107,22 +115,75 @@ const PACKAGE_META: PackageMeta[] = [
   },
   {
     key: 'meta_growth',
-    name: 'SEO Care Plan',
-    description: 'Everything in the Website Care Plan, plus the ongoing work that keeps you visible on Google and AI search.',
+    setupKey: 'local_seo_setup',
+    name: 'Local SEO Plan',
+    description:
+      'Your Google, Bing, Apple and Facebook profiles set up to match your website, then kept active and in step every month, so you look like the local authority everywhere people check.',
     features: [
-      'Google Business Profile posts, photos and review replies',
-      'One new page or blog post a month',
-      'Monthly report: map positions, searches, calls and website clicks',
-      'Listing and citation checks',
+      'Setup: Google Business Profile, Bing Places, Apple Business Connect and Facebook page optimised with the same name, services and details',
+      'Setup: website pages checked and aligned with your profiles',
+      'Setup: how to ask for honest reviews and how to answer them, good or bad',
+      'Monthly: profile posts and photos, review reply help, listings kept in step',
+      'Monthly report: map positions, calls, direction requests and website clicks',
     ],
     highlighted: false,
     category: 'retainer',
+    href: '/services/local-seo',
+  },
+  {
+    key: 'google_ads',
+    name: 'Google Ads Management',
+    priceNote: 'Per month. Your ad budget is paid to Google directly.',
+    description: 'Search and Maps ads that show up when people are ready to call, tracked to real enquiries.',
+    features: [
+      'Account, campaign and conversion tracking setup',
+      'Keyword research, ad copy and negative keywords',
+      'Landing page check before we spend your money',
+      'Weekly checks, monthly changes and a plain-language report',
+    ],
+    highlighted: false,
+    category: 'retainer',
+    href: '/services/google-ads',
+  },
+  {
+    key: 'meta_ads',
+    name: 'Facebook & Instagram Ads Management',
+    priceNote: 'Per month. Your ad budget is paid to Meta directly.',
+    description: 'Ads in the feeds and stories of people in your area, built to bring WhatsApp messages, calls and form enquiries.',
+    features: [
+      'Meta Business Suite, Pixel and Conversions API setup',
+      'Audience targeting by area, interests and past visitors',
+      'Ad copy and image or short-video ads',
+      'Weekly checks, monthly changes and a plain-language report',
+    ],
+    highlighted: false,
+    category: 'retainer',
+    href: '/services/facebook-instagram-ads',
   },
   {
     key: 'custom',
-    name: 'Custom & Enterprise',
+    name: 'Full Digital Marketing Suite',
+    priceNote: 'Quoted after a call, based on your goals and ad budget.',
     description:
-      'For advanced builds, internal tools, directories, portals, or projects with more complex integrations.',
+      'We run all of it for you: the website, every profile, Google and Facebook ads with the creative, and the monthly work that keeps it bringing in enquiries.',
+    features: [
+      'An SEO-ready website, built or rebuilt',
+      'Google, Bing, Apple and Facebook profiles created and aligned',
+      'Google Ads and Facebook & Instagram ads, with the copy, images and videos made for you',
+      'Ads maintained and updated so they keep working',
+      'Website kept updated, with Search Console checks that your pages rank and get clicks',
+      'One monthly report and one point of contact',
+    ],
+    highlighted: true,
+    category: 'retainer',
+    href: '/services/digital-marketing',
+    wide: true,
+  },
+  {
+    key: 'custom',
+    name: 'Software & Web Apps',
+    description:
+      'For software and web applications: internal tools, booking systems, directories, portals and projects with complex integrations.',
     features: [
       'Discovery and scope workshop',
       'Custom workflows and integrations',
@@ -199,8 +260,14 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
     packages.map((pkg) => [pkg.packageKey, pkg])
   );
 
-  function renderPrice(key: PackageKey | 'custom'): React.ReactNode {
+  function renderPrice(key: PackageKey | 'custom', setupKey?: PackageKey): React.ReactNode {
     if (key === 'custom') return 'Custom';
+    if (setupKey) {
+      if (isLoading) return <PriceSkeleton />;
+      const setup = priceMap.get(setupKey);
+      const monthly = priceMap.get(key);
+      if (setup && monthly) return `${formatPrice(setup)} setup + ${formatPrice(monthly)}`;
+    }
     if (isLoading) return <PriceSkeleton />;
     const pkg = priceMap.get(key);
     return pkg ? formatPrice(pkg) : 'Custom';
@@ -231,7 +298,10 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto sm:mx-0">
               Clear public pricing for{' '}
               <Link href="/services/website-design" className="text-accent hover:underline">SEO-ready websites</Link>,{' '}
-              <Link href="/services/landing-pages" className="text-accent hover:underline">landing pages</Link> and{' '}
+              <Link href="/services/landing-pages" className="text-accent hover:underline">landing pages</Link>,{' '}
+              <Link href="/services/local-seo" className="text-accent hover:underline">local SEO</Link>,{' '}
+              <Link href="/services/google-ads" className="text-accent hover:underline">Google Ads</Link>,{' '}
+              <Link href="/services/facebook-instagram-ads" className="text-accent hover:underline">Facebook &amp; Instagram ads</Link> and{' '}
               <Link href="/services/website-maintenance" className="text-accent hover:underline">care plans</Link>.
               Final quotes only change when scope, content, or integrations change.
             </p>
@@ -334,11 +404,11 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
             <div>
               <SubHeading className="font-heading font-semibold text-2xl text-primary dark:text-white mb-2">
-                Ongoing Support
+                Monthly Services
               </SubHeading>
               <p className="text-text/70 dark:text-gray-400 text-sm max-w-2xl">
-                One-off builds create momentum. Retainers create monthly stability, cleaner
-                lead tracking, and a website that keeps improving after launch.
+                Upkeep, local SEO and ads management. Ads fees are for our work only: you pay
+                your ad budget to Google or Meta directly, so you always see what was spent.
               </p>
             </div>
           </div>
@@ -351,35 +421,56 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="rounded-card-lg border border-gray-200 dark:border-white/10 bg-background dark:bg-slate-800 p-6 shadow-soft"
+                className={`rounded-card-lg border p-6 shadow-soft ${pkg.wide ? 'md:col-span-2' : ''} ${
+                  pkg.highlighted
+                    ? 'border-primary bg-primary text-white'
+                    : 'border-gray-200 dark:border-white/10 bg-background dark:bg-slate-800'
+                }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                   <div>
-                    <MinorHeading className="font-heading font-semibold text-xl text-primary dark:text-white">
+                    <MinorHeading className={`font-heading font-semibold text-xl ${pkg.highlighted ? 'text-white' : 'text-primary dark:text-white'}`}>
                       {pkg.name}
                     </MinorHeading>
-                    <p className="text-text/80 dark:text-gray-300 text-sm mt-1">
+                    <p className={`text-sm mt-1 ${pkg.highlighted ? 'text-white/80' : 'text-text/80 dark:text-gray-300'}`}>
                       {pkg.description}
                     </p>
                   </div>
-                  <p className="font-heading font-bold text-xl text-primary dark:text-white whitespace-nowrap">
-                    {renderPrice(pkg.key)}
-                  </p>
+                  <div className="sm:text-right">
+                    <p className={`font-heading font-bold text-xl sm:whitespace-nowrap ${pkg.highlighted ? 'text-accent' : 'text-primary dark:text-white'}`}>
+                      {pkg.key === 'custom' ? 'Custom quote' : renderPrice(pkg.key, pkg.setupKey)}
+                    </p>
+                    {pkg.priceNote && (
+                      <p className={`text-xs mt-1 sm:max-w-[14rem] sm:ml-auto ${pkg.highlighted ? 'text-white/70' : 'text-text/60 dark:text-gray-400'}`}>
+                        {pkg.priceNote}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <ul className="space-y-3 mb-6">
+                <ul className={`space-y-3 mb-6 ${pkg.wide ? 'md:grid md:grid-cols-2 md:gap-x-8 md:space-y-0 md:gap-y-3' : ''}`}>
                   {pkg.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-start gap-2 text-sm text-text dark:text-gray-200"
+                      className={`flex items-start gap-2 text-sm ${pkg.highlighted ? 'text-white/90' : 'text-text dark:text-gray-200'}`}
                     >
                       <Check className="flex-shrink-0 text-accent mt-0.5" size={18} />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <Button variant="outline" size="md" onClick={openCalendly} className="w-full min-h-[44px]">
-                  Discuss Retainers
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button variant={pkg.highlighted ? 'primary' : 'outline'} size="md" onClick={openCalendly} className="w-full min-h-[44px]">
+                    {pkg.key === 'custom' ? 'Book a call for a quote' : 'Book a Call'}
+                  </Button>
+                  {pkg.href && (
+                    <Link
+                      href={pkg.href}
+                      className={`inline-flex items-center justify-center gap-1 min-h-[44px] px-4 text-sm font-semibold whitespace-nowrap hover:underline ${pkg.highlighted ? 'text-white' : 'text-accent'}`}
+                    >
+                      Learn more <ArrowRight size={16} aria-hidden />
+                    </Link>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
