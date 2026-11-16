@@ -23,7 +23,7 @@ export const localSeo: ServicePageConfig = {
     ],
     evidenceIds: ['real-estate-abuja-asaba'],
     intro: [
-      'When someone in Abuja types “estate agent near me” or asks ChatGPT for “a good caterer in Wuse”, a short list of businesses appears. Local SEO is the work that gets your business onto that list and keeps it there. For the ChatGPT side, see [how to get your business recommended by ChatGPT](/guides/how-to-get-recommended-by-chatgpt); to set up the profile yourself, follow our [Google Business Profile setup guide](/guides/google-business-profile-setup-nigeria).',
+      'When someone in Abuja types “estate agent near me” or asks ChatGPT for “a good caterer in Wuse”, a short list of businesses appears. Local SEO is the work that gets your business onto that list and keeps it there. For the ChatGPT side, see [how to get your business recommended by ChatGPT](/guides/how-to-get-recommended-by-chatgpt); to set up the profile yourself, follow our [Google Business Profile setup guide](/guides/google-business-profile-setup-nigeria). Not sure where you stand? Run the free [AI visibility check](/ai-visibility-check). Outside Abuja, our [SEO services in Nigeria](/locations/nigeria) work the same way.',
       'Google ranks local businesses on three things it names itself: relevance (do you clearly offer what was searched), distance (how close you are), and prominence (how well known and well reviewed you are). We work on all three: your Google Business Profile, a website that mirrors it page for page, consistent listings across the web, and a steady flow of genuine reviews.',
       'We don’t buy links, invent reviews or stuff keywords into your business name. Those shortcuts get profiles suspended, and an appeal can take a month or more.',
     ],
@@ -133,7 +133,10 @@ export const localSeo: ServicePageConfig = {
           'The group site was originally a JavaScript-only app: crawlers received an empty page with 0 readable words. After our rebuild, over 400 words of real content, headings and links reach search engines and AI tools on the first request.',
       },
     ],
+    headings: { local: 'SEO company in Abuja: where we work and what the map takes' },
     localContext: [
+      'Our office is MR DGN’s office in Asaba, and our founder works from Abuja, which is the main area we serve. We don’t claim a street address in Abuja: for Abuja clients the work happens on WhatsApp, video calls and visits by appointment, and your Google profile uses your own Abuja address or service area, which is what Google uses to place you on the map.',
+      'What the Abuja map pack takes: when we checked on 9 November 2026, the top three map results for “web design in Abuja” had 74, 57 and 53 Google reviews, and for “SEO company in Abuja” 113, 48 and 38. A new profile won’t match that in a month. A complete profile, a page for every service and a steady flow of honest reviews is how you close the gap.',
       'Abuja is one of the most competitive cities in Nigeria online. In many trades the top map results already have dozens of reviews and real websites, so getting your profile basics right only gets you into the race. Genuine reviews, real local proof and a page for every service decide who climbs.',
       'Google’s map results depend heavily on distance: an Abuja customer is shown businesses near them, so a profile serving Gwarinpa competes mostly for searches around Gwarinpa. We set your service areas to where you really work, and use the district names customers actually type, such as Wuse, Garki, Jabi, Gwarinpa or Lugbe, only where they’re true for you.',
       'Most of your customers search on a phone using paid mobile data. We keep pages light, put WhatsApp and call buttons on the first screen, and test on a mid-range Android phone.',
@@ -161,6 +164,10 @@ export const localSeo: ServicePageConfig = {
       {
         q: 'How long does local SEO take to work in Abuja?',
         a: 'In our experience, once the website and profile are set up properly and the site is submitted to Google Search Console, the first results and calls often start within about three weeks. Steady map positions in a competitive area can take a few months. It depends on how close you are to the searcher, how many reviews competitors have, and how quickly you collect your own.',
+      },
+      {
+        q: 'Are you an SEO company in Abuja?',
+        a: 'Yes. Our founder works from Abuja and Abuja is our main service area; our office is MR DGN’s office in Asaba. Local SEO costs ₦70,000 to set up, then ₦30,000 a month.',
       },
       {
         q: 'Can you guarantee the number 1 spot on Google Maps?',

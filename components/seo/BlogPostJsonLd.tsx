@@ -1,4 +1,19 @@
 import type { BlogPost } from '@/backend/data';
+import { plainText } from '@/lib/blog-utils';
+
+/** Q&As from a post's FAQ section ("## Questions people ask" / "## Frequently asked questions"): each "### question" and the text under it. */
+function extractFaqs(content: string): { q: string; a: string }[] {
+  const m = content.match(/^## (?:Questions people ask|Frequently asked questions|FAQs?)\s*$([\s\S]*?)(?=^## |(?![\s\S]))/im);
+  if (!m) return [];
+  return m[1]
+    .split(/^### /m)
+    .slice(1)
+    .map((block) => {
+      const [q, ...rest] = block.split('\n');
+      return { q: q.trim(), a: plainText(rest.join(' ').replace(/\s+/g, ' ').trim()) };
+    })
+    .filter((f) => f.q && f.a);
+}
 
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -38,10 +53,20 @@ export default function BlogPostJsonLd({ post }: { post: BlogPost }) {
     image: post.image ? [post.image] : undefined,
   };
 
+  const faqs = extractFaqs(post.content);
+  const faqSchema =
+    faqs.length >= 2
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+        }
+      : null;
+
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema ? [schema, faqSchema] : schema) }}
     />
   );
 }

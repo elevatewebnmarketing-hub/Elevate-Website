@@ -20,7 +20,7 @@ export const websiteDesign: ServicePageConfig = {
       'Each build includes Google Business Profile setup and a sitemap submitted to Google Search Console on launch day.',
     ],
     intro: [
-      'We design and build websites for businesses in Abuja and across Nigeria that want the site to do a job: bring in calls, WhatsApp messages and quote requests.',
+      'We design and build websites for businesses in Abuja and across Nigeria that want the site to do a job: bring in calls, WhatsApp messages and quote requests. Outside Abuja, see [SEO and web design in Nigeria](/locations/nigeria); for the Google Maps side, see our [local SEO services in Abuja](/services/local-seo).',
       'Design and development are one service here. The same team plans the pages, writes the structure, designs the layout and builds it in Next.js, a modern framework that sends complete pages to Google and AI tools rather than an empty shell that only fills in after JavaScript runs.',
     ],
     problems: [

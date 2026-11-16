@@ -54,6 +54,7 @@ const organizationSchema = {
   email: 'hello@elevatewebandmarketing.com',
   foundingDate: '2023',
   priceRange: '₦₦',
+  hasMap: 'https://maps.google.com/?cid=6941066558127702684',
   sameAs: [
     'https://www.facebook.com/profile.php?id=61578521342361',
     'https://www.instagram.com/elevate_web_and_marketing/',
