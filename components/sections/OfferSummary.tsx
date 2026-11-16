@@ -1,7 +1,10 @@
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 
-const offerLinks = [
+const inline = 'text-accent font-medium underline underline-offset-2 hover:no-underline';
+
+const offerLinks: { title: string; href: string; summary: ReactNode }[] = [
   {
     title: 'Starter Website Package',
     href: '/pricing',
@@ -18,7 +21,19 @@ const offerLinks = [
     title: 'Services Overview',
     href: '/services',
     summary:
-      'Our services page explains our website design, redesign, landing page, local SEO and Google Business Profile, and care plan offers in plain language.',
+      'Our services page explains our website design, redesign, landing page, local SEO and Google Business Profile, Google Ads, Facebook and Instagram ads, and care plan offers in plain language.',
+  },
+  {
+    title: 'Where We Work',
+    href: '/locations/nigeria',
+    // Main-content links to the location pages (ChatSEO actions, 16 Nov 2026).
+    summary: (
+      <>
+        We offer <Link href="/locations/abuja" className={inline}>web design in Abuja</Link>, where our founder is
+        based, and <Link href="/locations/lagos" className={inline}>web design in Lagos</Link>, delivered remotely,
+        with the same fixed prices for businesses anywhere in Nigeria.
+      </>
+    ),
   },
   {
     title: 'Frequently Asked Questions',
