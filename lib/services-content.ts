@@ -16,6 +16,8 @@ export type DetailSection = 'problems' | 'included' | 'process' | 'pricing' | 'p
 export interface ServiceDetail {
   /** Without the brand: the root layout's title template appends it. */
   metaTitle: string;
+  /** Optional full title used exactly as written (no brand suffix), e.g. one sized by ChatSEO. */
+  titleAbsolute?: string;
   metaDescription: string;
   h1: string;
   intro: string[];
