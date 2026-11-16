@@ -18,7 +18,10 @@ const PRICING_LABELS: Record<PackageKey, string> = {
   ecommerce: 'E-commerce Website',
   growth_suite: 'Growth Suite',
   google_growth: 'Website Care Plan',
-  meta_growth: 'SEO Care Plan',
+  meta_growth: 'Local SEO Plan (monthly)',
+  local_seo_setup: 'Local SEO setup',
+  google_ads: 'Google Ads management',
+  meta_ads: 'Facebook & Instagram Ads management',
 };
 
 export default function FaqPage() {

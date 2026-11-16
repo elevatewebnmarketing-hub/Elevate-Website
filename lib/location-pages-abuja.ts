@@ -12,7 +12,8 @@ const PRICING_POINTER = {
   points: [
     'Starter Website: four pages, a year of domain, Google Business Profile setup and core SEO',
     'Business Website: more pages, landing-page support and lead tracking',
-    'SEO Care Plan: a new page or post each month, profile updates and a monthly report',
+    'Local SEO Plan: Google, Bing, Apple and Facebook profiles set up and kept in step, review help and a monthly report',
+    'Google Ads and Facebook & Instagram Ads management, priced per platform; your ad spend is separate',
   ],
 };
 
@@ -415,7 +416,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
       process: [
         { title: 'Free check', detail: 'We search for you on Google, Maps and ChatGPT and send you what we find.' },
         { title: 'Build', detail: 'Starter sites usually launch in 7 to 10 business days.' },
-        { title: 'Keep improving', detail: 'On the SEO Care Plan we add a page or post each month and report on enquiries.' },
+        { title: 'Keep improving', detail: 'On the Local SEO Plan we keep your profiles active, help you answer reviews and report on enquiries.' },
       ],
       pricing: PRICING_POINTER,
       proof: [

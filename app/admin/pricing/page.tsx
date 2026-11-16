@@ -20,7 +20,10 @@ const PACKAGE_LABELS: Record<PackageKey, string> = {
   ecommerce:     'E-commerce Website',
   growth_suite:  'E-commerce Growth Suite',
   google_growth: 'Website Care Plan (monthly)',
-  meta_growth:   'SEO Care Plan (monthly)',
+  meta_growth:   'Local SEO Plan (monthly)',
+  local_seo_setup: 'Local SEO setup (one-off)',
+  google_ads:    'Google Ads management (monthly, excl. ad spend)',
+  meta_ads:      'Facebook & Instagram Ads management (monthly, excl. ad spend)',
 };
 
 type EditValues = Record<PackageKey, string>;

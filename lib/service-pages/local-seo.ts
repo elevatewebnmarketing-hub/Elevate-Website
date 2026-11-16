@@ -12,10 +12,11 @@ export const localSeo: ServicePageConfig = {
     metaDescription:
       'Local SEO in Abuja: Google Business Profile setup, service pages, listings and reviews so customers find you on Google Maps and ChatGPT. WhatsApp us.',
     h1: 'Local SEO and Google Business Profile in Abuja',
-    updated: '2026-11-09',
+    updated: '2026-11-16',
     keyTakeaways: [
       'Local SEO gets your business onto the map and the first page when people nearby search for what you sell.',
-      'The work: your Google Business Profile, a website page for every service on it, the same name, address and phone number everywhere, and a steady flow of honest reviews.',
+      'The work: your Google Business Profile, Bing, Apple and Facebook profiles and your website all saying the same thing, a website page for every service, and a steady flow of honest reviews.',
+      'Price: ₦70,000 setup, then ₦30,000 a month to keep everything active and in step.',
       'In our experience the first calls often come about three weeks after a properly built site is submitted to Google Search Console.',
       'Proof: a real estate client’s Google impressions grew from 46 a month to 843 a month in six months (chart below).',
       'We report on calls and messages, not just clicks.',
@@ -61,9 +62,14 @@ export const localSeo: ServicePageConfig = {
           'Bing Places, Apple Business, Foursquare and Facebook, plus Nigerian directories such as VConnect, BusinessList.com.ng, Finelib and ConnectNigeria, all with the same name, address and phone.',
       },
       {
-        title: 'Review request system',
+        title: 'Bing, Apple and Facebook profiles',
         detail:
-          'A short WhatsApp message and QR card that ask every customer for an honest review. We never tell customers what to write, and we don’t only ask the happy ones; both break Google’s rules.',
+          'Bing Places (which feeds Bing and ChatGPT search), Apple Business Connect (Apple Maps and Siri) and your Facebook page set up with the same name, services, hours and description as your Google profile. Facebook pages often rank on Google for business names, so yours should look current.',
+      },
+      {
+        title: 'Review training: getting and answering reviews',
+        detail:
+          'We show you and your staff how to ask every customer for an honest review (a short WhatsApp message and QR card), and how to answer reviews, including the bad ones, calmly and quickly. We never tell customers what to write or offer anything for a review; both break Google’s rules.',
       },
       {
         title: 'Search Console and Bing Webmaster Tools',
@@ -107,8 +113,9 @@ export const localSeo: ServicePageConfig = {
       summary:
         'Google Business Profile setup or cleanup and SEO foundations are already included in our Starter Website (₦250,000) and Business Website (₦450,000) packages. Local SEO for an existing website is priced separately.',
       points: [
-        'Local SEO setup for an existing website: ₦80,000 one-off.',
-        'Monthly local SEO and profile management: the SEO Care Plan, ₦80,000 per month.',
+        'Local SEO setup: ₦70,000 one-off. Google Business Profile, Bing Places, Apple Business Connect and Facebook page optimised and aligned with your website, plus review training.',
+        'Local SEO Plan: ₦30,000 per month after setup. Profile posts and photos, help answering reviews, listings kept in step and a monthly report.',
+        'Visitors from the UK, US, Canada and Australia see these prices in their own currency on the pricing page.',
         'What changes the price: the number of services and locations, whether your website needs rebuilding, and how competitive your trade is in Abuja.',
       ],
     },

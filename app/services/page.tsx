@@ -17,6 +17,9 @@ import {
   RefreshCw,
   Wrench,
   ShoppingCart,
+  Search,
+  Megaphone,
+  Layers,
 } from 'lucide-react';
 
 const coreServices = [
@@ -90,15 +93,54 @@ const supportServices = [
   },
   {
     icon: MapPin,
-    title: 'Local Visibility Support',
+    title: 'Local SEO',
     href: '/services/local-seo',
     description:
-      'Support for Google Business Profile, local search presence, and the reporting that shows what is working.',
+      'Your Google, Bing, Apple and Facebook profiles and your website saying the same thing, so you become the local authority. ₦70,000 setup, then ₦30,000 a month.',
     details: [
-      'Google Business Profile cleanup and updates',
-      'Location and service consistency checks',
-      'Monthly local visibility recommendations',
-      'Lead tracking support',
+      'Google Business Profile, Bing Places, Apple Business Connect and Facebook page optimised',
+      'Website pages aligned with your profiles',
+      'How to get honest reviews and how to answer them',
+      'Monthly profile updates and map-position report',
+    ],
+  },
+  {
+    icon: Search,
+    title: 'Google Ads Management',
+    href: '/services/google-ads',
+    description:
+      'Search and Maps ads for the searches that bring buyers, tracked to calls and WhatsApp messages. ₦100,000 a month plus your ad budget.',
+    details: [
+      'Campaign, keyword and tracking setup',
+      'Ad copy written for each service',
+      'Weekly checks and monthly changes',
+      'Plain-language monthly report',
+    ],
+  },
+  {
+    icon: Megaphone,
+    title: 'Facebook & Instagram Ads',
+    href: '/services/facebook-instagram-ads',
+    description:
+      'Ads in the feeds of people near you, with the copy, images and short videos made for you. ₦100,000 a month plus your ad budget.',
+    details: [
+      'Meta Pixel and Conversions API setup',
+      'Targeting by area, interests and past visitors',
+      'Image and short-video ads',
+      'Monthly creative refresh and report',
+    ],
+  },
+  {
+    icon: Layers,
+    title: 'Full Digital Marketing Suite',
+    href: '/services/digital-marketing',
+    description:
+      'Website, every profile, Google and Facebook ads with the creative, and the monthly upkeep, run by one team. Quoted after a call.',
+    details: [
+      'SEO-ready website built or rebuilt',
+      'All business profiles created and aligned',
+      'Ads created, maintained and updated',
+      'Search Console checks that pages rank and get clicks',
     ],
   },
 ];
@@ -192,7 +234,7 @@ export default function ServicesPage() {
 
           <section className="mb-16">
             <h2 className="font-heading font-bold text-3xl text-primary dark:text-white mb-2">
-              Ongoing Growth Support
+              Local SEO, Ads & Monthly Services
             </h2>
             <p className="text-text/80 dark:text-gray-300 max-w-2xl mb-8">
               Add these when your website is already doing its job and you want more momentum.

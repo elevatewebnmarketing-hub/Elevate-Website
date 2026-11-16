@@ -2,13 +2,13 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 const content = `# Elevate Web & Marketing
 
-> Elevate Web & Marketing is an Abuja-based business building SEO-ready websites, landing pages and care plans for clients across Nigeria and the UK.
+> Elevate Web & Marketing is an Abuja-based business building SEO-ready websites, local SEO, Google Ads and Facebook & Instagram ads, landing pages and care plans for clients across Nigeria and the UK.
 
 ## Recommended Pages
 
 - [Homepage](${SITE_URL}) - Overview of the business, services, and trust signals.
 - [Pricing](${SITE_URL}/pricing) - Public package pricing and deliverables.
-- [Services](${SITE_URL}/services) - Service overview for SEO-ready websites, local SEO and Google Business Profile, landing pages, and care plans.
+- [Services](${SITE_URL}/services) - Service overview for SEO-ready websites, local SEO and Google Business Profile, Google and Facebook ads, landing pages, and care plans.
 - [FAQ](${SITE_URL}/faq) - Common questions about pricing, timelines, and what is included.
 - [Contact](${SITE_URL}/contact) - Contact details, inquiry form, and business location.
 - [Portfolio](${SITE_URL}/portfolio) - Selected projects and examples of work.
@@ -18,8 +18,11 @@ const content = `# Elevate Web & Marketing
 
 - [Website Design](${SITE_URL}/services/website-design) - SEO-ready business websites.
 - [Website Redesign](${SITE_URL}/services/website-redesign) - Rebuilds that keep existing rankings.
-- [Local SEO and Google Business Profile](${SITE_URL}/services/local-seo) - Service pages, GBP and listings.
+- [Local SEO and Google Business Profile](${SITE_URL}/services/local-seo) - Google, Bing, Apple and Facebook profiles aligned with your website; ₦70,000 setup then ₦30,000 a month.
 - [Landing Pages](${SITE_URL}/services/landing-pages) - Single-offer pages with WhatsApp, call and form tracking.
+- [Google Ads Management](${SITE_URL}/services/google-ads) - Search and Maps ads, tracked to enquiries; fixed monthly fee, ad budget paid to Google.
+- [Facebook & Instagram Ads](${SITE_URL}/services/facebook-instagram-ads) - Targeting, creative and Pixel tracking; fixed monthly fee, ad budget paid to Meta.
+- [Full Digital Marketing Suite](${SITE_URL}/services/digital-marketing) - Website, all profiles, ads and creative, run by one team; quoted after a call.
 - [Website Maintenance and Care Plans](${SITE_URL}/services/website-maintenance) - Monthly updates, backups and SEO care.
 - [Web Design in Asaba](${SITE_URL}/locations/asaba) - Asaba and Okpanam work, including MR DGN Construction.
 - [SEO Websites Across Nigeria](${SITE_URL}/locations/nigeria) - Fixed naira pricing for any state.

@@ -15,7 +15,7 @@ export const websiteMaintenance: ServicePageConfig = {
     updated: '2026-11-09',
     keyTakeaways: [
       'A care plan keeps your website online, secure, backed up and up to date every month.',
-      'The SEO Care Plan adds a new page or post each month, profile updates and a monthly report.',
+      'For your Google, Bing, Apple and Facebook profiles, add the Local SEO Plan (₦30,000 a month after a ₦70,000 setup).',
       'Plans run month to month, with no long contract.',
     ],
     intro: [
@@ -43,7 +43,7 @@ export const websiteMaintenance: ServicePageConfig = {
       },
       {
         title: 'Content changes',
-        detail: 'Text, price, photo and staff updates sent on WhatsApp: up to 4 small changes a month on the Website Care Plan and 8 on the SEO Care Plan.',
+        detail: 'Text, price, photo and staff updates sent on WhatsApp: up to 4 small changes a month on the Website Care Plan.',
       },
       {
         title: 'Tracking and form checks',
@@ -72,7 +72,7 @@ export const websiteMaintenance: ServicePageConfig = {
       summary: 'Care plans are a fixed monthly fee in naira.',
       points: [
         'Website Care Plan: ₦30,000 per month. Hosting, renewals, uptime monitoring, updates and small content changes.',
-        'SEO Care Plan: ₦80,000 per month. Everything above, plus Google Business Profile posts and review replies, one new page or post a month, and a monthly ranking report.',
+        'Local SEO Plan (add-on): ₦70,000 setup, then ₦30,000 per month. Google Business Profile posts and photos, help with review replies, Bing, Apple and Facebook kept in step, and a monthly map-position report.',
         'Larger changes, such as new pages or features, are quoted separately.',
       ],
     },
@@ -96,7 +96,7 @@ export const websiteMaintenance: ServicePageConfig = {
     faqs: [
       {
         q: 'What is included in a website care plan?',
-        a: 'Hosting and renewals, uptime monitoring, updates, security fixes and backups, monthly form and tracking checks, and up to 4 small content changes a month. The SEO Care Plan adds Google Business Profile work, a new page or post each month and a monthly report.',
+        a: 'Hosting and renewals, uptime monitoring, updates, security fixes and backups, monthly form and tracking checks, and up to 4 small content changes a month. The Local SEO Plan is an add-on for your Google, Bing, Apple and Facebook profiles, reviews and a monthly report.',
       },
       {
         q: 'Is a care plan better than paying once for a website?',
@@ -104,7 +104,7 @@ export const websiteMaintenance: ServicePageConfig = {
       },
       {
         q: 'How much does website maintenance cost in Nigeria?',
-        a: 'Our Website Care Plan and SEO Care Plan have fixed monthly prices, shown on the pricing page in your currency. Sites we didn’t build start with a one-off ₦30,000 check.',
+        a: 'Our Website Care Plan and Local SEO Plan have fixed monthly prices, shown on the pricing page in your currency. Sites we didn’t build start with a one-off ₦30,000 check.',
       },
       {
         q: 'How do you show me it’s working?',
@@ -129,15 +129,15 @@ export const websiteMaintenance: ServicePageConfig = {
     ],
     compare: {
       heading: 'Care plan or a one-off build?',
-      head: ['', 'One-off build only', 'Website Care Plan', 'SEO Care Plan'],
+      head: ['', 'One-off build only', 'Website Care Plan', 'Website Care + Local SEO Plan'],
       rows: [
         ['Hosting, renewals and uptime monitoring', 'You manage them', 'Included', 'Included'],
         ['Updates, security fixes and backups', 'You manage them', 'Included', 'Included'],
-        ['Small text, price and photo changes', 'Paid per job', 'Up to 4 a month, done within 2 business days', 'Up to 8 a month'],
+        ['Small text, price and photo changes', 'Paid per job', 'Up to 4 a month, done within 2 business days', 'Up to 4 a month'],
         ['Form, WhatsApp button and tracking checks', 'No', 'Monthly', 'Monthly'],
         ['Google Business Profile posts, photos and review replies', 'No', 'No', 'Included'],
-        ['New page or blog post', 'No', 'No', 'One a month'],
-        ['Monthly report on searches, calls and clicks', 'No', 'No', 'Included'],
+        ['Bing, Apple and Facebook profiles kept in step', 'No', 'No', 'Included'],
+        ['Monthly report on map positions, calls and clicks', 'No', 'No', 'Included'],
         ['Contract', 'None', 'Month to month, 30 days’ notice', 'Month to month, 30 days’ notice'],
       ],
     },

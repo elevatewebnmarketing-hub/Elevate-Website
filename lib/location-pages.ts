@@ -60,12 +60,12 @@ export const locationPages: Record<string, ServicePageConfig> = {
         },
         {
           title: 'Keep improving (optional)',
-          detail: 'The SEO Care Plan adds a page or post each month, keeps your profile active and reports your rankings.',
+          detail: 'The Local SEO Plan keeps your Google, Bing, Apple and Facebook profiles active and in step, helps you answer reviews and reports your map positions.',
         },
       ],
       pricing: {
         summary: 'The same fixed naira prices as everywhere in Nigeria.',
-        points: ['Starter Website: ₦250,000', 'Business Website: ₦450,000', 'SEO Care Plan: ₦80,000 per month'],
+        points: ['Starter Website: ₦250,000', 'Business Website: ₦450,000', 'Local SEO: ₦70,000 setup, then ₦30,000 per month'],
       },
       proof: [
         {
@@ -189,7 +189,8 @@ export const locationPages: Record<string, ServicePageConfig> = {
         points: [
           'Starter Website: ₦250,000',
           'Business Website: ₦450,000',
-          'Website Care Plan: ₦30,000 per month; SEO Care Plan: ₦80,000 per month',
+          'Website Care Plan: ₦30,000 per month; Local SEO: ₦70,000 setup, then ₦30,000 per month',
+          'Google Ads or Facebook & Instagram Ads management: ₦100,000 per month per platform, plus your ad spend',
         ],
       },
       proof: [

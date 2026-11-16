@@ -15,9 +15,8 @@ const nextConfig = {
       { source: '/services/website-development', destination: '/services/website-design', permanent: true },
       // Replaced by the local SEO and Google Business Profile page.
       { source: '/services/seo', destination: '/services/local-seo', permanent: true },
-      // Ads services retired on 17 Oct 2026: Elevate does websites, SEO, landing pages and care plans only.
-      { source: '/services/google-ads', destination: '/services/local-seo', permanent: true },
-      { source: '/meta-ads', destination: '/services/landing-pages', permanent: true },
+      // Ads services retired 17 Oct 2026 and brought back 16 Nov 2026: /services/google-ads is a live page again.
+      { source: '/meta-ads', destination: '/services/facebook-instagram-ads', permanent: true },
       // Ads posts retired, and the duplicate of the new guide consolidated into it (18 Oct 2026).
       { source: '/blog/how-to-get-more-customers-from-your-website-nigeria', destination: '/how-to-get-more-customers', permanent: true },
       { source: '/blog/meta-ads-vs-google-ads-2026', destination: '/how-to-get-more-customers', permanent: true },
