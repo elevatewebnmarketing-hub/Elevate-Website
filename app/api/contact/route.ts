@@ -3,6 +3,7 @@ import { Resend } from 'resend';
 import { headers } from 'next/headers';
 import { randomUUID } from 'crypto';
 import { sendTikTokServerEvent } from '@/lib/tiktok-events-api';
+import { createLead } from '@/backend/workflow';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev';
@@ -93,10 +94,6 @@ function userConfirmationEmailHtml(name: string): string {
 }
 
 export async function POST(request: Request) {
-  if (!resend) {
-    return NextResponse.json({ error: 'Email service is not configured.' }, { status: 500 });
-  }
-
   // Rate limit
   const headerStore = await headers();
   const ip = headerStore.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
@@ -146,27 +143,72 @@ export async function POST(request: Request) {
   const tiktokTtclid =
     typeof body.tiktokTtclid === 'string' ? body.tiktokTtclid.slice(0, 500) : undefined;
 
+  // 1. Save the enquiry in the admin lead inbox, so it is never lost in an email folder.
+  let savedLead = false;
   try {
-    const [toBusiness, toUser] = await Promise.all([
-      resend.emails.send({
-        from: FROM_EMAIL,
-        to: BUSINESS_EMAIL,
-        subject: source === 'quote' ? `Quote request from ${name}` : `New inquiry from ${name}`,
-        html: businessEmailHtml({ name, email, phone, website, service, timeline, budget, message, source, projectType, industry }),
-      }),
-      resend.emails.send({
-        from: FROM_EMAIL,
-        to: email,
-        subject: 'We received your inquiry – Elevate Web & Marketing',
-        html: userConfirmationEmailHtml(name),
-      }),
-    ]);
+    const referer = headerStore.get('referer') ?? '';
+    let utm = { source: '', medium: '', campaign: '' };
+    try {
+      const u = new URL(referer);
+      utm = {
+        source: u.searchParams.get('utm_source')?.slice(0, 80) ?? '',
+        medium: u.searchParams.get('utm_medium')?.slice(0, 80) ?? '',
+        campaign: u.searchParams.get('utm_campaign')?.slice(0, 120) ?? '',
+      };
+    } catch {}
+    await createLead({
+      form: source === 'quote' ? 'quote' : 'contact',
+      name,
+      email,
+      phone: phone ?? '',
+      business: industry ?? '',
+      website: website ?? '',
+      service: service ?? '',
+      projectType: projectType ?? '',
+      industry: industry ?? '',
+      timeline: timeline ?? '',
+      budget: budget ?? '',
+      message,
+      page: referer.slice(0, 500),
+      utmSource: utm.source,
+      utmMedium: utm.medium,
+      utmCampaign: utm.campaign,
+    });
+    savedLead = true;
+  } catch (error) {
+    console.error('Lead save error (enquiry still emailed):', error);
+  }
 
-    if (toBusiness.error || toUser.error) {
-      console.error('Resend contact error:', toBusiness.error ?? toUser.error);
-      return NextResponse.json({ error: 'Failed to send email. Please try again later.' }, { status: 500 });
+  // 2. Email the owner and confirm to the visitor.
+  let emailed = false;
+  if (resend) {
+    try {
+      const [toBusiness, toUser] = await Promise.all([
+        resend.emails.send({
+          from: FROM_EMAIL,
+          to: BUSINESS_EMAIL,
+          subject: source === 'quote' ? `Quote request from ${name}` : `New inquiry from ${name}`,
+          html: businessEmailHtml({ name, email, phone, website, service, timeline, budget, message, source, projectType, industry }),
+        }),
+        resend.emails.send({
+          from: FROM_EMAIL,
+          to: email,
+          subject: 'We received your inquiry – Elevate Web & Marketing',
+          html: userConfirmationEmailHtml(name),
+        }),
+      ]);
+      emailed = !toBusiness.error;
+      if (toBusiness.error || toUser.error) console.error('Resend contact error:', toBusiness.error ?? toUser.error);
+    } catch (error) {
+      console.error('Resend contact error:', error);
     }
+  }
 
+  if (!savedLead && !emailed) {
+    return NextResponse.json({ error: 'Failed to send your message. Please try again, or WhatsApp us.' }, { status: 500 });
+  }
+
+  try {
     try {
       await sendTikTokServerEvent({
         event: 'Lead',

@@ -11,6 +11,16 @@ import { SERVICE_OPTIONS, getServiceLabel } from '@/lib/services';
 // Real Elevate projects only. Add a result here only when it can be checked (a live page, a dated screenshot, client permission).
 const caseStudies = [
   {
+    client: 'Elevate Web & Marketing (our own website)',
+    service: 'seo-optimization' as const,
+    problem: 'A brand-new domain in March 2026: no search history, no links and no reviews.',
+    solution:
+      'Server-rendered pages for every service and place we serve, a Google Business Profile, structured data, IndexNow and an llms.txt file for AI search.',
+    result:
+      'Google impressions grew from 164 to 843 between the last two 28-day periods (Search Console, to 15 November 2026). Clicks are still small: 34 since March. Full numbers, including what isn’t working yet, on the case study page.',
+    link: '/case-studies/elevate-web-and-marketing',
+  },
+  {
     client: 'MR DGN Group, Asaba',
     service: 'website-redesign' as const,
     problem:

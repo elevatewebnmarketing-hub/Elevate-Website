@@ -125,6 +125,12 @@ export default function AdminIntakesPage() {
                       >
                         <Receipt size={15} aria-hidden /> Create invoice
                       </Link>
+                      <Link
+                        href={`/admin/projects/new?intake=${it.id}`}
+                        className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 rounded-lg hover:bg-gray-50"
+                      >
+                        Start project
+                      </Link>
                       <button type="button" onClick={() => copy(asText(it), it.id)} className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 rounded-lg hover:bg-gray-50">
                         <Copy size={15} aria-hidden /> {copied === it.id ? 'Copied' : 'Copy all answers'}
                       </button>

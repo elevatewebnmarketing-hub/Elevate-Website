@@ -9,7 +9,7 @@ import type { InvoicePayment, PaymentMethod } from '@/lib/payments';
 
 export class StoreNotReadyError extends Error {}
 
-function db() {
+export function db() {
   const supabase = getSupabase();
   if (!supabase) {
     throw new StoreNotReadyError(
@@ -19,7 +19,7 @@ function db() {
   return supabase;
 }
 
-function check(error: { message: string; code?: string } | null, what: string) {
+export function check(error: { message: string; code?: string } | null, what: string) {
   if (!error) return;
   // 42703 / PGRST204: a column is missing -> the payments upgrade has not been run yet.
   if (/payer_notes/.test(error.message)) {
@@ -27,6 +27,9 @@ function check(error: { message: string; code?: string } | null, what: string) {
   }
   if (error.code === '42703' || error.code === 'PGRST204' || /column .* does not exist|Could not find the '.*' column/i.test(error.message)) {
     throw new StoreNotReadyError('Database update needed: run supabase/payments-2026-11.sql in the Supabase SQL Editor.');
+  }
+  if (/\b(leads|projects|project_items|project_feedback|invoice_schedules|invoice_emails)\b/.test(error.message) && /does not exist|schema cache/i.test(error.message)) {
+    throw new StoreNotReadyError('Database update needed: run supabase/client-workflow-2026-11.sql in the Supabase SQL Editor.');
   }
   if (/invoice_acceptances/.test(error.message) && /does not exist|schema cache/i.test(error.message)) {
     throw new StoreNotReadyError('Database update needed: run supabase/acceptance-2026-11.sql in the Supabase SQL Editor.');
@@ -148,7 +151,7 @@ async function nextNumber(issueDate: string): Promise<string> {
   return `${prefix}${String(max + 1).padStart(3, '0')}`;
 }
 
-const newToken = () => crypto.randomBytes(24).toString('base64url');
+export const newToken = () => crypto.randomBytes(24).toString('base64url');
 
 export async function createInvoice(inv: Omit<Invoice, 'id' | 'number' | 'publicToken'>): Promise<Invoice> {
   for (let attempt = 0; attempt < 3; attempt++) {

@@ -103,6 +103,22 @@ export default function AdminInvoiceEditPage() {
         if (last) setInv((p) => ({ ...p, paymentInstructions: p.paymentInstructions || last.paymentInstructions }));
       })
       .catch(() => {});
+    const leadId = search.get('lead');
+    if (leadId) {
+      fetch(`/api/leads/${leadId}`, { credentials: 'include', cache: 'no-store' })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((l) => {
+          if (!l) return;
+          setInv((p) => ({
+            ...p,
+            clientName: p.clientName || l.name,
+            clientBusiness: p.clientBusiness || l.industry,
+            clientEmail: p.clientEmail || l.email,
+            clientPhone: p.clientPhone || l.phone,
+          }));
+        })
+        .catch(() => {});
+    }
     const intakeId = search.get('intake');
     if (intakeId) {
       fetch(`/api/intake/${intakeId}`, { credentials: 'include', cache: 'no-store' })
@@ -174,6 +190,16 @@ export default function AdminInvoiceEditPage() {
       if (!res.ok) throw new Error(data.error || 'Could not save');
       setInv(data);
       setMessage({ kind: 'ok', text: `Saved ${data.number}` });
+      const fromLead = isNew ? search.get('lead') : null;
+      if (fromLead) {
+        // The lead now has a quote: move it along the pipeline and link the invoice.
+        await fetch(`/api/leads/${fromLead}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ status: 'quoted', invoiceId: data.id }),
+        }).catch(() => {});
+      }
       if (isNew) router.replace(`/admin/invoices/${data.id}`);
       return data;
     } catch (e) {
