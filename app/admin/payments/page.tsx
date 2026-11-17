@@ -7,6 +7,7 @@ import { CardSkeleton } from '@/admin/Skeleton';
 import { INVOICE_CURRENCIES } from '@/lib/invoices';
 import { PAYMENT_KINDS, PAYMENT_PROVIDERS, emptyPaymentMethod, type PaymentMethod } from '@/lib/payments';
 
+const OTHER = '__other__';
 const NETWORKS = [
   'USDT on TRON (TRC20)',
   'USDT on BNB Smart Chain (BEP20)',
@@ -27,6 +28,7 @@ export default function AdminPaymentMethodsPage() {
   const [error, setError] = useState('');
   const [form, setForm] = useState<PaymentMethod | null>(null);
   const [saving, setSaving] = useState(false);
+  const [otherNetwork, setOtherNetwork] = useState(false);
 
   function load() {
     fetch('/api/payment-methods', { credentials: 'include', cache: 'no-store' })
@@ -85,7 +87,10 @@ export default function AdminPaymentMethodsPage() {
         {!form && (
           <button
             type="button"
-            onClick={() => setForm(emptyPaymentMethod())}
+            onClick={() => {
+              setOtherNetwork(false);
+              setForm(emptyPaymentMethod());
+            }}
             className="flex items-center gap-2 px-4 py-2 bg-accent text-white font-heading font-semibold rounded-xl hover:bg-accent/90 transition"
           >
             <Plus size={18} aria-hidden /> Add method
@@ -165,12 +170,35 @@ export default function AdminPaymentMethodsPage() {
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <label className={label} htmlFor="pm-network">Coin and network</label>
-                <input id="pm-network" list="networks" className={input} value={form.network} onChange={(e) => set('network', e.target.value)} required />
-                <datalist id="networks">
+                <select
+                  id="pm-network"
+                  className={input}
+                  value={NETWORKS.includes(form.network) ? form.network : form.network || otherNetwork ? OTHER : ''}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setOtherNetwork(v === OTHER);
+                    set('network', v === OTHER ? '' : v);
+                  }}
+                  required
+                >
+                  <option value="" disabled>
+                    Choose…
+                  </option>
                   {NETWORKS.map((n) => (
-                    <option key={n} value={n} />
+                    <option key={n} value={n}>{n}</option>
                   ))}
-                </datalist>
+                  <option value={OTHER}>Other (type it)</option>
+                </select>
+                {(otherNetwork || (form.network && !NETWORKS.includes(form.network))) && (
+                  <input
+                    aria-label="Other coin and network"
+                    className={`${input} mt-2`}
+                    value={form.network}
+                    onChange={(e) => set('network', e.target.value)}
+                    placeholder="e.g. USDC on Polygon"
+                    required
+                  />
+                )}
               </div>
               <div>
                 <label className={label} htmlFor="pm-address">Wallet address (your own wallet)</label>
@@ -257,7 +285,11 @@ export default function AdminPaymentMethodsPage() {
                     </div>
                   </div>
                   <div className="flex gap-1">
-                    <button type="button" onClick={() => setForm(m)} className="p-2 text-text/60 hover:text-accent" aria-label={`Edit ${m.label}`}>
+                    <button type="button" onClick={() => {
+                        setOtherNetwork(false);
+                        setForm(m);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }} className="p-2 text-text/60 hover:text-accent" aria-label={`Edit ${m.label}`}>
                       <Pencil size={16} />
                     </button>
                     <button type="button" onClick={() => remove(m)} className="p-2 text-text/60 hover:text-red-600" aria-label={`Delete ${m.label}`}>

@@ -98,22 +98,27 @@ export default function InvoiceDocument({ inv, methods }: { inv: Invoice; method
         </dl>
       </section>
 
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse min-w-[480px]">
+      <div>
+        <table className="w-full border-collapse">
           <thead>
             <tr className="bg-[#0B1F3A] text-white text-left">
               <th className="py-2 px-3 font-semibold">Description</th>
-              <th className="py-2 px-3 font-semibold text-right w-14">Qty</th>
-              <th className="py-2 px-3 font-semibold text-right w-28">Unit price</th>
+              <th className="hidden sm:table-cell print:table-cell py-2 px-3 font-semibold text-right w-14">Qty</th>
+              <th className="hidden sm:table-cell print:table-cell py-2 px-3 font-semibold text-right w-28">Unit price</th>
               <th className="py-2 px-3 font-semibold text-right w-28">Amount</th>
             </tr>
           </thead>
           <tbody>
             {inv.items.map((it, i) => (
               <tr key={i} className="border-b border-gray-200 align-top" style={{ breakInside: 'avoid' }}>
-                <td className="py-2.5 px-3">{it.description}</td>
-                <td className="py-2.5 px-3 text-right">{it.quantity}</td>
-                <td className="py-2.5 px-3 text-right whitespace-nowrap">{formatMoney(it.unitPrice, inv.currency)}</td>
+                <td className="py-2.5 px-3">
+                  {it.description}
+                  <span className="block sm:hidden print:hidden text-[12px] text-gray-500">
+                    {it.quantity} × {formatMoney(it.unitPrice, inv.currency)}
+                  </span>
+                </td>
+                <td className="hidden sm:table-cell print:table-cell py-2.5 px-3 text-right">{it.quantity}</td>
+                <td className="hidden sm:table-cell print:table-cell py-2.5 px-3 text-right whitespace-nowrap">{formatMoney(it.unitPrice, inv.currency)}</td>
                 <td className="py-2.5 px-3 text-right whitespace-nowrap">{formatMoney(it.quantity * it.unitPrice, inv.currency)}</td>
               </tr>
             ))}
