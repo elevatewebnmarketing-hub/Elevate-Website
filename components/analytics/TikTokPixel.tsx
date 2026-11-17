@@ -1,6 +1,7 @@
 'use client';
 
 import Script from 'next/script';
+import { NO_TRACKING_TEST } from '@/lib/no-tracking';
 
 /**
  * TikTok Pixel for browser-side page view and conversion tracking.
@@ -20,6 +21,7 @@ export default function TikTokPixel() {
       strategy="afterInteractive"
       dangerouslySetInnerHTML={{
         __html: `
+if(!${NO_TRACKING_TEST})
 !function (w, d, t) {
   w.TiktokAnalyticsObject = t;
   var ttq = w[t] = w[t] || [];

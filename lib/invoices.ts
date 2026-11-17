@@ -1,4 +1,7 @@
 /** Shared invoice types and maths (used by the admin pages and the API). */
+import { httpsUrl } from '@/lib/payments';
+
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export type InvoiceStatus = 'draft' | 'sent' | 'part_paid' | 'paid' | 'void';
 
@@ -38,6 +41,12 @@ export interface Invoice {
   notes: string;
   paymentInstructions: string;
   intakeId: string | null;
+  /** Saved payment methods shown on this invoice (ids from payment_methods). */
+  paymentMethodIds: string[];
+  /** Per-invoice payment links that override a method's default link: { methodId: url }. */
+  methodLinks: Record<string, string>;
+  /** Secret for the client's online invoice page (/i/<token>). Set by the server. */
+  publicToken?: string;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -68,7 +77,8 @@ export function invoiceTotals(inv: Pick<Invoice, 'items' | 'discount' | 'taxRate
 
 export function formatMoney(amount: number, currency: string): string {
   try {
-    return new Intl.NumberFormat(currency === 'NGN' ? 'en-NG' : 'en-GB', {
+    const locale = ({ NGN: 'en-NG', USD: 'en-US', GBP: 'en-GB', CAD: 'en-CA', AUD: 'en-AU', EUR: 'en-IE' } as Record<string, string>)[currency] ?? 'en-GB';
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
       currency,
       minimumFractionDigits: Number.isInteger(amount) ? 0 : 2,
@@ -102,11 +112,15 @@ export function emptyInvoice(): Invoice {
     notes: '',
     paymentInstructions: '',
     intakeId: null,
+    paymentMethodIds: [],
+    methodLinks: {},
   };
 }
 
 /** Clean and validate input from the admin form. Returns an error message or the cleaned invoice. */
-export function sanitizeInvoice(body: Record<string, unknown>): { error: string } | { value: Omit<Invoice, 'id' | 'number'> } {
+export function sanitizeInvoice(
+  body: Record<string, unknown>
+): { error: string } | { value: Omit<Invoice, 'id' | 'number' | 'publicToken'> } {
   const str = (v: unknown, max = 2000) => String(v ?? '').trim().slice(0, max);
   const status = INVOICE_STATUSES.some((s) => s.value === body.status) ? (body.status as InvoiceStatus) : 'draft';
   const currency = (INVOICE_CURRENCIES as readonly string[]).includes(String(body.currency))
@@ -143,6 +157,15 @@ export function sanitizeInvoice(body: Record<string, unknown>): { error: string 
       notes: str(body.notes),
       paymentInstructions: str(body.paymentInstructions),
       intakeId: typeof body.intakeId === 'string' && /^[0-9a-f-]{36}$/i.test(body.intakeId) ? body.intakeId : null,
+      paymentMethodIds: Array.isArray(body.paymentMethodIds)
+        ? body.paymentMethodIds.filter((x): x is string => typeof x === 'string' && UUID.test(x)).slice(0, 20)
+        : [],
+      methodLinks: Object.fromEntries(
+        Object.entries((body.methodLinks ?? {}) as Record<string, unknown>)
+          .filter(([k]) => UUID.test(k))
+          .map(([k, v]) => [k, httpsUrl(v)])
+          .filter(([, v]) => v)
+      ),
     },
   };
 }

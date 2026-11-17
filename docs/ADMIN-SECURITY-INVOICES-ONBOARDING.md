@@ -11,6 +11,17 @@
 
 Why our own form and not Google Forms/Tally: answers sit next to the invoice in one admin, no third-party account, works on slow phones, and the client never sees another brand. Google Forms is still fine as a backup (`SEO_Website_AI_Skills/client-intake/form-links.md`). If a no-code builder is ever needed, Tally (free) or self-hosted HeyForm/OpnForm are the alternatives.
 
+## Payments (added 17 November 2026)
+
+| Feature | Where |
+| --- | --- |
+| Saved payment methods: bank accounts, card payment links (Raenest, Payoneer, Paystack, Grey), crypto wallet (one stablecoin on one named network) | `/admin/payments` |
+| Each invoice ticks which methods to show (filtered by currency) and can carry its own card link | Invoice editor, "Ways to pay on this invoice" |
+| **Client link**: private page `/i/<secret>` with Pay-by-card buttons, transfer details with copy buttons, and Download PDF. Hidden while the invoice is a Draft; never indexed; no analytics or ad pixels load on it, and the link is not passed on to payment sites | Invoice editor, "Client link" (also added to the WhatsApp message) |
+| Payment log: record each payment received (amount, method, date, reference/tx ID); amount paid and status update automatically | Invoice editor, "Payments received" |
+
+Owner step: run `supabase/payments-2026-11.sql` once in the Supabase SQL Editor (after `admin-upgrade-2026-11.sql`). Research and the reasons behind this setup: `Claude-Motion-Graphics/business/operations/getting-paid.md`.
+
 ## Login security
 
 - **Brute-force lockout that holds across all Vercel servers:** every attempt is logged in `admin_login_attempts`. 5 wrong tries from one IP in 15 minutes locks that IP; 30 wrong tries from all IPs together locks admin login for everyone for 15 minutes (stops guessing from many addresses; if it ever locks you out, wait 15 minutes). Each wrong try also waits ~1 second.

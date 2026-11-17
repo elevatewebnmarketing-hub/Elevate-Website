@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import { Plus, Trash2, Printer, MessageCircle, Save, Copy } from 'lucide-react';
+import { Plus, Trash2, Printer, MessageCircle, Save, Copy, Link2 } from 'lucide-react';
 import { Breadcrumbs } from '@/admin/Breadcrumbs';
 import { CardSkeleton } from '@/admin/Skeleton';
 import {
@@ -16,6 +16,7 @@ import {
   type InvoiceItem,
 } from '@/lib/invoices';
 import type { PricingPackage, PackageKey } from '@/lib/pricing-config';
+import { methodFitsCurrency, type InvoicePayment, type PaymentMethod } from '@/lib/payments';
 
 const PACKAGE_NAMES: Record<PackageKey, string> = {
   starter: 'Starter Website',
@@ -47,6 +48,31 @@ export default function AdminInvoiceEditPage() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ kind: 'ok' | 'err'; text: string } | null>(null);
   const [packages, setPackages] = useState<PricingPackage[]>([]);
+  const [methods, setMethods] = useState<PaymentMethod[]>([]);
+  const [payments, setPayments] = useState<InvoicePayment[]>([]);
+  const [clientLink, setClientLink] = useState('');
+  const [pay, setPay] = useState({ amount: '', method: '', reference: '', paidOn: new Date().toISOString().slice(0, 10) });
+
+  useEffect(() => {
+    fetch('/api/payment-methods', { credentials: 'include', cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : []))
+      .then((list: PaymentMethod[]) => setMethods(list.filter((m) => m.active)))
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    if (isNew) return;
+    fetch(`/api/invoices/${id}/payments`, { credentials: 'include', cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : []))
+      .then(setPayments)
+      .catch(() => {});
+  }, [id, isNew]);
+
+  // New invoices: tick every saved method that fits the currency.
+  useEffect(() => {
+    if (!isNew || !methods.length) return;
+    setInv((p) => ({ ...p, paymentMethodIds: methods.filter((m) => methodFitsCurrency(m, p.currency)).map((m) => m.id) }));
+  }, [isNew, methods, inv.currency]);
 
   // Load an existing invoice, or prefill a new one (last payment instructions; client from an onboarding form).
   useEffect(() => {
@@ -165,9 +191,10 @@ export default function AdminInvoiceEditPage() {
       `Total: ${formatMoney(totals.total, inv.currency)}`,
       totals.paid ? `Paid so far: ${formatMoney(totals.paid, inv.currency)}` : '',
       `Amount due: ${formatMoney(totals.balance, inv.currency)}${inv.dueDate ? ` by ${inv.dueDate}` : ''}`,
-      inv.paymentInstructions ? `\nPayment details:\n${inv.paymentInstructions}` : '',
+      clientLink ? `\nView, pay and download the invoice here:\n${clientLink}` : '',
+      !clientLink && inv.paymentInstructions ? `\nPayment details:\n${inv.paymentInstructions}` : '',
       '',
-      'The PDF is attached. Thank you!',
+      clientLink ? 'Thank you!' : 'The PDF is attached. Thank you!',
     ];
     return lines.filter((l, i, a) => !(l === '' && a[i - 1] === '')).join('\n');
   }
@@ -176,6 +203,57 @@ export default function AdminInvoiceEditPage() {
     await navigator.clipboard.writeText(whatsappText());
     setMessage({ kind: 'ok', text: 'Message copied. Paste it in WhatsApp and attach the PDF.' });
   }
+
+  async function getClientLink() {
+    const res = await fetch(`/api/invoices/${id}/link`, { method: 'POST', credentials: 'include' });
+    const data = await res.json();
+    if (!res.ok) {
+      setMessage({ kind: 'err', text: data.error || 'Could not create the link' });
+      return;
+    }
+    setClientLink(data.url);
+    await navigator.clipboard.writeText(data.url).catch(() => {});
+    setMessage({
+      kind: 'ok',
+      text: inv.status === 'draft' ? 'Link copied. Set the status to Sent before the client opens it (drafts are hidden).' : 'Client link copied.',
+    });
+  }
+
+  async function recordPayment(e: React.FormEvent) {
+    e.preventDefault();
+    const res = await fetch(`/api/invoices/${id}/payments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify(pay),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setMessage({ kind: 'err', text: data.error || 'Could not record the payment' });
+      return;
+    }
+    setInv(data);
+    setPay((p) => ({ ...p, amount: '', reference: '' }));
+    const list = await fetch(`/api/invoices/${id}/payments`, { credentials: 'include', cache: 'no-store' }).then((r) => r.json());
+    setPayments(list);
+    setMessage({ kind: 'ok', text: 'Payment recorded. Status and balance updated.' });
+  }
+
+  async function removePayment(pid: string) {
+    if (!confirm('Delete this payment record?')) return;
+    const res = await fetch(`/api/invoices/${id}/payments/${pid}`, { method: 'DELETE', credentials: 'include' });
+    if (res.ok) {
+      setInv(await res.json());
+      setPayments((l) => l.filter((x) => x.id !== pid));
+    }
+  }
+
+  const fittingMethods = methods.filter((m) => methodFitsCurrency(m, inv.currency));
+  const toggleMethod = (mid: string) =>
+    setInv((p) => ({
+      ...p,
+      paymentMethodIds: p.paymentMethodIds.includes(mid) ? p.paymentMethodIds.filter((x) => x !== mid) : [...p.paymentMethodIds, mid],
+    }));
 
   const waLink = inv.clientPhone
     ? `https://wa.me/${inv.clientPhone.replace(/[^\d]/g, '')}?text=${encodeURIComponent(whatsappText())}`
@@ -205,6 +283,13 @@ export default function AdminInvoiceEditPage() {
               >
                 <Printer size={16} aria-hidden /> PDF / print
               </Link>
+              <button
+                type="button"
+                onClick={getClientLink}
+                className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition"
+              >
+                <Link2 size={16} aria-hidden /> Client link
+              </button>
               <button
                 type="button"
                 onClick={copyWhatsapp}
@@ -335,11 +420,108 @@ export default function AdminInvoiceEditPage() {
             </button>
           </section>
 
+          <section className="p-6 bg-white rounded-card shadow-soft border border-gray-100">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h2 className="font-heading font-semibold text-primary">Ways to pay on this invoice</h2>
+              <Link href="/admin/payments" className="text-sm text-accent hover:underline">Manage payment methods</Link>
+            </div>
+            {fittingMethods.length === 0 ? (
+              <p className="text-sm text-text/70">
+                No saved methods for {inv.currency} yet. Add your bank, Raenest, Payoneer, Paystack and crypto details once under{' '}
+                <Link href="/admin/payments" className="text-accent hover:underline">Payments</Link>.
+              </p>
+            ) : (
+              <ul className="space-y-3">
+                {fittingMethods.map((m) => {
+                  const on = inv.paymentMethodIds.includes(m.id);
+                  return (
+                    <li key={m.id} className="rounded-xl border border-gray-200 p-3">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input type="checkbox" checked={on} onChange={() => toggleMethod(m.id)} className="mt-1 h-4 w-4 accent-[#4F9CF9]" />
+                        <span>
+                          <span className="font-medium text-primary">{m.label}</span>
+                          <span className="block text-xs text-text/60">
+                            {m.kind === 'link' ? 'Card payment link' : m.kind === 'crypto' ? `Crypto · ${m.network}` : 'Bank transfer'} · {m.provider}
+                          </span>
+                        </span>
+                      </label>
+                      {on && m.kind === 'link' && (
+                        <div className="mt-2 pl-7">
+                          <label className="block text-xs text-text/70 mb-1" htmlFor={`ml-${m.id}`}>
+                            Payment link for this invoice{m.link ? ' (leave empty to use the saved link)' : ''}
+                          </label>
+                          <input
+                            id={`ml-${m.id}`}
+                            type="url"
+                            className={input}
+                            placeholder="https://…"
+                            value={inv.methodLinks[m.id] ?? ''}
+                            onChange={(e) => setInv((p) => ({ ...p, methodLinks: { ...p.methodLinks, [m.id]: e.target.value } }))}
+                          />
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </section>
+
+          {!isNew && (
+            <section className="p-6 bg-white rounded-card shadow-soft border border-gray-100">
+              <h2 className="font-heading font-semibold text-primary mb-3">Payments received</h2>
+              {payments.length > 0 && (
+                <ul className="mb-4 divide-y divide-gray-100 text-sm">
+                  {payments.map((p) => (
+                    <li key={p.id} className="py-2 flex flex-wrap items-center justify-between gap-2">
+                      <span>
+                        <strong>{formatMoney(p.amount, inv.currency)}</strong> on {p.paidOn}
+                        {p.method && ` · ${p.method}`}
+                        {p.reference && <span className="text-text/60"> · ref {p.reference}</span>}
+                      </span>
+                      <button type="button" onClick={() => removePayment(p.id)} className="p-1.5 text-text/50 hover:text-red-600" aria-label="Delete payment record">
+                        <Trash2 size={15} />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <form onSubmit={recordPayment} className="grid sm:grid-cols-4 gap-2 items-end">
+                <div>
+                  <label className="block text-xs text-text/70 mb-1" htmlFor="pay-amount">Amount</label>
+                  <input id="pay-amount" type="number" min={0} step="any" required className={input} value={pay.amount} onChange={(e) => setPay({ ...pay, amount: e.target.value })} />
+                </div>
+                <div>
+                  <label className="block text-xs text-text/70 mb-1" htmlFor="pay-method">Received via</label>
+                  <select id="pay-method" className={input} value={pay.method} onChange={(e) => setPay({ ...pay, method: e.target.value })}>
+                    <option value="">Choose…</option>
+                    {methods.map((m) => (
+                      <option key={m.id} value={m.label}>{m.label}</option>
+                    ))}
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs text-text/70 mb-1" htmlFor="pay-date">Date</label>
+                  <input id="pay-date" type="date" className={input} value={pay.paidOn} onChange={(e) => setPay({ ...pay, paidOn: e.target.value })} />
+                </div>
+                <div>
+                  <label className="block text-xs text-text/70 mb-1" htmlFor="pay-ref">Reference / tx ID</label>
+                  <input id="pay-ref" className={input} value={pay.reference} onChange={(e) => setPay({ ...pay, reference: e.target.value })} />
+                </div>
+                <button type="submit" className="sm:col-span-4 justify-self-start px-4 py-2 bg-primary text-white rounded-xl hover:bg-primary/90 text-sm font-semibold">
+                  Record payment
+                </button>
+              </form>
+              <p className="text-xs text-text/60 mt-2">Recording a payment updates the amount paid and the status (part paid / paid).</p>
+            </section>
+          )}
+
           <section className="p-6 bg-white rounded-card shadow-soft border border-gray-100 space-y-4">
             <div>
-              <label className={label} htmlFor="payment">Payment details (bank name, account name and number, or payment link)</label>
+              <label className={label} htmlFor="payment">Extra payment note (optional)</label>
               <textarea id="payment" rows={4} className={input} value={inv.paymentInstructions} onChange={(e) => set('paymentInstructions', e.target.value)} />
-              <p className="text-xs text-text/60 mt-1">New invoices start with the details from your last invoice.</p>
+              <p className="text-xs text-text/60 mt-1">Shown under the payment options. New invoices start with the note from your last invoice.</p>
             </div>
             <div>
               <label className={label} htmlFor="notes">Notes (shown on the invoice)</label>
@@ -385,6 +567,7 @@ export default function AdminInvoiceEditPage() {
               </div>
               <div className="col-span-2">
                 <label className={label} htmlFor="paid">Amount paid so far</label>
+                <p className="text-xs text-text/60 -mt-1 mb-1.5">Updated automatically when you record payments.</p>
                 <input id="paid" type="number" min={0} step="any" className={input} value={inv.amountPaid} onChange={(e) => set('amountPaid', Number(e.target.value))} />
               </div>
             </div>

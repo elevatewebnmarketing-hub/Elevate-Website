@@ -18,8 +18,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 export default function WhatsAppFloatButton() {
   const pathname = usePathname();
-  // Not on the admin panel (it would sit on invoices and print onto PDFs).
-  if (pathname?.startsWith('/admin')) return null;
+  // Not on the admin panel or client invoices (it would sit on invoices and print onto PDFs).
+  if (pathname?.startsWith('/admin') || pathname?.startsWith('/i/')) return null;
   const url = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`;
 
   return (

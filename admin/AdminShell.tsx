@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from '@/components/ui/Logo';
-import { LayoutDashboard, FileText, MessageSquare, Briefcase, DollarSign, Menu, X, Receipt, ClipboardList, ShieldAlert } from 'lucide-react';
+import { LayoutDashboard, FileText, MessageSquare, Briefcase, DollarSign, Menu, X, Receipt, ClipboardList, ShieldAlert, Wallet } from 'lucide-react';
 
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -34,6 +34,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     { href: '/admin/pricing', label: 'Pricing', icon: DollarSign, match: (p: string) => p.startsWith('/admin/pricing') },
     { href: '/admin/intakes', label: 'Onboarding', icon: ClipboardList, match: (p: string) => p.startsWith('/admin/intakes') },
     { href: '/admin/invoices', label: 'Invoices', icon: Receipt, match: (p: string) => p.startsWith('/admin/invoices') },
+    { href: '/admin/payments', label: 'Payments', icon: Wallet },
   ];
 
   return (
@@ -46,20 +47,20 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               <span className="hidden sm:inline text-xs font-medium text-text/60 uppercase tracking-wider">Admin</span>
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-1" aria-label="Admin navigation">
+            <nav className="hidden xl:flex items-center gap-0.5" aria-label="Admin navigation">
               {navLinks.map(({ href, label, icon: Icon, match }) => {
                 const isActive = match ? match(pathname) : pathname === href;
                 return (
                   <Link
                     key={href}
                     href={href}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition ${
+                    className={`flex items-center gap-2 px-2.5 2xl:px-3.5 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition ${
                       isActive
                         ? 'bg-accent/10 text-accent'
                         : 'text-text/70 hover:text-accent hover:bg-gray-50'
                     }`}
                   >
-                    <Icon size={18} />
+                    <Icon size={18} className="hidden 2xl:block" aria-hidden />
                     {label}
                   </Link>
                 );
@@ -70,7 +71,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               <button
                 type="button"
                 onClick={() => setMobileOpen((o) => !o)}
-                className="lg:hidden p-2 rounded-lg text-text/70 hover:bg-gray-50"
+                className="xl:hidden p-2 rounded-lg text-text/70 hover:bg-gray-50"
                 aria-label="Toggle menu"
               >
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -95,7 +96,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           </div>
 
           {mobileOpen && (
-            <nav className="lg:hidden py-3 border-t border-gray-100" aria-label="Admin mobile navigation">
+            <nav className="xl:hidden py-3 border-t border-gray-100" aria-label="Admin mobile navigation">
               <div className="flex flex-col gap-1">
                 {navLinks.map(({ href, label, icon: Icon, match }) => {
                   const isActive = match ? match(pathname) : pathname === href;

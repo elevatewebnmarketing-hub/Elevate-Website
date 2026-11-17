@@ -8,6 +8,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import CalendlyBadge from '@/components/CalendlyBadge';
 import WhatsAppFloatButton from '@/components/WhatsAppFloatButton';
 import MetaPixel from '@/components/analytics/MetaPixel';
+import { NO_TRACKING_TEST } from '@/lib/no-tracking';
 import TikTokPixel from '@/components/analytics/TikTokPixel';
 
 const spaceGrotesk = Space_Grotesk({
@@ -106,7 +107,7 @@ export default function RootLayout({
           id="gtm-init"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            __html: `if(!${NO_TRACKING_TEST})(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);

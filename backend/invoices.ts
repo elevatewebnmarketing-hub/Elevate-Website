@@ -3,7 +3,9 @@
  * Unlike blog/portfolio there is no JSON-file fallback: client and money data must not end up in the repo.
  */
 import { getSupabase } from '@/lib/supabase';
-import type { Invoice, InvoiceItem } from '@/lib/invoices';
+import crypto from 'crypto';
+import { invoiceTotals, type Invoice, type InvoiceItem } from '@/lib/invoices';
+import type { InvoicePayment, PaymentMethod } from '@/lib/payments';
 
 export class StoreNotReadyError extends Error {}
 
@@ -19,6 +21,13 @@ function db() {
 
 function check(error: { message: string; code?: string } | null, what: string) {
   if (!error) return;
+  // 42703 / PGRST204: a column is missing -> the payments upgrade has not been run yet.
+  if (error.code === '42703' || error.code === 'PGRST204' || /column .* does not exist|Could not find the '.*' column/i.test(error.message)) {
+    throw new StoreNotReadyError('Database update needed: run supabase/payments-2026-11.sql in the Supabase SQL Editor.');
+  }
+  if (/payment_methods|invoice_payments/.test(error.message) && /does not exist|schema cache/i.test(error.message)) {
+    throw new StoreNotReadyError('Database update needed: run supabase/payments-2026-11.sql in the Supabase SQL Editor.');
+  }
   // 42P01 / PGRST205: table missing -> the SQL file has not been run yet.
   if (error.code === '42P01' || error.code === 'PGRST205' || /does not exist|schema cache/i.test(error.message)) {
     throw new StoreNotReadyError(
@@ -49,6 +58,9 @@ type InvoiceRow = {
   notes: string | null;
   payment_instructions: string | null;
   intake_id: string | null;
+  payment_method_ids: string[] | null;
+  method_links: Record<string, string> | null;
+  public_token: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -73,12 +85,15 @@ function fromRow(r: InvoiceRow): Invoice {
     notes: r.notes ?? '',
     paymentInstructions: r.payment_instructions ?? '',
     intakeId: r.intake_id,
+    paymentMethodIds: Array.isArray(r.payment_method_ids) ? r.payment_method_ids : [],
+    methodLinks: r.method_links ?? {},
+    publicToken: r.public_token ?? undefined,
     createdAt: r.created_at,
     updatedAt: r.updated_at,
   };
 }
 
-function toRow(inv: Omit<Invoice, 'id' | 'number'>) {
+function toRow(inv: Omit<Invoice, 'id' | 'number' | 'publicToken'>) {
   return {
     status: inv.status,
     client_name: inv.clientName,
@@ -96,6 +111,8 @@ function toRow(inv: Omit<Invoice, 'id' | 'number'>) {
     notes: inv.notes || null,
     payment_instructions: inv.paymentInstructions || null,
     intake_id: inv.intakeId,
+    payment_method_ids: inv.paymentMethodIds,
+    method_links: inv.methodLinks,
     updated_at: new Date().toISOString(),
   };
 }
@@ -125,10 +142,16 @@ async function nextNumber(issueDate: string): Promise<string> {
   return `${prefix}${String(max + 1).padStart(3, '0')}`;
 }
 
-export async function createInvoice(inv: Omit<Invoice, 'id' | 'number'>): Promise<Invoice> {
+const newToken = () => crypto.randomBytes(24).toString('base64url');
+
+export async function createInvoice(inv: Omit<Invoice, 'id' | 'number' | 'publicToken'>): Promise<Invoice> {
   for (let attempt = 0; attempt < 3; attempt++) {
     const number = await nextNumber(inv.issueDate);
-    const { data, error } = await db().from('invoices').insert({ ...toRow(inv), number }).select('*').single();
+    const { data, error } = await db()
+      .from('invoices')
+      .insert({ ...toRow(inv), number, public_token: newToken() })
+      .select('*')
+      .single();
     if (error?.code === '23505') continue; // two invoices raced for the same number: try the next one
     check(error, 'Create invoice');
     return fromRow(data as InvoiceRow);
@@ -136,7 +159,7 @@ export async function createInvoice(inv: Omit<Invoice, 'id' | 'number'>): Promis
   throw new Error('Could not assign an invoice number, try again');
 }
 
-export async function updateInvoice(id: string, inv: Omit<Invoice, 'id' | 'number'>): Promise<Invoice | null> {
+export async function updateInvoice(id: string, inv: Omit<Invoice, 'id' | 'number' | 'publicToken'>): Promise<Invoice | null> {
   const { data, error } = await db().from('invoices').update(toRow(inv)).eq('id', id).select('*').maybeSingle();
   check(error, 'Update invoice');
   return data ? fromRow(data as InvoiceRow) : null;
@@ -145,6 +168,147 @@ export async function updateInvoice(id: string, inv: Omit<Invoice, 'id' | 'numbe
 export async function deleteInvoice(id: string): Promise<void> {
   const { error } = await db().from('invoices').delete().eq('id', id);
   check(error, 'Delete invoice');
+}
+
+/** Older invoices were created before client links existed: give them a token on first use. */
+export async function ensureInvoiceToken(id: string): Promise<string | null> {
+  const inv = await getInvoice(id);
+  if (!inv) return null;
+  if (inv.publicToken) return inv.publicToken;
+  const token = newToken();
+  const { error } = await db().from('invoices').update({ public_token: token }).eq('id', id);
+  check(error, 'Create invoice link');
+  return token;
+}
+
+export async function getInvoiceByToken(token: string): Promise<Invoice | null> {
+  if (!/^[A-Za-z0-9_-]{32}$/.test(token)) return null;
+  const { data, error } = await db().from('invoices').select('*').eq('public_token', token).maybeSingle();
+  check(error, 'Get invoice');
+  return data ? fromRow(data as InvoiceRow) : null;
+}
+
+/* ---------------- Payment methods ---------------- */
+
+type MethodRow = {
+  id: string;
+  label: string;
+  kind: PaymentMethod['kind'];
+  provider: string | null;
+  currencies: string[] | null;
+  details: string | null;
+  link: string | null;
+  network: string | null;
+  address: string | null;
+  active: boolean;
+  sort: number;
+};
+
+const methodFromRow = (r: MethodRow): PaymentMethod => ({
+  id: r.id,
+  label: r.label,
+  kind: r.kind,
+  provider: r.provider ?? '',
+  currencies: Array.isArray(r.currencies) ? r.currencies : [],
+  details: r.details ?? '',
+  link: r.link ?? '',
+  network: r.network ?? '',
+  address: r.address ?? '',
+  active: r.active,
+  sort: r.sort,
+});
+
+const methodToRow = (m: Omit<PaymentMethod, 'id'>) => ({
+  label: m.label,
+  kind: m.kind,
+  provider: m.provider || null,
+  currencies: m.currencies,
+  details: m.details || null,
+  link: m.link || null,
+  network: m.network || null,
+  address: m.address || null,
+  active: m.active,
+  sort: m.sort,
+});
+
+export async function listPaymentMethods(): Promise<PaymentMethod[]> {
+  const { data, error } = await db().from('payment_methods').select('*').order('sort').order('created_at');
+  check(error, 'List payment methods');
+  return (data as MethodRow[]).map(methodFromRow);
+}
+
+export async function savePaymentMethod(id: string | null, m: Omit<PaymentMethod, 'id'>): Promise<PaymentMethod> {
+  const q = id
+    ? db().from('payment_methods').update(methodToRow(m)).eq('id', id).select('*').single()
+    : db().from('payment_methods').insert(methodToRow(m)).select('*').single();
+  const { data, error } = await q;
+  check(error, 'Save payment method');
+  return methodFromRow(data as MethodRow);
+}
+
+export async function deletePaymentMethod(id: string): Promise<void> {
+  const { error } = await db().from('payment_methods').delete().eq('id', id);
+  check(error, 'Delete payment method');
+}
+
+/* ---------------- Payments received ---------------- */
+
+type PaymentRow = { id: string; invoice_id: string; amount: number; method: string | null; reference: string | null; paid_on: string; note: string | null };
+const paymentFromRow = (r: PaymentRow): InvoicePayment => ({
+  id: r.id,
+  invoiceId: r.invoice_id,
+  amount: Number(r.amount) || 0,
+  method: r.method ?? '',
+  reference: r.reference ?? '',
+  paidOn: r.paid_on,
+  note: r.note ?? '',
+});
+
+export async function listInvoicePayments(invoiceId: string): Promise<InvoicePayment[]> {
+  const { data, error } = await db().from('invoice_payments').select('*').eq('invoice_id', invoiceId).order('paid_on');
+  check(error, 'List payments');
+  return (data as PaymentRow[]).map(paymentFromRow);
+}
+
+/** Recalculate amount paid and status from the payment log. */
+async function syncPaid(invoiceId: string): Promise<Invoice | null> {
+  const inv = await getInvoice(invoiceId);
+  if (!inv) return null;
+  const paid = (await listInvoicePayments(invoiceId)).reduce((s, p) => s + p.amount, 0);
+  const total = invoiceTotals({ ...inv, amountPaid: 0 }).total;
+  let status = inv.status;
+  if (status !== 'void') {
+    if (paid >= total && total > 0) status = 'paid';
+    else if (paid > 0) status = 'part_paid';
+    else if (status === 'paid' || status === 'part_paid') status = 'sent';
+  }
+  const { data, error } = await db()
+    .from('invoices')
+    .update({ amount_paid: Math.round(paid * 100) / 100, status, updated_at: new Date().toISOString() })
+    .eq('id', invoiceId)
+    .select('*')
+    .single();
+  check(error, 'Update invoice');
+  return fromRow(data as InvoiceRow);
+}
+
+export async function addInvoicePayment(invoiceId: string, p: Omit<InvoicePayment, 'id' | 'invoiceId'>): Promise<Invoice | null> {
+  const { error } = await db().from('invoice_payments').insert({
+    invoice_id: invoiceId,
+    amount: p.amount,
+    method: p.method || null,
+    reference: p.reference || null,
+    paid_on: p.paidOn,
+    note: p.note || null,
+  });
+  check(error, 'Record payment');
+  return syncPaid(invoiceId);
+}
+
+export async function deleteInvoicePayment(invoiceId: string, paymentId: string): Promise<Invoice | null> {
+  const { error } = await db().from('invoice_payments').delete().eq('id', paymentId).eq('invoice_id', invoiceId);
+  check(error, 'Delete payment');
+  return syncPaid(invoiceId);
 }
 
 /* ---------------- Client intakes ---------------- */
