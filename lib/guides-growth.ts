@@ -11,7 +11,7 @@ export const launchOnlineStore: Guide = {
   title: 'How to Launch an Online Store in Nigeria (With Payments)',
   h1: 'How to launch an online store in Nigeria, with payments that work',
   description:
-    'Launch an online store in Nigeria: custom code vs Shopify vs WooCommerce, Paystack, Flutterwave, bank transfer and crypto payments, the documents gateways ask for, delivery and the legal basics.',
+    'Launch an online store in Nigeria: custom code vs Shopify vs WooCommerce, Paystack and Flutterwave payments, the documents gateways ask for, and delivery.',
   published: '2026-11-09',
   image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
   keyTakeaways: [
@@ -162,7 +162,7 @@ export const gbpSetup: Guide = {
   title: 'Google Business Profile Setup in Nigeria: Step by Step',
   h1: 'How to set up a Google Business Profile in Nigeria, step by step',
   description:
-    'Set up a Google Business Profile in Nigeria (Abuja, Asaba, Lagos or anywhere): the right name and category, address or service area, verification, services, photos and honest reviews.',
+    'Set up a Google Business Profile in Nigeria, step by step: name and category, address or service area, verification, services, photos and honest reviews.',
   published: '2026-11-09',
   image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80',
   keyTakeaways: [

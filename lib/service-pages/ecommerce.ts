@@ -9,7 +9,7 @@ export const ecommerce: ServicePageConfig = {
   description:
     'E-commerce websites for Nigerian and UK businesses: product catalogue, cart, checkout and payment, order notifications, and product pages built for Google.',
   detail: {
-    metaTitle: 'E-commerce Website Design in Abuja and Nigeria',
+    metaTitle: 'E-commerce Website Design in Abuja & Nigeria',
     metaDescription:
       'E-commerce websites with product pages, cart, checkout, payments and order alerts, built so Google can index every product. Fixed prices, 3 to 5 weeks.',
     h1: 'E-commerce website design',
