@@ -42,7 +42,7 @@ export default function InvoicePrintPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 print:bg-white py-8 print:py-0">
-      <style>{`@page { size: A4; margin: 14mm; } @media print { html, body { background: #fff; } }`}</style>
+      <style>{`@page { size: A4; margin: 12mm; } @media print { html, body { background: #fff; } }`}</style>
       <div className="max-w-[794px] mx-auto mb-4 flex justify-end gap-2 print:hidden px-4">
         <button
           type="button"

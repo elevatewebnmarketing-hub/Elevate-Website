@@ -26,7 +26,7 @@ export default function AcceptBox({ token, acceptance, defaultName }: { token?: 
 
   if (shown) {
     return (
-      <div role="status" className="mt-8 flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-emerald-900" style={{ breakInside: 'avoid' }}>
+      <div role="status" className="mt-8 print:mt-3 flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 print:py-1.5 text-emerald-900" style={{ breakInside: 'avoid' }}>
         <CheckCircle2 size={18} className="mt-0.5 flex-shrink-0" aria-hidden />
         <p className="text-[13px]">
           <strong>Accepted by {shown.acceptedName}</strong> on {when(shown.acceptedAt)}: the work listed above and the{' '}
