@@ -38,6 +38,16 @@ function CopyButton({ text, label }: { text: string; label: string }) {
   );
 }
 
+function PayerRules({ text }: { text: string }) {
+  if (!text) return null;
+  return (
+    <div className="mt-3 rounded-md border-l-4 border-[#0B1F3A] bg-[#F7F9FC] px-3 py-2" style={{ breakInside: 'avoid' }}>
+      <p className="text-[11px] font-semibold uppercase tracking-wider text-[#0B1F3A] mb-0.5">Before you pay</p>
+      <p className="text-[12px] whitespace-pre-line text-gray-700">{text}</p>
+    </div>
+  );
+}
+
 /** The invoice as the client sees it: used by the admin print view and the client link (/i/<token>). */
 export default function InvoiceDocument({ inv, methods }: { inv: Invoice; methods: PaymentMethod[] }) {
   const t = invoiceTotals(inv);
@@ -178,11 +188,16 @@ export default function InvoiceDocument({ inv, methods }: { inv: Invoice; method
               {links.some((m) => m.details) && (
                 <p className="mt-2 text-[12px] text-gray-500 whitespace-pre-line">{links.map((m) => m.details).filter(Boolean).join('\n')}</p>
               )}
+              {links
+                .filter((m) => m.payerNotes)
+                .map((m) => (
+                  <PayerRules key={m.id} text={links.length > 1 ? `${m.label}:\n${m.payerNotes}` : m.payerNotes} />
+                ))}
             </div>
           )}
 
           {banks.length > 0 && (
-            <div className="grid sm:grid-cols-2 gap-4 mb-5">
+            <div className={`grid gap-4 mb-5 ${banks.length > 1 ? 'sm:grid-cols-2' : ''}`}>
               {banks.map((m) => (
                 <div key={m.id} className="rounded-lg border border-gray-200 p-4" style={{ breakInside: 'avoid' }}>
                   <div className="flex items-center justify-between gap-2 mb-1">
@@ -192,6 +207,7 @@ export default function InvoiceDocument({ inv, methods }: { inv: Invoice; method
                     <CopyButton text={m.details} label={`${m.label} details`} />
                   </div>
                   <p className="whitespace-pre-line">{m.details}</p>
+                  <PayerRules text={m.payerNotes} />
                 </div>
               ))}
             </div>
@@ -208,6 +224,7 @@ export default function InvoiceDocument({ inv, methods }: { inv: Invoice; method
                 <CopyButton text={m.address} label="wallet address" />
               </div>
               {m.details && <p className="mt-2 text-[12px] whitespace-pre-line">{m.details}</p>}
+              <PayerRules text={m.payerNotes} />
             </div>
           ))}
 

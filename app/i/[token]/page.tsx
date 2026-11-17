@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import InvoiceDocument from '@/components/invoices/InvoiceDocument';
 import PrintButton from '@/components/invoices/PrintButton';
+import InvoiceUnavailable from '@/components/invoices/InvoiceUnavailable';
 import { getInvoiceByToken, listPaymentMethods } from '@/backend/invoices';
 
 // Private client invoice: secret link, never indexed, and the link is not leaked to
@@ -18,15 +19,18 @@ export default async function ClientInvoicePage({ params }: { params: Promise<{ 
   let inv;
   try {
     inv = await getInvoiceByToken(token);
-  } catch {
-    inv = null;
+  } catch (error) {
+    // Database problem (not a bad link): log it for Vercel and tell the client to try again.
+    console.error('Client invoice load failed:', error);
+    return <InvoiceUnavailable reason="error" />;
   }
   if (!inv || inv.status === 'draft') notFound();
 
   let methods: Awaited<ReturnType<typeof listPaymentMethods>> = [];
   try {
     methods = (await listPaymentMethods()).filter((m) => m.active && inv.paymentMethodIds.includes(m.id));
-  } catch {
+  } catch (error) {
+    console.error('Client invoice payment methods failed:', error);
     methods = [];
   }
 

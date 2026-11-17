@@ -17,6 +17,8 @@ export interface PaymentMethod {
   provider: string;
   currencies: string[]; // empty = any currency
   details: string;
+  /** Provider rules the payer must follow, shown on the invoice (e.g. business accounts only). */
+  payerNotes: string;
   link: string;
   network: string;
   address: string;
@@ -35,7 +37,7 @@ export interface InvoicePayment {
 }
 
 export function emptyPaymentMethod(): PaymentMethod {
-  return { id: '', label: '', kind: 'bank', provider: 'Bank', currencies: [], details: '', link: '', network: '', address: '', active: true, sort: 0 };
+  return { id: '', label: '', kind: 'bank', provider: 'Bank', currencies: [], details: '', payerNotes: '', link: '', network: '', address: '', active: true, sort: 0 };
 }
 
 export function methodFitsCurrency(m: PaymentMethod, currency: string) {
@@ -69,6 +71,7 @@ export function sanitizePaymentMethod(body: Record<string, unknown>): { error: s
       provider: str(body.provider, 40) || 'Other',
       currencies,
       details: str(body.details, 2000),
+      payerNotes: str(body.payerNotes, 3000),
       link: kind === 'link' ? link : '',
       network: kind === 'crypto' ? str(body.network, 80) : '',
       address: kind === 'crypto' ? str(body.address, 200) : '',

@@ -151,7 +151,7 @@ export default function AdminInvoiceEditPage() {
     }));
   }
 
-  async function save(): Promise<Invoice | null> {
+  async function save(patch?: Partial<Invoice>): Promise<Invoice | null> {
     setSaving(true);
     setMessage(null);
     try {
@@ -159,7 +159,7 @@ export default function AdminInvoiceEditPage() {
         method: isNew ? 'POST' : 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify(inv),
+        body: JSON.stringify({ ...inv, ...patch }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Could not save');
@@ -182,7 +182,7 @@ export default function AdminInvoiceEditPage() {
     else setMessage({ kind: 'err', text: 'Could not delete' });
   }
 
-  function whatsappText() {
+  function whatsappText(link: string = clientLink) {
     const lines = [
       `Hello ${inv.clientName.split(' ')[0] || ''},`.trim(),
       '',
@@ -191,32 +191,68 @@ export default function AdminInvoiceEditPage() {
       `Total: ${formatMoney(totals.total, inv.currency)}`,
       totals.paid ? `Paid so far: ${formatMoney(totals.paid, inv.currency)}` : '',
       `Amount due: ${formatMoney(totals.balance, inv.currency)}${inv.dueDate ? ` by ${inv.dueDate}` : ''}`,
-      clientLink ? `\nView, pay and download the invoice here:\n${clientLink}` : '',
-      !clientLink && inv.paymentInstructions ? `\nPayment details:\n${inv.paymentInstructions}` : '',
+      link ? `\nView, pay and download the invoice here:\n${link}` : '',
+      !link && inv.paymentInstructions ? `\nPayment details:\n${inv.paymentInstructions}` : '',
       '',
-      clientLink ? 'Thank you!' : 'The PDF is attached. Thank you!',
+      link ? 'Thank you!' : 'The PDF is attached. Thank you!',
     ];
     return lines.filter((l, i, a) => !(l === '' && a[i - 1] === '')).join('\n');
   }
 
   async function copyWhatsapp() {
-    await navigator.clipboard.writeText(whatsappText());
-    setMessage({ kind: 'ok', text: 'Message copied. Paste it in WhatsApp and attach the PDF.' });
+    const url = await ensureClientLink();
+    if (!url) return;
+    await navigator.clipboard.writeText(whatsappText(url)).catch(() => {});
+    setMessage({ kind: 'ok', text: 'Saved. Message with the invoice link copied: paste it in WhatsApp or email.' });
   }
 
-  async function getClientLink() {
+  /**
+   * Saves the current edits (so the ticked payment methods are what the client sees),
+   * offers to mark a Draft as Sent (clients can't open drafts), then returns the link.
+   */
+  async function ensureClientLink(): Promise<string | null> {
+    let patch: Partial<Invoice> | undefined;
+    if (inv.status === 'draft') {
+      if (!confirm('This invoice is still a Draft, and clients cannot open drafts.\n\nMark it as Sent and get the link?')) return null;
+      patch = { status: 'sent' };
+    }
+    if (inv.status !== 'void' && !inv.paymentMethodIds.length && fittingMethods.length) {
+      if (!confirm('No payment methods are ticked, so the client will see no way to pay. Continue anyway?')) return null;
+    }
+    const saved = await save(patch);
+    if (!saved) return null;
     const res = await fetch(`/api/invoices/${id}/link`, { method: 'POST', credentials: 'include' });
     const data = await res.json();
     if (!res.ok) {
       setMessage({ kind: 'err', text: data.error || 'Could not create the link' });
-      return;
+      return null;
     }
     setClientLink(data.url);
-    await navigator.clipboard.writeText(data.url).catch(() => {});
-    setMessage({
-      kind: 'ok',
-      text: inv.status === 'draft' ? 'Link copied. Set the status to Sent before the client opens it (drafts are hidden).' : 'Client link copied.',
-    });
+    return data.url as string;
+  }
+
+  async function getClientLink() {
+    const url = await ensureClientLink();
+    if (!url) return;
+    await navigator.clipboard.writeText(url).catch(() => {});
+    setMessage({ kind: 'ok', text: 'Saved and copied the client link.' });
+  }
+
+  async function openWhatsapp() {
+    // Open the tab now (inside the click) so pop-up blockers allow it, then point it at WhatsApp.
+    const tab = window.open('about:blank', '_blank');
+    const url = await ensureClientLink();
+    if (!url) {
+      tab?.close();
+      return;
+    }
+    const wa = `https://wa.me/${inv.clientPhone.replace(/[^\d]/g, '')}?text=${encodeURIComponent(whatsappText(url))}`;
+    if (tab) {
+      tab.opener = null;
+      tab.location.href = wa;
+    } else {
+      window.location.href = wa;
+    }
   }
 
   async function recordPayment(e: React.FormEvent) {
@@ -255,9 +291,6 @@ export default function AdminInvoiceEditPage() {
       paymentMethodIds: p.paymentMethodIds.includes(mid) ? p.paymentMethodIds.filter((x) => x !== mid) : [...p.paymentMethodIds, mid],
     }));
 
-  const waLink = inv.clientPhone
-    ? `https://wa.me/${inv.clientPhone.replace(/[^\d]/g, '')}?text=${encodeURIComponent(whatsappText())}`
-    : '';
 
   if (loading) return <CardSkeleton />;
 
@@ -297,21 +330,20 @@ export default function AdminInvoiceEditPage() {
               >
                 <Copy size={16} aria-hidden /> Copy message
               </button>
-              {waLink && (
-                <a
-                  href={waLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+              {inv.clientPhone && (
+                <button
+                  type="button"
+                  onClick={openWhatsapp}
                   className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition"
                 >
                   <MessageCircle size={16} aria-hidden /> WhatsApp
-                </a>
+                </button>
               )}
             </>
           )}
           <button
             type="button"
-            onClick={save}
+            onClick={() => save()}
             disabled={saving}
             className="flex items-center gap-2 px-5 py-2 bg-accent text-white font-heading font-semibold rounded-xl hover:bg-accent/90 transition disabled:opacity-70"
           >
@@ -425,6 +457,42 @@ export default function AdminInvoiceEditPage() {
               <h2 className="font-heading font-semibold text-primary">Ways to pay on this invoice</h2>
               <Link href="/admin/payments" className="text-sm text-accent hover:underline">Manage payment methods</Link>
             </div>
+            <p className="text-sm text-text/70 mb-3">
+              Only the ticked methods appear on the client&apos;s invoice. Agreed a method with the client? Pick just that one.
+            </p>
+            {fittingMethods.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4" role="group" aria-label="Quick select payment methods">
+                {(
+                  [
+                    ['All', () => true],
+                    ['Bank transfer only', (m: PaymentMethod) => m.kind === 'bank'],
+                    ['Card only', (m: PaymentMethod) => m.kind === 'link'],
+                    ['Crypto only', (m: PaymentMethod) => m.kind === 'crypto'],
+                    ['None', () => false],
+                  ] as [string, (m: PaymentMethod) => boolean][]
+                )
+                  .filter(([name, f]) => name === 'All' || name === 'None' || fittingMethods.some(f))
+                  .map(([name, f]) => {
+                    const ids = fittingMethods.filter(f).map((m) => m.id);
+                    const active =
+                      ids.length === inv.paymentMethodIds.filter((x) => fittingMethods.some((m) => m.id === x)).length &&
+                      ids.every((x) => inv.paymentMethodIds.includes(x));
+                    return (
+                      <button
+                        key={name}
+                        type="button"
+                        aria-pressed={active}
+                        onClick={() => setInv((p) => ({ ...p, paymentMethodIds: ids }))}
+                        className={`px-3 py-1.5 text-xs rounded-full border transition ${
+                          active ? 'border-accent bg-accent/10 text-primary font-medium' : 'border-gray-200 hover:border-accent hover:text-accent'
+                        }`}
+                      >
+                        {name}
+                      </button>
+                    );
+                  })}
+              </div>
+            )}
             {fittingMethods.length === 0 ? (
               <p className="text-sm text-text/70">
                 No saved methods for {inv.currency} yet. Add your bank, Raenest, Payoneer, Paystack and crypto details once under{' '}

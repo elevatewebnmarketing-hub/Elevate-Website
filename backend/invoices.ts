@@ -22,6 +22,9 @@ function db() {
 function check(error: { message: string; code?: string } | null, what: string) {
   if (!error) return;
   // 42703 / PGRST204: a column is missing -> the payments upgrade has not been run yet.
+  if (/payer_notes/.test(error.message)) {
+    throw new StoreNotReadyError('Database update needed: run supabase/payments-notes-2026-11.sql in the Supabase SQL Editor (one line).');
+  }
   if (error.code === '42703' || error.code === 'PGRST204' || /column .* does not exist|Could not find the '.*' column/i.test(error.message)) {
     throw new StoreNotReadyError('Database update needed: run supabase/payments-2026-11.sql in the Supabase SQL Editor.');
   }
@@ -197,6 +200,7 @@ type MethodRow = {
   provider: string | null;
   currencies: string[] | null;
   details: string | null;
+  payer_notes?: string | null;
   link: string | null;
   network: string | null;
   address: string | null;
@@ -211,6 +215,7 @@ const methodFromRow = (r: MethodRow): PaymentMethod => ({
   provider: r.provider ?? '',
   currencies: Array.isArray(r.currencies) ? r.currencies : [],
   details: r.details ?? '',
+  payerNotes: r.payer_notes ?? '',
   link: r.link ?? '',
   network: r.network ?? '',
   address: r.address ?? '',
@@ -224,6 +229,7 @@ const methodToRow = (m: Omit<PaymentMethod, 'id'>) => ({
   provider: m.provider || null,
   currencies: m.currencies,
   details: m.details || null,
+  payer_notes: m.payerNotes || null,
   link: m.link || null,
   network: m.network || null,
   address: m.address || null,

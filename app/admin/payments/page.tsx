@@ -232,6 +232,21 @@ export default function AdminPaymentMethodsPage() {
             />
           </div>
 
+          <div>
+            <label className={label} htmlFor="pm-rules">Rules for the person paying (shown on the invoice)</label>
+            <textarea
+              id="pm-rules"
+              rows={5}
+              className={input}
+              value={form.payerNotes}
+              onChange={(e) => set('payerNotes', e.target.value)}
+              placeholder={'e.g. Pay from a business bank account only. Payments from personal accounts will be declined.\nThe beneficiary name must be exactly: …\nTransfers take 1–3 business days.'}
+            />
+            <p className="text-xs text-text/60 mt-1">
+              Paste the provider&apos;s rules here (Payoneer, Raenest…). Keep what the client must do; leave out your own fees.
+            </p>
+          </div>
+
           <div className="flex flex-wrap items-center gap-4">
             <label className="flex items-center gap-2 text-sm">
               <input type="checkbox" className="h-4 w-4 accent-[#4F9CF9]" checked={form.active} onChange={(e) => set('active', e.target.checked)} />
@@ -281,6 +296,7 @@ export default function AdminPaymentMethodsPage() {
                         {m.provider} · {m.currencies.length ? m.currencies.join(', ') : 'all currencies'}
                         {m.kind === 'crypto' && ` · ${m.network}`}
                         {!m.active && ' · inactive'}
+                        {m.payerNotes && ' · has payer rules'}
                       </p>
                     </div>
                   </div>

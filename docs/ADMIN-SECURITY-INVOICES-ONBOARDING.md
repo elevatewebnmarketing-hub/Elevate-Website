@@ -20,7 +20,11 @@ Why our own form and not Google Forms/Tally: answers sit next to the invoice in 
 | **Client link**: private page `/i/<secret>` with Pay-by-card buttons, transfer details with copy buttons, and Download PDF. Hidden while the invoice is a Draft; never indexed; no analytics or ad pixels load on it, and the link is not passed on to payment sites | Invoice editor, "Client link" (also added to the WhatsApp message) |
 | Payment log: record each payment received (amount, method, date, reference/tx ID); amount paid and status update automatically | Invoice editor, "Payments received" |
 
-Owner step: run `supabase/payments-2026-11.sql` once in the Supabase SQL Editor (after `admin-upgrade-2026-11.sql`). Research and the reasons behind this setup: `Claude-Motion-Graphics/business/operations/getting-paid.md`.
+Owner step: run `supabase/payments-2026-11.sql`, then `supabase/payments-notes-2026-11.sql` (one line: payer rules per method), once each in the Supabase SQL Editor (after `admin-upgrade-2026-11.sql`).
+
+- **Rules for the person paying** (per method): paste the provider's conditions (e.g. Payoneer: business accounts only, beneficiary name must match). Shown on the invoice as "Before you pay" under that method.
+- **Quick-picks on each invoice:** All / Bank transfer only / Card only / Crypto only / None. Only ticked methods appear to the client.
+- **Client link, Copy message and WhatsApp** save the invoice first; on a Draft they offer to mark it Sent (clients can't open drafts). A wrong or unsent link shows a friendly page with a WhatsApp button; a database error shows "can't load right now" and is logged in Vercel. Research and the reasons behind this setup: `Claude-Motion-Graphics/business/operations/getting-paid.md`.
 
 ## Login security
 
