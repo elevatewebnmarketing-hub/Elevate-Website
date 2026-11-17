@@ -175,7 +175,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
     description:
       'Websites and local SEO for businesses in Katampe Extension, Abuja, from the team that built Mansa Luxe Realty’s Katampe Extension pages.',
     detail: {
-      metaTitle: 'Web Design & SEO in Katampe Extension, Abuja',
+      metaTitle: 'Web Design & SEO in Katampe Ext., Abuja',
       metaDescription:
         'We built Mansa Luxe Realty’s Katampe Extension pages, which ChatGPT now names for property there. Websites and local SEO for Katampe businesses.',
       h1: 'Web design and SEO in Katampe Extension, Abuja',

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Privacy Policy | Elevate Web & Marketing',
     description: `Privacy policy for ${siteConfig.companyName}.`,
     url: 'https://www.elevatewebandmarketing.com/privacy',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Elevate Web & Marketing' }],
   },
   twitter: {
     card: 'summary_large_image',

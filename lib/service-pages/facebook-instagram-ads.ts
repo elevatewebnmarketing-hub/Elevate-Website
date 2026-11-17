@@ -8,7 +8,7 @@ export const facebookInstagramAds: ServicePageConfig = {
   description:
     'Facebook and Instagram ads management in Abuja and across Nigeria: targeting, ad copy, image and video ads, Meta Pixel tracking and monthly optimisation, for a fixed monthly fee. You pay your ad budget to Meta directly.',
   detail: {
-    metaTitle: 'Facebook & Instagram Ads Management in Abuja',
+    metaTitle: 'Facebook & Instagram Ads in Abuja',
     metaDescription:
       'Facebook and Instagram ads in Abuja: targeting, ad copy, image and video ads, Pixel tracking and monthly changes for ₦100,000 a month. Your ad budget goes to Meta.',
     h1: 'Facebook and Instagram ads management in Abuja',
