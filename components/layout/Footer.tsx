@@ -4,6 +4,7 @@ import Logo from '@/components/ui/Logo';
 import { Calendar, Instagram, Mail, MapPin, Phone, Youtube } from 'lucide-react';
 import { openCalendly } from '@/lib/calendly';
 import { siteConfig } from '@/lib/site-config';
+import { GOOGLE_MAP_EMBED_SRC } from '@/components/sections/GoogleMapEmbed';
 
 function WhatsAppIcon({ size = 22 }: { size?: number }) {
   return (
@@ -118,7 +119,7 @@ export default function Footer() {
 
           <div>
             <h2 className="font-heading font-semibold mb-4">Follow Us</h2>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               {siteConfig.socialLinks.map((social) => {
                 const Icon = socialIcons[social.label];
                 if (!Icon) return null;
@@ -136,6 +137,24 @@ export default function Footer() {
                 );
               })}
             </div>
+            <h2 className="font-heading font-semibold mt-8 mb-3">Find us</h2>
+            <div className="rounded-xl overflow-hidden border border-white/15 bg-white/5 aspect-[4/3] max-w-sm">
+              <iframe
+                src={GOOGLE_MAP_EMBED_SRC}
+                title="Map: Elevate Web & Marketing office, after Okpanam City Gate, Asaba"
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+            <a
+              href={siteConfig.googleProfileUrl}
+              target="_blank"
+              rel="noopener"
+              className="inline-block mt-2 text-sm text-white/80 underline underline-offset-2 hover:text-white"
+            >
+              Directions and reviews on Google
+            </a>
           </div>
         </div>
 
