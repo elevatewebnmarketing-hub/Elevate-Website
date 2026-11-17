@@ -6,6 +6,8 @@ import Logo from '@/components/ui/Logo';
 
 export default function AdminLoginPage() {
   const [password, setPassword] = useState('');
+  const [code, setCode] = useState('');
+  const [showCode, setShowCode] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -19,12 +21,16 @@ export default function AdminLoginPage() {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ password, code }),
       });
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || 'Invalid password');
+        if (data.needsCode) {
+          setShowCode(true);
+          throw new Error('Enter the 6-digit code from your authenticator app');
+        }
+        throw new Error(data.error || 'Wrong password or code');
       }
 
       router.push('/admin');
@@ -48,7 +54,7 @@ export default function AdminLoginPage() {
             Admin Login
           </h1>
           <p className="text-text/80 text-sm mb-6">
-            Enter your password to access the admin dashboard
+            Enter your password and the code from your authenticator app
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -66,12 +72,33 @@ export default function AdminLoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 text-primary focus:ring-2 focus:ring-accent focus:border-accent outline-none transition"
                 placeholder="Enter admin password"
+                autoComplete="current-password"
                 required
               />
             </div>
 
+            <div>
+              <label htmlFor="code" className="block text-sm font-medium text-primary mb-2">
+                Authenticator code{showCode ? '' : ' (if set up)'}
+              </label>
+              <input
+                id="code"
+                type="text"
+                inputMode="numeric"
+                autoComplete="one-time-code"
+                pattern="[0-9 ]{6,7}"
+                maxLength={7}
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 text-primary tracking-[0.3em] focus:ring-2 focus:ring-accent focus:border-accent outline-none transition"
+                placeholder="123456"
+                required={showCode}
+                autoFocus={showCode}
+              />
+            </div>
+
             {error && (
-              <p className="text-red-600 text-sm">{error}</p>
+              <p className="text-red-600 text-sm" role="alert">{error}</p>
             )}
 
             <button

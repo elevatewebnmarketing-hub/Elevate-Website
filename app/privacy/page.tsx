@@ -49,7 +49,7 @@ export default function PrivacyPage() {
                 Information We Collect
               </h2>
               <p>
-                We may collect information you provide directly, such as when you fill out a contact form, subscribe to our newsletter, or book a call. This may include your name, email address, phone number, company name, and any message or project details you share.
+                We may collect information you provide directly, such as when you fill out a contact form or our client onboarding form, subscribe to our newsletter, or book a call. This may include your name, email address, phone number, company name, and any message or project details you share.
               </p>
               <p>
                 We also collect information automatically when you visit our website, including your IP address, browser type, device information, and pages you visit. We may use cookies and similar technologies for analytics, advertising measurement, and to improve your experience.

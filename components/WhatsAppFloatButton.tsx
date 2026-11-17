@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { siteConfig } from '@/lib/site-config';
 
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -16,6 +17,9 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export default function WhatsAppFloatButton() {
+  const pathname = usePathname();
+  // Not on the admin panel (it would sit on invoices and print onto PDFs).
+  if (pathname?.startsWith('/admin')) return null;
   const url = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`;
 
   return (
@@ -23,7 +27,7 @@ export default function WhatsAppFloatButton() {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all hover:scale-110 hover:shadow-xl"
+      className="print:hidden fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all hover:scale-110 hover:shadow-xl"
       style={{ backgroundColor: '#25D366' }}
       aria-label="Chat on WhatsApp"
     >

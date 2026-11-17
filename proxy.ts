@@ -1,19 +1,30 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { SESSION_COOKIE, verifySessionToken } from '@/lib/admin-session';
 
-const SESSION_COOKIE = 'admin_session';
+const SESSION_SECRET = process.env.SESSION_SECRET ?? '';
 
-export function proxy(request: NextRequest) {
+function harden(res: NextResponse) {
+  res.headers.set('Cache-Control', 'no-store');
+  res.headers.set('X-Frame-Options', 'DENY');
+  res.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  return res;
+}
+
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
-    const session = request.cookies.get(SESSION_COOKIE);
-    if (!session?.value) {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
+    // Check the signature and expiry, not just that a cookie exists.
+    const valid = await verifySessionToken(request.cookies.get(SESSION_COOKIE)?.value, SESSION_SECRET);
+    if (!valid) {
+      const res = NextResponse.redirect(new URL('/admin/login', request.url));
+      res.cookies.delete(SESSION_COOKIE);
+      return harden(res);
     }
   }
 
-  return NextResponse.next();
+  return harden(NextResponse.next());
 }
 
 export const config = {

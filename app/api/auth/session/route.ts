@@ -1,15 +1,12 @@
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
-
-const SESSION_COOKIE = 'admin_session';
+import { isAdminSession } from '@/backend/auth';
 
 export async function GET() {
-  const cookieStore = await cookies();
-  const session = cookieStore.get(SESSION_COOKIE);
-
-  if (!session?.value) {
+  if (!(await isAdminSession())) {
     return NextResponse.json({ authenticated: false }, { status: 401 });
   }
-
-  return NextResponse.json({ authenticated: true });
+  return NextResponse.json(
+    { authenticated: true, twoFactorEnabled: !!process.env.ADMIN_TOTP_SECRET },
+    { headers: { 'Cache-Control': 'no-store' } }
+  );
 }

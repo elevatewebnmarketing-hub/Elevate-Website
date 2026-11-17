@@ -65,7 +65,7 @@ export default function CookiePolicyPage() {
                       <td className="px-4 py-3 font-mono text-xs">admin_session</td>
                       <td className="px-4 py-3">HTTP Cookie</td>
                       <td className="px-4 py-3">Keeps admin users logged in to the dashboard. Only set for authenticated admin accounts.</td>
-                      <td className="px-4 py-3">Session</td>
+                      <td className="px-4 py-3">8 hours</td>
                     </tr>
                     <tr>
                       <td className="px-4 py-3 font-mono text-xs">_ga, _gid, _gtm*</td>

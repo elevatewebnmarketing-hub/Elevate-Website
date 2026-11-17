@@ -1,17 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Logo from '@/components/ui/Logo';
-import { LayoutDashboard, FileText, MessageSquare, Briefcase, DollarSign, Menu, X } from 'lucide-react';
+import { LayoutDashboard, FileText, MessageSquare, Briefcase, DollarSign, Menu, X, Receipt, ClipboardList, ShieldAlert } from 'lucide-react';
 
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [twoFactorOff, setTwoFactorOff] = useState(false);
   const isLogin = pathname === '/admin/login';
+  // Print view: just the document, no admin chrome.
+  const isPrint = pathname.endsWith('/print');
 
-  if (isLogin) {
+  useEffect(() => {
+    if (isLogin) return;
+    fetch('/api/auth/session', { credentials: 'include', cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => setTwoFactorOff(!!d && d.twoFactorEnabled === false))
+      .catch(() => {});
+  }, [isLogin]);
+
+  if (isLogin || isPrint) {
     return <>{children}</>;
   }
 
@@ -21,6 +32,8 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     { href: '/admin/testimonials', label: 'Testimonials', icon: MessageSquare },
     { href: '/admin/portfolio', label: 'Portfolio', icon: Briefcase },
     { href: '/admin/pricing', label: 'Pricing', icon: DollarSign, match: (p: string) => p.startsWith('/admin/pricing') },
+    { href: '/admin/intakes', label: 'Onboarding', icon: ClipboardList, match: (p: string) => p.startsWith('/admin/intakes') },
+    { href: '/admin/invoices', label: 'Invoices', icon: Receipt, match: (p: string) => p.startsWith('/admin/invoices') },
   ];
 
   return (
@@ -33,7 +46,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               <span className="hidden sm:inline text-xs font-medium text-text/60 uppercase tracking-wider">Admin</span>
             </Link>
 
-            <nav className="hidden sm:flex items-center gap-1" aria-label="Admin navigation">
+            <nav className="hidden lg:flex items-center gap-1" aria-label="Admin navigation">
               {navLinks.map(({ href, label, icon: Icon, match }) => {
                 const isActive = match ? match(pathname) : pathname === href;
                 return (
@@ -57,7 +70,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
               <button
                 type="button"
                 onClick={() => setMobileOpen((o) => !o)}
-                className="sm:hidden p-2 rounded-lg text-text/70 hover:bg-gray-50"
+                className="lg:hidden p-2 rounded-lg text-text/70 hover:bg-gray-50"
                 aria-label="Toggle menu"
               >
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -82,7 +95,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           </div>
 
           {mobileOpen && (
-            <nav className="sm:hidden py-3 border-t border-gray-100" aria-label="Admin mobile navigation">
+            <nav className="lg:hidden py-3 border-t border-gray-100" aria-label="Admin mobile navigation">
               <div className="flex flex-col gap-1">
                 {navLinks.map(({ href, label, icon: Icon, match }) => {
                   const isActive = match ? match(pathname) : pathname === href;
@@ -105,6 +118,19 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           )}
         </div>
       </header>
+
+      {twoFactorOff && (
+        <div className="bg-amber-50 border-b border-amber-200 text-amber-900 text-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-start gap-2">
+            <ShieldAlert size={18} className="mt-0.5 flex-shrink-0" aria-hidden />
+            <p>
+              Two-step login is off, so the password alone protects client data and invoices. Run{' '}
+              <code className="font-mono text-xs bg-amber-100 px-1 rounded">node scripts/admin-security-setup.mjs</code>, add{' '}
+              <code className="font-mono text-xs bg-amber-100 px-1 rounded">ADMIN_TOTP_SECRET</code> in Vercel and redeploy.
+            </p>
+          </div>
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <main>{children}</main>

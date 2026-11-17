@@ -37,7 +37,11 @@ SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
 1. Project → **Settings** → **Environment Variables**
 2. Add both variables (mark as Production / Preview as needed)
 
-## 5. Seed initial data (one time)
+## 5. Admin upgrade (November 2026)
+
+Run `supabase/admin-upgrade-2026-11.sql` once in the SQL Editor (login lockout log, onboarding answers, invoices). Full steps, including two-step login: `docs/ADMIN-SECURITY-INVOICES-ONBOARDING.md`.
+
+## 6. Seed initial data (one time)
 
 If you have existing data in `data/blog.json`, `data/testimonials.json`, `data/portfolio.json`:
 
