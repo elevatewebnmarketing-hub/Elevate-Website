@@ -28,6 +28,9 @@ function check(error: { message: string; code?: string } | null, what: string) {
   if (error.code === '42703' || error.code === 'PGRST204' || /column .* does not exist|Could not find the '.*' column/i.test(error.message)) {
     throw new StoreNotReadyError('Database update needed: run supabase/payments-2026-11.sql in the Supabase SQL Editor.');
   }
+  if (/invoice_acceptances/.test(error.message) && /does not exist|schema cache/i.test(error.message)) {
+    throw new StoreNotReadyError('Database update needed: run supabase/acceptance-2026-11.sql in the Supabase SQL Editor.');
+  }
   if (/payment_methods|invoice_payments/.test(error.message) && /does not exist|schema cache/i.test(error.message)) {
     throw new StoreNotReadyError('Database update needed: run supabase/payments-2026-11.sql in the Supabase SQL Editor.');
   }
@@ -189,6 +192,86 @@ export async function getInvoiceByToken(token: string): Promise<Invoice | null> 
   const { data, error } = await db().from('invoices').select('*').eq('public_token', token).maybeSingle();
   check(error, 'Get invoice');
   return data ? fromRow(data as InvoiceRow) : null;
+}
+
+/* ---------------- Client acceptance ("I accept" on the client invoice) ---------------- */
+
+export interface InvoiceAcceptance {
+  id: string;
+  invoiceId: string;
+  acceptedName: string;
+  acceptedAt: string;
+  termsVersion: string;
+  snapshotHash: string;
+  /** True when the invoice and terms still match what the client accepted. */
+  current: boolean;
+}
+
+/** What the client agrees to. If any of this changes after acceptance, the acceptance no longer matches. */
+export function acceptanceSnapshot(inv: Invoice, termsVersion: string) {
+  const t = invoiceTotals(inv);
+  return {
+    number: inv.number,
+    clientName: inv.clientName,
+    clientBusiness: inv.clientBusiness,
+    currency: inv.currency,
+    items: inv.items.map((i) => ({ description: i.description, quantity: i.quantity, unitPrice: i.unitPrice })),
+    discount: t.discount,
+    tax: t.tax,
+    total: t.total,
+    termsVersion,
+  };
+}
+
+export function snapshotHash(snapshot: object) {
+  return crypto.createHash('sha256').update(JSON.stringify(snapshot)).digest('hex');
+}
+
+type AcceptanceRow = { id: string; invoice_id: string; accepted_name: string; accepted_at: string; terms_version: string; snapshot_hash: string };
+
+export async function latestAcceptance(inv: Invoice, termsVersion: string): Promise<InvoiceAcceptance | null> {
+  const { data, error } = await db()
+    .from('invoice_acceptances')
+    .select('id, invoice_id, accepted_name, accepted_at, terms_version, snapshot_hash')
+    .eq('invoice_id', inv.id)
+    .order('accepted_at', { ascending: false })
+    .limit(1);
+  check(error, 'Get acceptance');
+  const r = (data as AcceptanceRow[])[0];
+  if (!r) return null;
+  return {
+    id: r.id,
+    invoiceId: r.invoice_id,
+    acceptedName: r.accepted_name,
+    acceptedAt: r.accepted_at,
+    termsVersion: r.terms_version,
+    snapshotHash: r.snapshot_hash,
+    current: r.snapshot_hash === snapshotHash(acceptanceSnapshot(inv, termsVersion)),
+  };
+}
+
+export async function recordAcceptance(
+  inv: Invoice,
+  input: { name: string; ip: string; userAgent: string; termsVersion: string }
+): Promise<InvoiceAcceptance> {
+  const snapshot = acceptanceSnapshot(inv, input.termsVersion);
+  const hash = snapshotHash(snapshot);
+  const { data, error } = await db()
+    .from('invoice_acceptances')
+    .insert({
+      invoice_id: inv.id,
+      accepted_name: input.name,
+      ip: input.ip,
+      user_agent: input.userAgent.slice(0, 300),
+      terms_version: input.termsVersion,
+      snapshot,
+      snapshot_hash: hash,
+    })
+    .select('id, invoice_id, accepted_name, accepted_at, terms_version, snapshot_hash')
+    .single();
+  check(error, 'Record acceptance');
+  const r = data as AcceptanceRow;
+  return { id: r.id, invoiceId: r.invoice_id, acceptedName: r.accepted_name, acceptedAt: r.accepted_at, termsVersion: r.terms_version, snapshotHash: r.snapshot_hash, current: true };
 }
 
 /* ---------------- Payment methods ---------------- */

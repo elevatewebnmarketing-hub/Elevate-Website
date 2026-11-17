@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { siteConfig } from '@/lib/site-config';
+import { PROJECT_TERMS, TERMS_UPDATED_LABEL } from '@/lib/project-terms';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
@@ -31,7 +32,7 @@ export default function TermsPage() {
             Terms of Service
           </h1>
           <p className="text-text/70 dark:text-gray-400 text-sm mb-12">
-            Last updated: {new Date().toLocaleDateString('en-US')}
+            Last updated: {TERMS_UPDATED_LABEL}
           </p>
 
           <div className="prose prose-lg max-w-none prose-headings:text-primary prose-headings:dark:text-white prose-p:text-text/80 prose-p:dark:text-gray-300 prose-li:text-text/80 prose-li:dark:text-gray-300 space-y-8">
@@ -49,8 +50,32 @@ export default function TermsPage() {
                 Services
               </h2>
               <p>
-                We provide website design, development, digital marketing, and related services. The specific scope, deliverables, timelines, and pricing for each project will be defined in a separate agreement or proposal.
+                We provide website design, development, digital marketing, and related services. The scope, price and timeline for
+                each project are set out on your invoice or quote, and the project terms below apply to all of them.
               </p>
+            </section>
+
+            <section id="project-terms" className="scroll-mt-28 rounded-2xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800/60 p-6 sm:p-8 not-prose">
+              <h2 className="font-heading font-semibold text-2xl text-primary dark:text-white mb-2">Project terms</h2>
+              <p className="text-text/70 dark:text-gray-400 text-sm mb-6">
+                The short version of how we work together. No long contract to sign: paying your invoice, or clicking “I accept” on
+                it, means you agree to these terms. Version of {TERMS_UPDATED_LABEL}.
+              </p>
+              <ol className="space-y-5">
+                {PROJECT_TERMS.map((t, i) => (
+                  <li key={t.title} className="grid grid-cols-[2rem_1fr] gap-x-2">
+                    <span className="font-heading font-bold text-accent">{i + 1}.</span>
+                    <div>
+                      <h3 className="font-heading font-semibold text-lg text-primary dark:text-white mb-1">{t.title}</h3>
+                      {t.body.map((b) => (
+                        <p key={b} className="text-text/80 dark:text-gray-300 mb-2 last:mb-0">
+                          {b}
+                        </p>
+                      ))}
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </section>
 
             <section>
@@ -67,7 +92,8 @@ export default function TermsPage() {
                 Intellectual Property
               </h2>
               <p>
-                Our website content, branding, and materials are owned by us or our licensors. Work produced for you under a project agreement will be governed by that agreement. Unless otherwise agreed, you receive a license to use the delivered work for your business purposes.
+                Our own website content, branding, and materials are owned by us or our licensors. Once your invoice is paid in full,
+                you own the website we built for you, its domain and its content, as set out in the project terms above.
               </p>
             </section>
 

@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import InvoiceDocument from '@/components/invoices/InvoiceDocument';
 import PrintButton from '@/components/invoices/PrintButton';
 import InvoiceUnavailable from '@/components/invoices/InvoiceUnavailable';
-import { getInvoiceByToken, listPaymentMethods } from '@/backend/invoices';
+import { getInvoiceByToken, latestAcceptance, listPaymentMethods } from '@/backend/invoices';
+import { TERMS_VERSION } from '@/lib/project-terms';
 
 // Private client invoice: secret link, never indexed, and the link is not leaked to
 // payment sites through the Referer header.
@@ -34,13 +35,20 @@ export default async function ClientInvoicePage({ params }: { params: Promise<{ 
     methods = [];
   }
 
+  let acceptance = null;
+  try {
+    acceptance = await latestAcceptance(inv, TERMS_VERSION);
+  } catch (error) {
+    console.error('Client invoice acceptance failed:', error);
+  }
+
   return (
     <div className="admin-panel min-h-screen bg-gray-100 print:bg-white py-6 sm:py-10 print:py-0 px-3 sm:px-4 print:px-0">
       <style>{`@page { size: A4; margin: 14mm; } @media print { html, body { background: #fff; } }`}</style>
       <div className="max-w-[794px] mx-auto mb-4 flex justify-end print:hidden">
         <PrintButton />
       </div>
-      <InvoiceDocument inv={inv} methods={methods} />
+      <InvoiceDocument inv={inv} methods={methods} acceptance={acceptance} acceptToken={token} />
     </div>
   );
 }

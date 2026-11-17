@@ -26,6 +26,14 @@ Owner step: run `supabase/payments-2026-11.sql`, then `supabase/payments-notes-2
 - **Quick-picks on each invoice:** All / Bank transfer only / Card only / Crypto only / None. Only ticked methods appear to the client.
 - **Client link, Copy message and WhatsApp** save the invoice first; on a Draft they offer to mark it Sent (clients can't open drafts). A wrong or unsent link shows a friendly page with a WhatsApp button; a database error shows "can't load right now" and is logged in Vercel. Research and the reasons behind this setup: `Claude-Motion-Graphics/business/operations/getting-paid.md`.
 
+## Client acceptance and project terms (added 17 November 2026)
+
+- Every invoice (online and PDF) says: paying it, or clicking "I accept", means accepting the work listed and the project terms at `/terms#project-terms`.
+- The client page has an **"I accept"** box (tick + full name). It records the name, date and time, IP, device and a snapshot of what was accepted (invoice number, client, items, totals, terms version) in `invoice_acceptances`.
+- If the invoice's client, items or totals change afterwards, the admin shows "Changed after … accepted it", and the client is asked to accept again. Notes and payment methods can change without needing a new acceptance.
+- Project terms live in `lib/project-terms.ts`. When the wording changes, bump `TERMS_VERSION` and `TERMS_UPDATED_LABEL`.
+- Owner step: run `supabase/acceptance-2026-11.sql` once in the Supabase SQL Editor.
+
 ## Login security
 
 - **Brute-force lockout that holds across all Vercel servers:** every attempt is logged in `admin_login_attempts`. 5 wrong tries from one IP in 15 minutes locks that IP; 30 wrong tries from all IPs together locks admin login for everyone for 15 minutes (stops guessing from many addresses; if it ever locks you out, wait 15 minutes). Each wrong try also waits ~1 second.

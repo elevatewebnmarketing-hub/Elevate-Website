@@ -51,6 +51,7 @@ export default function AdminInvoiceEditPage() {
   const [methods, setMethods] = useState<PaymentMethod[]>([]);
   const [payments, setPayments] = useState<InvoicePayment[]>([]);
   const [clientLink, setClientLink] = useState('');
+  const [acceptance, setAcceptance] = useState<{ acceptedName: string; acceptedAt: string; current: boolean } | null>(null);
   const [pay, setPay] = useState({ amount: '', method: '', reference: '', paidOn: new Date().toISOString().slice(0, 10) });
 
   useEffect(() => {
@@ -59,6 +60,14 @@ export default function AdminInvoiceEditPage() {
       .then((list: PaymentMethod[]) => setMethods(list.filter((m) => m.active)))
       .catch(() => {});
   }, []);
+
+  useEffect(() => {
+    if (isNew) return;
+    fetch(`/api/invoices/${id}/acceptance`, { credentials: 'include', cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : { acceptance: null }))
+      .then((d) => setAcceptance(d.acceptance))
+      .catch(() => {});
+  }, [id, isNew, inv.updatedAt]);
 
   useEffect(() => {
     if (isNew) return;
@@ -351,6 +360,24 @@ export default function AdminInvoiceEditPage() {
           </button>
         </div>
       </div>
+
+      {!isNew && (
+        <p
+          className={`mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm ${
+            acceptance?.current
+              ? 'bg-emerald-50 text-emerald-800'
+              : acceptance
+                ? 'bg-amber-50 text-amber-900'
+                : 'bg-gray-100 text-text/70'
+          }`}
+        >
+          {acceptance?.current
+            ? `Accepted by ${acceptance.acceptedName} on ${new Date(acceptance.acceptedAt).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })}`
+            : acceptance
+              ? `Changed after ${acceptance.acceptedName} accepted it (${new Date(acceptance.acceptedAt).toLocaleDateString('en-GB')}). The client will be asked to accept again.`
+              : 'Not accepted by the client yet (paying the invoice also counts as accepting)'}
+        </p>
+      )}
 
       {message && (
         <div

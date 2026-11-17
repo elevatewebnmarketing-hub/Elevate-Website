@@ -5,12 +5,14 @@ import { useParams } from 'next/navigation';
 import InvoiceDocument from '@/components/invoices/InvoiceDocument';
 import type { Invoice } from '@/lib/invoices';
 import type { PaymentMethod } from '@/lib/payments';
+import type { AcceptanceView } from '@/components/invoices/AcceptBox';
 
 export default function InvoicePrintPage() {
   const { id } = useParams() as { id: string };
   const [inv, setInv] = useState<Invoice | null>(null);
   const [methods, setMethods] = useState<PaymentMethod[]>([]);
   const [error, setError] = useState('');
+  const [acceptance, setAcceptance] = useState<AcceptanceView | null>(null);
 
   useEffect(() => {
     Promise.all([
@@ -22,8 +24,12 @@ export default function InvoicePrintPage() {
       fetch('/api/payment-methods', { credentials: 'include', cache: 'no-store' })
         .then((r) => (r.ok ? r.json() : []))
         .catch(() => []),
+      fetch(`/api/invoices/${id}/acceptance`, { credentials: 'include', cache: 'no-store' })
+        .then((r) => (r.ok ? r.json() : { acceptance: null }))
+        .catch(() => ({ acceptance: null })),
     ])
-      .then(([data, all]) => {
+      .then(([data, all, acc]) => {
+        setAcceptance(acc.acceptance);
         setInv(data);
         setMethods((all as PaymentMethod[]).filter((m) => m.active && data.paymentMethodIds.includes(m.id)));
         document.title = `${data.number} ${data.clientBusiness || data.clientName}`; // becomes the PDF file name
@@ -46,7 +52,7 @@ export default function InvoicePrintPage() {
           Save as PDF / print
         </button>
       </div>
-      <InvoiceDocument inv={inv} methods={methods} />
+      <InvoiceDocument inv={inv} methods={methods} acceptance={acceptance} />
     </div>
   );
 }

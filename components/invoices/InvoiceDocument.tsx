@@ -6,6 +6,8 @@ import Logo from '@/components/ui/Logo';
 import { siteConfig } from '@/lib/site-config';
 import { formatMoney, invoiceTotals, type Invoice } from '@/lib/invoices';
 import type { PaymentMethod } from '@/lib/payments';
+import { PROJECT_TERMS_URL } from '@/lib/project-terms';
+import AcceptBox, { type AcceptanceView } from '@/components/invoices/AcceptBox';
 
 const STATUS_LABEL: Record<Invoice['status'], string> = {
   draft: 'Draft',
@@ -49,7 +51,18 @@ function PayerRules({ text }: { text: string }) {
 }
 
 /** The invoice as the client sees it: used by the admin print view and the client link (/i/<token>). */
-export default function InvoiceDocument({ inv, methods }: { inv: Invoice; methods: PaymentMethod[] }) {
+export default function InvoiceDocument({
+  inv,
+  methods,
+  acceptance = null,
+  acceptToken,
+}: {
+  inv: Invoice;
+  methods: PaymentMethod[];
+  acceptance?: AcceptanceView | null;
+  /** Only on the client page: lets the client click "I accept". */
+  acceptToken?: string;
+}) {
   const t = invoiceTotals(inv);
   const settled = inv.status === 'paid' || inv.status === 'void' || t.balance <= 0;
   const links = methods.filter((m) => m.kind === 'link' && (inv.methodLinks[m.id] || m.link));
@@ -149,6 +162,18 @@ export default function InvoiceDocument({ inv, methods }: { inv: Invoice; method
           </div>
         </dl>
       </div>
+
+      <p className="mt-6 text-[12px] text-gray-600" style={{ breakInside: 'avoid' }}>
+        Paying this invoice, or clicking “I accept” on the online invoice, means you accept the work listed above and our project
+        terms:{' '}
+        <a href={PROJECT_TERMS_URL} target="_blank" rel="noopener noreferrer" className="underline text-[#2563eb] print:text-gray-700 print:no-underline">
+          elevatewebandmarketing.com/terms#project-terms
+        </a>
+      </p>
+
+      {inv.status !== 'void' && (inv.status !== 'paid' || acceptance?.current) && (
+        <AcceptBox token={settled ? undefined : acceptToken} acceptance={acceptance} defaultName={inv.clientName} />
+      )}
 
       {hasPayment ? (
         <section className="mt-8 pt-6 border-t border-gray-200" aria-labelledby="pay-heading">
