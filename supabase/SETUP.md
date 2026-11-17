@@ -39,7 +39,7 @@ SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
 
 ## 5. Admin upgrade (November 2026)
 
-Run `supabase/admin-upgrade-2026-11.sql`, then `supabase/payments-2026-11.sql`, then `supabase/payments-notes-2026-11.sql`, then `supabase/acceptance-2026-11.sql`, once each in the SQL Editor (login lockout log, onboarding answers, invoices, payment methods, client invoice links, payment log). Full steps, including two-step login: `docs/ADMIN-SECURITY-INVOICES-ONBOARDING.md`.
+Run `supabase/admin-upgrade-2026-11.sql`, then `supabase/payments-2026-11.sql`, then `supabase/payments-notes-2026-11.sql`, then `supabase/acceptance-2026-11.sql`, then `supabase/client-workflow-2026-11.sql`, once each in the SQL Editor (login lockout log, onboarding answers, invoices, payment methods, client invoice links, payment log). Full steps, including two-step login: `docs/ADMIN-SECURITY-INVOICES-ONBOARDING.md`.
 
 ## 6. Seed initial data (one time)
 

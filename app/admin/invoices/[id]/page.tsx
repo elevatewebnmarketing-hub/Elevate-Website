@@ -53,6 +53,44 @@ export default function AdminInvoiceEditPage() {
   const [clientLink, setClientLink] = useState('');
   const [acceptance, setAcceptance] = useState<{ acceptedName: string; acceptedAt: string; current: boolean } | null>(null);
   const [pay, setPay] = useState({ amount: '', method: '', reference: '', paidOn: new Date().toISOString().slice(0, 10) });
+  const [sendReceipt, setSendReceipt] = useState(true);
+  type Schedule = { id: string; templateInvoiceId: string; label: string; active: boolean; nextRun: string; dueDays: number; sendEmail: boolean };
+  const [schedule, setSchedule] = useState<Schedule | null>(null);
+  const [newSchedule, setNewSchedule] = useState({ nextRun: '', dueDays: 7, sendEmail: true });
+
+  useEffect(() => {
+    if (isNew) return;
+    fetch('/api/billing', { credentials: 'include', cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : []))
+      .then((list: Schedule[]) => setSchedule(list.find((x) => x.templateInvoiceId === id) ?? null))
+      .catch(() => {});
+  }, [id, isNew]);
+
+  async function makeMonthly() {
+    const res = await fetch('/api/billing', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ templateInvoiceId: id, ...newSchedule, nextRun: newSchedule.nextRun || undefined }),
+    });
+    const data = await res.json();
+    if (!res.ok) return setMessage({ kind: 'err', text: data.error || 'Could not set up monthly billing' });
+    setSchedule(data);
+    setMessage({ kind: 'ok', text: `Monthly billing on. The next invoice is created on ${data.nextRun}.` });
+  }
+
+  async function changeSchedule(patch: Partial<Schedule> | 'delete') {
+    if (!schedule) return;
+    if (patch === 'delete' && !confirm('Stop monthly billing for this invoice? Invoices already created stay.')) return;
+    const res = await fetch(`/api/billing/${schedule.id}`, {
+      method: patch === 'delete' ? 'DELETE' : 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: patch === 'delete' ? undefined : JSON.stringify(patch),
+    });
+    if (!res.ok) return setMessage({ kind: 'err', text: 'Could not update monthly billing' });
+    setSchedule(patch === 'delete' ? null : { ...schedule, ...patch });
+  }
 
   useEffect(() => {
     fetch('/api/payment-methods', { credentials: 'include', cache: 'no-store' })
@@ -296,7 +334,7 @@ export default function AdminInvoiceEditPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify(pay),
+      body: JSON.stringify({ ...pay, sendReceipt: sendReceipt && !!inv.clientEmail }),
     });
     const data = await res.json();
     if (!res.ok) {
@@ -307,7 +345,10 @@ export default function AdminInvoiceEditPage() {
     setPay((p) => ({ ...p, amount: '', reference: '' }));
     const list = await fetch(`/api/invoices/${id}/payments`, { credentials: 'include', cache: 'no-store' }).then((r) => r.json());
     setPayments(list);
-    setMessage({ kind: 'ok', text: 'Payment recorded. Status and balance updated.' });
+    setMessage({
+      kind: 'ok',
+      text: `Payment recorded. Status and balance updated.${data.receiptSent ? ` Receipt emailed to ${inv.clientEmail}.` : sendReceipt && inv.clientEmail ? ' The receipt email could not be sent (check that email is set up).' : ''}`,
+    });
   }
 
   async function removePayment(pid: string) {
@@ -630,11 +671,60 @@ export default function AdminInvoiceEditPage() {
                   <label className="block text-xs text-text/70 mb-1" htmlFor="pay-ref">Reference / tx ID</label>
                   <input id="pay-ref" className={input} value={pay.reference} onChange={(e) => setPay({ ...pay, reference: e.target.value })} />
                 </div>
+                <label className="sm:col-span-4 flex items-center gap-2 text-sm">
+                  <input type="checkbox" className="h-4 w-4 accent-[#4F9CF9]" checked={sendReceipt && !!inv.clientEmail} disabled={!inv.clientEmail} onChange={(e) => setSendReceipt(e.target.checked)} />
+                  {inv.clientEmail ? `Email a receipt to ${inv.clientEmail}` : 'Add the client’s email above to send receipts'}
+                </label>
                 <button type="submit" className="sm:col-span-4 justify-self-start px-4 py-2 bg-primary text-white rounded-xl hover:bg-primary/90 text-sm font-semibold">
                   Record payment
                 </button>
               </form>
               <p className="text-xs text-text/60 mt-2">Recording a payment updates the amount paid and the status (part paid / paid).</p>
+            </section>
+          )}
+
+          {!isNew && (
+            <section className="p-6 bg-white rounded-card shadow-soft border border-gray-100">
+              <h2 className="font-heading font-semibold text-primary mb-1">Repeat monthly</h2>
+              <p className="text-sm text-text/70 mb-3">
+                For care plans, Local SEO and ads management. A copy of this invoice is created every month, marked Sent and emailed
+                to the client with their link. Reminders go out before and after the due date.
+              </p>
+              {schedule ? (
+                <div className={`rounded-xl border p-4 text-sm ${schedule.active ? 'border-emerald-200 bg-emerald-50/50' : 'border-gray-200 bg-gray-50'}`}>
+                  <p className="font-medium text-primary">
+                    {schedule.active ? 'On' : 'Paused'}: next invoice on {schedule.nextRun}, due {schedule.dueDays} days later
+                    {schedule.sendEmail ? ', emailed to the client' : ', not emailed'}.
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button type="button" onClick={() => changeSchedule({ active: !schedule.active })} className="px-3 py-1.5 border border-gray-200 rounded-lg bg-white hover:bg-gray-50">
+                      {schedule.active ? 'Pause' : 'Resume'}
+                    </button>
+                    <button type="button" onClick={() => changeSchedule('delete')} className="px-3 py-1.5 text-red-700 hover:underline">
+                      Stop monthly billing
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid sm:grid-cols-3 gap-3 items-end">
+                  <div>
+                    <label className="block text-xs text-text/70 mb-1" htmlFor="sch-next">First monthly invoice on</label>
+                    <input id="sch-next" type="date" className={input} value={newSchedule.nextRun} onChange={(e) => setNewSchedule({ ...newSchedule, nextRun: e.target.value })} />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-text/70 mb-1" htmlFor="sch-due">Due after (days)</label>
+                    <input id="sch-due" type="number" min={0} max={60} className={input} value={newSchedule.dueDays} onChange={(e) => setNewSchedule({ ...newSchedule, dueDays: Number(e.target.value) })} />
+                  </div>
+                  <button type="button" onClick={makeMonthly} className="px-4 py-2.5 bg-primary text-white rounded-xl hover:bg-primary/90 text-sm font-semibold">
+                    Bill monthly
+                  </button>
+                  <label className="sm:col-span-3 flex items-center gap-2 text-sm">
+                    <input type="checkbox" className="h-4 w-4 accent-[#4F9CF9]" checked={newSchedule.sendEmail} onChange={(e) => setNewSchedule({ ...newSchedule, sendEmail: e.target.checked })} />
+                    Email each new invoice to the client{inv.clientEmail ? ` (${inv.clientEmail})` : ' (add their email above)'}
+                  </label>
+                  <p className="sm:col-span-3 text-xs text-text/60">Leave the date empty to start one month after this invoice’s issue date.</p>
+                </div>
+              )}
             </section>
           )}
 

@@ -126,7 +126,7 @@ export default function ProjectClientView({
 
   return (
     <div className="admin-panel min-h-screen bg-[#F7F9FC] py-6 sm:py-10 px-3 sm:px-4">
-      <div className="max-w-3xl mx-auto space-y-5">
+      <div className="max-w-3xl mx-auto flex flex-col gap-5">
         <header className="flex flex-wrap items-center justify-between gap-4">
           <div className="-my-3 -ml-2 h-16 w-32 overflow-hidden flex items-center">
             <Logo variant="black" width={130} height={130} />
@@ -143,14 +143,17 @@ export default function ProjectClientView({
             {PROJECT_STAGES.map((s, i) => (
               <li key={s.value}>
                 <span className={`block h-2 rounded-full ${i <= stageIdx ? 'bg-[#4F9CF9]' : 'bg-gray-200'}`} aria-hidden />
-                <span className={`mt-1.5 block text-[11px] sm:text-xs leading-tight ${i === stageIdx ? 'font-semibold text-[#0B1F3A]' : 'text-gray-500'}`}>
+                <span className={`mt-1.5 hidden sm:block text-xs leading-tight ${i === stageIdx ? 'font-semibold text-[#0B1F3A]' : 'text-gray-500'}`}>
                   {s.label}
                   <span className="sr-only">{i < stageIdx ? ' (done)' : i === stageIdx ? ' (now)' : ''}</span>
                 </span>
               </li>
             ))}
           </ol>
-          <p className="mt-4 text-[15px] text-gray-700">{PROJECT_STAGES[stageIdx]?.client}</p>
+          <p className="mt-3 sm:hidden text-sm font-semibold text-[#0B1F3A]">
+            Step {stageIdx + 1} of {PROJECT_STAGES.length}: {PROJECT_STAGES[stageIdx]?.label}
+          </p>
+          <p className="mt-2 sm:mt-4 text-[15px] text-gray-700">{PROJECT_STAGES[stageIdx]?.client}</p>
           {invoiceLink && (
             <a href={invoiceLink} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#2563eb] hover:underline">
               <FileText size={16} aria-hidden /> View your invoice
@@ -187,7 +190,7 @@ export default function ProjectClientView({
         )}
 
         {items.length > 0 && project.stage !== 'live' && (
-          <section className={card} aria-labelledby="need-h">
+          <section className={`${card} ${inReview ? 'order-last' : ''}`} aria-labelledby="need-h">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h2 id="need-h" className={h2}>What we need from you</h2>
               <span className="text-sm text-gray-500">{done} of {items.length} done</span>
@@ -352,7 +355,7 @@ export default function ProjectClientView({
           </section>
         )}
 
-        <p className="text-center text-xs text-gray-500 pb-4">
+        <p className="order-last text-center text-xs text-gray-500 pb-4">
           Elevate Web &amp; Marketing · WhatsApp {siteConfig.phone} · hello@elevatewebandmarketing.com
         </p>
       </div>

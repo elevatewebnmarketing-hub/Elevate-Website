@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Plus, Receipt } from 'lucide-react';
+import { Plus, Receipt, Repeat, Play } from 'lucide-react';
 import { Breadcrumbs } from '@/admin/Breadcrumbs';
 import { CardSkeleton } from '@/admin/Skeleton';
 import { INVOICE_STATUSES, formatMoney, invoiceTotals, type Invoice } from '@/lib/invoices';
@@ -19,6 +19,41 @@ export default function AdminInvoicesPage() {
   const [items, setItems] = useState<Invoice[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [schedules, setSchedules] = useState<{ id: string; templateInvoiceId: string; label: string; active: boolean; nextRun: string }[]>([]);
+  const [running, setRunning] = useState(false);
+  const [runResult, setRunResult] = useState<{ created: string[]; reminders: string[]; skipped: string[] } | null>(null);
+
+  useEffect(() => {
+    fetch('/api/billing', { credentials: 'include', cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : []))
+      .then(setSchedules)
+      .catch(() => {});
+  }, []);
+
+  async function runNow() {
+    setRunning(true);
+    try {
+      const res = await fetch('/api/billing', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ action: 'run' }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Billing run failed');
+      setRunResult(data);
+      const [inv, sch] = await Promise.all([
+        fetch('/api/invoices', { credentials: 'include', cache: 'no-store' }).then((r) => r.json()),
+        fetch('/api/billing', { credentials: 'include', cache: 'no-store' }).then((r) => r.json()),
+      ]);
+      setItems(inv);
+      setSchedules(sch);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Billing run failed');
+    } finally {
+      setRunning(false);
+    }
+  }
 
   useEffect(() => {
     fetch('/api/invoices', { credentials: 'include', cache: 'no-store' })
@@ -65,6 +100,44 @@ export default function AdminInvoicesPage() {
       {error && (
         <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm">{error}</div>
       )}
+
+      <section className="mb-6 p-5 bg-white rounded-card shadow-soft border border-gray-100" aria-labelledby="monthly-h">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 id="monthly-h" className="flex items-center gap-2 font-heading font-semibold text-primary">
+            <Repeat size={18} aria-hidden /> Monthly billing and reminders
+          </h2>
+          <button type="button" onClick={runNow} disabled={running} className="flex items-center gap-2 px-3 py-1.5 text-sm border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-60">
+            <Play size={15} aria-hidden /> {running ? 'Running…' : 'Run now'}
+          </button>
+        </div>
+        <p className="text-sm text-text/70 mt-1">
+          Runs every morning by itself: creates monthly invoices that are due and emails payment reminders (once each: 2 days before,
+          the day after, and a week after the due date). Turn on monthly billing from an invoice’s page.
+        </p>
+        {schedules.length > 0 && (
+          <ul className="mt-3 divide-y divide-gray-100 text-sm">
+            {schedules.map((sc) => (
+              <li key={sc.id} className="py-2 flex flex-wrap justify-between gap-2">
+                <Link href={`/admin/invoices/${sc.templateInvoiceId}`} className="text-accent hover:underline">{sc.label}</Link>
+                <span className={sc.active ? 'text-text/70' : 'text-text/50'}>{sc.active ? `Next: ${sc.nextRun}` : 'Paused'}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {runResult && (
+          <div role="status" className="mt-3 rounded-lg bg-gray-50 px-3 py-2 text-sm">
+            {runResult.created.length + runResult.reminders.length === 0 ? (
+              <p>Nothing due today.</p>
+            ) : (
+              <>
+                {runResult.created.map((x) => <p key={x}>New invoice: {x}</p>)}
+                {runResult.reminders.map((x) => <p key={x}>Reminder sent: {x}</p>)}
+              </>
+            )}
+            {runResult.skipped.map((x) => <p key={x} className="text-amber-800">Skipped: {x}</p>)}
+          </div>
+        )}
+      </section>
 
       {loading ? (
         <CardSkeleton />

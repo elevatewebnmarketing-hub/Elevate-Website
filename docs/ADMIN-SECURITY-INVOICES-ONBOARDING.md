@@ -34,6 +34,29 @@ Owner step: run `supabase/payments-2026-11.sql`, then `supabase/payments-notes-2
 - Project terms live in `lib/project-terms.ts`. When the wording changes, bump `TERMS_VERSION` and `TERMS_UPDATED_LABEL`.
 - Owner step: run `supabase/acceptance-2026-11.sql` once in the Supabase SQL Editor.
 
+## Client workflow (added 17 November 2026)
+
+| Feature | Where | How it works |
+| --- | --- | --- |
+| **Lead inbox** | `/admin/leads` | Every contact and quote form is saved (and still emailed). Pipeline: New → Contacted → Call booked → Quoted → Won/Lost, with source page and UTM tags, private notes, WhatsApp/call/email buttons. **Create invoice** pre-fills the invoice and moves the lead to Quoted; **Start project** moves it to Won. If email fails the lead is still saved, and vice versa. |
+| **Client project page** | `/admin/projects`, client link `/p/<secret>` | Stages: Onboarding → Content → Design and build → Your review → Launch → Live. "What we need from you" list (7 defaults, editable): the client ticks items and pastes links; you get an email for each. Start from a lead, an onboarding form or an invoice. |
+| **Review rounds** | Client page at "Your review" | The client sends all changes in one list per round; rounds beyond the included number (default 2, from the project terms) are flagged "extra: quote first", for you and for them. |
+| **Approve for launch** | Client page at "Your review"/"Launch" | Tick + full name; records name, time and IP. Changes are closed after approval. |
+| **Launch checklist** | Project page | The 32 items from `launch-checklist.md`, ticked per project. |
+| **Handover pack** | `/p/<secret>/handover` | `handover-template.md` filled in from the project; prints to PDF. Shown to the client at the Live stage with an honest review request. |
+| **Review request** | Project page | Copy or WhatsApp an honest Google review request (no incentives: Google policy). |
+| **Monthly invoices** | Invoice page → "Repeat monthly" | Copies the invoice every month, marks it Sent and emails the client their link. |
+| **Reminders** | Automatic | Once each: 2 days before the due date, the day after, a week after. Only invoices with a client email and a balance. You get a summary email. |
+| **Receipts** | Invoice page → Record payment | Emails a receipt with a link to `/i/<secret>/receipt/<payment>`. |
+| **Daily run** | Vercel Cron, 07:00 UTC (`vercel.json`) → `/api/cron/billing`; also **Run now** on `/admin/invoices` | Needs `CRON_SECRET` in Vercel. |
+
+Owner steps:
+1. Run `supabase/client-workflow-2026-11.sql` in the Supabase SQL Editor.
+2. Vercel → Settings → Environment Variables: add `CRON_SECRET` (any long random text, e.g. from `openssl rand -hex 32`), Production, then redeploy. Without it the daily run refuses to start; "Run now" in the admin still works.
+3. Emails to clients come from `RESEND_FROM_EMAIL`, which must be on a domain verified in Resend (the contact form already uses it).
+
+Client pages (`/p/`, `/i/`) are private links: not indexed, blocked in robots.txt, no analytics or ad pixels, no referrer sent to other sites.
+
 ## Login security
 
 - **Brute-force lockout that holds across all Vercel servers:** every attempt is logged in `admin_login_attempts`. 5 wrong tries from one IP in 15 minutes locks that IP; 30 wrong tries from all IPs together locks admin login for everyone for 15 minutes (stops guessing from many addresses; if it ever locks you out, wait 15 minutes). Each wrong try also waits ~1 second.

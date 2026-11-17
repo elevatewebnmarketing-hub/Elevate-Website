@@ -384,17 +384,20 @@ async function syncPaid(invoiceId: string): Promise<Invoice | null> {
   return fromRow(data as InvoiceRow);
 }
 
-export async function addInvoicePayment(invoiceId: string, p: Omit<InvoicePayment, 'id' | 'invoiceId'>): Promise<Invoice | null> {
-  const { error } = await db().from('invoice_payments').insert({
+export async function addInvoicePayment(
+  invoiceId: string,
+  p: Omit<InvoicePayment, 'id' | 'invoiceId'>
+): Promise<{ invoice: Invoice | null; paymentId: string }> {
+  const { data, error } = await db().from('invoice_payments').insert({
     invoice_id: invoiceId,
     amount: p.amount,
     method: p.method || null,
     reference: p.reference || null,
     paid_on: p.paidOn,
     note: p.note || null,
-  });
+  }).select('id').single();
   check(error, 'Record payment');
-  return syncPaid(invoiceId);
+  return { invoice: await syncPaid(invoiceId), paymentId: (data as { id: string }).id };
 }
 
 export async function deleteInvoicePayment(invoiceId: string, paymentId: string): Promise<Invoice | null> {
