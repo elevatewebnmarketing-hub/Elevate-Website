@@ -3,7 +3,7 @@ import { headers } from 'next/headers';
 import { Resend } from 'resend';
 import { requireAdmin } from '@/lib/api-auth';
 import { createIntake, listIntakes, StoreNotReadyError } from '@/backend/invoices';
-import { INTAKE_FIELDS, INTAKE_SECTIONS } from '@/lib/intake-questions';
+import { INTAKE_FIELDS, MULTI_SEPARATOR, splitMulti, visibleFields, visibleSections } from '@/lib/intake-questions';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev';
@@ -23,7 +23,7 @@ function allowed(ip: string) {
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
 function answersHtml(data: Record<string, string>) {
-  return INTAKE_SECTIONS.map((s) => {
+  return visibleSections(data).map((s) => {
     const rows = s.fields
       .filter((f) => data[f.id])
       .map((f) => `<p style="margin:0 0 10px"><strong>${esc(f.label)}</strong><br>${esc(data[f.id]).replace(/\n/g, '<br>')}</p>`)
@@ -55,15 +55,24 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Please confirm the permissions at the end of the form.' }, { status: 400 });
   }
 
-  const data: Record<string, string> = {};
+  // Clean every known answer first, then keep only questions that were shown for this business
+  // (answers left over from a different industry choice are dropped).
+  const raw: Record<string, string> = {};
   for (const f of INTAKE_FIELDS) {
-    const raw = body[f.id];
-    let v = typeof raw === 'string' ? raw.trim().slice(0, f.type === 'textarea' ? 5000 : 500) : '';
-    if (f.type === 'choice' && v && !f.options?.includes(v)) v = '';
-    if (f.required && !v) {
-      return NextResponse.json({ error: `Please answer: ${f.label}` }, { status: 400 });
+    const v = body[f.id];
+    let s = typeof v === 'string' ? v.trim().slice(0, f.type === 'textarea' ? 5000 : 500) : '';
+    if (f.type === 'choice' && s && !f.options?.includes(s)) s = '';
+    if (f.type === 'multi' && s) s = splitMulti(s).filter((o) => f.options?.includes(o)).join(MULTI_SEPARATOR);
+    if (s) raw[f.id] = s;
+  }
+  const data: Record<string, string> = {};
+  for (const section of visibleSections(raw)) {
+    for (const f of visibleFields(section, raw)) {
+      if (f.required && !raw[f.id]) {
+        return NextResponse.json({ error: `Please answer: ${f.label}` }, { status: 400 });
+      }
+      if (raw[f.id]) data[f.id] = raw[f.id];
     }
-    if (v) data[f.id] = v;
   }
   if (!EMAIL_REGEX.test(data.email ?? '')) {
     return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 });
@@ -93,7 +102,7 @@ export async function POST(request: Request) {
         from: FROM_EMAIL,
         to: BUSINESS_EMAIL,
         replyTo: data.email,
-        subject: `Onboarding form: ${data.businessName}`,
+        subject: `Onboarding form: ${data.businessName} (${data.industry === 'Other' ? data.industryOther : data.industry})`,
         html: `<div style="font-family:sans-serif;font-size:14px;line-height:1.5">${adminLink}${answersHtml(data)}</div>`,
       });
       emailed = !error;

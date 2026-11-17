@@ -109,7 +109,8 @@ export default function AdminIntakesPage() {
                   <span>
                     <span className="font-heading font-semibold text-primary">{it.businessName}</span>
                     <span className="block text-sm text-text/70">
-                      {it.contactName} · {it.phone || it.email} · {new Date(it.createdAt).toLocaleDateString('en-GB')}
+                      {it.data.industry === 'Other' ? it.data.industryOther : it.data.industry} · {it.contactName} · {it.phone || it.email} ·{' '}
+                      {new Date(it.createdAt).toLocaleDateString('en-GB')}
                     </span>
                   </span>
                   <span className={`px-2 py-0.5 rounded-full text-xs font-medium capitalize ${STATUS_STYLE[it.status]}`}>{it.status}</span>

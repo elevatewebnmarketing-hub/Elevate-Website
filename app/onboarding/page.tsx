@@ -19,7 +19,7 @@ export default function OnboardingPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-3">Tell us about your business</h1>
           <p className="text-text/80 dark:text-gray-300 text-lg mb-8">
-            Your answers become the pages of your website. It takes about 15 minutes; your progress is saved on this device
+            Your answers become the pages of your website. It takes 15–25 minutes, and the questions adapt to your type of business; your progress is saved on this device
             as you go, so you can stop and come back.
           </p>
           <OnboardingForm />

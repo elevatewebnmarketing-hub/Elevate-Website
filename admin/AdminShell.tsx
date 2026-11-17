@@ -23,7 +23,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   }, [isLogin]);
 
   if (isLogin || isPrint) {
-    return <>{children}</>;
+    return <div className="admin-panel min-h-screen">{children}</div>;
   }
 
   const navLinks = [

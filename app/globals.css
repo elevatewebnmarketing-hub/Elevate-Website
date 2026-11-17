@@ -63,9 +63,19 @@ body {
   }
 }
 
+/* Admin panel is a light-only UI: ignore the site's dark mode so text stays dark on white cards. */
+.admin-panel {
+  --text: #111111;
+  --background: #F7F9FC;
+  color: var(--text);
+  background-color: var(--background);
+  color-scheme: light;
+}
+
 /* Admin panel: force readable form inputs (fixes dark-mode + autofill issues) */
 .admin-panel input,
-.admin-panel textarea {
+.admin-panel textarea,
+.admin-panel select {
   background-color: #fff !important;
   color: #0B1F3A !important;
   -webkit-text-fill-color: #0B1F3A !important;
