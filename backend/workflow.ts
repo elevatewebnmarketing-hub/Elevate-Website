@@ -14,7 +14,7 @@ import {
 /* ---------------- Leads ---------------- */
 
 type LeadRow = {
-  id: string; created_at: string; status: LeadStatus; form: string | null; name: string; email: string;
+  id: string; created_at: string; status: LeadStatus; form: string | null; name: string; email: string | null;
   phone: string | null; business: string | null; website: string | null; service: string | null;
   project_type: string | null; industry: string | null; timeline: string | null; budget: string | null;
   message: string | null; page: string | null; utm_source: string | null; utm_medium: string | null;
@@ -27,7 +27,7 @@ const leadFromRow = (r: LeadRow): Lead => ({
   status: r.status,
   form: r.form ?? '',
   name: r.name,
-  email: r.email,
+  email: r.email ?? '',
   phone: r.phone ?? '',
   business: r.business ?? '',
   website: r.website ?? '',
@@ -51,7 +51,7 @@ export async function createLead(l: Omit<Lead, 'id' | 'createdAt' | 'status' | '
     .insert({
       form: l.form || null,
       name: l.name,
-      email: l.email,
+      email: l.email || null,
       phone: l.phone || null,
       business: l.business || null,
       website: l.website || null,

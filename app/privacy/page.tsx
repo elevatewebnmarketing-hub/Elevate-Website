@@ -31,7 +31,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="text-text/70 dark:text-gray-400 text-sm mb-12">
-            Last updated: {new Date().toLocaleDateString('en-US')}
+            Last updated: 18 November 2026
           </p>
 
           <div className="prose prose-lg max-w-none prose-headings:text-primary prose-headings:dark:text-white prose-p:text-text/80 prose-p:dark:text-gray-300 prose-li:text-text/80 prose-li:dark:text-gray-300 space-y-8">
@@ -50,6 +50,9 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 We may collect information you provide directly, such as when you fill out a contact form or our client onboarding form, subscribe to our newsletter, or book a call. This may include your name, email address, phone number, company name, and any message or project details you share.
+              </p>
+              <p>
+                When you use our free AI visibility check, we keep a record of the website address you checked, its score and the test results, and the page and campaign link you came from. If you ask for your fix list, we also keep the name, business name, WhatsApp number and email you give us. We use these only to send your results, follow up about them, and improve the check.
               </p>
               <p>
                 We also collect information automatically when you visit our website, including your IP address, browser type, device information, and pages you visit. We may use cookies and similar technologies for analytics, advertising measurement, and to improve your experience.

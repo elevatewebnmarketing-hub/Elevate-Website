@@ -2,10 +2,13 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Inbox, Mail, MessageCircle, Phone, Receipt, Trash2, FolderKanban } from 'lucide-react';
+import { Inbox, Mail, MessageCircle, Phone, Receipt, Trash2, FolderKanban, Gauge, ExternalLink } from 'lucide-react';
 import { Breadcrumbs } from '@/admin/Breadcrumbs';
 import { CardSkeleton } from '@/admin/Skeleton';
 import { LEAD_STATUSES, type Lead, type LeadStatus } from '@/lib/workflow';
+import type { VisibilityCheckRecord, CheckFollowUp } from '@/backend/visibility-leads';
+
+const FORM_LABEL: Record<string, string> = { quote: 'Quote form', contact: 'Contact form', 'visibility-check': 'Free AI check' };
 
 const STATUS_STYLE: Record<LeadStatus, string> = {
   new: 'bg-blue-50 text-blue-700',
@@ -77,7 +80,7 @@ export default function AdminLeadsPage() {
     <div>
       <Breadcrumbs items={[{ label: 'Dashboard', href: '/admin' }, { label: 'Leads' }]} />
       <h1 className="font-heading font-bold text-3xl text-primary mb-1">Leads</h1>
-      <p className="text-text/80 mb-6">Every contact and quote form, saved here as well as emailed. Move each lead along as you talk.</p>
+      <p className="text-text/80 mb-6">Every contact form, quote form and free AI check request, saved here as well as emailed. Move each lead along as you talk.</p>
 
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4" aria-label="Pipeline">
         {LEAD_STATUSES.map((s) => (
@@ -108,6 +111,8 @@ export default function AdminLeadsPage() {
 
       {error && <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm">{error}</div>}
 
+      <WebsiteChecks />
+
       {loading ? (
         <CardSkeleton />
       ) : shown.length === 0 ? (
@@ -128,7 +133,7 @@ export default function AdminLeadsPage() {
                     {l.industry && <span className="text-text/70"> · {l.industry}</span>}
                     <span className="block text-sm text-text/60">
                       {new Date(l.createdAt).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })}
-                      {l.form && ` · ${l.form === 'quote' ? 'Quote form' : 'Contact form'}`}
+                      {l.form && ` · ${FORM_LABEL[l.form] ?? l.form}`}
                       {sourceOf(l) && ` · from ${sourceOf(l)}`}
                     </span>
                   </span>
@@ -149,9 +154,11 @@ export default function AdminLeadsPage() {
                           <Phone size={15} aria-hidden /> Call
                         </a>
                       )}
-                      <a href={`mailto:${l.email}`} className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 rounded-lg hover:bg-gray-50">
-                        <Mail size={15} aria-hidden /> Email
-                      </a>
+                      {l.email && (
+                        <a href={`mailto:${l.email}`} className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 rounded-lg hover:bg-gray-50">
+                          <Mail size={15} aria-hidden /> Email
+                        </a>
+                      )}
                       <Link href={`/admin/invoices/new?lead=${l.id}`} className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-accent text-white rounded-lg hover:bg-accent/90">
                         <Receipt size={15} aria-hidden /> Create invoice
                       </Link>
@@ -220,5 +227,96 @@ export default function AdminLeadsPage() {
         </ul>
       )}
     </div>
+  );
+}
+
+/** Free AI visibility checks from the last 30 days. Checks that left details are already leads below. */
+function WebsiteChecks() {
+  const [checks, setChecks] = useState<VisibilityCheckRecord[] | null>(null);
+  const [problem, setProblem] = useState('');
+  const [showAll, setShowAll] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/visibility-checks', { credentials: 'include', cache: 'no-store' })
+      .then(async (r) => {
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || 'Could not load website checks');
+        setChecks(data);
+      })
+      .catch((e) => setProblem(e.message));
+  }, []);
+
+  async function mark(id: string, status: CheckFollowUp) {
+    const res = await fetch(`/api/visibility-checks/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ status }),
+    });
+    if (res.ok) setChecks((list) => list?.map((c) => (c.id === id ? { ...c, status } : c)) ?? null);
+  }
+
+  if (problem) return <div className="mb-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-sm">Website checks: {problem}</div>;
+  if (!checks) return null;
+  const todo = checks.filter((c) => c.status === 'new' && !c.leadId);
+  const shown = showAll ? checks : todo;
+
+  return (
+    <section className="mb-8 bg-white rounded-card shadow-soft border border-gray-100 p-5" aria-labelledby="checks-h">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+        <h2 id="checks-h" className="font-heading font-semibold text-xl text-primary flex items-center gap-2">
+          <Gauge size={20} aria-hidden /> Website checks
+        </h2>
+        <span className="text-sm text-text/70">
+          {checks.length} in 30 days · {checks.filter((c) => c.leadId).length} left details · {todo.length} to look at
+        </span>
+      </div>
+      <p className="text-sm text-text/70 mb-4">
+        Everyone who ran the free AI check. The ones who left details are leads below. For the rest, look the site up and follow the one-message rule in{' '}
+        <code>business/operations/lead-follow-up.md</code>.
+      </p>
+      {shown.length === 0 ? (
+        <p className="text-sm text-text/70">{checks.length ? 'Nothing waiting. Every check is followed up.' : 'No checks yet.'}</p>
+      ) : (
+        <ul className="divide-y divide-gray-100">
+          {shown.slice(0, 50).map((c) => (
+            <li key={c.id} className="py-3 flex flex-wrap items-center gap-3">
+              <span className={`w-12 text-center font-heading font-bold rounded-lg py-1 ${c.score >= 85 ? 'bg-emerald-50 text-emerald-700' : c.score >= 60 ? 'bg-amber-50 text-amber-800' : 'bg-red-50 text-red-700'}`}>
+                {c.score}
+              </span>
+              <span className="flex-1 min-w-[12rem]">
+                <a href={c.url} target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:text-accent inline-flex items-center gap-1">
+                  {c.host} <ExternalLink size={13} aria-hidden />
+                </a>
+                <span className="block text-xs text-text/60">
+                  {new Date(c.createdAt).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })}
+                  {c.utmSource && ` · from ${c.utmSource}${c.utmCampaign ? ` · ${c.utmCampaign}` : ''}`}
+                  {` · ${c.checks.filter((x) => x.status !== 'pass').length} to fix`}
+                </span>
+              </span>
+              {c.leadId ? (
+                <span className="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700">Left details: see lead</span>
+              ) : c.status === 'new' ? (
+                <span className="flex gap-2">
+                  <button type="button" onClick={() => mark(c.id, 'followed_up')} className="text-sm px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50">
+                    Followed up
+                  </button>
+                  <button type="button" onClick={() => mark(c.id, 'not_a_fit')} className="text-sm px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50">
+                    Not a fit
+                  </button>
+                </span>
+              ) : (
+                <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">{c.status === 'followed_up' ? 'Followed up' : 'Not a fit'}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+      {checks.length > todo.length && (
+        <button type="button" onClick={() => setShowAll((v) => !v)} className="mt-3 text-sm text-accent hover:underline">
+          {showAll ? 'Show only the ones to look at' : 'Show all checks'}
+        </button>
+      )}
+    </section>
   );
 }

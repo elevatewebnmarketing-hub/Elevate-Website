@@ -1,5 +1,7 @@
-import { NextResponse } from 'next/server';
-import { checkVisibility } from '@/lib/visibility-check';
+import { NextResponse, after } from 'next/server';
+import { checkVisibility, type VisibilityReport } from '@/lib/visibility-check';
+import { logCheck } from '@/backend/visibility-leads';
+import { emailHtml, esc, notifyOwner } from '@/backend/notify';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
@@ -37,7 +39,15 @@ export async function POST(request: Request) {
 
   try {
     const report = await checkVisibility(url);
-    return NextResponse.json(report, { headers: { 'Cache-Control': 'no-store' } });
+    // Log every check: a business that checks its own site is our warmest lead. Never block the report on it.
+    let checkId: string | null = null;
+    try {
+      checkId = await logCheck(report, request.headers.get('referer') ?? '');
+    } catch (error) {
+      console.error('Visibility check log error (report still shown):', error);
+    }
+    after(() => notifyCheck(report, request.headers.get('referer') ?? ''));
+    return NextResponse.json({ ...report, checkId }, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error) {
     const message =
       error instanceof Error && /isn’t a public|can’t be checked|Only |redirects too many|answered with an error/.test(error.message)
@@ -45,4 +55,16 @@ export async function POST(request: Request) {
         : 'We couldn’t reach that website. Check the address and try again.';
     return NextResponse.json({ error: message }, { status: 422 });
   }
+}
+
+function notifyCheck(report: VisibilityReport, referer: string) {
+  const problems = report.checks.filter((c) => c.status !== 'pass');
+  return notifyOwner(
+    `Website check: ${report.url} scored ${report.score}/100`,
+    emailHtml(`<p>Someone just ran the free AI visibility check on <a href="${esc(report.url)}">${esc(report.url)}</a> and scored <b>${report.score}/100</b>.</p>
+<p>${problems.length ? `What needs fixing:</p><ul>${problems.map((c) => `<li>${esc(c.label)}</li>`).join('')}</ul>` : 'Every test passed.</p>'}
+<p>They have not left their details yet. If they do, you get a second email with their name and number.</p>
+<p>From: ${esc(referer || 'unknown page')}</p>
+<p><a href="https://www.elevatewebandmarketing.com/admin/leads">Open Leads in the admin</a></p>`)
+  );
 }
