@@ -12,7 +12,7 @@ export const websiteRedesign: ServicePageConfig = {
     metaDescription:
       'Website redesign in Abuja: we rebuild slow, outdated or JavaScript-only sites so Google and ChatGPT can read them, without losing your rankings. Free audit.',
     h1: 'Website redesign in Abuja',
-    updated: '2026-11-09',
+    updated: '2026-11-20',
     keyTakeaways: [
       'A redesign should fix why the site isn’t bringing enquiries, not only how it looks.',
       'We keep the pages Google already shows, redirect the ones that change, and rebuild the rest as clear service pages.',
@@ -118,6 +118,14 @@ export const websiteRedesign: ServicePageConfig = {
       'Fixed prices in naira, agreed before we start.',
     ],
     faqs: [
+      {
+        q: 'How much does a website redesign cost?',
+        a: 'We give you a fixed price after the free audit, because it depends on how many pages you have and how much has to be rebuilt. For a sense of scale, our new-build packages are a Starter Website at ₦250,000 and a Business Website at ₦450,000, with the search engine setup included; the [pricing page](/pricing) shows them in pounds or dollars if you’re abroad. For what other agencies charge, see our guides to [website costs in Nigeria](/blog/website-cost-in-nigeria-2026) and [website costs in the UK](/guides/website-cost-uk).',
+      },
+      {
+        q: 'Should I redesign my website or just pay for maintenance?',
+        a: 'Maintenance keeps a working site updated and backed up; it can’t fix a site search engines can’t read or customers can’t use. If your site sends Google an almost empty page, hides your contact details or is very slow on a phone, a redesign comes first. If it already works, a [website care plan](/services/website-maintenance) is enough. We tell you which after the free check.',
+      },
       {
         q: 'How soon will I see results?',
         a: 'In our experience, once the site is built properly and submitted to Google Search Console, it takes about three weeks for Google to build up its picture of the site, and that’s often when the first calls come. Competitive searches take longer, and we don’t promise dates or positions.',

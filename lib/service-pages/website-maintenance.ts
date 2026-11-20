@@ -12,7 +12,7 @@ export const websiteMaintenance: ServicePageConfig = {
     metaDescription:
       'Website maintenance in Abuja: hosting, renewals, updates, uptime checks, content changes and a monthly Google report for one fixed monthly fee.',
     h1: 'Website maintenance and care plans in Abuja',
-    updated: '2026-11-09',
+    updated: '2026-11-20',
     keyTakeaways: [
       'A care plan keeps your website online, secure, backed up and up to date every month.',
       'For your Google, Bing, Apple and Facebook profiles, add the Local SEO Plan (₦30,000 a month after a ₦70,000 setup).',
@@ -104,7 +104,7 @@ export const websiteMaintenance: ServicePageConfig = {
       },
       {
         q: 'How much does website maintenance cost in Nigeria?',
-        a: 'Our Website Care Plan and Local SEO Plan have fixed monthly prices, shown on the pricing page in your currency. Sites we didn’t build start with a one-off ₦30,000 check.',
+        a: 'Our Website Care Plan is ₦30,000 a month, and the Local SEO Plan has its own fixed monthly price; both are on the [pricing page](/pricing) in your currency. Sites we didn’t build start with a one-off ₦30,000 check. For what maintenance usually costs elsewhere, see our guides to [website costs in Nigeria](/blog/website-cost-in-nigeria-2026) and [website costs in the UK](/guides/website-cost-uk).',
       },
       {
         q: 'How do you show me it’s working?',
@@ -121,6 +121,10 @@ export const websiteMaintenance: ServicePageConfig = {
       {
         q: 'Can I cancel a care plan?',
         a: 'Yes, with 30 days’ notice. You keep your domain, content and site files, and we move the hosting to your own account so the site stays online.',
+      },
+      {
+        q: 'Is my website worth maintaining, or does it need a redesign?',
+        a: 'A care plan keeps a working site healthy. It won’t fix a site search engines can’t read, such as one built with a JavaScript-only builder that sends Google an almost empty page. If that’s your site, a [website redesign](/services/website-redesign) comes first; the free check tells you which you need.',
       },
       {
         q: 'Do you maintain websites you didn’t build?',

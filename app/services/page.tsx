@@ -1,8 +1,8 @@
-'use client';
+// Server-rendered (no 'use client'): every word is in the HTML and visible from the first paint. The page used to
+// start all its sections at opacity 0 until the animation library ran in the browser (indexing review, 2026-11-20).
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import ServicesJsonLd from '@/components/seo/ServicesJsonLd';
@@ -41,7 +41,7 @@ const coreServices = [
     title: 'Website Redesigns',
     href: '/services/website-redesign',
     description:
-      'For businesses with an outdated or underperforming website that needs a stronger message and cleaner flow.',
+      'For sites that look dated, hide your contact details, or send search engines an almost empty page (common with JavaScript-only builders).',
     details: [
       'Site audit and restructuring recommendations',
       'Modern visual refresh and clearer hierarchy',
@@ -88,7 +88,7 @@ const supportServices = [
       'Content edits and light support',
       'Tracking and form checks',
       'Priority fixes when needed',
-      'A healthier website over time',
+      'Website Care Plan: ₦30,000 a month',
     ],
   },
   {
@@ -159,25 +159,22 @@ export default function ServicesPage() {
           ]}
         />
         <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
+          <div className="mb-16">
             <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-4">
-              Services
+              Website design, SEO and ads services
             </h1>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-3xl mb-6">
-              Elevate is built around one core goal: helping service businesses turn their
-              website into a stronger trust and lead-generation asset. We keep the public
-              offer simple, then layer in support where it genuinely helps.
+              We build websites that get service businesses found on Google and in AI answers,
+              and send every enquiry straight to your phone, WhatsApp or inbox. Start with the
+              website, then add local SEO, ads or a monthly care plan when you need them. Every
+              price is fixed and shown on the{' '}
+              <Link href="/pricing" className="text-accent hover:underline">pricing page</Link>.
             </p>
             <p className="text-sm text-text/70 dark:text-gray-400">
               Common fits: local services, consultants, agencies, real estate teams, education
               brands, and growing businesses that need a more credible online presence.
             </p>
-          </motion.div>
+          </div>
 
           <section className="mb-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
@@ -186,7 +183,8 @@ export default function ServicesPage() {
                   Core Website Services
                 </h2>
                 <p className="text-text/80 dark:text-gray-300 max-w-2xl">
-                  The main offer we want prospects to understand quickly.
+                  Every site includes the search engine setup: Google Search Console, a sitemap,
+                  structured data and pages search engines can read without JavaScript.
                 </p>
               </div>
               <Link
@@ -199,12 +197,9 @@ export default function ServicesPage() {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-8">
-              {coreServices.map((service, index) => (
-                <motion.article
+              {coreServices.map((service) => (
+                <article
                   key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="group bg-white dark:bg-slate-800 rounded-card-lg p-8 shadow-soft hover:shadow-soft-xl border border-gray-100 dark:border-white/10 transition-shadow"
                 >
                   <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
@@ -227,7 +222,7 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                </motion.article>
+                </article>
               ))}
             </div>
           </section>
@@ -241,12 +236,9 @@ export default function ServicesPage() {
             </p>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {supportServices.map((service, index) => (
-                <motion.article
+              {supportServices.map((service) => (
+                <article
                   key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="bg-white dark:bg-slate-800 rounded-card-lg p-8 shadow-soft border border-gray-100 dark:border-white/10"
                 >
                   <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
@@ -269,23 +261,48 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                </motion.article>
+                </article>
               ))}
             </div>
           </section>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-8 bg-primary rounded-card-lg text-center"
-          >
+          <section className="mb-16 max-w-3xl">
+            <h2 className="font-heading font-bold text-3xl text-primary dark:text-white mb-4">
+              What does a website cost?
+            </h2>
+            <p className="text-text/80 dark:text-gray-300 text-lg leading-relaxed mb-4">
+              Quotes range from a few thousand naira or pounds to millions, often for what sounds like the
+              same thing. Our guides break down typical prices, the running costs after launch, and the
+              questions to ask before you pay anyone:
+            </p>
+            <ul className="space-y-2 text-lg">
+              <li>
+                <Link href="/blog/website-cost-in-nigeria-2026" className="text-accent hover:underline">
+                  How much a website costs in Nigeria in 2026
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides/website-cost-uk" className="text-accent hover:underline">
+                  How much a website costs in the UK in 2026
+                </Link>
+              </li>
+            </ul>
+            <p className="text-text/80 dark:text-gray-300 text-lg leading-relaxed mt-4">
+              Already have a site that isn’t bringing enquiries? A{' '}
+              <Link href="/services/website-redesign" className="text-accent hover:underline">website redesign</Link>{' '}
+              fixes the cause first. Happy with it? A{' '}
+              <Link href="/services/website-maintenance" className="text-accent hover:underline">care plan</Link>{' '}
+              keeps it updated, backed up and secure.
+            </p>
+          </section>
+
+          <div className="p-8 bg-primary rounded-card-lg text-center">
             <h2 className="font-heading font-bold text-2xl text-white mb-4">
               Not sure which package fits?
             </h2>
             <p className="text-white/80 mb-6 max-w-2xl mx-auto">
-              Start with a quick strategy call. We will point you toward the simplest option
-              that matches your business goals instead of forcing unnecessary scope.
+              Start with a quick call. We’ll point you to the simplest option that fits your
+              business, and tell you if you don’t need us yet.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="primary" size="lg" href="/pricing" className="bg-accent hover:bg-accent/90">
@@ -295,7 +312,7 @@ export default function ServicesPage() {
                 Contact Us
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </main>
       <Footer />

@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
-  title: 'Services',
+  title: 'Website Design, SEO & Ads Services',
   description:
-    'Website design, redesign, landing pages, local visibility support, and ongoing website care for service businesses that want more qualified leads.',
+    'Website design, redesign, local SEO, Google and Facebook ads, and monthly care plans for service businesses that want to be found on Google and get more enquiries. Fixed prices.',
   keywords: [
     'service business website design',
     'local business website packages',

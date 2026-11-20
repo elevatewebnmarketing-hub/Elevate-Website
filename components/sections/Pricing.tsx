@@ -299,12 +299,16 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto sm:mx-0">
               Clear public pricing for{' '}
               <Link href="/services/website-design" className="text-accent hover:underline">SEO-ready websites</Link>,{' '}
+              <Link href="/services/website-redesign" className="text-accent hover:underline">website redesigns</Link>,{' '}
               <Link href="/services/landing-pages" className="text-accent hover:underline">landing pages</Link>,{' '}
               <Link href="/services/local-seo" className="text-accent hover:underline">local SEO</Link>,{' '}
               <Link href="/services/google-ads" className="text-accent hover:underline">Google Ads</Link>,{' '}
               <Link href="/services/facebook-instagram-ads" className="text-accent hover:underline">Facebook &amp; Instagram ads</Link> and{' '}
               <Link href="/services/website-maintenance" className="text-accent hover:underline">care plans</Link>.
-              Final quotes only change when scope, content, or integrations change.
+              Final quotes only change when scope, content, or integrations change. Comparing quotes? See what
+              websites typically cost in{' '}
+              <Link href="/blog/website-cost-in-nigeria-2026" className="text-accent hover:underline">Nigeria</Link> and{' '}
+              <Link href="/guides/website-cost-uk" className="text-accent hover:underline">the UK</Link>.
             </p>
             <p className="text-sm text-text/60 dark:text-gray-400 mt-3">
               Prices shown in {currencyName}

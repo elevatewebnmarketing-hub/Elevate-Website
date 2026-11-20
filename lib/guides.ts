@@ -109,7 +109,7 @@ const whyNotOnGoogle: Guide = {
       h2: '3. Search engines can’t read your pages',
       paragraphs: [
         'This is the one most people never hear about. Some websites look perfect in a browser but send almost nothing to search engines, because the text only appears after JavaScript code runs. Google can usually run that code later, but it says server-side rendering is still a good idea because not all crawlers can. The crawlers behind ChatGPT, Claude and Perplexity mostly read the raw page without running it.',
-        'When we first checked the MR DGN Group website, search engines received 0 readable words. After we rebuilt it with server-side rendering, they received over 400. Sites made with some AI builders had the same problem: read our guide on [Lovable, Wix and Squarespace sites that don’t show up on Google](/guides/lovable-wix-squarespace-seo).',
+        'When we first checked the MR DGN Group website, search engines received 0 readable words. After we rebuilt it with server-side rendering, they received over 400. Sites made with some AI builders had the same problem: read our guide on [Lovable, Wix and Squarespace sites that don’t show up on Google](/guides/lovable-wix-squarespace-seo). If your site has it, a [website redesign](/services/website-redesign) fixes the cause; how much that kind of work usually costs is in our guides for [Nigeria](/blog/website-cost-in-nigeria-2026) and [the UK](/guides/website-cost-uk).',
       ],
     },
     {
@@ -379,6 +379,7 @@ const ukCost: Guide = {
   description:
     'Typical UK website prices in 2026 for DIY builders, freelancers and agencies, the running costs after launch, and the questions to ask before you pay a quote.',
   published: '2026-10-18',
+  updated: '2026-11-20',
   image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
   intro: [
     'The honest answer is anything from a few pounds a month to tens of thousands. The useful answer depends on what the website has to do. Here are typical UK prices in 2026, what changes them, and how to judge a quote.',
@@ -406,7 +407,7 @@ const ukCost: Guide = {
         '**Hosting:** roughly £7 to £18 a month for most small sites.',
         '**Maintenance or care plan:** from about £25 a month for basic updates and backups, and £100 to £500 a month for ongoing content and SEO work.',
       ],
-      after: ['Altogether, a typical small business site costs about £500 to £2,500 a year to run.'],
+      after: ['Altogether, a typical small business site costs about £500 to £2,500 a year to run. Building for a business in Nigeria instead? Prices there are very different: see [how much a website costs in Nigeria in 2026](/blog/website-cost-in-nigeria-2026).'],
     },
     {
       h2: 'What actually changes the price',
@@ -440,8 +441,8 @@ const ukCost: Guide = {
     {
       h2: 'What we charge UK clients',
       paragraphs: [
-        `We’re a small team based in Nigeria working remotely with UK clients, which keeps our costs lower than a UK agency’s. Our fixed prices: **Starter Website ${gbp(gb.starter.amount)}**, **Business Website ${gbp(gb.business.amount)}**, and care plans from ${gbp(gb.google_growth.amount)} a month. Every site includes the SEO setup above, not as an extra.`,
-        'A detailed site with several services usually takes one to two weeks, including the changes after the first draft. See [SEO websites for UK small businesses](/uk) for how we work with UK clients, or the full [pricing page](/pricing).',
+        `We’re a small team based in Nigeria working remotely with UK clients, which keeps our costs lower than a UK agency’s. Our fixed prices: **Starter Website ${gbp(gb.starter.amount)}**, **Business Website ${gbp(gb.business.amount)}**, and [care plans](/services/website-maintenance) from ${gbp(gb.google_growth.amount)} a month. Every site includes the SEO setup above, not as an extra.`,
+        'A Starter site usually launches in 7 to 10 business days and a Business site takes 2 to 4 weeks, once we have your content. Already have a site that isn’t bringing enquiries? A [website redesign](/services/website-redesign) can cost less than starting again. See [SEO websites for UK small businesses](/uk) for how we work with UK clients, all our [website design, SEO and ads services](/services), or the full [pricing page](/pricing).',
       ],
     },
   ],
@@ -460,7 +461,7 @@ const ukCost: Guide = {
     },
     {
       q: 'How long does a small business website take?',
-      a: 'A simple site can be ready in about a week. A detailed site with several services usually takes one to two weeks, including changes after the first draft.',
+      a: 'With us, a Starter site usually launches in 7 to 10 business days and a Business site takes 2 to 4 weeks, once we have your content. Agencies with a queue or a big custom build can take months.',
     },
   ],
   cta: {
