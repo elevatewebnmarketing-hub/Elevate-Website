@@ -2,7 +2,6 @@
 
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { openCalendly } from '@/lib/calendly';
 
@@ -13,13 +12,6 @@ const DottedGlowBackground = dynamic(
     })),
   { ssr: false }
 );
-
-const TRUST_AVATARS = [
-  'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=100&fit=crop',
-  'https://images.pexels.com/photos/1181352/pexels-photo-1181352.jpeg?auto=compress&cs=tinysrgb&w=100&fit=crop',
-  'https://images.pexels.com/photos/1181438/pexels-photo-1181438.jpeg?auto=compress&cs=tinysrgb&w=100&fit=crop',
-  'https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=100&fit=crop',
-];
 
 export default function Hero() {
   const containerVariants = {
@@ -75,26 +67,24 @@ export default function Hero() {
               variants={itemVariants}
               className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-primary dark:text-white leading-tight max-w-4xl mx-auto"
             >
-              Websites Built to Turn{' '}
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                More Visitors
-              </span>{' '}
-              Into Qualified Leads.
+              Website Design &amp; SEO in{' '}
+              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">Abuja</span>{' '}
+              and Asaba
             </motion.h1>
             <motion.p
               variants={itemVariants}
               className="text-lg sm:text-xl text-text/80 dark:text-gray-300 max-w-xl mx-auto"
             >
-              Stop losing leads to a slow, outdated website. We design, build, and
-              optimize high-performance websites that turn clicks into qualified
-              leads. Clear pricing, fast delivery, zero headaches.
+              We build websites that show up when people in Abuja search for what you sell, then set up the
+              Google Business Profile and SEO behind them. Fixed prices, and you deal with the founder from the
+              first message to launch.
             </motion.p>
             <motion.p
               variants={itemVariants}
               className="text-base text-text/60 dark:text-gray-400"
             >
-              Office in Asaba, serving Abuja and all of Nigeria, and trusted by growing brands that want clear
-              communication, reliable delivery, and websites built to convert.
+              Based in Abuja, with our office in Asaba. Free discovery visits anywhere in Abuja, usually within 24
+              hours. <a href="#abuja" className="text-accent font-medium underline underline-offset-2 hover:no-underline">See our Abuja work</a>
             </motion.p>
 
             <motion.div
@@ -126,27 +116,10 @@ export default function Hero() {
               variants={itemVariants}
               className="flex items-center gap-4 justify-center"
             >
-              <div className="flex -space-x-3">
-                {TRUST_AVATARS.map((src, index) => (
-                  <div
-                    key={index}
-                    className="relative w-9 h-9 rounded-full border-2 border-background overflow-hidden bg-gray-200"
-                  >
-                    <Image
-                      src={src}
-                      alt="Trusted client or team member"
-                      width={36}
-                      height={36}
-                      className="object-cover w-full h-full"
-                      priority
-                    />
-                  </div>
-                ))}
-              </div>
               <div className="max-w-[280px] sm:max-w-none">
                 <p className="text-accent font-medium text-sm">★★★★★</p>
                 <p className="text-text/60 dark:text-gray-400 text-xs sm:text-sm">
-                  Trusted by teams behind MR DGN Group, MansaLuxeRealty Limited, TMM Scholars, and more.
+                  5-star Google reviews. Clients include MR DGN Group, Mansa Luxe Realty, FP Conglomerate and BSG in Abuja and Asaba.
                 </p>
               </div>
             </motion.div>

@@ -20,7 +20,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
         'Web design and local SEO in Asaba and Okpanam from the team behind MR DGN Construction’s site, found by buyers on ChatGPT. From ₦250,000.',
       h1: 'Web design and SEO in Asaba',
       showMap: true,
-      updated: '2026-11-09',
+      updated: '2026-11-20',
       keyTakeaways: [
         'Our office address is in Asaba, by Okpanam City Gate, and most of our client work so far is for Asaba businesses.',
         'ChatGPT listed MR DGN Construction, our client, first when asked where to buy cement blocks in Asaba with delivery (our test, 6 November 2026).',
@@ -83,7 +83,17 @@ export const locationPages: Record<string, ServicePageConfig> = {
         {
           name: 'MR DGN Group',
           url: 'https://www.mrdgngroup.com',
-          detail: 'The group site, rebuilt from a JavaScript-only app with 0 readable words into pages search engines can fully read.',
+          detail: 'The group site for its construction, real estate and entertainment companies, headquartered in Asaba. Rebuilt from a JavaScript-only app with 0 readable words into pages search engines can fully read.',
+        },
+        {
+          name: 'Mama Onome Natural Health, Asaba',
+          url: 'https://mama-onome.vercel.app',
+          detail: 'A natural health store in Asaba. The site shows its products and gives customers a clear way to get in touch.',
+        },
+        {
+          name: 'K-CAP Global Ltd, Owa, Delta State',
+          url: 'https://www.k-capgloballtd.com',
+          detail: 'An agricultural commodity exporter that sells ginger, sesame seeds and soybeans to buyers abroad, with product pages, its export process and its licences.',
         },
       ],
       localHeading: 'Getting found in Asaba',
@@ -100,7 +110,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
       faqs: [
         {
           q: 'Do you have an office in Asaba?',
-          a: 'Yes. Our office address is MR DGN’s office: Jossie Excel School, after Okpanam City Gate by the Express. Meetings there are by appointment, and most projects run over WhatsApp and video calls.',
+          a: 'Yes. Our office is inside MR DGN’s office: Jossie Excel School, after Okpanam City Gate by the Express. Come in any time and ask for Elevate Web & Marketing; the team there will call us. Most projects run over WhatsApp and video calls.',
         },
         {
           q: 'Can my Asaba business show up in ChatGPT?',
@@ -138,7 +148,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
       metaDescription:
         'SEO company in Nigeria: web design from ₦250,000, local SEO and Google Business Profile setup, with fixed prices and a 48-hour reply.',
       h1: 'SEO company and web design for businesses in Nigeria',
-      updated: '2026-11-16',
+      updated: '2026-11-20',
       intro: [
         'Elevate is an SEO company in Nigeria and a web design company in Nigeria, working remotely for businesses in every state. Search for “SEO company Nigeria” and you mostly get directories and one “Coming Soon” page: not one of them says what you get or what it costs. We do. A website Google and ChatGPT can read, a Google Business Profile to match it, and fixed naira prices from ₦250,000, with a reply within 48 hours.',
         'Next step: message us on WhatsApp or [request a quote](/get-quote), and we’ll tell you what to fix first.',
@@ -178,7 +188,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
           'Why it moved: Google’s local results rest on relevance, distance and prominence. You cannot move closer to every customer, so the work goes into the other two. We rebuilt the site so crawlers could read every page, gave each area and listing its own page, added buyer guides, and matched the Google Business Profile to the site. If you are judging the best SEO company in Nigeria on what it has actually moved, compare it against those numbers. If your own site has the same problem, our [website redesign](/services/website-redesign) service starts with exactly that fix.',
         ],
         whyUs: [
-          'Our office is in Asaba and our founder works from Abuja; we work across Nigeria, including [Abuja](/locations/abuja), [Asaba](/locations/asaba), Okpanam and [Lagos](/locations/lagos), and we take on businesses in any other state, Port Harcourt included. Most of it happens remotely. If you want the profile side explained first, read our guide to [Google Business Profile setup in Nigeria](/guides/google-business-profile-setup-nigeria).',
+          'Our office is in Asaba and our founder lives and works in Abuja, where we offer free discovery visits ([website design and SEO in Abuja and Asaba](/)). We work across Nigeria, including [Abuja](/locations/abuja), [Asaba](/locations/asaba), Okpanam and [Lagos](/locations/lagos), and we take on businesses in any other state, Port Harcourt included. Most of it happens remotely. If you want the profile side explained first, read our guide to [Google Business Profile setup in Nigeria](/guides/google-business-profile-setup-nigeria).',
         ],
       },
       problems: [],

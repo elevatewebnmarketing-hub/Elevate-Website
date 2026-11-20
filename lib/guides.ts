@@ -43,7 +43,7 @@ const whyNotOnGoogle: Guide = {
   description:
     'Why a website doesn’t show up on Google or ChatGPT: no Search Console, no sitemap, pages crawlers can’t read, no Bing or schema, and how to fix each one.',
   published: '2026-10-18',
-  updated: '2026-11-16',
+  updated: '2026-11-20',
   image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80',
   keyTakeaways: [
     'Google, Bing and ChatGPT find websites in different ways, so a site can show on one and be missing from the others.',
@@ -109,7 +109,7 @@ const whyNotOnGoogle: Guide = {
       h2: '3. Search engines can’t read your pages',
       paragraphs: [
         'This is the one most people never hear about. Some websites look perfect in a browser but send almost nothing to search engines, because the text only appears after JavaScript code runs. Google can usually run that code later, but it says server-side rendering is still a good idea because not all crawlers can. The crawlers behind ChatGPT, Claude and Perplexity mostly read the raw page without running it.',
-        'When we first checked the MR DGN Group website, search engines received 0 readable words. After we rebuilt it with server-side rendering, they received over 400. Sites made with some AI builders had the same problem: read our guide on [Lovable, Wix and Squarespace sites that don’t show up on Google](/guides/lovable-wix-squarespace-seo). If your site has it, a [website redesign](/services/website-redesign) fixes the cause; how much that kind of work usually costs is in our guides for [Nigeria](/blog/website-cost-in-nigeria-2026) and [the UK](/guides/website-cost-uk).',
+        'When we first checked the MR DGN Group website, search engines received 0 readable words. After we rebuilt it with server-side rendering, they received over 400. Sites made with some AI builders had the same problem: read our guide on [Lovable, Wix and Squarespace sites that don’t show up on Google](/guides/lovable-wix-squarespace-seo). If your site has it, a [website redesign](/services/website-redesign) fixes the cause; how much that kind of work usually costs is in our guides for [Nigeria](/blog/website-cost-in-nigeria-2026) and [the UK](/guides/website-cost-uk). In Abuja or Asaba? We do [website design and SEO in Abuja and Asaba](/), with a free first visit [anywhere in Abuja](/locations/abuja).',
       ],
     },
     {

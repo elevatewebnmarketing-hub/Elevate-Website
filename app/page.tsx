@@ -15,9 +15,19 @@ import Blog from '@/components/sections/Blog';
 import Pricing from '@/components/sections/Pricing';
 import FinalCTA from '@/components/sections/FinalCTA';
 import OfferSummary from '@/components/sections/OfferSummary';
+import { AbujaSection, AsabaSection, ElsewhereSection } from '@/components/sections/LocalPresence';
+import HomeFaq from '@/components/sections/HomeFaq';
 import { getBlogPosts } from '@/lib/data';
 
+const TITLE = 'Website Design & SEO in Abuja and Asaba | Elevate Web & Marketing';
+const DESCRIPTION =
+  'Website design and SEO for Abuja businesses, with an office in Asaba. Free discovery visits anywhere in Abuja, fixed prices, and sites Google and ChatGPT can read.';
+
 export const metadata: Metadata = {
+  title: { absolute: TITLE },
+  description: DESCRIPTION,
+  openGraph: { title: TITLE, description: DESCRIPTION, url: '/' },
+  twitter: { title: TITLE, description: DESCRIPTION },
   alternates: { canonical: '/' },
 };
 
@@ -31,15 +41,19 @@ export default async function Home() {
         <TechStackMarquee />
         <Trust />
         <Services />
+        <AbujaSection />
         <Suspense fallback={<div className="min-h-[400px]" />}>
           <Portfolio />
         </Suspense>
         <LogoStrip />
+        <AsabaSection />
+        <ElsewhereSection />
         <Process />
         <Testimonials />
         <Pricing />
         <OfferSummary />
         <FounderStrip />
+        <HomeFaq />
         <Blog initialPosts={posts.slice(0, 3)} />
         <FinalCTA />
       </main>

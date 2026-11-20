@@ -15,7 +15,7 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
  * date here (or the page's own `updated` field for services, locations and guides).
  */
 const UPDATED = {
-  home: '2026-11-17',
+  home: '2026-11-20',
   about: '2026-11-16',
   services: '2026-11-20',
   portfolio: '2026-10-19',

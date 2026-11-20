@@ -31,7 +31,7 @@ export default function FounderStrip() {
             <p className="font-heading font-semibold text-accent mb-5">Ufuoma Onakpoyan, founder</p>
             <p className="text-text/80 dark:text-gray-300 text-lg leading-relaxed mb-4 max-w-[62ch] md:mx-0 mx-auto">
               Self-taught web developer and digital strategist. I build the websites, set up the Google profiles and
-              run the ads myself, for businesses from MR DGN Group in Asaba to TMM Scholars and Runway Refined in the UK.
+              run the ads myself. I live and work in Abuja, and I’ve built for businesses from MR DGN Group in Asaba and FP Conglomerate in Abuja to TMM Scholars in Benin City and Runway Refined in the UK.
             </p>
             <p className="text-text/80 dark:text-gray-300 text-lg leading-relaxed mb-6 max-w-[62ch] md:mx-0 mx-auto">
               You get one person who knows your project from the first WhatsApp message to launch and after.

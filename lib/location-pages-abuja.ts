@@ -32,9 +32,10 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
       metaDescription:
         'Web design and local SEO in Abuja from the team behind Mansa Luxe Realty’s site. Pages Google and ChatGPT can read, and reports on who called you.',
       h1: 'Web design and SEO in Abuja',
-      updated: UPDATED,
+      updated: '2026-11-20',
       keyTakeaways: [
-        'We build websites and do local SEO for Abuja businesses. Our founder works from Abuja, our main service area; our office is in Asaba.',
+        'We build websites and do local SEO for Abuja businesses. Our founder lives and works in Abuja; we don’t have an Abuja office yet, so we come to you. Our office is in Asaba.',
+        'The first meeting is a free discovery visit at your business, anywhere in Abuja, usually within 24 hours of booking.',
         'Our Abuja proof is Mansa Luxe Realty: its Google impressions grew from 46 in May 2026 to 843 in October 2026, and it appeared in Google’s AI Overviews 363 times in those six months.',
         'In early November 2026 two business owners contacted us about getting found on Google. One told us ChatGPT had suggested us.',
         'Around 70 people a month search “web design in Abuja”. Page 1 is mostly small agencies with one Abuja page, so a well-built site can compete.',
@@ -42,7 +43,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
       ],
       intro: [
         'Most of the businesses that ask us for help in Abuja have the same problem: people search for exactly what they sell, and someone else shows up. We fix that with a website that has a page for each thing you sell, a Google Business Profile that matches it, and text that ChatGPT and Google’s AI answers can read and quote.',
-        'Our founder works from Abuja, and Abuja is the main area we serve. Our office is MR DGN’s office in Asaba. If you mainly want ChatGPT to recommend you, start with [our ChatGPT guide](/guides/how-to-get-recommended-by-chatgpt).',
+        'Our founder lives and works in Abuja, and Abuja is the main area we serve. We visit businesses across the city, from Maitama, Wuse, Jabi and Garki to Gwarinpa, Lokogoma, Kubwa and Lugbe; the first visit is free. Our office is MR DGN’s office in Asaba. If you mainly want ChatGPT to recommend you, start with [our ChatGPT guide](/guides/how-to-get-recommended-by-chatgpt).',
       ],
       problems: [
         'You run a business in Abuja, such as a clinic, a law firm, an estate agency, a school or a contractor, and customers can’t find you when they search.',
@@ -113,6 +114,24 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
             'A real estate agency selling homes in Katampe Extension, Guzape, Gwarinpa Extension and Idu, and land in Asaba. We rebuilt the site so every listing and area has its own readable page. In our own tests in November 2026, ChatGPT named Mansa Luxe first or second when asked about property in Katampe Extension.',
         },
         {
+          name: 'FP Conglomerate, Abuja',
+          url: 'https://www.fpconglomerate.com',
+          detail:
+            'A conglomerate based in Abuja. We built its marketing site with lead capture, a blog, careers and a staff admin portal, running on its own API rather than a third-party CMS.',
+        },
+        {
+          name: 'BSG Beelicious Signatures Global, Abuja',
+          url: 'https://experiencebsg.com',
+          detail:
+            'An Abuja fragrance and home-scent brand. We built its online store with product collections. Their Google review: “I love the website they created for my business. Very professional.”',
+        },
+        {
+          name: 'MR DGN Construction, Asaba and Abuja',
+          url: 'https://construction.mrdgngroup.com',
+          detail:
+            'A building materials and construction company that works on projects in Asaba and Abuja. Separate pages for cement, blocks, pavers and delivery, each written around what buyers ask.',
+        },
+        {
           name: 'Two enquiries through ChatGPT, November 2026',
           detail:
             'Two business owners messaged us within a few days of each other asking how to get found on Google and get more clients. One told us ChatGPT had suggested us. We didn’t ask what she typed, so we can’t tell you the exact question.',
@@ -132,6 +151,14 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
       ],
       faqs: [
         {
+          q: 'Do you have an office in Abuja?',
+          a: 'Not yet. Our founder lives and works in Abuja and meets clients at their business. Our office is in Asaba, at MR DGN’s office by Okpanam City Gate.',
+        },
+        {
+          q: 'Can you visit my business in Abuja? Is it free?',
+          a: 'Yes. The first visit is a free discovery meeting: we see how customers find you now and tell you what we would change. We usually come within 24 hours of booking, depending on the schedule and when suits you, anywhere in Abuja.',
+        },
+        {
           q: 'How long does SEO take to work in Abuja?',
           a: 'In our experience, once the website is built properly and submitted to Google Search Console, it takes about three weeks for Google to start showing it, and the first calls often come in around then. Competitive searches take longer. We won’t promise a position or a date.',
         },
@@ -149,7 +176,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
         },
         {
           q: 'Do you only work with real estate businesses?',
-          a: 'No. Mansa Luxe is our Abuja example because it’s the work we can show in numbers. We also build for building-materials suppliers, coaches, clinics and other service businesses.',
+          a: 'No. Mansa Luxe is our Abuja example because it’s the work we can show in numbers. In Abuja we have also built for FP Conglomerate, a conglomerate, and BSG, a fragrance brand with an online store, and elsewhere for building-materials suppliers, coaches, a health store and non-profits.',
         },
         {
           q: 'How will I know it’s working?',
@@ -157,6 +184,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
         },
       ],
       nearby: [
+        { label: 'Elevate home: Abuja and Asaba', href: '/' },
         { label: 'Katampe Extension', href: '/locations/katampe-extension' },
         { label: 'Guzape', href: '/locations/guzape' },
         { label: 'Asaba', href: '/locations/asaba' },
@@ -381,7 +409,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
       metaDescription:
         'Our office is by Okpanam City Gate. We built MR DGN Construction’s site, which ChatGPT lists first for cement blocks in Asaba. Websites and SEO for Okpanam.',
       h1: 'Web design and SEO in Okpanam, Asaba',
-      updated: UPDATED,
+      updated: '2026-11-20',
       keyTakeaways: [
         'Our office address is MR DGN’s office: Jossie Excel School, after Okpanam City Gate by the Express, Asaba.',
         'We built the website for MR DGN Construction, a building-materials supplier in Okpanam. ChatGPT listed it first when asked where to buy cement blocks in Asaba with delivery (our test, 6 November 2026).',
@@ -439,7 +467,7 @@ export const abujaLocationPages: Record<string, ServicePageConfig> = {
       faqs: [
         {
           q: 'Can I visit your office in Okpanam?',
-          a: 'Yes, by appointment, at MR DGN’s office: Jossie Excel School, after Okpanam City Gate by the Express. Most projects run over WhatsApp and calls.',
+          a: 'Yes, any time, at MR DGN’s office: Jossie Excel School, after Okpanam City Gate by the Express. Ask for Elevate Web & Marketing and the team will call us. Most projects run over WhatsApp and calls.',
         },
         {
           q: 'My customers are mostly in Abuja and abroad. Can a website help?',
