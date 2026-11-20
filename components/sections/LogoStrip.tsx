@@ -3,14 +3,34 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-const CLIENT_LOGOS = [
-  { src: '/images/clients/mrdn-group-logo.png', alt: 'MR DGN Group' },
-  { src: '/images/clients/mrdn-construction-logo.png', alt: 'MR DGN Construction' },
-  { src: '/images/clients/mansa-luxe-realty-logo.png', alt: 'MansaLuxeRealty Limited' },
-  { src: '/images/clients/experience-bsg-logo.png', alt: 'Experience BSG' },
-  { src: '/images/clients/tmm-scholars-logo.png', alt: 'TMM Scholars' },
-  { src: '/images/clients/trade-with-mrk-logo.png', alt: 'Trade with MRK' },
+/**
+ * Client logos, made uniform (20 Nov 2026): each file in /images/clients/mono is the logo trimmed to its edges and
+ * redrawn in one dark colour (two originals were white and TMM's was a navy square). Each is then sized so it covers
+ * the same area on screen (equal visual weight), instead of being squeezed into the same box, which made wide logos
+ * look tiny and square ones huge. w/h are the files' pixel sizes; `scale` nudges logos whose ink is much
+ * lighter (thin outline type) or heavier (solid shapes) than the rest.
+ */
+const CLIENT_LOGOS: { src: string; alt: string; w: number; h: number; scale?: number }[] = [
+  { src: '/images/clients/mono/mrdn-group.png', alt: 'MR DGN Group', w: 782, h: 268 },
+  { src: '/images/clients/mono/mrdn-construction.png', alt: 'MR DGN Construction', w: 395, h: 299 },
+  { src: '/images/clients/mono/mansa-luxe-realty.png', alt: 'Mansa Luxe Realty', w: 951, h: 262 },
+  { src: '/images/clients/mono/experience-bsg.png', alt: 'BSG Beelicious Signatures Global', w: 468, h: 222, scale: 1.12 },
+  { src: '/images/clients/mono/tmm-scholars.png', alt: 'TMM Scholars', w: 350, h: 400, scale: 0.85 },
+  { src: '/images/clients/mono/trade-with-mrk.png', alt: 'Trade with MRK', w: 652, h: 311 },
 ];
+
+const AREA = 4400; // px² each logo covers
+const MAX_H = 64;
+const MAX_W = 170;
+
+function displaySize(w: number, h: number, scale = 1) {
+  const aspect = w / h;
+  let height = Math.sqrt((AREA * scale * scale) / aspect);
+  let width = height * aspect;
+  if (height > MAX_H) { height = MAX_H; width = height * aspect; }
+  if (width > MAX_W) { width = MAX_W; height = width / aspect; }
+  return { width: Math.round(width), height: Math.round(height) };
+}
 
 export default function LogoStrip() {
   const logos = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
@@ -34,21 +54,25 @@ export default function LogoStrip() {
           transition={{ duration: 0.4 }}
           className="relative overflow-hidden"
         >
-          <div className="flex items-center gap-12 marquee-track">
-            {logos.map((logo, index) => (
-              <div
-                key={`${logo.alt}-${index}`}
-                className="relative h-10 sm:h-12 w-32 sm:w-40 flex-shrink-0 opacity-80 hover:opacity-100 transition-opacity flex items-center justify-center"
-              >
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  fill
-                  sizes="(max-width: 640px) 128px, 160px"
-                  className="h-full w-full object-contain object-center"
-                />
-              </div>
-            ))}
+          <div className="flex items-center gap-14 sm:gap-16 marquee-track">
+            {logos.map((logo, index) => {
+              const size = displaySize(logo.w, logo.h, logo.scale);
+              return (
+                <div
+                  key={`${logo.alt}-${index}`}
+                  className="h-16 flex-shrink-0 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={size.width}
+                    height={size.height}
+                    style={{ width: size.width, height: size.height }}
+                    className="object-contain dark:invert"
+                  />
+                </div>
+              );
+            })}
           </div>
         </motion.div>
       </div>
