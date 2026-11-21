@@ -78,6 +78,7 @@ export const recommendedByChatgpt: Guide = {
       h2: '5. Keep your facts the same everywhere',
       paragraphs: [
         'Your business name, address, phone number, opening hours and services should match on your website, your Google Business Profile, Bing Places, Apple Business, Facebook and directories such as VConnect and Finelib. When they disagree, both Google and AI tools are less sure which version is true.',
+        'If you have access to Business Hub, I’ve also written up [how I claimed and verified Elevate in ChatGPT Business Hub](/guides/chatgpt-business-hub-setup), including the ID, business document and website checks I went through in Nigeria.',
       ],
     },
     {
