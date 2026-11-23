@@ -1,8 +1,8 @@
 'use client';
 
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
-import { ChevronLeft, ChevronRight, Pause, Play, Star } from 'lucide-react';
-import { useReducedMotion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Pause, Play, Quote, Star } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { siteConfig } from '@/lib/site-config';
 
 type Review = { author: string; authorUrl?: string; rating: number; text: string };
@@ -56,77 +56,45 @@ export function GoogleRating() {
   );
 }
 
-function ReviewCards({ reviews, duplicate = false }: { reviews: Review[]; duplicate?: boolean }) {
-  return (
-    <ul aria-hidden={duplicate || undefined} className="flex shrink-0 gap-4 pr-4">
-      {reviews.map((review, index) => (
-        <li key={index} className="flex w-[min(82vw,22rem)] shrink-0 flex-col rounded-2xl border border-slate-200 bg-white p-5 text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100">
-          <div className="flex items-center gap-3">
-            <span aria-hidden className="grid size-10 shrink-0 place-items-center rounded-full bg-[#e8f0fe] font-semibold text-[#185abc]">
-              {Array.from(review.author.trim())[0]?.toLocaleUpperCase()}
-            </span>
-            <div className="min-w-0 [overflow-wrap:anywhere]">
-              {!duplicate && review.authorUrl
-                ? <a href={review.authorUrl} className="font-semibold underline-offset-4 hover:underline">{review.author}</a>
-                : <p className="font-semibold">{review.author}</p>}
-              <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-300">Google Maps</p>
-            </div>
-          </div>
-          <div className="mt-4"><Stars rating={review.rating} /></div>
-          {review.text && <blockquote className="mt-3 whitespace-pre-wrap text-sm leading-relaxed [overflow-wrap:anywhere]">{review.text}</blockquote>}
-        </li>
-      ))}
-    </ul>
-  );
-}
+const controlClass = 'grid size-11 place-items-center rounded-full border border-slate-300 bg-white text-slate-800 hover:border-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:border-slate-600 dark:bg-slate-800 dark:text-white';
 
 export default function GoogleReviews() {
   const data = useContext(ReviewsContext);
-  const rail = useRef<HTMLDivElement>(null);
-  const loop = useRef<HTMLDivElement>(null);
+  const section = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
+  const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [interacting, setInteracting] = useState(false);
-  const canLoop = (data?.reviews.length ?? 0) > 1 && !reducedMotion;
+  const [hovered, setHovered] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const count = data?.reviews.length ?? 0;
+  const review = data?.reviews[index];
+  const canRotate = count > 1 && !reducedMotion;
 
   useEffect(() => {
-    const element = rail.current;
-    if (!element || !loop.current || !canLoop || paused || interacting) return;
-    let frame = 0;
-    let last = 0;
-    let position = element.scrollLeft;
-    const advance = (time: number) => {
-      if (last && loop.current) {
-        if (Math.abs(element.scrollLeft - position) > 1) position = element.scrollLeft;
-        position = (position + Math.min(time - last, 40) * 0.025) % loop.current.offsetLeft;
-        element.scrollLeft = position;
-      }
-      last = time;
-      frame = requestAnimationFrame(advance);
-    };
-    const observer = new IntersectionObserver(([entry]) => {
-      cancelAnimationFrame(frame);
-      if (entry.isIntersecting) {
-        last = 0;
-        position = element.scrollLeft;
-        frame = requestAnimationFrame(advance);
-      }
-    });
+    const element = section.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
     observer.observe(element);
-    return () => {
-      observer.disconnect();
-      cancelAnimationFrame(frame);
-    };
-  }, [canLoop, paused, interacting]);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!canRotate || paused || hovered || !visible) return;
+    const readingTime = Math.max(8000, (review?.text.trim().split(/\s+/).length ?? 0) * 300);
+    const timer = window.setTimeout(() => {
+      setIndex(current => (current + 1) % count);
+    }, readingTime);
+    return () => window.clearTimeout(timer);
+  }, [canRotate, count, index, paused, hovered, review, visible]);
 
   function move(direction: number) {
     setPaused(true);
-    rail.current?.scrollBy({ left: direction * Math.min(368, window.innerWidth * 0.82 + 16), behavior: reducedMotion ? 'instant' : 'smooth' });
+    setIndex(current => (current + direction + count) % count);
   }
 
   return (
-    <section id="testimonials" aria-labelledby="google-reviews-heading" className="bg-background px-4 py-16 dark:bg-slate-900 sm:px-8 lg:py-20">
-      <div className="mx-auto max-w-7xl">
+    <section ref={section} id="testimonials" aria-labelledby="google-reviews-heading" className="bg-background px-4 py-16 dark:bg-slate-900 sm:px-8 lg:py-20">
+      <div className="mx-auto max-w-5xl">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 id="google-reviews-heading" className="font-heading text-3xl font-bold text-primary dark:text-white sm:text-4xl">Google reviews</h2>
@@ -134,23 +102,42 @@ export default function GoogleReviews() {
           </div>
           <GoogleRating />
         </div>
-        {!!data?.reviews.length && (
-          <div className="mt-6">
-            {data.reviews.length > 1 &&
-              <div className="mb-3 flex justify-end gap-2">
-                <button type="button" onClick={() => move(-1)} aria-label="Previous reviews" className="grid size-11 place-items-center rounded-full border border-slate-300 dark:border-slate-600"><ChevronLeft size={19} aria-hidden /></button>
-                {canLoop && <button type="button" onClick={() => setPaused(value => !value)} aria-label={paused ? 'Resume review motion' : 'Pause review motion'} className="grid size-11 place-items-center rounded-full border border-slate-300 dark:border-slate-600">{paused ? <Play size={17} aria-hidden /> : <Pause size={17} aria-hidden />}</button>}
-                <button type="button" onClick={() => move(1)} aria-label="Next reviews" className="grid size-11 place-items-center rounded-full border border-slate-300 dark:border-slate-600"><ChevronRight size={19} aria-hidden /></button>
-              </div>
-            }
-            <div ref={rail} onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)}
-              onFocusCapture={() => setPaused(true)} onTouchStart={() => setPaused(true)}
-              className="relative overflow-x-auto pb-2" aria-label="Google review carousel">
-              <div className="flex w-max items-stretch">
-                <ReviewCards reviews={data.reviews} />
-                {canLoop && <div ref={loop} className="flex"><ReviewCards reviews={data.reviews} duplicate /></div>}
-                {canLoop && data.reviews.length < 4 && <ReviewCards reviews={data.reviews} duplicate />}
-              </div>
+
+        {review && (
+          <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800"
+            onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+            onFocusCapture={event => {
+              if (event.target instanceof HTMLAnchorElement) setPaused(true);
+            }}>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 px-4 py-3 dark:border-slate-700 sm:px-6">
+              <p className="text-sm font-medium text-slate-700 dark:text-slate-300">{index + 1} of {count} reviews</p>
+              {count > 1 && <div className="flex gap-2" aria-label="Review controls">
+                <button type="button" onClick={() => move(-1)} aria-label="Previous review" className={controlClass}><ChevronLeft size={19} aria-hidden /></button>
+                {canRotate && <button type="button" onClick={() => setPaused(value => !value)} aria-label={paused ? 'Resume reviews' : 'Pause reviews'} className={controlClass}>{paused ? <Play size={17} aria-hidden /> : <Pause size={17} aria-hidden />}</button>}
+                <button type="button" onClick={() => move(1)} aria-label="Next review" className={controlClass}><ChevronRight size={19} aria-hidden /></button>
+              </div>}
+            </div>
+            <div aria-live={paused || !canRotate ? 'polite' : 'off'}>
+              <motion.figure key={index} initial={reducedMotion ? false : { opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: reducedMotion ? 0 : 0.24, ease: 'easeOut' }}
+                className="grid gap-4 p-5 text-slate-900 dark:text-slate-100 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-5 sm:p-7">
+                <Quote size={31} aria-hidden className="text-[#25588c] dark:text-blue-300" />
+                <div className="min-w-0">
+                  <Stars rating={review.rating} />
+                  {review.text && <blockquote className="mt-2 max-w-[64ch] whitespace-pre-wrap text-base leading-relaxed [overflow-wrap:anywhere] sm:text-lg">{review.text}</blockquote>}
+                  <figcaption className="mt-4 flex items-center gap-3">
+                    <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-full bg-[#e8f0fe] text-sm font-semibold text-[#185abc]">
+                      {Array.from(review.author.trim())[0]?.toLocaleUpperCase()}
+                    </span>
+                    <div className="min-w-0 [overflow-wrap:anywhere]">
+                      {review.authorUrl
+                        ? <a href={review.authorUrl} className="font-semibold underline-offset-4 hover:underline">{review.author}</a>
+                        : <p className="font-semibold">{review.author}</p>}
+                      <p className="text-xs text-slate-600 dark:text-slate-300">Google Maps</p>
+                    </div>
+                  </figcaption>
+                </div>
+              </motion.figure>
             </div>
           </div>
         )}
