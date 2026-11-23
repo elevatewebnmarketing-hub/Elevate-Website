@@ -16,7 +16,7 @@ const methods = [
   { icon: MessageCircle, label: 'WhatsApp', value: siteConfig.phone, href: whatsapp },
   { icon: Phone, label: 'Phone', value: siteConfig.phone, href: `tel:${siteConfig.phone.replace(/\s/g, '')}` },
   { icon: Mail, label: 'Email', value: siteConfig.contactEmail, href: `mailto:${siteConfig.contactEmail}` },
-  { icon: Clock, label: 'Hours', value: 'Monday to Friday, 9:00 AM to 6:00 PM WAT' },
+  { icon: Clock, label: 'Online enquiries', value: 'Open 24/7 by WhatsApp, email or enquiry form' },
 ];
 
 export default function ContactPage() {
@@ -29,11 +29,10 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-10 lg:gap-14 items-start">
             <div>
               <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-4">
-                Let&apos;s build a website that earns trust faster.
+                Talk to us about your website, web app or marketing.
               </h1>
               <p className="text-text/80 dark:text-gray-300 text-lg max-w-xl mb-8">
-                Answer five quick questions and we&apos;ll point you to the simplest package that fits. We usually reply
-                within 48 hours. Prefer to talk first?
+                Reach us online at any time. Tell us what you need and we&apos;ll help you choose a next step. Prefer to talk first?
               </p>
               <button
                 type="button"
@@ -79,8 +78,7 @@ export default function ContactPage() {
                         Jossie Excel School, after Okpanam City Gate, Asaba, Delta State
                       </span>
                       <span className="block text-sm text-text/70 dark:text-gray-400 mt-1">
-                        Meetings by appointment. Our founder works from Abuja, our main service area, and we work with
-                        businesses across Nigeria.
+                        Our office is in Asaba. Contact us before travelling so we can arrange your visit. Wheelchair-accessible entrance, seating and car park are available, with free on-site and street parking. There is no wheelchair-accessible toilet.
                       </span>
                       <a
                         href={siteConfig.googleProfileUrl}

@@ -55,7 +55,7 @@ export default function PrivacyPage() {
                 When you use our free AI visibility check, we keep a record of the website address you checked, its score and the test results, and the page and campaign link you came from. If you ask for your fix list, we also keep the name, business name, WhatsApp number and email you give us. We use these only to send your results, follow up about them, and improve the check.
               </p>
               <p>
-                We also collect information automatically when you visit our website, including your IP address, browser type, device information, and pages you visit. We may use cookies and similar technologies for analytics, advertising measurement, and to improve your experience.
+                We also collect information automatically when you visit our website, including your IP address, browser type, device information, and pages you visit. We may use cookies and similar technologies for analytics, advertising measurement, and to improve your experience. When you open WhatsApp or booking from our public site, or start the enquiry form, we may receive an activity notification. This notification contains the type of action and does not include your unfinished answers or contact details.
               </p>
             </section>
 

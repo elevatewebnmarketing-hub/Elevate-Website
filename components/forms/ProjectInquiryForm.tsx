@@ -1,5 +1,7 @@
 'use client';
 
+import { trackEnquiryStart } from '@/lib/enquiry-start';
+
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Check, Loader2, MessageCircle } from 'lucide-react';
@@ -105,6 +107,7 @@ export default function ProjectInquiryForm({ variant = 'contact' }: { variant?: 
   function touch() {
     if (started.current) return;
     started.current = true;
+    trackEnquiryStart('form');
     trackTikTokEvent('AddToCart', tiktokContentParams(content[0], content[1]));
   }
 

@@ -1,3 +1,4 @@
+import { trackEnquiryStart } from '@/lib/enquiry-start';
 import { tiktokContentParams, trackTikTokEvent } from '@/lib/tiktok';
 
 export const CALENDLY_URL = 'https://calendly.com/elevatewebnmarketing/30min';
@@ -27,6 +28,7 @@ function openPopup(): void {
 
 export function openCalendly(): void {
   if (typeof window === 'undefined') return;
+  trackEnquiryStart('booking');
   // Opening the booking widget is a strong intent signal -> AddToCart.
   trackTikTokEvent(
     'AddToCart',

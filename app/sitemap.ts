@@ -15,20 +15,20 @@ const SITE_URL = 'https://www.elevatewebandmarketing.com';
  * date here (or the page's own `updated` field for services, locations and guides).
  */
 const UPDATED = {
-  home: '2026-11-20',
-  about: '2026-11-16',
-  services: '2026-11-20',
+  home: '2026-11-23',
+  about: '2026-11-23',
+  services: '2026-11-23',
   portfolio: '2026-10-19',
   blog: '2026-11-20',
   process: '2026-11-16',
   pricing: '2026-11-20',
-  contact: '2026-11-16',
+  contact: '2026-11-23',
   faq: '2026-11-16',
   getQuote: '2026-11-16',
   team: '2026-11-16',
   caseStudies: '2026-10-17',
   terms: '2026-11-17',
-  privacy: '2026-11-18',
+  privacy: '2026-11-23',
   nichePages: '2026-11-16',
 } as const;
 const d = (iso: string) => new Date(`${iso}T12:00:00Z`);
@@ -47,6 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/get-quote`, lastModified: d(UPDATED.getQuote), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/team`, lastModified: d(UPDATED.team), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/how-to-get-more-customers`, lastModified: new Date('2026-10-17'), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/services/web-app-development`, lastModified: d('2026-11-23') },
     { url: `${SITE_URL}/invoice-generator`, lastModified: d('2026-11-23') },
     { url: `${SITE_URL}/ai-visibility-check`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/uk`, lastModified: new Date('2026-10-18'), changeFrequency: 'monthly', priority: 0.8 },

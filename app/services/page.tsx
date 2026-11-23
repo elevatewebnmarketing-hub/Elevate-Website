@@ -24,6 +24,13 @@ import {
 
 const coreServices = [
   {
+    icon: Layers,
+    title: 'Custom Web Apps',
+    href: '/services/web-app-development',
+    description: 'Web apps for finding providers, taking donations and automating business workflows.',
+    details: ['Custom workflows and dashboards', 'Online payment integrations', 'Mobile-friendly interfaces'],
+  },
+  {
     icon: Globe,
     title: 'Starter & Business Websites',
     href: '/services/website-design',

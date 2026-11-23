@@ -36,7 +36,8 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   '@id': ORGANIZATION_ID,
-  name: 'Elevate Web & Marketing',
+  name: 'Elevate Web And Marketing',
+  alternateName: 'Elevate Web & Marketing',
   url: SITE_URL,
   image: `${SITE_URL}/opengraph-image`,
   logo: {
@@ -52,7 +53,6 @@ const organizationSchema = {
   },
   telephone: '+234-708-603-9012',
   email: 'hello@elevatewebandmarketing.com',
-  foundingDate: '2023',
   priceRange: '₦₦',
   hasMap: 'https://maps.google.com/?cid=6941066558127702684',
   sameAs: [
@@ -80,13 +80,21 @@ const organizationSchema = {
     areaServed: 'Nigeria',
     availableLanguage: 'English',
   },
-  areaServed: ['Abuja', 'Federal Capital Territory', 'Asaba', 'Delta State', 'Lagos', 'Nigeria'],
+  areaServed: ['Abuja', 'Federal Capital Territory', 'Asaba', 'Delta State', 'Lagos', 'Nigeria', 'United Kingdom', 'United States'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Web Design & Digital Marketing Services',
     url: `${SITE_URL}/pricing`,
     itemListElement: [
       ...packageOffers,
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Custom Web App Development',
+          url: `${SITE_URL}/services/web-app-development`,
+        },
+      },
       {
         '@type': 'Offer',
         itemOffered: {

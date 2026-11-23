@@ -8,7 +8,7 @@ export type NavItem = { href: string; label: string; children?: NavChild[] };
 const PHONE_E164 = '2347086039012';
 
 export const siteConfig = {
-  companyName: 'Elevate Web & Marketing',
+  companyName: 'Elevate Web And Marketing',
   tagline:
     'SEO-ready websites, landing pages and care plans for businesses in Abuja and across Nigeria that want to be found on Google and ChatGPT.',
   contactEmail: 'hello@elevatewebandmarketing.com',
@@ -16,7 +16,7 @@ export const siteConfig = {
   /** Elevate's Google Business Profile: share link (opens the listing) and the Maps place ID URL. */
   googleProfileUrl: 'https://share.google/jDF7bDOlrojDWs3B5',
   googleMapsUrl: 'https://maps.google.com/?cid=6941066558127702684',
-  location: 'Office in Asaba · Serving Abuja, all of Nigeria and the UK',
+  location: 'Office in Asaba · Online across Nigeria, the UK and the US',
 
   whatsappNumber: PHONE_E164,
   whatsappMessage: "Hi! I'm visiting from the Elevate Web & Marketing website and would like to learn more about your services.",
@@ -27,6 +27,7 @@ export const siteConfig = {
       href: '/services',
       label: 'Services',
       children: [
+        { href: '/services/web-app-development', label: 'Custom Web Apps', note: 'Marketplaces, online payments and business workflows' },
         { href: '/services/website-design', label: 'Website Design', note: 'Business websites built to bring in enquiries' },
         { href: '/services/local-seo', label: 'Local SEO & Google Business Profile', note: 'Get found on Google, Maps and ChatGPT' },
         { href: '/services/website-redesign', label: 'Website Redesign', note: 'Fix an old or invisible site' },

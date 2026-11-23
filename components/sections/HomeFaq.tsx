@@ -34,11 +34,11 @@ const faqs: { q: string; a: ReactNode; text: string }[] = [
     q: 'Can I visit your office in Asaba?',
     a: (
       <>
-        Yes, any time. We are at MR DGN’s office, Jossie Excel School, after Okpanam City Gate by the Express, Asaba.
+        Yes. Contact us before travelling so we can arrange your visit. Our Asaba office is at Jossie Excel School, after Okpanam City Gate by the Express, Asaba.
         Ask for Elevate Web &amp; Marketing and the team will reach us.
       </>
     ),
-    text: 'Yes, any time. We are at MR DGN’s office, Jossie Excel School, after Okpanam City Gate by the Express, Asaba. Ask for Elevate Web & Marketing and the team will reach us.',
+    text: 'Yes. Contact us before travelling so we can arrange your visit. Our Asaba office is at Jossie Excel School, after Okpanam City Gate by the Express, Asaba. Ask for Elevate Web & Marketing and the team will reach us.',
   },
   {
     q: 'How much does a website cost in Abuja?',

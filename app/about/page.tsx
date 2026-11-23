@@ -28,9 +28,9 @@ const VALUES = [
 const TIMELINE = [
   {
     year: '2023',
-    title: 'Founded in Nigeria',
+    title: 'Started freelancing in Nigeria',
     description:
-      'Elevate Web & Marketing launches in Nigeria, helping small businesses get online with simple, high‑performing websites.',
+      'Ufuoma Onakpoyan begins freelance web work in Nigeria, helping small businesses get online.',
   },
   {
     year: '2024',
@@ -43,6 +43,11 @@ const TIMELINE = [
     title: 'Client work & global reach',
     description:
       'Delivered sites for MR DGN Group, MR DGN Construction, MansaLuxeRealty Limited, Experience BSG, TMM Scholars, and Trade with MRK—working with clients across multiple timezones.',
+  },
+  {
+    year: '2026',
+    title: 'Asaba office opens',
+    description: 'Elevate Web And Marketing opens its Asaba office. We serve clients primarily online and arrange in-person meetings when needed.',
   },
 ];
 

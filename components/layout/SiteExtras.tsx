@@ -1,5 +1,6 @@
 'use client';
 
+import EnquiryStarts from '@/components/analytics/EnquiryStarts';
 import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 import CalendlyBadge from '@/components/CalendlyBadge';
@@ -33,6 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
+        <EnquiryStarts />
         <MetaPixel />
         <TikTokPixel />
         <CalendlyBadge />
