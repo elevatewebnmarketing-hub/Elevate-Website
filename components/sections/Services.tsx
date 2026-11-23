@@ -1,7 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ArrowRight, FileText, Globe, MapPin, Megaphone, RefreshCw, Search, ShoppingCart, Wrench } from 'lucide-react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 
@@ -20,14 +17,10 @@ export default function Services() {
   return (
     <SectionWrapper id="services" className="py-16 lg:py-20 bg-background dark:bg-slate-900">
       <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10"
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10"
         >
           <div className="text-center sm:text-left">
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary dark:text-white mb-4">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl motion-accent text-primary dark:text-white mb-4">
               What We Do
             </h2>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl">
@@ -42,14 +35,14 @@ export default function Services() {
             View all services
             <ArrowRight size={20} />
           </Link>
-        </motion.div>
+        </div>
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px rounded-card-lg overflow-hidden border border-gray-200 dark:border-white/10 bg-gray-200 dark:bg-white/10">
           {services.map((service) => (
             <li key={service.title} className="bg-white dark:bg-slate-800">
               <Link
                 href={service.href}
-                className="group flex h-full flex-col gap-3 p-6 lg:p-7 hover:bg-accent/5 focus-visible:bg-accent/5 transition-colors"
+                className="presentation-service-link group flex h-full flex-col gap-3 p-6 lg:p-7 hover:bg-accent/5 focus-visible:bg-accent/5 transition-colors"
               >
                 <service.icon className="text-accent" size={26} aria-hidden />
                 <span className="font-heading font-semibold text-lg text-primary dark:text-white group-hover:text-accent transition-colors">

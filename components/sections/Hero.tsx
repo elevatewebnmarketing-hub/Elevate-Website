@@ -2,7 +2,6 @@
 
 import { GoogleRating } from '@/components/sections/GoogleReviews';
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { openCalendly } from '@/lib/calendly';
 
@@ -15,25 +14,6 @@ const DottedGlowBackground = dynamic(
 );
 
 export default function Hero() {
-  const containerVariants = {
-    hidden: { opacity: 1 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 1, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-    },
-  };
-
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
       <div className="hero-dots-mask absolute inset-0 pointer-events-none overflow-hidden">
@@ -46,7 +26,7 @@ export default function Hero() {
         />
       </div>
       <div
-        className="absolute top-[-200px] right-[-100px] w-[600px] h-[600px] rounded-full bg-accent/20 blur-[80px] opacity-15 pointer-events-none"
+        className="presentation-hero-light absolute top-[-200px] right-[-100px] w-[600px] h-[600px] rounded-full bg-accent/20 blur-[80px] opacity-15 pointer-events-none"
         aria-hidden
       />
       <div
@@ -58,40 +38,23 @@ export default function Hero() {
 
       <div className="relative z-10 w-full max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center text-center w-full max-w-3xl mx-auto">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-8"
-          >
-            <motion.h1
-              variants={itemVariants}
-              className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-primary dark:text-white leading-tight max-w-4xl mx-auto"
-            >
+          <div className="space-y-8">
+            <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-primary dark:text-white leading-tight max-w-4xl mx-auto">
               Website Design &amp; SEO in{' '}
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">Abuja</span>{' '}
               and Asaba
-            </motion.h1>
-            <motion.p
-              variants={itemVariants}
-              className="text-lg sm:text-xl text-text/80 dark:text-gray-300 max-w-xl mx-auto"
-            >
+            </h1>
+            <p className="text-lg sm:text-xl text-text/80 dark:text-gray-300 max-w-xl mx-auto">
               We build websites that show up when people in Abuja search for what you sell, then set up the
               Google Business Profile and SEO behind them. Fixed prices, and you deal with the founder from the
               first message to launch.
-            </motion.p>
-            <motion.p
-              variants={itemVariants}
-              className="text-base text-text/60 dark:text-gray-400"
-            >
+            </p>
+            <p className="text-base text-text/60 dark:text-gray-400">
               Based in Abuja, with our office in Asaba. Free discovery visits anywhere in Abuja, usually within 24
               hours. <a href="#abuja" className="text-accent font-medium underline underline-offset-2 hover:no-underline">See our Abuja work</a>
-            </motion.p>
+            </p>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center"
-            >
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
               <button
                 type="button"
                 onClick={openCalendly}
@@ -111,15 +74,12 @@ export default function Hero() {
                   Fixed rates, no surprises
                 </span>
               </Link>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center gap-4 justify-center"
-            >
+            <div className="flex items-center gap-4 justify-center">
               <GoogleRating />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 'use client';
 
+import '../presentation-motion.css';
 import Image from 'next/image';
 import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import Header from '@/components/layout/Header';
@@ -24,7 +25,7 @@ export default function ContactPage() {
     <>
       <TikTokViewContent contentName="Contact" />
       <Header />
-      <main className="pt-28 sm:pt-32 pb-16 lg:pb-20 min-h-screen bg-background dark:bg-slate-900">
+      <main className="presentation-contact pt-28 sm:pt-32 pb-16 lg:pb-20 min-h-screen bg-background dark:bg-slate-900">
         <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-10 lg:gap-14 items-start">
             <div>
@@ -60,7 +61,7 @@ export default function ContactPage() {
                   return (
                     <li key={m.label}>
                       {m.href ? (
-                        <a href={m.href} className="group flex items-start gap-4 min-h-[44px]">{inner}</a>
+                        <a href={m.href} className="presentation-contact-link group flex items-start gap-4 min-h-[44px]">{inner}</a>
                       ) : (
                         <div className="flex items-start gap-4">{inner}</div>
                       )}
@@ -94,7 +95,7 @@ export default function ContactPage() {
               </ul>
             </div>
 
-            <div className="lg:sticky lg:top-28">
+            <div className="presentation-form lg:sticky lg:top-28">
               <ProjectInquiryForm variant="contact" />
             </div>
           </div>

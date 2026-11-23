@@ -1,8 +1,6 @@
-'use client';
-
+import '../presentation-motion.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Target, Zap, Heart, Github, Linkedin, FileCheck, Download } from 'lucide-react';
@@ -55,16 +53,12 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <main className="pt-32 sm:pt-36 md:pt-40 pb-20 min-h-screen bg-background dark:bg-slate-900">
+      <main className="presentation-about pt-32 sm:pt-36 md:pt-40 pb-20 min-h-screen bg-background dark:bg-slate-900">
         <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero / lead spacing */}
           <div className="h-4 sm:h-6 md:h-8" aria-hidden />
           {/* About Elevate Web & Marketing */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto mb-24"
+          <section className="max-w-3xl mx-auto mb-24"
           >
             <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl text-primary dark:text-white leading-tight mb-10">
               About Elevate Web & Marketing
@@ -102,21 +96,17 @@ export default function AboutPage() {
                 We are a Nigeria‑based studio working with businesses in any country and timezone. If you are ready to use the internet well, our role is to help make that possible.
               </p>
             </div>
-          </motion.section>
+          </section>
 
           {/* Founder */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="grid md:grid-cols-2 gap-12 items-center mb-24"
+          <section className="grid md:grid-cols-2 gap-12 items-center mb-24"
           >
-            <div className="relative rounded-card-lg overflow-hidden shadow-soft-lg aspect-[4/5] max-h-[500px]">
+            <div className="presentation-founder-photo relative rounded-card-lg overflow-hidden shadow-soft-lg aspect-[4/5] max-h-[500px]">
               <Image
                 src="/images/founder-ufuoma-onakpoyan.png"
                 alt="Ufuoma Onakpoyan - Founder of Elevate Web & Marketing"
                 fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 400px"
               />
             </div>
@@ -162,14 +152,10 @@ export default function AboutPage() {
                 </a>
               </div>
             </div>
-          </motion.section>
+          </section>
 
           {/* Core values */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="mb-24"
+          <section className="mb-24"
           >
             <h2 className="font-heading font-bold text-3xl text-primary dark:text-white text-center mb-12">
               What we stand for
@@ -192,14 +178,10 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-          </motion.section>
+          </section>
 
           {/* Full-width background section */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.22 }}
-            className="mb-24 relative overflow-hidden rounded-card-lg"
+          <section className="mb-24 relative overflow-hidden rounded-card-lg"
           >
             <div className="absolute inset-0">
               <Image
@@ -221,14 +203,10 @@ export default function AboutPage() {
                 real growth.
               </p>
             </div>
-          </motion.section>
+          </section>
 
           {/* CAC Registration */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.24 }}
-            className="mb-24"
+          <section className="mb-24"
           >
             <div className="p-6 sm:p-8 bg-white dark:bg-slate-800 rounded-card-lg border border-gray-100 dark:border-white/10 shadow-soft">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
@@ -256,16 +234,12 @@ export default function AboutPage() {
                 </a>
               </div>
             </div>
-          </motion.section>
+          </section>
 
           {/* Timeline */}
-          <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="max-w-2xl"
+          <section className="max-w-2xl"
           >
-            <h2 className="font-heading font-bold text-3xl text-primary dark:text-white mb-10">
+            <h2 className="motion-accent font-heading font-bold text-3xl text-primary dark:text-white mb-10">
               Our journey
             </h2>
             <div className="border-l-2 border-gray-200 dark:border-white/20 pl-8 space-y-8">
@@ -287,7 +261,7 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-          </motion.section>
+          </section>
         </div>
       </main>
       <Footer />

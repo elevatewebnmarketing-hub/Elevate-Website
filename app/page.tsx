@@ -1,3 +1,4 @@
+import './presentation-motion.css';
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Header from '@/components/layout/Header';
@@ -37,7 +38,7 @@ export default async function Home() {
     <>
       <Header />
       <GoogleReviewsProvider>
-        <main>
+        <main className="presentation-home">
           <Hero />
           <TechStackMarquee />
           <Trust />
