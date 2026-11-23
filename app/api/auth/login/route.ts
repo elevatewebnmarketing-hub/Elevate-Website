@@ -1,3 +1,4 @@
+import { logSecurityOutcome } from '@/backend/security-monitor';
 import { readBoundedJson } from '@/lib/bounded-json';
 import { NextResponse } from 'next/server';
 import { cookies, headers } from 'next/headers';
@@ -33,7 +34,7 @@ async function alert(subject: string, lines: string[]) {
   }
 }
 
-export async function POST(request: Request) {
+async function handlePost(request: Request) {
   try {
     if (!ADMIN_PASSWORD || SESSION_SECRET.length < 16) {
       console.error('Security: ADMIN_PASSWORD and a SESSION_SECRET of 16+ characters (32+ recommended) must be set');
@@ -106,5 +107,17 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Auth login error:', error);
     return NextResponse.json({ error: 'Login failed' }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const response = await handlePost(request);
+    const outcome = response.status === 401 ? 'sign_in_incomplete' : undefined;
+    logSecurityOutcome('admin_login', response.status, request.headers, outcome);
+    return response;
+  } catch (error) {
+    logSecurityOutcome('admin_login', 500, request.headers);
+    throw error;
   }
 }

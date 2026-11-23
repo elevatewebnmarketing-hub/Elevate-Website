@@ -2,6 +2,7 @@
  * Backend auth - admin session validation for protected API routes.
  */
 
+import { logSecurityOutcome } from '@/backend/security-monitor';
 import { cookies, headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { SESSION_COOKIE, verifySessionToken } from '@/lib/admin-session';
@@ -15,6 +16,7 @@ export async function isAdminSession(): Promise<boolean> {
 
 export async function requireAdmin(): Promise<NextResponse | null> {
   if (!(await isAdminSession())) {
+    logSecurityOutcome('admin_api', 401, await headers());
     return NextResponse.json({ error: 'Unauthorized - Admin access required' }, { status: 401 });
   }
   const h = await headers();
@@ -23,9 +25,11 @@ export async function requireAdmin(): Promise<NextResponse | null> {
   if (origin) {
     try {
       if (new URL(origin).host !== host) {
+        logSecurityOutcome('admin_api', 403, h);
         return NextResponse.json({ error: 'Cross-site request blocked' }, { status: 403 });
       }
     } catch {
+      logSecurityOutcome('admin_api', 403, h);
       return NextResponse.json({ error: 'Cross-site request blocked' }, { status: 403 });
     }
   }

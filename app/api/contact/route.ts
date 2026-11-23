@@ -1,3 +1,4 @@
+import { logSecurityOutcome } from '@/backend/security-monitor';
 import { readBoundedJson } from '@/lib/bounded-json';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
@@ -101,7 +102,7 @@ function userConfirmationEmailHtml(name: string): string {
   `;
 }
 
-export async function POST(request: Request) {
+async function handlePost(request: Request) {
   // Rate limit
   const headerStore = await headers();
   const ip = headerStore.get('x-real-ip')?.trim() || headerStore.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
@@ -234,5 +235,16 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error('Contact API error:', err);
     return NextResponse.json({ error: 'Failed to send email. Please try again later.' }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const response = await handlePost(request);
+    logSecurityOutcome('contact', response.status, request.headers);
+    return response;
+  } catch (error) {
+    logSecurityOutcome('contact', 500, request.headers);
+    throw error;
   }
 }
