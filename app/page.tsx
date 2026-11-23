@@ -9,8 +9,7 @@ import Trust from '@/components/sections/Trust';
 import Services from '@/components/sections/Services';
 import Portfolio from '@/components/sections/Portfolio';
 import Process from '@/components/sections/Process';
-import Testimonials from '@/components/sections/Testimonials';
-import GoogleReviews from '@/components/sections/GoogleReviews';
+import GoogleReviews, { GoogleReviewsProvider } from '@/components/sections/GoogleReviews';
 import FounderStrip from '@/components/sections/FounderStrip';
 import Blog from '@/components/sections/Blog';
 import Pricing from '@/components/sections/Pricing';
@@ -37,28 +36,29 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <main>
-        <Hero />
-        <TechStackMarquee />
-        <Trust />
-        <Services />
-        <AbujaSection />
-        <Suspense fallback={<div className="min-h-[400px]" />}>
-          <Portfolio />
-        </Suspense>
-        <LogoStrip />
-        <AsabaSection />
-        <ElsewhereSection />
-        <Process />
-        <Testimonials />
-        <GoogleReviews />
-        <Pricing />
-        <OfferSummary />
-        <FounderStrip />
-        <HomeFaq />
-        <Blog initialPosts={posts.slice(0, 3)} />
-        <FinalCTA />
-      </main>
+      <GoogleReviewsProvider>
+        <main>
+          <Hero />
+          <TechStackMarquee />
+          <Trust />
+          <Services />
+          <AbujaSection />
+          <Suspense fallback={<div className="min-h-[400px]" />}>
+            <Portfolio />
+          </Suspense>
+          <LogoStrip />
+          <AsabaSection />
+          <ElsewhereSection />
+          <Process />
+          <GoogleReviews />
+          <Pricing />
+          <OfferSummary />
+          <FounderStrip />
+          <HomeFaq />
+          <Blog initialPosts={posts.slice(0, 3)} />
+          <FinalCTA />
+        </main>
+      </GoogleReviewsProvider>
       <Footer />
     </>
   );

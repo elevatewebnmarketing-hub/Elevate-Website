@@ -1,5 +1,6 @@
 'use client';
 
+import { GoogleRating } from '@/components/sections/GoogleReviews';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -116,12 +117,7 @@ export default function Hero() {
               variants={itemVariants}
               className="flex items-center gap-4 justify-center"
             >
-              <div className="max-w-[280px] sm:max-w-none">
-                <p className="text-accent font-medium text-sm">★★★★★</p>
-                <p className="text-text/60 dark:text-gray-400 text-xs sm:text-sm">
-                  5-star Google reviews. Clients include MR DGN Group, Mansa Luxe Realty, FP Conglomerate and BSG in Abuja and Asaba.
-                </p>
-              </div>
+              <GoogleRating />
             </motion.div>
           </motion.div>
         </div>
