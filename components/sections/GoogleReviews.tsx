@@ -56,6 +56,7 @@ export function GoogleRating() {
   );
 }
 
+const reviewIntervalMs = 45_000;
 const controlClass = 'grid size-11 place-items-center rounded-full border border-slate-300 bg-white text-slate-800 hover:border-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:border-slate-600 dark:bg-slate-800 dark:text-white';
 
 export default function GoogleReviews() {
@@ -80,12 +81,11 @@ export default function GoogleReviews() {
 
   useEffect(() => {
     if (!canRotate || paused || hovered || !visible) return;
-    const readingTime = Math.max(8000, (review?.text.trim().split(/\s+/).length ?? 0) * 300);
     const timer = window.setTimeout(() => {
       setIndex(current => (current + 1) % count);
-    }, readingTime);
+    }, reviewIntervalMs);
     return () => window.clearTimeout(timer);
-  }, [canRotate, count, index, paused, hovered, review, visible]);
+  }, [canRotate, count, index, paused, hovered, visible]);
 
   function move(direction: number) {
     setPaused(true);
@@ -139,6 +139,27 @@ export default function GoogleReviews() {
                 </div>
               </motion.figure>
             </div>
+            {count > 1 && (
+              <div role="group" aria-label="Choose a Google review" className="flex justify-center px-2 pb-3">
+                {data.reviews.map((_, position) => (
+                  <button
+                    key={position}
+                    type="button"
+                    aria-label={`Show review ${position + 1} of ${count}`}
+                    aria-current={position === index ? 'true' : undefined}
+                    onClick={() => {
+                      setPaused(true);
+                      setIndex(position);
+                    }}
+                    className="grid size-11 place-items-center rounded-full hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent dark:hover:bg-slate-700"
+                  >
+                    <span aria-hidden className={position === index
+                      ? 'size-3 rounded-full bg-primary dark:bg-white'
+                      : 'size-2.5 rounded-full border border-slate-500 dark:border-slate-300'} />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         )}
         <a href={mapsUrl} className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold underline underline-offset-4">Read all reviews on Google Maps</a>

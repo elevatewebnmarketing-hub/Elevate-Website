@@ -33,8 +33,6 @@ function displaySize(w: number, h: number, scale = 1) {
 }
 
 export default function LogoStrip() {
-  const logos = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
-
   return (
     <section className="py-10 border-y border-gray-100 dark:border-white/10 bg-white/50 dark:bg-slate-800/50">
       <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,25 +52,26 @@ export default function LogoStrip() {
           transition={{ duration: 0.4 }}
           className="relative overflow-hidden"
         >
-          <div className="flex items-center gap-14 sm:gap-16 marquee-track">
-            {logos.map((logo, index) => {
-              const size = displaySize(logo.w, logo.h, logo.scale);
-              return (
-                <div
-                  key={`${logo.alt}-${index}`}
-                  className="h-16 flex-shrink-0 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity"
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={size.width}
-                    height={size.height}
-                    style={{ width: size.width, height: size.height }}
-                    className="object-contain dark:invert"
-                  />
-                </div>
-              );
-            })}
+          <div className="marquee-track flex w-max [--marquee-duration:42s] sm:[--marquee-duration:52s] lg:[--marquee-duration:64s] motion-reduce:w-full">
+            {[false, true].map(duplicate => (
+              <div key={String(duplicate)} aria-hidden={duplicate || undefined} className={`flex shrink-0 items-center ${duplicate ? 'motion-reduce:hidden' : 'motion-reduce:w-full motion-reduce:flex-wrap motion-reduce:justify-center'}`}>
+                {CLIENT_LOGOS.map(logo => {
+                  const size = displaySize(logo.w, logo.h, logo.scale);
+                  return (
+                    <div key={logo.src} className="flex h-16 w-40 shrink-0 items-center justify-center opacity-70 transition-opacity hover:opacity-100 sm:w-52 lg:w-[250px]">
+                      <Image
+                        src={logo.src}
+                        alt={duplicate ? '' : logo.alt}
+                        width={size.width}
+                        height={size.height}
+                        style={{ width: size.width, height: size.height }}
+                        className="object-contain dark:invert"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>
