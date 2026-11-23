@@ -10,6 +10,7 @@ import Services from '@/components/sections/Services';
 import Portfolio from '@/components/sections/Portfolio';
 import Process from '@/components/sections/Process';
 import Testimonials from '@/components/sections/Testimonials';
+import GoogleReviews from '@/components/sections/GoogleReviews';
 import FounderStrip from '@/components/sections/FounderStrip';
 import Blog from '@/components/sections/Blog';
 import Pricing from '@/components/sections/Pricing';
@@ -50,6 +51,7 @@ export default async function Home() {
         <ElsewhereSection />
         <Process />
         <Testimonials />
+        <GoogleReviews />
         <Pricing />
         <OfferSummary />
         <FounderStrip />
