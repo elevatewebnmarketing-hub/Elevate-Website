@@ -58,6 +58,7 @@ export const siteConfig = {
   ] as NavItem[],
 
   footerLinks: [
+    { label: 'Invoice Generator', href: '/invoice-generator' },
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
     { href: '/portfolio', label: 'Portfolio' },

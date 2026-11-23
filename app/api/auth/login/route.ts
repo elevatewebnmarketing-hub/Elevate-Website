@@ -1,3 +1,4 @@
+import { readBoundedJson } from '@/lib/bounded-json';
 import { NextResponse } from 'next/server';
 import { cookies, headers } from 'next/headers';
 import crypto from 'crypto';
@@ -43,9 +44,19 @@ export async function POST(request: Request) {
     const h = await headers();
     const origin = h.get('origin');
     const host = h.get('x-forwarded-host') ?? h.get('host');
-    if (origin && new URL(origin).host !== host) {
-      return NextResponse.json({ error: 'Cross-site request blocked' }, { status: 403 });
+    if (origin) {
+      try {
+        if (new URL(origin).host !== host) {
+          return NextResponse.json({ error: 'Cross-site request blocked' }, { status: 403 });
+        }
+      } catch {
+        return NextResponse.json({ error: 'Cross-site request blocked' }, { status: 403 });
+      }
     }
+
+    const parsed = await readBoundedJson(request, 4096);
+    if ('response' in parsed) return parsed.response;
+    const { body } = parsed;
 
     // Vercel sets x-real-ip to the visitor's address; fall back to the first x-forwarded-for hop.
     const ip = h.get('x-real-ip')?.trim() || h.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
@@ -60,7 +71,6 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = await request.json().catch(() => ({}));
     const password = typeof body.password === 'string' ? body.password : '';
     const code = typeof body.code === 'string' ? body.code : '';
 

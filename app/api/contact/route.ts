@@ -1,3 +1,4 @@
+import { readBoundedJson } from '@/lib/bounded-json';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { headers } from 'next/headers';
@@ -16,9 +17,16 @@ const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
 const contactAttempts = new Map<string, { count: number; resetAt: number }>();
 const MAX_SUBMISSIONS = 5;
 const WINDOW_MS = 10 * 60 * 1000;
+let pruneAfter = 0;
 
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
+  if (now >= pruneAfter) {
+    for (const [key, entry] of contactAttempts) {
+      if (entry.resetAt <= now) contactAttempts.delete(key);
+    }
+    pruneAfter = now + WINDOW_MS;
+  }
   const record = contactAttempts.get(ip);
   if (!record || now > record.resetAt) {
     contactAttempts.set(ip, { count: 1, resetAt: now + WINDOW_MS });
@@ -96,17 +104,14 @@ function userConfirmationEmailHtml(name: string): string {
 export async function POST(request: Request) {
   // Rate limit
   const headerStore = await headers();
-  const ip = headerStore.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
+  const ip = headerStore.get('x-real-ip')?.trim() || headerStore.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
   if (!checkRateLimit(ip)) {
     return NextResponse.json({ error: 'Too many submissions. Please wait before trying again.' }, { status: 429 });
   }
 
-  let body: ContactBody;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON body.' }, { status: 400 });
-  }
+  const parsed = await readBoundedJson(request, 32 * 1024);
+  if ('response' in parsed) return parsed.response;
+  const body = parsed.body;
 
   const name = typeof body.name === 'string' ? body.name.trim().slice(0, 100) : '';
   const email = typeof body.email === 'string' ? body.email.trim().slice(0, 254) : '';

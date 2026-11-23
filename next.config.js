@@ -41,6 +41,13 @@ const nextConfig = {
     return [
       { source: '/:path*', headers: securityHeaders },
       {
+        source: '/invoice-generator',
+        headers: [{
+          key: 'Content-Security-Policy',
+          value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'none'",
+        }],
+      },
+      {
         // Hashed JS/CSS bundles are immutable — cache for 1 year
         source: '/_next/static/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
