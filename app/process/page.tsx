@@ -18,7 +18,7 @@ export default function ProcessPage() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="font-heading font-bold text-4xl sm:text-5xl text-primary dark:text-white mb-4">
-              Our Process
+              How we build your website
             </h1>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl">
               A proven approach to delivering results. We work in clear phases so you always know what&apos;s next.

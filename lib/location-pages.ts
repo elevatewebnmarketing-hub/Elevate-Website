@@ -146,7 +146,7 @@ export const locationPages: Record<string, ServicePageConfig> = {
       // Title and description from the ChatSEO article (sized to Google's ~580px title limit).
       titleAbsolute: 'SEO Company in Nigeria | Web Design & Local SEO - Elevate',
       metaDescription:
-        'SEO company in Nigeria: web design from ₦250,000, local SEO and Google Business Profile setup, with fixed prices and a 48-hour reply.',
+        'SEO company in Nigeria: SEO services, web design from ₦250,000, local SEO and Google Business Profile setup. Fixed prices and a reply within 48 hours.',
       h1: 'SEO company and web design for businesses in Nigeria',
       updated: '2026-11-20',
       intro: [

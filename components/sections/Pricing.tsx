@@ -294,7 +294,7 @@ export default function Pricing({ isStandalone = false }: PricingProps) {
         >
           <div className="text-center sm:text-left">
             <Heading className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-primary dark:text-white mb-4">
-              Pricing
+              {isStandalone ? 'Website design and SEO prices' : 'Pricing'}
             </Heading>
             <p className="text-text/80 dark:text-gray-300 text-lg max-w-2xl mx-auto sm:mx-0">
               Clear public pricing for{' '}

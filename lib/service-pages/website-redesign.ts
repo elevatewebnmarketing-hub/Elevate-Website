@@ -124,7 +124,7 @@ export const websiteRedesign: ServicePageConfig = {
       },
       {
         q: 'Should I redesign my website or just pay for maintenance?',
-        a: 'Maintenance keeps a working site updated and backed up; it can’t fix a site search engines can’t read or customers can’t use. If your site sends Google an almost empty page, hides your contact details or is very slow on a phone, a redesign comes first. If it already works, a [website care plan](/services/website-maintenance) is enough. We tell you which after the free check.',
+        a: 'Maintenance keeps a working site updated and backed up; it can’t fix a site search engines can’t read or customers can’t use. If your site sends Google an almost empty page, hides your contact details or is very slow on a phone, a redesign comes first. If it already works, a [website care plan](/services/website-maintenance) is enough. Our [7 signs it’s time for a new website](/blog/website-redesign-signs-its-time) help you decide, and we tell you which after the free check.',
       },
       {
         q: 'How soon will I see results?',
@@ -140,7 +140,7 @@ export const websiteRedesign: ServicePageConfig = {
       },
       {
         q: 'My site was built with Lovable or another AI builder. Can you fix it?',
-        a: 'Yes. These tools usually build a JavaScript app that sends search engines an almost empty page. We either rebuild the public pages on Next.js or add pre-rendering, so the text is in the HTML.',
+        a: 'Yes. These tools usually build a JavaScript app that sends search engines an almost empty page. We either rebuild the public pages on Next.js or add pre-rendering, so the text is in the HTML. Our guide to [Lovable, Wix and Squarespace sites not showing on Google](/guides/lovable-wix-squarespace-seo) explains how to check yours.',
       },
       {
         q: 'How do I know if search engines can read my current site?',

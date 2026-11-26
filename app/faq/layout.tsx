@@ -4,7 +4,7 @@ import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
-  title: 'FAQ: Websites, SEO, Prices and Getting Found on Google',
+  title: 'Website, SEO and Pricing FAQ',
   description:
     'How to get more clients, why your business isn’t on Google or ChatGPT, how long SEO takes, what a website costs and how payment works. Straight answers.',
   keywords: [

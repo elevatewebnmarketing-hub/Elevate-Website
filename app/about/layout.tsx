@@ -4,9 +4,9 @@ import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: { absolute: 'About Elevate Web & Marketing | Web Design & SEO, Abuja' },
   description:
-    'Learn about Elevate Web & Marketing, an Abuja-based web studio building SEO-ready websites that help service businesses get found and win more customers.',
+    'Who we are: a web design and SEO studio, founder in Abuja, office in Asaba. 50+ websites since 2023 for businesses in Nigeria and the UK, at fixed prices.',
   keywords: [
     'about elevate web marketing',
     'abuja web studio',

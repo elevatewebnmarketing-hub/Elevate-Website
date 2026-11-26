@@ -118,7 +118,7 @@ export const facebookInstagramAds: ServicePageConfig = {
       },
       {
         q: 'Can my ads send people straight to WhatsApp?',
-        a: 'Yes. Click-to-WhatsApp ads open a chat with your business. For higher-priced offers we often send people to a landing page first, so they know the price and details before they message.',
+        a: 'Yes. Click-to-WhatsApp ads open a chat with your business. For higher-priced offers we often send people to a landing page first, so they know the price and details before they message. Our guide to [WhatsApp marketing in Nigeria](/blog/whatsapp-marketing-nigeria-small-business) covers the Business app, Channels and what to do once the chats arrive.',
       },
       {
         q: 'Do I need a website to run Facebook ads?',

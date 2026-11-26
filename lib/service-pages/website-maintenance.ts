@@ -112,7 +112,7 @@ export const websiteMaintenance: ServicePageConfig = {
       },
       {
         q: 'Do I need a website maintenance plan?',
-        a: 'If your site brings in customers, yes. Without one, renewals, broken forms and outdated prices are easy to miss. If you have the time and skills to handle updates, hosting and tracking yourself, you may not need one.',
+        a: 'If your site brings in customers, yes. Without one, renewals, broken forms and outdated prices are easy to miss. If you have the time and skills to handle updates, hosting and tracking yourself, you may not need one: our [website maintenance checklist](/blog/website-maintenance-checklist) lists what to check every week, month, quarter and year.',
       },
       {
         q: 'What happens if my website goes down?',

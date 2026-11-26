@@ -4,7 +4,7 @@ import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: 'Website Design & SEO Prices',
   description:
     'Website prices from ₦250,000: SEO-ready sites with domain, Google Business Profile setup and mobile optimisation, plus care plans from ₦30,000 a month.',
   keywords: [
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: ['/opengraph-image'],
-    title: 'Pricing | Elevate Web & Marketing',
+    title: 'Website Design & SEO Prices | Elevate Web & Marketing',
     description: 'Clear, fixed package pricing including a ₦250,000 Starter Website with domain, Google Business Profile, SEO foundations, and mobile optimization.',
     url: `${SITE_URL}/pricing`,
   },

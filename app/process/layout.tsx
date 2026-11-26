@@ -4,9 +4,9 @@ import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 const SITE_URL = 'https://www.elevatewebandmarketing.com';
 
 export const metadata: Metadata = {
-  title: 'Our Process',
+  title: 'How We Build Your Website: Our Process',
   description:
-    'How we work: discovery, design, build, and launch. A clear process for web design and marketing projects with fixed timelines.',
+    'How we build your website in four steps: discovery, design, development and launch, with the price fixed before we start and training when you go live.',
   keywords: [
     'web design process Nigeria',
     'how we build websites',
