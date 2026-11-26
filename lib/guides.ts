@@ -39,12 +39,12 @@ const gbp = (n: number) => `£${n.toLocaleString('en-GB')}`;
 
 const whyNotOnGoogle: Guide = {
   slug: 'why-your-website-isnt-on-google',
-  title: 'Why Your Website Isn’t on Google or ChatGPT',
-  h1: 'Why your website isn’t on Google or ChatGPT (and how to fix it)',
+  title: 'Why Your Website Isn’t Showing Up on Google or ChatGPT',
+  h1: 'Why your website isn’t showing up on Google or ChatGPT (and how to fix it)',
   description:
-    'Why a website doesn’t show up on Google or ChatGPT: no Search Console, no sitemap, pages crawlers can’t read, no Bing or schema, and how to fix each one.',
+    'Why your website isn’t showing up in ChatGPT, AI answers or Google: pages crawlers can’t read, no Search Console, sitemap, Bing or schema, and each fix.',
   published: '2026-10-18',
-  updated: '2026-11-20',
+  updated: '2026-11-26',
   image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80',
   keyTakeaways: [
     'Google, Bing and ChatGPT find websites in different ways, so a site can show on one and be missing from the others.',
@@ -75,7 +75,7 @@ const whyNotOnGoogle: Guide = {
           ],
         },
         {
-          h3: 'Why you’re not in ChatGPT',
+          h3: 'Why your website isn’t showing up in ChatGPT',
           paragraphs: [
             'ChatGPT’s crawlers mostly read the raw page without running JavaScript, and its search draws on Bing and on other websites that mention you. A site that looks fine in a browser can arrive empty.',
             '**Fix:** serve your text in the HTML (server-side rendering), get onto Bing, add structured data, and get mentioned on directories and local sites. Our guide on [how to get recommended by ChatGPT](/guides/how-to-get-recommended-by-chatgpt) goes further (reasons 3, 4 and 5).',
