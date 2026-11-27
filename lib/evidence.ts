@@ -1,5 +1,5 @@
 /**
- * Real Search Console numbers from client sites, anonymised (no domain, no query list).
+ * Real Search Console numbers from owned/client sites (no query lists).
  * Source files: MrDGN-Group repo, seo/data/gsc-2026-11-04/ (exported 4 November 2026, web search, last 12 months).
  * Only complete months are shown. Update this file from a new export; never edit the numbers by hand.
  */
@@ -27,10 +27,10 @@ export interface EvidenceSet {
 export const evidence: Record<string, EvidenceSet> = {
   'real-estate-abuja-asaba': {
     id: 'real-estate-abuja-asaba',
-    label: 'A real estate agency selling homes in Abuja and land in Asaba',
+    label: 'Mansa Luxe Realty: homes in Abuja and land in Asaba',
     workNote:
       'We rebuilt the site so search engines can read every page, gave each area and listing its own page, and added buyer guides.',
-    source: 'Google Search Console export, 4 November 2026. Web search only. Domain hidden.',
+    source: 'Mansa Luxe Realty. Google Search Console export, 4 November 2026; complete months May–October. Web search and AI Overview figures are separate measures. Impressions are not enquiries or sales.',
     months: [
       { month: '2026-05', impressions: 46, clicks: 0, position: 9.9, aiOverview: 3 },
       { month: '2026-06', impressions: 74, clicks: 0, position: 14.6, aiOverview: 7 },

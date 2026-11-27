@@ -12,7 +12,7 @@ export const websiteDesign: ServicePageConfig = {
     metaDescription:
       'Website design in Abuja from ₦250,000: fast, mobile-first business sites with WhatsApp buttons, service pages and SEO built in. Live in 7 to 10 days.',
     h1: 'Website design in Abuja',
-    updated: '2026-11-09',
+    updated: '2026-11-27',
     keyTakeaways: [
       'We design and build business websites with a page for every service, so Google can match each search to a page.',
       'Every site is server-rendered, which means Google and AI tools like ChatGPT can read the text without running JavaScript.',
@@ -105,7 +105,7 @@ export const websiteDesign: ServicePageConfig = {
         name: 'MansaLuxe Realty',
         url: 'https://mansaluxerealty.mrdgngroup.com',
         detail:
-          'A property site for land and homes in Asaba and Abuja, with property listings and enquiry paths for buyers.',
+          'A property site for land and homes in Asaba and Abuja, with property listings and enquiry paths for buyers. See the [Mansa Luxe Realty case study](/case-studies/mansa-luxe-realty) for the monthly Search Console figures and what they do and do not prove.',
       },
       {
         name: 'SOCASEMP Donation Platform, Lagos',

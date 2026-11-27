@@ -1,6 +1,7 @@
 'use client';
 
 import { trackEnquiryStart } from '@/lib/enquiry-start';
+import { trackSearchEnquiry } from '@/lib/search-measurement';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
@@ -107,6 +108,7 @@ export default function ProjectInquiryForm({ variant = 'contact' }: { variant?: 
   function touch() {
     if (started.current) return;
     started.current = true;
+    trackSearchEnquiry('enquiry_form_start', 'form');
     trackEnquiryStart('form');
     trackTikTokEvent('AddToCart', tiktokContentParams(content[0], content[1]));
   }
@@ -174,6 +176,7 @@ export default function ProjectInquiryForm({ variant = 'contact' }: { variant?: 
         return;
       }
       trackTikTokEvent('Lead', tiktokContentParams(content[0], content[1]), tiktokEventId);
+      trackSearchEnquiry('enquiry_form_success', 'form');
       setSentName(a.name.trim().split(/\s+/)[0] || a.name.trim());
       setA(EMPTY);
       setStep(0);

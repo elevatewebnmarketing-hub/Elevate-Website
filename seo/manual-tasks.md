@@ -1,5 +1,11 @@
 # Manual dashboard tasks: do these at the end
 
+## 27 November 2026 update
+
+- Completed in Search Console: indexing requests accepted for `/services`, `/services/google-ads`, `/services/website-redesign`, `/services/website-maintenance`, `/get-quote` and portfolio items 3, 4, 5 and 7. Confirm actual indexing later; avoid duplicate submissions now.
+- Sitemap checked: successful, 69 discovered URLs, last read 27 November. No resubmission needed.
+- After deploying the client-enquiries branch: inspect `/case-studies/mansa-luxe-realty` and request indexing once. Map/test the new enquiry data-layer events in the existing GTM/GA4 setup before publishing container changes. Details: `seo/client-enquiries-2026-11-27.md`.
+
 Ufuoma does these by hand once the code work is finished and pushed. Code changes (pricing, testimonials, portfolio, pages) are **not** listed here: they're done in code.
 
 ## 16 Nov 2026: new ads pages are live (do these)

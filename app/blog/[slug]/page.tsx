@@ -10,6 +10,7 @@ import BlogPostJsonLd from '@/components/seo/BlogPostJsonLd';
 import BlogPostViewTracker from '@/components/blog/BlogPostViewTracker';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getContentPath, getRelatedPosts } from '@/lib/content-paths';
 import { ArrowLeft, Calendar, User, ArrowRight, Clock, MessageCircle } from 'lucide-react';
 
 const BASE_URL = 'https://www.elevatewebandmarketing.com';
@@ -156,12 +157,9 @@ export default async function BlogPostPage({
   }
 
   const formattedContent = formatContent(post.content);
+  const contentPath = getContentPath(post.slug);
   const readingTime = getReadingTimeMinutes(post.content);
-  // The next 3 posts in date order (wrapping round), so every post gets links from 3 others.
-  const index = allPosts.findIndex((p) => p.id === post.id);
-  const relatedPosts = [1, 2, 3]
-    .map((i) => allPosts[(index + i) % allPosts.length])
-    .filter((p) => p.id !== post.id);
+  const relatedPosts = getRelatedPosts(post, allPosts);
   const toc = post.content
     .split('\n')
     .filter((line) => line.startsWith('## '))
@@ -273,6 +271,16 @@ export default async function BlogPostPage({
                   Run the free AI visibility check <ArrowRight size={20} />
                 </Link>
               </div>
+            </section>
+
+            <section aria-labelledby="related-services-heading" className="mt-10 border-t border-gray-200 dark:border-white/10 pt-8">
+              <h2 id="related-services-heading" className="font-heading font-bold text-2xl text-primary dark:text-white mb-3">{contentPath.heading}</h2>
+              <p className="text-text/80 dark:text-gray-300 mb-4">{contentPath.text}</p>
+              <ul className="space-y-3">
+                {contentPath.links.map((link) => (
+                  <li key={link.href}><Link href={link.href} className="text-accent font-semibold hover:underline">{link.label}</Link></li>
+                ))}
+              </ul>
             </section>
 
             {post.author === 'Ufuoma Onakpoyan' && <AuthorBio />}

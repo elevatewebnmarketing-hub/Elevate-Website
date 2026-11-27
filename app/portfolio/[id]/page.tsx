@@ -8,6 +8,9 @@ import Image from 'next/image';
 import { ArrowLeft, Monitor, ExternalLink } from 'lucide-react';
 import { getServiceLabel } from '@/lib/services';
 import { DeviceMockup } from '@/components/ui/DeviceMockup';
+import { getPortfolioServicePath } from '@/lib/content-paths';
+import { siteConfig } from '@/lib/site-config';
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 
 const BASE_URL = 'https://www.elevatewebandmarketing.com';
 
@@ -61,9 +64,16 @@ export default async function PortfolioDetailPage({
 
   const screenshots = item.screenshots && item.screenshots.length > 0 ? item.screenshots : [];
   const technologies = item.technologies && item.technologies.length > 0 ? item.technologies : [];
+  const servicePath = getPortfolioServicePath(item.service);
+  const whatsapp = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(`Hi Elevate, I saw your ${item.name} project and would like to discuss a website for my business.`)}`;
 
   return (
     <>
+      <BreadcrumbJsonLd crumbs={[
+        { name: 'Home', url: BASE_URL },
+        { name: 'Portfolio', url: `${BASE_URL}/portfolio` },
+        { name: item.name, url: `${BASE_URL}/portfolio/${item.id}` },
+      ]} />
       <Header />
       <main className="pt-24 pb-16 min-h-screen bg-background dark:bg-slate-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -211,6 +221,22 @@ export default async function PortfolioDetailPage({
               {[item.ownerName, item.ownerJob].filter(Boolean).join(' · ')}
             </p>
           )}
+
+          {item.id === '3' && (
+            <p className="mt-8 text-text/80 dark:text-gray-300">
+              See the monthly search data and what it means in our{' '}
+              <Link href="/case-studies/mansa-luxe-realty" className="text-accent font-semibold hover:underline">Mansa Luxe Realty SEO case study</Link>.
+            </p>
+          )}
+          <section className="mt-10 p-6 sm:p-8 bg-primary rounded-card-lg text-white">
+            <h2 className="font-heading font-bold text-2xl mb-3">Want a website for your business?</h2>
+            <p className="text-white/80 mb-5">Tell us what you sell, who you serve and what you need the website to do. We’ll recommend the scope and send a quote.</p>
+            <div className="flex flex-wrap gap-4 items-center">
+              <a href={whatsapp} className="inline-flex items-center min-h-[44px] px-5 py-3 bg-accent rounded-xl font-semibold hover:bg-accent/90">Discuss your project on WhatsApp</a>
+              <Link href="/get-quote" className="font-semibold hover:text-accent">Request a website quote</Link>
+              {servicePath && <Link href={servicePath} className="font-semibold hover:text-accent">Explore {getServiceLabel(item.service)?.toLowerCase()} services</Link>}
+            </div>
+          </section>
         </div>
       </main>
       <Footer />

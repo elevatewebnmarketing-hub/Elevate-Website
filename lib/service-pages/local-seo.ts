@@ -12,19 +12,19 @@ export const localSeo: ServicePageConfig = {
     metaDescription:
       'Local SEO in Abuja: Google Business Profile setup, service pages, listings and reviews so customers find you on Google Maps and ChatGPT. WhatsApp us.',
     h1: 'Local SEO and Google Business Profile in Abuja',
-    updated: '2026-11-16',
+    updated: '2026-11-27',
     keyTakeaways: [
-      'Local SEO gets your business onto the map and the first page when people nearby search for what you sell.',
+      'Local SEO helps nearby customers find your services on Google Search and Maps. Positions depend on relevance, distance, competition and prominence.',
       'The work: your Google Business Profile, Bing, Apple and Facebook profiles and your website all saying the same thing, a website page for every service, and a steady flow of honest reviews.',
       'Price: ₦70,000 setup, then ₦30,000 a month to keep everything active and in step.',
-      'In our experience the first calls often come about three weeks after a properly built site is submitted to Google Search Console.',
+      'We start with a visibility baseline and report changes over time. Submitting a site to Search Console does not guarantee indexing, rankings or calls.',
       'Proof: a real estate client’s Google impressions grew from 46 a month to 843 a month in six months (chart below).',
       'We report on calls and messages, not just clicks.',
     ],
     evidenceIds: ['real-estate-abuja-asaba'],
     intro: [
       'When someone in Abuja types “estate agent near me” or asks ChatGPT for “a good caterer in Wuse”, a short list of businesses appears. Local SEO is the work that gets your business onto that list and keeps it there. For the ChatGPT side, see [how to get your business recommended by ChatGPT](/guides/how-to-get-recommended-by-chatgpt); to set up the profile yourself, follow our [Google Business Profile setup guide](/guides/google-business-profile-setup-nigeria). Not sure where you stand? Run the free [AI visibility check](/ai-visibility-check). Outside Abuja, our [SEO services in Nigeria](/locations/nigeria) work the same way.',
-      'Google ranks local businesses on three things it names itself: relevance (do you clearly offer what was searched), distance (how close you are), and prominence (how well known and well reviewed you are). We work on all three: your Google Business Profile, a website that mirrors it page for page, consistent listings across the web, and a steady flow of genuine reviews.',
+      'Google describes three main local ranking factors: relevance, distance and prominence. We improve how clearly your profile and website describe your services, align your listings and help you ask for genuine reviews. We cannot change your physical distance from the searcher. See [Google’s local ranking guidance](https://support.google.com/business/answer/7091).',
       'We don’t buy links, invent reviews or stuff keywords into your business name. Those shortcuts get profiles suspended, and an appeal can take a month or more.',
     ],
     problems: [
@@ -49,7 +49,7 @@ export const localSeo: ServicePageConfig = {
       {
         title: 'A page map from profile to website',
         detail:
-          'Every service on your Google profile gets a matching page on your website, with the service and city in the title. This is the single most important local ranking signal on your site.',
+          'We map separately searched services to useful pages on your website, with clear titles, deliverables and examples. Services with the same search intent can share a page. This helps customers and search engines understand what you offer.',
       },
       {
         title: 'Technical checks for search and AI',
@@ -121,6 +121,11 @@ export const localSeo: ServicePageConfig = {
     },
     proof: [
       {
+        name: 'Mansa Luxe Realty: real estate website and search visibility',
+        detail:
+          'Our owner-operated property business recorded 46 Google web search impressions in May and 843 in October 2026, with 40 clicks across those six months. Read the [Mansa Luxe Realty SEO case study](/case-studies/mansa-luxe-realty) for the monthly data, the work and the limits of the results. Impressions are not enquiries or sales.',
+      },
+      {
         name: 'MR DGN Construction & Developers, Asaba',
         url: 'https://construction.mrdgngroup.com',
         detail:
@@ -163,7 +168,7 @@ export const localSeo: ServicePageConfig = {
       },
       {
         q: 'How long does local SEO take to work in Abuja?',
-        a: 'In our experience, once the website and profile are set up properly and the site is submitted to Google Search Console, the first results and calls often start within about three weeks. Steady map positions in a competitive area can take a few months. It depends on how close you are to the searcher, how many reviews competitors have, and how quickly you collect your own.',
+        a: 'Allow time for Google to crawl changes and for visibility to develop. Some changes may be reflected within weeks; competitive searches can take months, and results vary. We establish your starting position and review it monthly. No submission date guarantees calls, indexing or a specific position.',
       },
       {
         q: 'Are you an SEO company in Abuja?',
