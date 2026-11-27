@@ -2,7 +2,6 @@
 
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import { ArrowRight } from 'lucide-react';
 import { AlertCircle, Lightbulb, TrendingUp } from 'lucide-react';
@@ -39,11 +38,12 @@ const caseStudies = [
       'Over 600 words readable by search engines. In September 2026 a buyer found the company through ChatGPT and enquired about concrete blocks. On Google Maps it ranks #6 for "cement blocks in Asaba" (17 October 2026); profile work continues.',
   },
   {
-    client: 'MansaLuxe Realty',
+    client: 'Mansa Luxe Realty',
     service: 'website-design' as const,
     problem: 'A real estate company selling land and homes in Asaba and Abuja needed buyers to browse listings and enquire easily.',
     solution: 'Designed a property site with listings, property detail pages and enquiry paths for buyers.',
-    result: 'Live at mansaluxerealty.mrdgngroup.com as the group’s real estate arm.',
+    result: 'Google web search impressions rose from 46 in May to 843 in October 2026. The six-month record contains 40 clicks. Read the monthly figures, the work and its limitations.',
+    link: '/case-studies/mansa-luxe-realty',
   },
   {
     client: 'Runway Refined by Alek, UK',
@@ -99,10 +99,7 @@ export default function CaseStudies({ isStandalone = false, service = null }: Ca
   return (
     <Wrapper {...wrapperProps}>
       <div className="max-w-7xl 2xl:max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16"
         >
           <div className="text-center sm:text-left">
@@ -122,7 +119,7 @@ export default function CaseStudies({ isStandalone = false, service = null }: Ca
               <ArrowRight size={20} />
             </Link>
           )}
-        </motion.div>
+        </div>
 
         {isStandalone && (
           <div className="flex flex-wrap gap-2 mb-12 justify-center sm:justify-start">
@@ -159,13 +156,9 @@ export default function CaseStudies({ isStandalone = false, service = null }: Ca
             <div className="text-center py-16 text-text/70 dark:text-gray-400">
               No case studies found for this service. Try a different filter.
             </div>
-          ) : filteredStudies.map((study, index) => (
-            <motion.div
+          ) : filteredStudies.map((study) => (
+            <div
               key={study.client}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white dark:bg-slate-800 rounded-card-lg p-8 lg:p-12 shadow-soft border border-gray-100 dark:border-white/10 overflow-hidden"
             >
               <div className="flex flex-wrap items-center gap-2 mb-8">
@@ -224,7 +217,7 @@ export default function CaseStudies({ isStandalone = false, service = null }: Ca
                   )}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
